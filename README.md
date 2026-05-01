@@ -54,3 +54,4 @@ Your contributions are what make the community great. We encourage you to contri
 improvements, and submitting a pull request with your changes. Together, we can make the Kore Datapack Template even better!
 
 Thank you for supporting the project, and happy Datapacking!
+
