@@ -12,12 +12,10 @@ require:
 data_pack:
   load: 
     - src
-    - summit-dp*.zip
 
 resource_pack:
   load:
     - src
-    - summit-rp*.zip
 
 pipeline:
   - mecha
