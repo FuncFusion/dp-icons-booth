@@ -12,12 +12,12 @@ require:
 data_pack:
   load: 
     - src
-    - bsl.zip
+    - summit-dp*.zip
 
 resource_pack:
   load:
     - src
-    - bsl.zip
+    - summit-rp*.zip
 
 pipeline:
   - mecha

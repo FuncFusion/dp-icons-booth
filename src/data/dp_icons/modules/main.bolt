@@ -1,11 +1,16 @@
+from bolt_expressions import Scoreboard
+
 append function_tag minecraft:tick:
-	values: "dp_icons:tick"
+	values: 
+		- "dp_icons:tick"
 
 append function_tag minecraft:load:
-	values: "dp_icons:load"
+	values: 
+		- "dp_icons:load"
 
 function dp_icons:tick:
 	pass
 
 function dp_icons:load:
+	my_obj = Scoreboard.objective("dp_icons.var")
 	say hello world
