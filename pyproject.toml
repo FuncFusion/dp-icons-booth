@@ -1,0 +1,12 @@
+[project]
+name = "dp-icons-booth"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "beet>=0.115.0",
+    "bolt>=0.50.1",
+    "bolt-expressions>=0.19.2",
+    "mecha>=0.103.0",
+]

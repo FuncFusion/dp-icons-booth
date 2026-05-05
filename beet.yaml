@@ -1,0 +1,23 @@
+output: "build"
+
+meta:
+  bolt:
+    entrypoint:
+      "dp_icons:main"
+
+require:
+  - bolt
+  - bolt_expressions
+
+data_pack:
+  load: 
+    - src
+    - bsl.zip
+
+resource_pack:
+  load:
+    - src
+    - bsl.zip
+
+pipeline:
+  - mecha

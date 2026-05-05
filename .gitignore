@@ -1,9 +1,4 @@
-### Intellij
-.idea
-
-### Gradle
-.gradle
-build
-
-### Generated Datapacks
-out
+build/
+.venv/
+.vscode/
+*summit*.zip
