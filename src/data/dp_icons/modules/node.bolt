@@ -18,5 +18,5 @@ class Node:
       node.child = []
       self.child = node.child
 
-  def render(self, depth, line_index, icon):
+  def render(self, icon):
     pass
