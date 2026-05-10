@@ -1,0 +1,5 @@
+from bolt_expressions import Scoreboard, Data
+
+var = Scoreboard.objective("dp_icons.var")
+storage = Data.storage(dp_icons:main)
+tree = storage.tree

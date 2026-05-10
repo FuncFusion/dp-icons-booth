@@ -1,16 +1,24 @@
-from bolt_expressions import Scoreboard
+from dp_icons:config import var, storage
+from dp_icons:node import Node
 
 append function_tag minecraft:tick:
-	values: 
-		- "dp_icons:tick"
+  values: 
+    - "dp_icons:tick"
 
 append function_tag minecraft:load:
-	values: 
-		- "dp_icons:load"
+  values: 
+    - "dp_icons:load"
 
 function dp_icons:tick:
-	pass
+  pass
 
 function dp_icons:load:
-	my_obj = Scoreboard.objective("dp_icons.var")
-	say hello world
+  say hello world
+  # execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dp_icons.var 1
+  execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dp_icons.var 1
+  as @a at @s if block ~ ~ ~ air run scoreboard players set @s dp_icons.var 1
+
+  pack_mcmeta = Node("pack.mcmeta", "txt")
+  data_dir = Node("data", "dir")
+  namespace = Node("namespace", "dir", data_dir)
+  function = Node("function", "dir", namespace)

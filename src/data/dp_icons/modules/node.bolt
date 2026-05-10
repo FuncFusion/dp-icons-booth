@@ -1,0 +1,22 @@
+from dp_icons:config import var, storage, tree
+from bolt_expressions import Scoreboard, Data
+
+class Node:
+  def __init__(self, name, type, parent=None):
+    raw # node definition
+    if parent is None:
+      parent = tree.root
+
+    parent.child.append({})
+    parent.child[-1].name = name
+
+    node = parent.child[{"name":name}]
+    self.node = node
+    node.type = type
+
+    if type == "dir":
+      node.child = []
+      self.child = node.child
+
+  def render(self, depth, line_index, icon):
+    pass
