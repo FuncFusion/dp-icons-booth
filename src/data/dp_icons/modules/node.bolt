@@ -2,11 +2,8 @@ from dp_icons:config import var, storage, tree
 from bolt_expressions import Scoreboard, Data
 
 class Node:
-  def __init__(self, name, type, parent=None):
+  def __init__(self, name, type, parent=tree.root):
     raw # node definition
-    if parent is None:
-      parent = tree.root
-
     parent.child.append({})
     parent.child[-1].name = name
 
