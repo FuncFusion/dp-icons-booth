@@ -11,7 +11,7 @@ pipeline:
     meta:
       bolt:
         entrypoint:
-          "dp_icons:main"
+          "dpi:main"
     pipeline:
       - mecha
 

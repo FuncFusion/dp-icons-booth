@@ -1,4 +1,4 @@
-from dp_icons:config import var, storage, tree
+from dpi:config import var, storage, tree
 from bolt_expressions import Scoreboard, Data
 
 class Node:

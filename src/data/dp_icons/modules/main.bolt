@@ -1,22 +1,22 @@
-from dp_icons:config import var, storage
-from dp_icons:node import Node
+from dpi:config import var, storage
+from dpi:node import Node
 
 append function_tag minecraft:tick:
   values: 
-    - "dp_icons:tick"
+    - "dpi:tick"
 
 append function_tag minecraft:load:
   values: 
-    - "dp_icons:load"
+    - "dpi:load"
 
-function dp_icons:tick:
+function dpi:tick:
   pass
 
-function dp_icons:load:
+function dpi:load:
   say hello world
-  # execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dp_icons.var 1
-  execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dp_icons.var 1
-  as @a at @s if block ~ ~ ~ air run scoreboard players set @s dp_icons.var 1
+  # execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
+  execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
+  as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
 
   pack_mcmeta = Node("pack.mcmeta", "txt")
   data_dir = Node("data", "dir")
