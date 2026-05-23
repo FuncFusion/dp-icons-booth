@@ -1,21 +1,23 @@
 output: "build"
 
-meta:
-  bolt:
-    entrypoint:
-      "dp_icons:main"
-
-require:
-  - bolt
-  - bolt_expressions
-
-data_pack:
-  load: 
-    - src
-
-resource_pack:
-  load:
-    - src
-
 pipeline:
-  - mecha
+  - data_pack:
+      load: ["src"]
+    resource_pack:
+      load: ["src"]
+    require:
+      - bolt
+      - bolt_expressions
+    meta:
+      bolt:
+        entrypoint:
+          "dp_icons:main"
+    pipeline:
+      - mecha
+
+  - data_pack:
+      load:
+        - "https://vendors.internal.smithed.net/app/static/summit-dp-core.zip"
+    resource_pack:
+      load:
+        - "https://vendors.internal.smithed.net/app/static/summit-rp-core.zip"
