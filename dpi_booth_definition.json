@@ -1,4 +1,28 @@
 {
 	"namespace": "dpi",
-	"booth_name": "Datapack Icons"
+	"booth_name": "Datapack Icons",
+	"bounding_boxes": {
+		"chest_trigger": {
+			"position": {
+				"x": {"min": 105, "max": 122},
+                "y": {"min": 98, "max": 111},
+                "z": {"min": -126, "max": -109}
+			},
+            "on_player_enter": "",
+            "on_player_exit": ""
+		}
+	},
+	"sticker_book": {
+        "background_color": "#313338",
+        "region": "patched_plateaus",
+        "stickers": []
+    },
+	"balloons": [
+        {
+            "balloon_id": "dpi",
+            "balloon_name": "Datapack Icons chest",
+            "balloon_model": "dpi:item/dpi_balloon"
+        }
+    ]
+
 }
