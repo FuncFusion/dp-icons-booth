@@ -2,8 +2,8 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "dpi:icons/ajmeta_file",
-		"particle": "dpi:icons/ajmeta_file"
+		"0": "dpi:item/icons/ajmeta_file",
+		"particle": "dpi:item/icons/ajmeta_file"
 	},
 	"elements": [
 		{

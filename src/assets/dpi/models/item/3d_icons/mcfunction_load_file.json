@@ -1,0 +1,9 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "dpi:item/icons/mcfunction_load_file",
+		"particle": "dpi:item/icons/mcfunction_load_file"
+	},
+	"parent": "dpi:item/3d_icons/_cube"
+}

@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "dpi:3d_icons/trading_file",
-		"particle": "dpi:3d_icons/trading_file"
+		"0": "dpi:item/3d_icons/trading_file",
+		"particle": "dpi:item/3d_icons/trading_file"
 	},
 	"elements": [
 		{

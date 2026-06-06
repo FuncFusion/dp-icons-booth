@@ -1,9 +1,0 @@
-{
-	"format_version": "1.21.11",
-	"credit": "Made with Blockbench",
-	"textures": {
-		"0": "dpi:icons/structure_file",
-		"particle": "dpi:icons/structure_file"
-	},
-	"parent": "dpi:_cube"
-}
