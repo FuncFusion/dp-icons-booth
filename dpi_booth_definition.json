@@ -4,9 +4,9 @@
 	"bounding_boxes": {
 		"chest_trigger": {
 			"position": {
-				"x": {"min": 105, "max": 122},
-                "y": {"min": 98, "max": 111},
-                "z": {"min": -126, "max": -109}
+				"x": {"min": 102, "max": 126},
+                "y": {"min": 97, "max": 124},
+                "z": {"min": -127, "max": -105}
 			},
             "on_player_enter": "",
             "on_player_exit": ""
