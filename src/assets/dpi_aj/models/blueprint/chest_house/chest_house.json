@@ -1,0 +1,49 @@
+{
+	"textures": {
+		"0": "dpi_aj:blueprint/chest_house/normal",
+		"particle": "minecraft:item/pufferfish"
+	},
+	"display": {
+		"head": {
+			"rotation": [0, 180, 0]
+		}
+	},
+	"elements": [
+		{
+			"from": [-4, -9.14286, -4],
+			"to": [20, 8, 20],
+			"rotation": {
+				"x": -180,
+				"y": 0,
+				"z": 0,
+				"origin": [8, 8, 8]
+			},
+			"faces": {
+				"north": {
+					"uv": [3.5, 8.25, 7, 10.75],
+					"texture": "#0"
+				},
+				"east": {
+					"uv": [0, 8.25, 3.5, 10.75],
+					"texture": "#0"
+				},
+				"south": {
+					"uv": [10.5, 8.25, 14, 10.75],
+					"texture": "#0"
+				},
+				"west": {
+					"uv": [7, 8.25, 10.5, 10.75],
+					"texture": "#0"
+				},
+				"up": {
+					"uv": [7, 8.25, 3.5, 4.75],
+					"texture": "#0"
+				},
+				"down": {
+					"uv": [10.5, 4.75, 7, 8.25],
+					"texture": "#0"
+				}
+			}
+		}
+	]
+}
