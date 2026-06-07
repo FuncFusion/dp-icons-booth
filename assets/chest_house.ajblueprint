@@ -1141,7 +1141,12 @@
 				"variants": {}
 			},
 			"itemModelProperties": {
-				"tints": []
+				"tints": [
+					{
+						"type": "minecraft:constant",
+						"value": 66046
+					}
+				]
 			},
 			"children": [],
 			"reset": false,
@@ -1172,7 +1177,12 @@
 				"variants": {}
 			},
 			"itemModelProperties": {
-				"tints": []
+				"tints": [
+					{
+						"type": "minecraft:constant",
+						"value": 66046
+					}
+				]
 			},
 			"children": [],
 			"reset": false,
@@ -1203,7 +1213,12 @@
 				"variants": {}
 			},
 			"itemModelProperties": {
-				"tints": []
+				"tints": [
+					{
+						"type": "minecraft:constant",
+						"value": 66046
+					}
+				]
 			},
 			"children": [],
 			"reset": false,
@@ -1234,7 +1249,12 @@
 				"variants": {}
 			},
 			"itemModelProperties": {
-				"tints": []
+				"tints": [
+					{
+						"type": "minecraft:constant",
+						"value": 66046
+					}
+				]
 			},
 			"children": [],
 			"reset": false,
@@ -1491,7 +1511,7 @@
 			"snapping": 20,
 			"selected": false,
 			"saved": true,
-			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house.animation.json",
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
 			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
@@ -1869,9 +1889,9 @@
 			"override": false,
 			"length": 0.75,
 			"snapping": 20,
-			"selected": false,
+			"selected": true,
 			"saved": true,
-			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house.animation.json",
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
 			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
@@ -2246,7 +2266,7 @@
 			"snapping": 20,
 			"selected": false,
 			"saved": true,
-			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house.animation.json",
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
 			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
@@ -2388,7 +2408,7 @@
 			"snapping": 20,
 			"selected": false,
 			"saved": true,
-			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house.animation.json",
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
 			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
@@ -2530,7 +2550,7 @@
 			"snapping": 20,
 			"selected": false,
 			"saved": true,
-			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house.animation.json",
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
 			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
@@ -2670,9 +2690,9 @@
 			"override": false,
 			"length": 3,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
 			"saved": true,
-			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house.animation.json",
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
 			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
@@ -2795,6 +2815,574 @@
 								}
 							],
 							"uuid": "3b91c07a-5f09-cd24-0969-0b60e345f65a",
+							"time": 3,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						}
+					]
+				}
+			}
+		},
+		{
+			"uuid": "5974731d-17b6-b38e-717f-e73257c3fd9e",
+			"name": "mcf_tick_levitate2",
+			"loop": "loop",
+			"override": false,
+			"length": 4,
+			"snapping": 20,
+			"selected": false,
+			"saved": true,
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "0",
+			"excluded_nodes": [
+				{
+					"icon": "folder",
+					"name": "chest_house",
+					"value": "c997be43-6e2e-7f8a-f684-df73adde46c2"
+				},
+				{
+					"icon": "account_tree",
+					"name": "icons",
+					"value": "0294c5c3-f5e2-d02b-d336-ca1b340318ff"
+				},
+				{
+					"icon": "folder",
+					"name": "json_file",
+					"value": "6e2af3f0-16ef-333d-b4cc-1878f801e10b"
+				},
+				{
+					"icon": "folder",
+					"name": "lid",
+					"value": "c0a31427-b4db-e448-2ed7-3f828dfbfaaf"
+				},
+				{
+					"icon": "folder",
+					"name": "python",
+					"value": "2b1de101-c228-5a1a-9133-f06b9929acf7"
+				},
+				{
+					"icon": "folder",
+					"name": "structure_file",
+					"value": "4cd4e0e5-e402-bbb5-dd6e-26979f414baa"
+				}
+			],
+			"animators": {
+				"c0a31427-b4db-e448-2ed7-3f828dfbfaaf": {
+					"name": "lid",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c997be43-6e2e-7f8a-f684-df73adde46c2": {
+					"name": "chest_house",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0294c5c3-f5e2-d02b-d336-ca1b340318ff": {
+					"name": "icons",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5c53df8b-2929-cda5-4846-81f6662993c0": {
+					"name": "mcf_tick",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "9",
+									"y": "35",
+									"z": "-14"
+								}
+							],
+							"uuid": "57469308-35eb-696f-799f-ab0b61b7e249",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "9",
+									"y": "5",
+									"z": "-14"
+								}
+							],
+							"uuid": "bd75cd3e-0f9f-1b5d-84c0-8521918870cd",
+							"time": 2,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "9",
+									"y": "35",
+									"z": "-14"
+								}
+							],
+							"uuid": "fc0cdc52-7cd3-3c20-8ad8-b02b0a0abece",
+							"time": 4,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						}
+					]
+				},
+				"2b1de101-c228-5a1a-9133-f06b9929acf7": {
+					"name": "python",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4cd4e0e5-e402-bbb5-dd6e-26979f414baa": {
+					"name": "structure_file",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6e2af3f0-16ef-333d-b4cc-1878f801e10b": {
+					"name": "json_file",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				}
+			}
+		},
+		{
+			"uuid": "cfd5679e-de7f-db16-2aa7-2c1746d2771d",
+			"name": "python_levitate2",
+			"loop": "loop",
+			"override": false,
+			"length": 5,
+			"snapping": 20,
+			"selected": false,
+			"saved": true,
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "0",
+			"excluded_nodes": [
+				{
+					"icon": "folder",
+					"name": "chest_house",
+					"value": "c997be43-6e2e-7f8a-f684-df73adde46c2"
+				},
+				{
+					"icon": "account_tree",
+					"name": "icons",
+					"value": "0294c5c3-f5e2-d02b-d336-ca1b340318ff"
+				},
+				{
+					"icon": "folder",
+					"name": "json_file",
+					"value": "6e2af3f0-16ef-333d-b4cc-1878f801e10b"
+				},
+				{
+					"icon": "folder",
+					"name": "lid",
+					"value": "c0a31427-b4db-e448-2ed7-3f828dfbfaaf"
+				},
+				{
+					"icon": "folder",
+					"name": "mcf_tick",
+					"value": "5c53df8b-2929-cda5-4846-81f6662993c0"
+				},
+				{
+					"icon": "folder",
+					"name": "structure_file",
+					"value": "4cd4e0e5-e402-bbb5-dd6e-26979f414baa"
+				}
+			],
+			"animators": {
+				"c0a31427-b4db-e448-2ed7-3f828dfbfaaf": {
+					"name": "lid",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c997be43-6e2e-7f8a-f684-df73adde46c2": {
+					"name": "chest_house",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0294c5c3-f5e2-d02b-d336-ca1b340318ff": {
+					"name": "icons",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5c53df8b-2929-cda5-4846-81f6662993c0": {
+					"name": "mcf_tick",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2b1de101-c228-5a1a-9133-f06b9929acf7": {
+					"name": "python",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-34",
+									"y": "31",
+									"z": "20"
+								}
+							],
+							"uuid": "c643c7dc-9f1a-5088-00b0-055777a98126",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-34",
+									"y": "1",
+									"z": "20"
+								}
+							],
+							"uuid": "52b85eaa-3f51-80bd-9314-420f74942df2",
+							"time": 2.5,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-34",
+									"y": "31",
+									"z": "20"
+								}
+							],
+							"uuid": "6341fac6-0cf9-6fae-e961-dff6dedce829",
+							"time": 5,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						}
+					]
+				},
+				"4cd4e0e5-e402-bbb5-dd6e-26979f414baa": {
+					"name": "structure_file",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6e2af3f0-16ef-333d-b4cc-1878f801e10b": {
+					"name": "json_file",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				}
+			}
+		},
+		{
+			"uuid": "64d8fa2a-29d1-a2d4-074f-28b08a13ce95",
+			"name": "structure_file_levitate2",
+			"loop": "loop",
+			"override": false,
+			"length": 4.5,
+			"snapping": 20,
+			"selected": false,
+			"saved": true,
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "0",
+			"excluded_nodes": [
+				{
+					"icon": "folder",
+					"name": "chest_house",
+					"value": "c997be43-6e2e-7f8a-f684-df73adde46c2"
+				},
+				{
+					"icon": "account_tree",
+					"name": "icons",
+					"value": "0294c5c3-f5e2-d02b-d336-ca1b340318ff"
+				},
+				{
+					"icon": "folder",
+					"name": "json_file",
+					"value": "6e2af3f0-16ef-333d-b4cc-1878f801e10b"
+				},
+				{
+					"icon": "folder",
+					"name": "lid",
+					"value": "c0a31427-b4db-e448-2ed7-3f828dfbfaaf"
+				},
+				{
+					"icon": "folder",
+					"name": "mcf_tick",
+					"value": "5c53df8b-2929-cda5-4846-81f6662993c0"
+				},
+				{
+					"icon": "folder",
+					"name": "python",
+					"value": "2b1de101-c228-5a1a-9133-f06b9929acf7"
+				}
+			],
+			"animators": {
+				"c0a31427-b4db-e448-2ed7-3f828dfbfaaf": {
+					"name": "lid",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c997be43-6e2e-7f8a-f684-df73adde46c2": {
+					"name": "chest_house",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0294c5c3-f5e2-d02b-d336-ca1b340318ff": {
+					"name": "icons",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5c53df8b-2929-cda5-4846-81f6662993c0": {
+					"name": "mcf_tick",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2b1de101-c228-5a1a-9133-f06b9929acf7": {
+					"name": "python",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4cd4e0e5-e402-bbb5-dd6e-26979f414baa": {
+					"name": "structure_file",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "30",
+									"y": "52",
+									"z": "46"
+								}
+							],
+							"uuid": "b8976003-7182-1758-5ed4-1d8136d02873",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "30",
+									"y": "27",
+									"z": "46"
+								}
+							],
+							"uuid": "e53604cf-5efc-8d9a-6cc5-e89941d0b0b9",
+							"time": 2.25,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "30",
+									"y": "52",
+									"z": "46"
+								}
+							],
+							"uuid": "c36ae228-05a4-fe56-ba5f-57181c8a87f2",
+							"time": 4.5,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						}
+					]
+				},
+				"6e2af3f0-16ef-333d-b4cc-1878f801e10b": {
+					"name": "json_file",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				}
+			}
+		},
+		{
+			"uuid": "16ebd945-35e0-8f9a-f1f5-829d5696ea7b",
+			"name": "json_file_levitate2",
+			"loop": "loop",
+			"override": false,
+			"length": 3,
+			"snapping": 20,
+			"selected": false,
+			"saved": true,
+			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\chest_house2.animation.json",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "0",
+			"excluded_nodes": [
+				{
+					"icon": "folder",
+					"name": "chest_house",
+					"value": "c997be43-6e2e-7f8a-f684-df73adde46c2"
+				},
+				{
+					"icon": "account_tree",
+					"name": "icons",
+					"value": "0294c5c3-f5e2-d02b-d336-ca1b340318ff"
+				},
+				{
+					"icon": "folder",
+					"name": "lid",
+					"value": "c0a31427-b4db-e448-2ed7-3f828dfbfaaf"
+				},
+				{
+					"icon": "folder",
+					"name": "mcf_tick",
+					"value": "5c53df8b-2929-cda5-4846-81f6662993c0"
+				},
+				{
+					"icon": "folder",
+					"name": "python",
+					"value": "2b1de101-c228-5a1a-9133-f06b9929acf7"
+				},
+				{
+					"icon": "folder",
+					"name": "structure_file",
+					"value": "4cd4e0e5-e402-bbb5-dd6e-26979f414baa"
+				}
+			],
+			"animators": {
+				"c0a31427-b4db-e448-2ed7-3f828dfbfaaf": {
+					"name": "lid",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c997be43-6e2e-7f8a-f684-df73adde46c2": {
+					"name": "chest_house",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0294c5c3-f5e2-d02b-d336-ca1b340318ff": {
+					"name": "icons",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5c53df8b-2929-cda5-4846-81f6662993c0": {
+					"name": "mcf_tick",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2b1de101-c228-5a1a-9133-f06b9929acf7": {
+					"name": "python",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4cd4e0e5-e402-bbb5-dd6e-26979f414baa": {
+					"name": "structure_file",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6e2af3f0-16ef-333d-b4cc-1878f801e10b": {
+					"name": "json_file",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-13",
+									"y": "-1",
+									"z": "-4"
+								}
+							],
+							"uuid": "c8c6d032-efdb-564a-133b-33b7ec1bd35b",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-13",
+									"y": "-21",
+									"z": "-4"
+								}
+							],
+							"uuid": "c9b7b8f9-a298-500f-109a-fb2d779a91ba",
+							"time": 1.5,
+							"color": -1,
+							"interpolation": "catmullrom",
+							"easing": "linear",
+							"easingArgs": []
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-13",
+									"y": "-1",
+									"z": "-4"
+								}
+							],
+							"uuid": "32867013-9156-1da1-7014-716823169903",
 							"time": 3,
 							"color": -1,
 							"interpolation": "catmullrom",

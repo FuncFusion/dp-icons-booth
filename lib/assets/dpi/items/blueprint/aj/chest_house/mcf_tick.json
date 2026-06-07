@@ -3,7 +3,10 @@
 		"type": "minecraft:model",
 		"model": "dpi:blueprint/aj/chest_house/mcf_tick",
 		"tints": [
-			{ "type": "minecraft:constant", "value": 66046 }
+			{
+				"type": "minecraft:constant",
+				"value": 66046
+			}
 		]
 	}
 }
