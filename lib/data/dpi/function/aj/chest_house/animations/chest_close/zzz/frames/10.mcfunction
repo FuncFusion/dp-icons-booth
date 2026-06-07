@@ -3,4 +3,3 @@ $data merge entity $(lid) {transformation: [-10.0219f,0f,0f,0f,0f,7.3383f,-6.825
 $data merge entity $(mcf_tick) {transformation: [-3f,0f,0f,-11.7025f,0f,3f,0f,14.1406f,0f,0f,-3f,9.2181f,0f,0f,0f,1f],start_interpolation: 0,interpolation_duration: 1}
 $data merge entity $(python) {transformation: [-3.686f,0.4978f,1.4716f,10.7686f,0.1306f,3.875f,-0.9836f,22.5472f,-1.548f,-0.8584f,-3.5871f,-4.5933f,0f,0f,0f,1f],start_interpolation: 0,interpolation_duration: 1}
 $data merge entity $(structure_file) {transformation: [-2.973f,0.3901f,-0.0956f,-3.7537f,0.3799f,2.963f,0.2761f,27.8606f,0.1304f,0.2615f,-2.9857f,-5.86f,0f,0f,0f,1f],start_interpolation: 0,interpolation_duration: 1}
-$data merge entity $(json_file) {transformation: [-2.8917f,-0.3069f,-0.7376f,6.2462f,-0.1717f,2.9438f,-0.5517f,8.665f,0.7802f,-0.4895f,-2.8551f,9.7919f,0f,0f,0f,1f],start_interpolation: 0,interpolation_duration: 1}

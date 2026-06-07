@@ -1,0 +1,3 @@
+$say play macro $(json_file_levitate_frame) - $(json_file_levitate2_frame)
+$execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root,limit=1] unless data storage dpi:experimental {json_file_levitate_frame:0} run function dpi:aj/chest_house/animations/json_file_out_$(json_file_levitate_frame)/play
+$execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root,limit=1] unless data storage dpi:experimental {json_file_levitate2_frame:0} run function dpi:aj/chest_house/animations/json_file_in_$(json_file_levitate2_frame)/play

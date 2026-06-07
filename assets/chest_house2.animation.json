@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"chest_open2": {
+		"chest_open": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.75,
 			"loop_delay": 0,
@@ -105,7 +105,7 @@
 				}
 			}
 		},
-		"chest_close2": {
+		"chest_close": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.75,
 			"loop_delay": 0,
