@@ -1,0 +1,4 @@
+{
+	"replace": false,
+	"values": ["dpi:aj/chest_house/on_load", "dpi:aj/springboard/on_load"]
+}

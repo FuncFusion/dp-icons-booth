@@ -4,18 +4,19 @@
 		"format_version": "1.10.0-beta.7",
 		"uuid": "09fc45d1-74ec-61ca-3bc4-bfc3dd708245",
 		"save_location": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\springboard.ajblueprint",
-		"last_used_blueprint_id": "dpi_aj:springboard"
+		"last_used_blueprint_id": "dpi:aj/springboard"
 	},
 	"resolution": {
 		"width": 128,
 		"height": 128
 	},
 	"blueprint_settings": {
-		"blueprint_id": "dpi_aj:springboard",
+		"blueprint_id": "dpi:aj/springboard",
 		"render_box": [48, 48],
-		"resource_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\src",
-		"data_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\src",
-		"custom_rig_entity_tags": "summit.booth_entity, summit.booth_entity.dpi"
+		"resource_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib",
+		"data_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib",
+		"custom_rig_entity_tags": "summit.booth_entity, summit.booth_entity.dpi",
+		"auto_update_rig_orientation": false
 	},
 	"elements": [
 		{
