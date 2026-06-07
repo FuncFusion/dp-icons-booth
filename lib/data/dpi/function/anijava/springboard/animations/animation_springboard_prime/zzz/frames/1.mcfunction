@@ -1,0 +1,2 @@
+$data merge entity $(springs) {transformation: [-1.4088f,-0.2802f,0f,0f,-0.27f,1.3574f,0f,0.0782f,0f,0f,-1.4364f,0f,0f,0f,0f,1f],start_interpolation: 0,interpolation_duration: 1}
+$data merge entity $(top) {transformation: [-1.6667f,0f,0f,0f,0f,1.6667f,0f,0.4966f,0f,0f,-1.6667f,0f,0f,0f,0f,1f],start_interpolation: 0,interpolation_duration: 1}

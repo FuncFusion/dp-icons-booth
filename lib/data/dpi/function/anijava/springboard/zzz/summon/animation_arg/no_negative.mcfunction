@@ -1,0 +1,2 @@
+tellraw @a [{text: "", color: "red"}, [{color: "gray", text: "\n "}, {color: "#00aced", text: "\u1d00\u0274\u026a\u1d0d\u1d00\u1d1b\u1d07\u1d05 \u1d0a\u1d00\u1d20\u1d00"}, {color: "dark_gray", italic: true, text: "\n (dpi:anijava/springboard)"}, "\n \u2192 "], "\u1d07\u0280\u0280\u1d0f\u0280: ", {text: "Frame cannot be negative", underlined: true}, "\n\n ", {text: "frame", color: "yellow"}, {text: " must be a non-negative integer."}, "\n"]
+function dpi:anijava/springboard/remove/this/without_on_remove_function

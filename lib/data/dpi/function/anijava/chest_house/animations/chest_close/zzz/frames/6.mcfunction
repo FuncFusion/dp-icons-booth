@@ -1,0 +1,1 @@
+$data merge entity $(lid) {transformation: [-10.0219f,0f,0f,0f,0f,2.7356f,-9.6413f,9.0197f,0f,-9.6413f,-2.7356f,-7.0153f,0f,0f,0f,1f],start_interpolation: 0,interpolation_duration: 1}
