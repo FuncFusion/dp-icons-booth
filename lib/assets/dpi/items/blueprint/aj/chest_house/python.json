@@ -3,7 +3,7 @@
 		"type": "minecraft:model",
 		"model": "dpi:blueprint/aj/chest_house/python",
 		"tints": [
-			{"type": "minecraft:dye", "default": [1, 1, 1]}
+			{ "type": "minecraft:constant", "value": 66046 }
 		]
 	}
 }

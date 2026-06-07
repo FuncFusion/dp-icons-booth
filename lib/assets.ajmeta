@@ -5,13 +5,17 @@
 			"coreFiles": ["assets/minecraft/atlases/blocks.json", "pack.mcmeta"],
 			"versionedFiles": [
 				"assets/dpi/items/blueprint/aj/chest_house/chest_house.json",
+				"assets/dpi/items/blueprint/aj/chest_house/json_file.json",
 				"assets/dpi/items/blueprint/aj/chest_house/lid.json",
 				"assets/dpi/items/blueprint/aj/chest_house/mcf_tick.json",
 				"assets/dpi/items/blueprint/aj/chest_house/python.json",
+				"assets/dpi/items/blueprint/aj/chest_house/structure_file.json",
 				"assets/dpi/models/blueprint/aj/chest_house/chest_house.json",
+				"assets/dpi/models/blueprint/aj/chest_house/json_file.json",
 				"assets/dpi/models/blueprint/aj/chest_house/lid.json",
 				"assets/dpi/models/blueprint/aj/chest_house/mcf_tick.json",
-				"assets/dpi/models/blueprint/aj/chest_house/python.json"
+				"assets/dpi/models/blueprint/aj/chest_house/python.json",
+				"assets/dpi/models/blueprint/aj/chest_house/structure_file.json"
 			]
 		},
 		"dpi:aj/springboard": {

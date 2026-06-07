@@ -12,7 +12,7 @@ function animated_java:global/data_manager/read with storage animated_java:temp 
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.root_uuid set from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.blueprint_id set value "dpi:aj/chest_house"
-data modify storage animated_java:temp entry.data.rig_hash set value "9cd839907390bc634ad64e7423fa92d0937f85255b78a33281faff483009d094"
+data modify storage animated_java:temp entry.data.rig_hash set value "38412f3b134128f211be8eb9af943dff2f61d98bca35f2b023c28317501e5b4d"
 tp @s ~ ~ ~ ~ ~
 execute on passengers if entity @s[tag=dpi.aj.chest_house.node.lid] run function dpi:aj/chest_house/zzz/summon/as_node/lid
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
@@ -26,6 +26,12 @@ data modify storage animated_java:temp entry.data.uuids_by_name.mcf_tick set fro
 execute on passengers if entity @s[tag=dpi.aj.chest_house.node.python] run function dpi:aj/chest_house/zzz/summon/as_node/python
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.uuids_by_name.python set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.chest_house.node.structure_file] run function dpi:aj/chest_house/zzz/summon/as_node/structure_file
+data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
+data modify storage animated_java:temp entry.data.uuids_by_name.structure_file set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.chest_house.node.json_file] run function dpi:aj/chest_house/zzz/summon/as_node/json_file
+data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
+data modify storage animated_java:temp entry.data.uuids_by_name.json_file set from storage animated_java:gu out
 function dpi:aj/chest_house/zzz/set_default_pose
 # Data Manager: Write
 function animated_java:global/data_manager/write with storage animated_java:temp args

@@ -1,0 +1,57 @@
+{
+	"textures": {
+		"3": "dpi:item/icons/structure_file",
+		"particle": "minecraft:item/pufferfish"
+	},
+	"display": {
+		"head": {
+			"rotation": [0, 180, 0]
+		}
+	},
+	"elements": [
+		{
+			"from": [6, -4, -7.66667],
+			"to": [30, 20, 16.33333],
+			"shade": false,
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": 0,
+				"origin": [18, 8, 4.33333]
+			},
+			"faces": {
+				"north": {
+					"uv": [6.5, 5, 12.5, 11],
+					"texture": "#3",
+					"tintindex": 0
+				},
+				"east": {
+					"uv": [3.5, 5, 6.5, 11],
+					"texture": "#3",
+					"tintindex": 0
+				},
+				"south": {
+					"uv": [6.5, 5, 12.5, 11],
+					"texture": "#3",
+					"tintindex": 0
+				},
+				"west": {
+					"uv": [3.5, 5, 6.5, 11],
+					"texture": "#3",
+					"tintindex": 0
+				},
+				"up": {
+					"uv": [12.5, 11, 6.5, 5],
+					"texture": "#3",
+					"tintindex": 0
+				},
+				"down": {
+					"uv": [3.5, 5, 6.5, 11],
+					"texture": "#3",
+					"tintindex": 0
+				}
+			},
+			"light_emission": 15
+		}
+	]
+}

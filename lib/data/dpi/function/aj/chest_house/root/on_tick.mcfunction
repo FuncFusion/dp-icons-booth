@@ -2,3 +2,6 @@
 execute if entity @s[tag=dpi.aj.chest_house.animation.chest_open.playing] run function dpi:aj/chest_house/animations/chest_open/zzz/on_tick
 execute if entity @s[tag=dpi.aj.chest_house.animation.chest_close.playing] run function dpi:aj/chest_house/animations/chest_close/zzz/on_tick
 execute if entity @s[tag=dpi.aj.chest_house.animation.mcf_tick_levitate.playing] run function dpi:aj/chest_house/animations/mcf_tick_levitate/zzz/on_tick
+execute if entity @s[tag=dpi.aj.chest_house.animation.python_levitate.playing] run function dpi:aj/chest_house/animations/python_levitate/zzz/on_tick
+execute if entity @s[tag=dpi.aj.chest_house.animation.structure_file_levitate.playing] run function dpi:aj/chest_house/animations/structure_file_levitate/zzz/on_tick
+execute if entity @s[tag=dpi.aj.chest_house.animation.json_file_levitate.playing] run function dpi:aj/chest_house/animations/json_file_levitate/zzz/on_tick
