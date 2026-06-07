@@ -19,9 +19,9 @@
     },
 	"balloons": [
         {
-            "balloon_id": "dpi",
-            "balloon_name": "Datapack Icons chest",
-            "balloon_model": "dpi:item/dpi_balloon"
+            "balloon_id": "dpi_balloon",
+            "balloon_name": "Datapack Icons",
+            "balloon_model": "dpi:item/collectibles/dpi_balloon"
         }
     ]
 
