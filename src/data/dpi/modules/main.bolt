@@ -1,0 +1,51 @@
+from dpi:config import var, storage
+from dpi:node import Node
+
+append function_tag minecraft:tick:
+  values: 
+    - "dpi:tick"
+
+append function_tag minecraft:load:
+  values: 
+    - "dpi:load"
+
+append function_tag summit.booth:dpi/entities/kill:
+  values:
+    - "dpi:entities/kill"
+
+append function_tag summit.booth:dpi/entities/summon:
+  values:
+    - "dpi:entities/summon"
+
+function dpi:entities/summon:
+  execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi_aj:chest_house/summon {args:{}}
+
+function dpi:entities/kill:
+  execute as @e[type=minecraft:item_display,tag=dpi_aj.chest_house.root] run function dpi_aj:chest_house/remove/this
+
+function dpi:tick:
+  as @a at @s run function dpi:tick/player
+
+function dpi:tick/player:
+  pass
+
+function dpi:event/enter_bounding_box:
+  execute as @e[type=minecraft:item_display,tag=dpi_aj.chest_house.root] run function dpi_aj:chest_house/animations/chest_open/play
+
+  execute run function dpi:create_lid_collision:
+    fill 107 104 -110 120 117 -106 barrier
+    fill 114 118 -109 113 118 -112 barrier
+
+function dpi:event/exit_bounding_box:
+  execute as @e[type=minecraft:item_display,tag=dpi_aj.chest_house.root] run function dpi_aj:chest_house/animations/chest_close/play
+
+function dpi:load:
+  say hello world
+  # execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
+  execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
+  as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
+
+  pack_mcmeta = Node("pack.mcmeta", "txt")
+  data_dir = Node("data", "dir")
+  namespace = Node("namespace", "dir", data_dir)
+  function = Node("function", "dir", namespace)
