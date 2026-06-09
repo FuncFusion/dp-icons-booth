@@ -1,7 +1,7 @@
 {
 	"model": {
 	  "type": "minecraft:model",
-	  "model": "dpi:item/3d_title/dpi_title_3d",
+	  "model": "dpi:item/collectibles/dpi_balloon",
 	  "tints": [
 		  {
 			  "type": "minecraft:constant",
