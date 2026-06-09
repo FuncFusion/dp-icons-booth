@@ -17,6 +17,7 @@ function dpi:springboard/prime:
     jump["@s"] = 0
 
     raw function player_motion:api/launch_global_xyz
+    as @n[tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/animations/chest_open/play
 
 function dpi:springboard/tick:
   execute
