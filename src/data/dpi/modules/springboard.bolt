@@ -5,6 +5,8 @@ append function dpi:tick/booth_entity:
 
 append function dpi:tick/player:
   if entity @s[x=113, y=93, z=-135, dx=2, dy=0, dz=2] run function dpi:springboard/prime
+  if jump["@s"]:
+    jump["@s"] = 0
 
 function dpi:springboard/prime:
   if jump["@s"]:
