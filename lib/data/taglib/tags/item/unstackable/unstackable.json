@@ -1,0 +1,245 @@
+{
+	"replace": false,
+	"values": [
+		{
+			"required": false,
+			"id": "#minecraft:beds"
+		},
+		{
+			"required": false,
+			"id": "#minecraft:boats"
+		},
+		{
+			"required": false,
+			"id": "#minecraft:enchantable/durability"
+		},
+		{
+			"required": false,
+			"id": "minecraft:wolf_armor"
+		},
+		{
+			"required": false,
+			"id": "#minecraft:harnesses"
+		},
+		{
+			"required": false,
+			"id": "minecraft:leather_horse_armor"
+		},
+		{
+			"required": false,
+			"id": "minecraft:golden_horse_armor"
+		},
+		{
+			"required": false,
+			"id": "minecraft:copper_horse_armor"
+		},
+		{
+			"required": false,
+			"id": "minecraft:iron_horse_armor"
+		},
+		{
+			"required": false,
+			"id": "minecraft:diamond_horse_armor"
+		},
+		{
+			"required": false,
+			"id": "minecraft:water_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:lava_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:milk_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:powder_snow_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:axolotl_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:tadpole_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:cod_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:salmon_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:tropical_fish_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:pufferfish_bucket"
+		},
+		{
+			"required": false,
+			"id": "minecraft:potion"
+		},
+		{
+			"required": false,
+			"id": "minecraft:splash_potion"
+		},
+		{
+			"required": false,
+			"id": "minecraft:lingering_potion"
+		},
+		{
+			"required": false,
+			"id": "minecraft:minecart"
+		},
+		{
+			"required": false,
+			"id": "minecraft:tnt_minecart"
+		},
+		{
+			"required": false,
+			"id": "minecraft:furnace_minecart"
+		},
+		{
+			"required": false,
+			"id": "minecraft:hopper_minecart"
+		},
+		{
+			"required": false,
+			"id": "minecraft:chest_minecart"
+		},
+		{
+			"required": false,
+			"id": "minecraft:command_block_minecart"
+		},
+		{
+			"required": false,
+			"id": "#minecraft:shulker_boxes"
+		},
+		{
+			"required": false,
+			"id": "minecraft:debug_stick"
+		},
+		{
+			"required": false,
+			"id": "minecraft:spyglass"
+		},
+		{
+			"required": false,
+			"id": "#minecraft:bundles"
+		},
+		{
+			"required": false,
+			"id": "minecraft:mushroom_stew"
+		},
+		{
+			"required": false,
+			"id": "minecraft:beetroot_soup"
+		},
+		{
+			"required": false,
+			"id": "minecraft:rabbit_stew"
+		},
+		{
+			"required": false,
+			"id": "minecraft:suspicious_stew"
+		},
+		{
+			"required": false,
+			"id": "minecraft:cake"
+		},
+		{
+			"required": false,
+			"id": "minecraft:totem_of_undying"
+		},
+		{
+			"required": false,
+			"id": "minecraft:enchanted_book"
+		},
+		{
+			"required": false,
+			"id": "minecraft:writable_book"
+		},
+		{
+			"required": false,
+			"id": "minecraft:goat_horn"
+		},
+		{
+			"required": false,
+			"id": "minecraft:globe_banner_pattern"
+		},
+		{
+			"required": false,
+			"id": "minecraft:skull_banner_pattern"
+		},
+		{
+			"required": false,
+			"id": "minecraft:flower_banner_pattern"
+		},
+		{
+			"required": false,
+			"id": "minecraft:mojang_banner_pattern"
+		},
+		{
+			"required": false,
+			"id": "minecraft:piglin_banner_pattern"
+		},
+		{
+			"required": false,
+			"id": "minecraft:creeper_banner_pattern"
+		},
+		{
+			"required": false,
+			"id": "minecraft:flow_banner_pattern"
+		},
+		{
+			"required": false,
+			"id": "minecraft:guster_banner_pattern"
+		},
+		{
+			"required": false,
+			"id": "#minecraft:creeper_drop_music_discs"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_creator_music_box"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_creator"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_precipice"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_otherside"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_relic"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_5"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_pigstep"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_lava_chicken"
+		},
+		{
+			"required": false,
+			"id": "minecraft:music_disc_tears"
+		}
+	]
+}

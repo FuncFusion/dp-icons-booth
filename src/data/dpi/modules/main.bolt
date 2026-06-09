@@ -1,5 +1,6 @@
-from dpi:config import var, storage
+from dpi:config import var, global_tick, storage
 from dpi:node import Node
+import dpi:springboard as springboard
 
 append function_tag minecraft:tick:
   values: 
@@ -18,32 +19,44 @@ append function_tag summit.booth:dpi/entities/summon:
     - "dpi:entities/summon"
 
 function dpi:entities/summon:
-  execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi_aj:chest_house/summon {args:{}}
+  execute positioned 114 93 -133.5 rotated 0 0 run function dpi.aj:springboard/summon {args:{}}
+  execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi.aj:chest_house/summon {args:{}}
 
 function dpi:entities/kill:
-  execute as @e[type=minecraft:item_display,tag=dpi_aj.chest_house.root] run function dpi_aj:chest_house/remove/this
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.springboard.root] run function dpi.aj:springboard/remove/this
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi.aj:chest_house/remove/this
 
 function dpi:tick:
-  as @a at @s run function dpi:tick/player
+  global_tick += 1
 
-function dpi:tick/player:
+  as @a at @s run function dpi:tick/player
+  as @e[
+    type=#taglib:markerlike,
+    tag=summit.booth_entity.dpi
+  ] at @s run function dpi:tick/booth_entity
+
+append function dpi:tick/booth_entity:
+  pass
+
+append function dpi:tick/player:
   pass
 
 function dpi:event/enter_bounding_box:
-  execute as @e[type=minecraft:item_display,tag=dpi_aj.chest_house.root] run function dpi_aj:chest_house/animations/chest_open/play
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi.aj:chest_house/animations/chest_open/play
 
   execute run function dpi:create_lid_collision:
     fill 107 104 -110 120 117 -106 barrier
     fill 114 118 -109 113 118 -112 barrier
 
 function dpi:event/exit_bounding_box:
-  execute as @e[type=minecraft:item_display,tag=dpi_aj.chest_house.root] run function dpi_aj:chest_house/animations/chest_close/play
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi.aj:chest_house/animations/chest_close/play
 
 function dpi:load:
-  say hello world
-  # execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
-  execute as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
-  as @a at @s if block ~ ~ ~ air run scoreboard players set @s dpi.var 1
+  var["#animation_guard"] = 0
+
+  tellraw @a:
+    text: "Reloaded!"
+    color: "green"
 
   pack_mcmeta = Node("pack.mcmeta", "txt")
   data_dir = Node("data", "dir")
