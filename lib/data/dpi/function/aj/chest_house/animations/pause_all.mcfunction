@@ -5,7 +5,3 @@ tag @s remove dpi.aj.chest_house.animation.mcf_tick_levitate.playing
 tag @s remove dpi.aj.chest_house.animation.python_levitate.playing
 tag @s remove dpi.aj.chest_house.animation.structure_file_levitate.playing
 tag @s remove dpi.aj.chest_house.animation.json_file_levitate.playing
-tag @s remove dpi.aj.chest_house.animation.mcf_tick_levitate2.playing
-tag @s remove dpi.aj.chest_house.animation.python_levitate2.playing
-tag @s remove dpi.aj.chest_house.animation.structure_file_levitate2.playing
-tag @s remove dpi.aj.chest_house.animation.json_file_levitate2.playing

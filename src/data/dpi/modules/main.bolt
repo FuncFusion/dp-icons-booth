@@ -3,6 +3,7 @@ from bolt_expressions import Scoreboard
 from dpi:node import Node
 import dpi:springboard as springboard
 import dpi:chest_house as chest_house
+import dpi:lev_icons as lev_icons
 
 append function_tag minecraft:tick:
   values: 
@@ -23,6 +24,11 @@ append function_tag summit.booth:dpi/entities/summon:
 append function dpi:entities/summon:
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
+    function dpi:aj/chest_house/animations/python_levitate/play
+    function dpi:aj/chest_house/animations/json_file_levitate/play
+    function dpi:aj/chest_house/animations/structure_file_levitate/play
+    function dpi:aj/chest_house/animations/mcf_tick_levitate/play
 
 append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.springboard.root] run function dpi:aj/springboard/remove/this
@@ -33,7 +39,7 @@ append function dpi:load:
     text: "Reloaded!"
     color: "green"
 
-function dpi:tick:
+append function dpi:tick:
   global_tick += 1
 
   as @a at @s run function dpi:tick/player

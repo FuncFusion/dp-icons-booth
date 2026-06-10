@@ -31,11 +31,13 @@ function dpi:chest_house/open:
   chest_open = 1
   execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
     function dpi:aj/chest_house/animations/chest_open/play
+    function dpi:lev_icons/fly_out
 
 function dpi:chest_house/close:
   chest_open = 0
   execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
     function dpi:aj/chest_house/animations/chest_close/play
+    function dpi:lev_icons/fly_in
 
 function dpi:chest_house/in_bounding_box:
   if timer["@s"]:

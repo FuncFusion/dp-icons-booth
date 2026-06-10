@@ -6,7 +6,3 @@ scoreboard objectives add aj.mcf_tick_levitate.frame dummy
 scoreboard objectives add aj.python_levitate.frame dummy
 scoreboard objectives add aj.structure_file_levitate.frame dummy
 scoreboard objectives add aj.json_file_levitate.frame dummy
-scoreboard objectives add aj.mcf_tick_levitate2.frame dummy
-scoreboard objectives add aj.python_levitate2.frame dummy
-scoreboard objectives add aj.structure_file_levitate2.frame dummy
-scoreboard objectives add aj.json_file_levitate2.frame dummy

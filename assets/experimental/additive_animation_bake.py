@@ -1,4 +1,6 @@
 import json
+import math
+import os
 
 # --- Математика изингов ---
 
@@ -12,20 +14,15 @@ def ease_in_out_asymmetric(t):
 
 # --- Математика Blockbench (Catmull-Rom Spline) ---
 
-def get_blockbench_catmullrom_offset(time, amplitude=10.0, period=3.0):
-    """
-    Точная симуляция Catmull-Rom сплайна, который строит Blockbench 
-    для 3-х кадровой луп-анимации левитации.
-    """
+def get_blockbench_catmullrom_offset(time, amplitude, period):
+    """Точная симуляция Catmull-Rom сплайна из Blockbench."""
     half_period = period / 2.0
-    time = time % period # Оставляем время в пределах одного цикла (0 - 3.0)
+    time = time % period
     
     if time <= half_period:
-        # Движение вниз (от 0 до 1.5 сек)
         u = time / half_period
         return amplitude - 6 * amplitude * (u**2) + 4 * amplitude * (u**3)
     else:
-        # Движение вверх (от 1.5 до 3.0 сек)
         u = (time - half_period) / half_period
         return -amplitude + 6 * amplitude * (u**2) - 4 * amplitude * (u**3)
 
@@ -37,29 +34,76 @@ def lerp(start, end, t):
 def lerp_3d(p1, p2, t):
     return [lerp(p1[0], p2[0], t), lerp(p1[1], p2[1], t), lerp(p1[2], p2[2], t)]
 
-def generate_animations():
+def extract_pos(keyframe_data):
+    """Извлекает координаты X,Y,Z независимо от формата Blockbench."""
+    if isinstance(keyframe_data, list):
+        return keyframe_data
+    elif isinstance(keyframe_data, dict) and "post" in keyframe_data:
+        return keyframe_data["post"]
+    return [0.0, 0.0, 0.0]
+
+def main():
+    # --- НАСТРОЙКИ ---
+    tick_length = 0.05
+    sync_offset_frames = 3 # Твоя компенсация рассинхрона
+    
+    print("=== Генератор запеченных анимаций ===")
+    source_file = "./assets/chest_house2.animation.json"
+        
+    if not os.path.exists(source_file):
+        print(f"Ошибка: Файл '{source_file}' не найден в папке со скриптом.")
+        return
+        
+    with open(source_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        
+    icons = ["json_file", "python", "structure_file", "mcf_tick"]
+    print(f"\nДоступные иконки: {', '.join(icons)}")
+    target_icon = input("Введите название иконки: ").strip()
+    
+    if target_icon not in icons:
+        print("Ошибка: такой иконки нет.")
+        return
+
+    # --- АВТОМАТИЧЕСКОЕ ИЗВЛЕЧЕНИЕ ДАННЫХ ---
+    print(f"\nСчитываю данные для '{target_icon}'...")
+    
+    # 1. Траектория отлёта (из chest_open)
+    chest_open = data["animations"]["chest_open"]["bones"][target_icon]["position"]
+    # Находим максимальное время в chest_open (обычно 0.75)
+    transition_times = sorted([float(k) for k in chest_open.keys()])
+    transition_duration = transition_times[-1] 
+    
+    pos_start = extract_pos(chest_open[str(transition_times[0]) if transition_times[0] != 0.0 else "0.0"])
+    pos_end = extract_pos(chest_open[str(transition_duration)])
+    
+    # 2. Данные левитации (из _levitate)
+    lev_anim = data["animations"][f"{target_icon}_levitate"]
+    lev_period = lev_anim["animation_length"]
+    lev_pos_data = lev_anim["bones"][target_icon]["position"]
+    
+    # Считаем максимальные и минимальные значения Y для поиска амплитуды и центра
+    y_values = [extract_pos(v)[1] for v in lev_pos_data.values()]
+    y_max = max(y_values)
+    y_min = min(y_values)
+    
+    lev_amplitude = (y_max - y_min) / 2.0
+    center_y_start = (y_max + y_min) / 2.0
+    
+    print(f"- Период левитации: {lev_period} сек")
+    print(f"- Амплитуда: {lev_amplitude}, Центр оси Y: {center_y_start}")
+    print(f"- Старт: {pos_start} -> Конец: {pos_end}")
+    print("Генерирую кадры...")
+
+    # --- ГЕНЕРАЦИЯ ---
     animations = {}
-    
-    # Настройки для json_file
-    pos_start = [0.0, 0.0, 0.0]
-    pos_end = [13.0, -11.0, -4.0]
-    
-    lev_amplitude = 10.0
-    lev_period = 3.0           # 3 секунды на полный цикл левитации
-    transition_duration = 0.75 # Отлёт и прилёт занимают 0.75 сек
-    tick_length = 0.05         # 1 тик в Minecraft
-    
-    # --- НАСТРОЙКА СИНХРОНИЗАЦИИ ---
-    # То самое количество кадров (3), которое тебе приходилось вычитать.
-    # Скрипт сам добавит их в конец кривой левитации.
-    sync_offset_frames = 3 
-    
     total_lev_frames = int(lev_period / tick_length)
     transition_frames = int(transition_duration / tick_length)
     
     for n in range(total_lev_frames):
         t_start = n * tick_length
         
+        # Индексы 1..N, последний -1
         frame_id = n + 1
         if frame_id == total_lev_frames:
             frame_id = -1
@@ -71,40 +115,39 @@ def generate_animations():
             t = f * tick_length
             progress = t / transition_duration
             
-            # 1. Просчитываем смещение с учетом синхронизации
-            # progress * sync_offset_frames плавно докидывает нужные кадры к концу
+            # Смещение с учетом синхронизации (sync_offset_frames)
             current_lev_time = t_start + t + (progress * sync_offset_frames * tick_length)
-            y_offset = get_blockbench_catmullrom_offset(current_lev_time, lev_amplitude, lev_period)
-            lev_vec = [0.0, y_offset, 0.0]
+            catmull_offset = get_blockbench_catmullrom_offset(current_lev_time, lev_amplitude, lev_period)
             
-            # 2. Генерируем кадр для отлёта (OUT)
+            # --- OUT (Отлёт) ---
             p_out = ease_out_cubic(progress)
             base_out = lerp_3d(pos_start, pos_end, p_out)
-            final_out = [base_out[i] + lev_vec[i] for i in range(3)]
+            # Добавляем Y-смещение (центр_старта + текущее колебание)
+            final_out = [
+                base_out[0], 
+                base_out[1] + center_y_start + catmull_offset, 
+                base_out[2]
+            ]
             out_keyframes[str(round(t, 2))] = [round(val, 4) for val in final_out]
             
-            # 3. Генерируем кадр для прилёта (IN)
+            # --- IN (Прилёт) ---
             p_in = ease_in_out_asymmetric(progress)
             base_in = lerp_3d(pos_end, pos_start, p_in)
-            final_in = [base_in[i] + lev_vec[i] for i in range(3)]
+            final_in = [
+                base_in[0], 
+                base_in[1] + center_y_start + catmull_offset, 
+                base_in[2]
+            ]
             in_keyframes[str(round(t, 2))] = [round(val, 4) for val in final_in]
             
-        animations[f"json_file_out_{frame_id}"] = {
+        animations[f"{target_icon}_out_{frame_id}"] = {
             "animation_length": transition_duration,
-            "bones": {
-                "json_file": {
-                    "position": out_keyframes
-                }
-            }
+            "bones": { target_icon: { "position": out_keyframes } }
         }
         
-        animations[f"json_file_in_{frame_id}"] = {
+        animations[f"{target_icon}_in_{frame_id}"] = {
             "animation_length": transition_duration,
-            "bones": {
-                "json_file": {
-                    "position": in_keyframes
-                }
-            }
+            "bones": { target_icon: { "position": in_keyframes } }
         }
         
     output = {
@@ -112,9 +155,11 @@ def generate_animations():
         "animations": animations
     }
     
-    with open("./assets/experimental/compiled_json_file_animations.json", "w", encoding="utf-8") as f:
+    out_file = f"./assets/experimental/{target_icon}_flyouts.json"
+    with open(out_file, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=4)
-    print("Готово! Компенсация в 3 кадра добавлена.")
+        
+    print(f"\nГотово! Файл '{out_file}' успешно сохранён.")
 
 if __name__ == "__main__":
-    generate_animations()
+    main()

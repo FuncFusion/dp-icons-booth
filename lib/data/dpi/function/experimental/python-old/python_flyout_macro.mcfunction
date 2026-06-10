@@ -1,0 +1,3 @@
+$say play macro $(python_levitate_frame) - $(python_levitate2_frame)
+$execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root,limit=1] unless data storage dpi:experimental {python_levitate_frame:0} run function dpi:aj/chest_house/animations/python_out_$(python_levitate_frame)/play
+$execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root,limit=1] unless data storage dpi:experimental {python_levitate2_frame:0} run function dpi:aj/chest_house/animations/python_in_$(python_levitate2_frame)/play

@@ -5,8 +5,4 @@ scoreboard objectives remove aj.mcf_tick_levitate.frame
 scoreboard objectives remove aj.python_levitate.frame
 scoreboard objectives remove aj.structure_file_levitate.frame
 scoreboard objectives remove aj.json_file_levitate.frame
-scoreboard objectives remove aj.mcf_tick_levitate2.frame
-scoreboard objectives remove aj.python_levitate2.frame
-scoreboard objectives remove aj.structure_file_levitate2.frame
-scoreboard objectives remove aj.json_file_levitate2.frame
 tellraw @a [[{color:gray,text:'\n '},{color:'#00aced',text:'ᴀɴɪᴍᴀᴛᴇᴅ ᴊᴀᴠᴀ'},{color:dark_gray,italic:true,text:'\n (dpi:aj/chest_house)'},'\n → '],[{text:'Successfully uninstalled ',color:green},{text:'dpi:aj/chest_house',color:yellow},{text:'!'},{text:'\n If you have exported multiple times, you may have to remove objectives from previous exports manually, as Animated Java only knows about the objectives from the most recent export.',color:gray,italic:true}],'\n']
