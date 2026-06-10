@@ -4,6 +4,7 @@ from dpi:node import Node
 import dpi:springboard as springboard
 import dpi:chest_house as chest_house
 import dpi:lev_icons as lev_icons
+import dpi:gui as gui
 
 append function_tag minecraft:tick:
   values: 

@@ -1,5 +1,43 @@
 from bolt_expressions import Scoreboard, Data
 
+
+letter_to_size = {
+    "a": 6,
+    "b": 6,
+    "c": 6,
+    "d": 6,
+    "e": 6,
+    "f": 5,
+    "g": 6,
+    "h": 6,
+    "i": 2,
+    "I": 3,
+    "j": 6,
+    "k": 5,
+    "l": 3,
+    "m": 6,
+    "n": 6,
+    "o": 6,
+    "p": 6,
+    "q": 6,
+    "r": 6,
+    "s": 6,
+    "t": 4,
+    "u": 6,
+    "v": 6,
+    "w": 6,
+    "x": 6,
+    "y": 6,
+    "z": 6,
+    "!": 2,
+    "_": 6,
+    "-": 6,
+    ".": 2,
+    ",": 2,
+    " ": 4,
+    "=": 5,
+}
+
 var = Scoreboard.objective("dpi.var", "dummy")
 jump = Scoreboard.objective("dpi.jump", "custom:jump")
 player_motion_api = Scoreboard.objective("player_motion.api.launch")
