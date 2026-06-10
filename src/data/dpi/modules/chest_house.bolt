@@ -60,6 +60,7 @@ function dpi:event/exit_bounding_box:
   tag @s remove dpi.chest_house.bounding_box
   if chest_open:
     execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
+      last_used["@s"] = tick_inside_chest
       chest_open = 0
       function dpi:aj/chest_house/animations/chest_close/play
 
