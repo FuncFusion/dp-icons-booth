@@ -1,4 +1,4 @@
-from dpi:config import var, jump, player_motion
+from dpi:config import var, jump, player_motion_api
 
 append function dpi:tick/booth_entity:
   if entity @s[tag=dpi.aj.springboard.root] run function dpi:springboard/tick
@@ -10,25 +10,19 @@ append function dpi:tick/player:
 
 function dpi:springboard/prime:
   if jump["@s"]:
-    player_motion["$x"] = 0
-    player_motion["$y"] = 22000
-    player_motion["$z"] = 7000
+    player_motion_api["$x"] = 0
+    player_motion_api["$y"] = 22000
+    player_motion_api["$z"] = 7000
 
     jump["@s"] = 0
 
-    raw function player_motion:api/launch_global_xyz
+    function player_motion:api/launch_global_xyz
     as @n[tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/animations/chest_open/play
 
 function dpi:springboard/tick:
   execute
     store result score #dpi.springboard.stepped dpi.var
     if entity @p[x=113, y=93, z=-135, dx=2, dy=0, dz=2]
-
-  title @a actionbar [
-    {score:{ name:"#dpi.springboard.stepped", objective:"dpi.var" }},
-    "-",
-    {score:{ name:"#animation_guard", objective:"dpi.var" }},
-  ]
 
   if var["#dpi.springboard.stepped"] and not var["#animation_guard"]:
     var["#animation_guard"] = 1

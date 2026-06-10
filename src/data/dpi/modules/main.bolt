@@ -39,17 +39,36 @@ append function dpi:tick/booth_entity:
   pass
 
 append function dpi:tick/player:
-  pass
+  x = 126
+  y = 99
+  z = -127
+
+  x2 = 102
+  y2 = 124
+  z2 = -105
+
+  dx = x2 - x
+  dy = y2 - y
+  dz = z2 - z
+
+  unless entity @s[tag=dpi.in_chest_house] if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:event/enter_bounding_box
+  if entity @s[tag=dpi.in_chest_house] unless entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:event/exit_bounding_box
 
 function dpi:event/enter_bounding_box:
-  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi.aj:chest_house/animations/chest_open/play
+  tag @s add dpi.in_chest_house
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/animations/chest_open/play
 
-  execute run function dpi:create_lid_collision:
+  execute run function dpi:chest_house/create_lid_collision:
     fill 107 104 -110 120 117 -106 barrier
     fill 114 118 -109 113 118 -112 barrier
 
 function dpi:event/exit_bounding_box:
-  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi.aj:chest_house/animations/chest_close/play
+  tag @s remove dpi.in_chest_house
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/animations/chest_close/play
+
+  execute run function dpi:chest_house/remove_lid_collision:
+    fill 107 104 -110 120 117 -106 air
+    fill 114 118 -109 113 118 -112 air
 
 function dpi:load:
   var["#animation_guard"] = 0
