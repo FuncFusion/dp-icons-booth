@@ -55,7 +55,7 @@ function dpi:lev_icons/fly_out:
     tp_path(-9,-16,-19, "json_file")
 
 function dpi:lev_icons/fly_in:
-    tp_path(9,5,-14, "mcf_tick", easing_type="in")
+    tp_path(16,10,-19, "mcf_tick", easing_type="in")
     tp_path(-34,31,20, "python", easing_type="in")
     tp_path(30,52,46, "structure_file", easing_type="in")
     tp_path(-9,-16,-19, "json_file", easing_type="in")
