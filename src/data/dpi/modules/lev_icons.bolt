@@ -39,7 +39,7 @@ def tp_path(x, y, z, icon_name, transition_duration=0.75, easing_type="out"):
         dz = round(current_pos[2] - prev_pos[2], 5)
 
         schedule function f"dpi:lev_icons/{icon_name}/{prefix}{tick}" tick replace:
-            execute as @n[tag=f"dpi.aj.chest_house.bone.{icon_name}"] at @s run tp @s ~dx ~dy ~dz
+            execute as @n[tag=f"dpi.aj.lev_icons.bone.{icon_name}"] at @s run tp @s ~dx ~dy ~dz
 
         prev_pos = current_pos
         
@@ -49,15 +49,15 @@ append function dpi:tick:
     pass
 
 function dpi:lev_icons/fly_out:
-    tp_path(9,5,-14, "mcf_tick")
+    tp_path(16,10,-19, "mcf_tick")
     tp_path(-34,31,20, "python")
     tp_path(30,52,46, "structure_file")
-    tp_path(13,-11,-4, "json_file")
+    tp_path(-9,-16,-19, "json_file")
 
 function dpi:lev_icons/fly_in:
     tp_path(9,5,-14, "mcf_tick", easing_type="in")
     tp_path(-34,31,20, "python", easing_type="in")
     tp_path(30,52,46, "structure_file", easing_type="in")
-    tp_path(13,-11,-4, "json_file", easing_type="in")
+    tp_path(-9,-16,-19, "json_file", easing_type="in")
 
 

@@ -28,15 +28,17 @@ function dpi:entities/refresh:
 append function dpi:entities/summon:
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
-  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
-    function dpi:aj/chest_house/animations/python_levitate/play
-    function dpi:aj/chest_house/animations/json_file_levitate/play
-    function dpi:aj/chest_house/animations/structure_file_levitate/play
-    function dpi:aj/chest_house/animations/mcf_tick_levitate/play
+  execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/lev_icons/summon {args:{}}
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.lev_icons.root]:
+    function dpi:aj/lev_icons/animations/python_levitate/play
+    function dpi:aj/lev_icons/animations/json_file_levitate/play
+    function dpi:aj/lev_icons/animations/structure_file_levitate/play
+    function dpi:aj/lev_icons/animations/mcf_tick_levitate/play
 
 append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.springboard.root] run function dpi:aj/springboard/remove/this
   execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/remove/this
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.lev_icons.root] run function dpi:aj/lev_icons/remove/this
 
 append function dpi:load:
   tellraw @a:
