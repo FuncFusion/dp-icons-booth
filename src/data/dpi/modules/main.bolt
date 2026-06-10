@@ -21,8 +21,8 @@ append function_tag summit.booth:dpi/entities/summon:
     - "dpi:entities/summon"
 
 append function dpi:entities/summon:
-  execute positioned 114 93 -133.5 rotated 0 0 run function dpi.aj:springboard/summon {args:{}}
-  execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi.aj:chest_house/summon {args:{}}
+  execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
+  execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
 
 append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.springboard.root] run function dpi.aj:springboard/remove/this
