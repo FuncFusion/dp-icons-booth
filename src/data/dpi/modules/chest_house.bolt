@@ -1,13 +1,14 @@
 import bolt_expressions as expr
-from dpi:config import var, global_tick
+from dpi:config import var
 
 prefix = "#dpi.chest_house."
 p = prefix
 
 append function dpi:load:
-  last_opened = expr.Scoreboard.objective("dpi.chest_house.open.last_opened", "dummy")
-  last_closed = expr.Scoreboard.objective("dpi.chest_house.open.last_closed", "dummy")
+  last_used = expr.Scoreboard.objective("dpi.chest_house.open.last_used", "dummy")
   debounce_interval = var[p + "open.debounce_interval"]
+  chest_open = var[p + "open.state"]
+  tick_inside_chest = var[p + "tick"]
   elapsed = var[p + "open.elapsed"]
 
 append function dpi:tick/player:
@@ -23,33 +24,33 @@ append function dpi:tick/player:
   dy = y2 - y
   dz = z2 - z
 
-  unless entity @s[tag=dpi.chest_house.bounding_box] if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:event/enter_bounding_box
+  if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/in_bounding_box
   if entity @s[tag=dpi.chest_house.bounding_box] unless entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:event/exit_bounding_box
 
-names = ["open", "close"]
+function dpi:chest_house/in_bounding_box:
+  tick_inside_chest += 1
+  unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/enter_bounding_box
+  if not chest_open:
+    function dpi:chest_house/open
 
-for name in names:
-  if name == "open":
-    last_used = last_opened 
-  elif name == "close":
-    last_used = last_closed
+function dpi:chest_house/open:
+  if not last_used["@s"]:
+    last_used["@s"] = 0
 
-  function f"dpi:chest_house/{name}":
-    if not last_used["@s"]:
-      last_used["@s"] = 0
+  debounce_interval = 60
+  elapsed = tick_inside_chest - last_used["@s"]
+  title @a actionbar {"text":"","extra":[{"text":"elapsed: ","color":"white"},{"score":{"name":"#dpi.chest_house.open.elapsed","objective":"dpi.var"}},{"text":" interval: "},{"score":{"name":"#dpi.chest_house.open.debounce_interval","objective":"dpi.var"}}]}
 
-    debounce_interval = 100
-    elapsed = global_tick - last_used["@s"]
+  if elapsed < debounce_interval:
+    return 0
 
-    if elapsed < debounce_interval:
-      return 0
-
-    last_used["@s"] = global_tick
-    execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function f"dpi:aj/chest_house/animations/chest_{name}/play"
+  last_used["@s"] = tick_inside_chest
+  execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
+    chest_open = 1
+    function dpi:aj/chest_house/animations/chest_open/play
 
 function dpi:event/enter_bounding_box:
   tag @s add dpi.chest_house.bounding_box
-  function dpi:chest_house/open
 
   execute run function dpi:chest_house/create_lid_collision:
     fill 107 104 -110 120 117 -106 barrier
@@ -57,7 +58,10 @@ function dpi:event/enter_bounding_box:
 
 function dpi:event/exit_bounding_box:
   tag @s remove dpi.chest_house.bounding_box
-  function dpi:chest_house/close
+  if chest_open:
+    execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
+      chest_open = 0
+      function dpi:aj/chest_house/animations/chest_close/play
 
   execute run function dpi:chest_house/remove_lid_collision:
     fill 107 104 -110 120 117 -106 air
