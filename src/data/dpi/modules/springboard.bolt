@@ -43,7 +43,7 @@ function dpi:springboard/prime:
 function dpi:springboard/tick:
   execute
     store result score f"{p}stepped" dpi.var
-    if entity @p[x=113, y=93, z=-135, dx=2, dy=0, dz=2]
+    if entity @p[x=113, y=93, z=-135, dx=2, dy=1, dz=2]
 
   if stepped and not animation_guard:
     animation_guard = 1
