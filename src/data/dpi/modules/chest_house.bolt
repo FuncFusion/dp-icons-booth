@@ -6,9 +6,9 @@ p = prefix
 
 append function dpi:load:
   last_used = expr.Scoreboard.objective("dpi.chest_house.open.last_used", "dummy")
+  timer = expr.Scoreboard.objective("dpi.chest_house.open.timer", "dummy")
   debounce_interval = var[p + "open.debounce_interval"]
   chest_open = var[p + "open.state"]
-  tick_inside_chest = var[p + "tick"]
   elapsed = var[p + "open.elapsed"]
 
 append function dpi:tick/player:
@@ -27,29 +27,22 @@ append function dpi:tick/player:
   if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/in_bounding_box
   if entity @s[tag=dpi.chest_house.bounding_box] unless entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:event/exit_bounding_box
 
-function dpi:chest_house/in_bounding_box:
-  tick_inside_chest += 1
-  unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/enter_bounding_box
-  if not chest_open:
-    function dpi:chest_house/open
-
 function dpi:chest_house/open:
-  if not last_used["@s"]:
-    last_used["@s"] = 0
-
-  debounce_interval = 60
-  elapsed = tick_inside_chest - last_used["@s"]
-  title @a actionbar {"text":"","extra":[{"text":"elapsed: ","color":"white"},{"score":{"name":"#dpi.chest_house.open.elapsed","objective":"dpi.var"}},{"text":" interval: "},{"score":{"name":"#dpi.chest_house.open.debounce_interval","objective":"dpi.var"}}]}
-
-  if elapsed < debounce_interval:
-    return 0
-
-  last_used["@s"] = tick_inside_chest
+  chest_open = 1
   execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
-    chest_open = 1
     function dpi:aj/chest_house/animations/chest_open/play
 
+function dpi:chest_house/in_bounding_box:
+  if timer["@s"]:
+    timer["@s"] -= 1
+
+  unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/enter_bounding_box
+
+  if timer["@s"] == 0 and not chest_open:
+    function dpi:chest_house/open
+
 function dpi:event/enter_bounding_box:
+  timer["@s"] = 12
   tag @s add dpi.chest_house.bounding_box
 
   execute run function dpi:chest_house/create_lid_collision:
@@ -60,11 +53,9 @@ function dpi:event/exit_bounding_box:
   tag @s remove dpi.chest_house.bounding_box
   if chest_open:
     execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
-      last_used["@s"] = tick_inside_chest
       chest_open = 0
       function dpi:aj/chest_house/animations/chest_close/play
 
   execute run function dpi:chest_house/remove_lid_collision:
     fill 107 104 -110 120 117 -106 air
     fill 114 118 -109 113 118 -112 air
-
