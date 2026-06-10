@@ -3,6 +3,6 @@ from bolt_expressions import Scoreboard, Data
 var = Scoreboard.objective("dpi.var", "dummy")
 jump = Scoreboard.objective("dpi.jump", "custom:jump")
 player_motion_api = Scoreboard.objective("player_motion.api.launch")
-global_tick = var["#global_tick"]
+global_tick = var["#dpi.global_tick"]
 storage = Data.storage(dpi:main)
 tree = storage.tree

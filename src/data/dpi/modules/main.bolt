@@ -1,6 +1,8 @@
 from dpi:config import var, global_tick, storage
+from bolt_expressions import Scoreboard
 from dpi:node import Node
 import dpi:springboard as springboard
+import dpi:chest_house as chest_house
 
 append function_tag minecraft:tick:
   values: 
@@ -18,13 +20,18 @@ append function_tag summit.booth:dpi/entities/summon:
   values:
     - "dpi:entities/summon"
 
-function dpi:entities/summon:
+append function dpi:entities/summon:
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi.aj:springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi.aj:chest_house/summon {args:{}}
 
-function dpi:entities/kill:
+append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.springboard.root] run function dpi.aj:springboard/remove/this
   execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi.aj:chest_house/remove/this
+
+append function dpi:load:
+  tellraw @a:
+    text: "Reloaded!"
+    color: "green"
 
 function dpi:tick:
   global_tick += 1
@@ -39,45 +46,4 @@ append function dpi:tick/booth_entity:
   pass
 
 append function dpi:tick/player:
-  x = 126
-  y = 99
-  z = -127
-
-  x2 = 102
-  y2 = 124
-  z2 = -105
-
-  dx = x2 - x
-  dy = y2 - y
-  dz = z2 - z
-
-  unless entity @s[tag=dpi.in_chest_house] if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:event/enter_bounding_box
-  if entity @s[tag=dpi.in_chest_house] unless entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:event/exit_bounding_box
-
-function dpi:event/enter_bounding_box:
-  tag @s add dpi.in_chest_house
-  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/animations/chest_open/play
-
-  execute run function dpi:chest_house/create_lid_collision:
-    fill 107 104 -110 120 117 -106 barrier
-    fill 114 118 -109 113 118 -112 barrier
-
-function dpi:event/exit_bounding_box:
-  tag @s remove dpi.in_chest_house
-  execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/animations/chest_close/play
-
-  execute run function dpi:chest_house/remove_lid_collision:
-    fill 107 104 -110 120 117 -106 air
-    fill 114 118 -109 113 118 -112 air
-
-function dpi:load:
-  var["#animation_guard"] = 0
-
-  tellraw @a:
-    text: "Reloaded!"
-    color: "green"
-
-  pack_mcmeta = Node("pack.mcmeta", "txt")
-  data_dir = Node("data", "dir")
-  namespace = Node("namespace", "dir", data_dir)
-  function = Node("function", "dir", namespace)
+  pass
