@@ -1,28 +1,42 @@
 from dpi:config import var, jump, player_motion_api
+import bolt_expressions as expr
 
 prefix = "#dpi.springboard."
 p = prefix
 
 append function dpi:load:
+  timer = expr.Scoreboard.objective("dpi.springboard.timer", "dummy")
   var[p + "springboard.animation_guard"] = 0
   animation_guard = var[p + "animation_guard"]
   stepped = var[p + "stepped"]
+  ready = var[p + "ready"]
 
 append function dpi:tick/booth_entity:
   if entity @s[tag=dpi.aj.springboard.root] run function dpi:springboard/tick
 
 append function dpi:tick/player:
-  if entity @s[x=113, y=93, z=-135, dx=2, dy=0, dz=2] run function dpi:springboard/prime
+  if entity @s[x=113, y=93, z=-135, dx=2, dy=1, dz=2] run function dpi:springboard/prime
+  execute unless entity @s[x=113, y=93, z=-135, dx=2, dy=1, dz=2]:
+    tag @s remove dpi.springboard.pending
+
   if jump["@s"]:
     jump["@s"] = 0
 
 function dpi:springboard/prime:
-  if jump["@s"]:
+  if entity @s[tag=!dpi.springboard.pending]:
+    tag @s add dpi.springboard.pending
+    timer["@s"] = 20
+
+  if timer["@s"]:
+    timer["@s"] -= 1
+
+  if jump["@s"] and timer["@s"] == 0:
     player_motion_api["$x"] = 0
     player_motion_api["$y"] = 22000
     player_motion_api["$z"] = 7000
 
     jump["@s"] = 0
+    tag @s remove dpi.springboard.pending
 
     function player_motion:api/launch_global_xyz
 
