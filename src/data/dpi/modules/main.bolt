@@ -21,6 +21,10 @@ append function_tag summit.booth:dpi/entities/summon:
   values:
     - "dpi:entities/summon"
 
+function dpi:entities/refresh:
+  function dpi:entities/kill
+  function dpi:entities/summon
+
 append function dpi:entities/summon:
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
@@ -38,6 +42,8 @@ append function dpi:load:
   tellraw @a:
     text: "Reloaded!"
     color: "green"
+
+  function dpi:entities/refresh
 
 append function dpi:tick:
   global_tick += 1
