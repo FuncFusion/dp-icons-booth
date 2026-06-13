@@ -6,12 +6,14 @@ p = prefix
 
 append function dpi:load:
   last_used = expr.Scoreboard.objective("dpi.chest_house.open.last_used", "dummy")
-  timer = expr.Scoreboard.objective("dpi.chest_house.open.timer", "dummy")
-  debounce_interval = var[p + "open.debounce_interval"]
-  chest_open = var[p + "open.state"]
-  elapsed = var[p + "open.elapsed"]
+  # timer = expr.Scoreboard.objective("dpi.chest_house.open.timer", "dummy")
+  timer = var[p + "timer"]
+  debounce_interval = var[p + "debounce_interval"]
+  chest_open = var[p + "state"]
 
 append function dpi:tick/player:
+  title @s actionbar {score:{name:"#dpi.chest_house.timer",objective:"dpi.var"}}
+  
   x = 126
   y = 99
   z = -128
@@ -40,25 +42,25 @@ function dpi:chest_house/close:
     function dpi:lev_icons/fly_in
 
 function dpi:chest_house/in_bounding_box:
-  if timer["@s"]:
-    timer["@s"] -= 1
+  if timer:
+    timer -= 1
 
   unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/enter_bounding_box
 
-  if timer["@s"] == 0 and not chest_open:
+  if timer == 0 and not chest_open:
     function dpi:chest_house/open
 
 function dpi:chest_house/outside_bounding_box:
-  if timer["@s"]:
-    timer["@s"] -= 1
+  if timer:
+    timer -= 1
 
   if entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/exit_bounding_box
 
-  if timer["@s"] == 0 and chest_open:
+  if timer == 0 and chest_open:
     function dpi:chest_house/close
 
 function dpi:event/enter_bounding_box:
-  timer["@s"] = 15
+  timer = 15
   tag @s add dpi.chest_house.bounding_box
 
   execute run function dpi:chest_house/create_lid_collision:
@@ -66,7 +68,7 @@ function dpi:event/enter_bounding_box:
     fill 114 118 -109 113 118 -112 barrier
 
 function dpi:event/exit_bounding_box:
-  timer["@s"] = 12
+  timer = 12
   tag @s remove dpi.chest_house.bounding_box
 
   execute run function dpi:chest_house/remove_lid_collision:
