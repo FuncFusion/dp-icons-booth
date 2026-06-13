@@ -1,6 +1,6 @@
 from dpi:config import var, global_tick, storage
 from bolt_expressions import Scoreboard
-from dpi:node import Node
+import dpi:filesystem as fs
 import dpi:springboard as springboard
 import dpi:chest_house as chest_house
 import dpi:lev_icons as lev_icons

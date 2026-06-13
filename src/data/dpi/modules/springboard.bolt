@@ -36,9 +36,10 @@ function dpi:springboard/prime:
     player_motion_api["$z"] = 7000
 
     jump["@s"] = 0
-    tag @s remove dpi.springboard.pending
 
-    function player_motion:api/launch_global_xyz
+    as @a[tag=dpi.springboard.pending] run function player_motion:api/launch_global_xyz
+
+    tag @s remove dpi.springboard.pending
 
 function dpi:springboard/tick:
   execute

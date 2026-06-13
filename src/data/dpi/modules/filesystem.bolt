@@ -1,3 +1,30 @@
+from dpi:config import var, storage, tree
+from bolt_expressions import Scoreboard, Data
+
+class Node:
+  def __init__(self, name, type, parent=tree.root):
+    parent.child.append({})
+    parent.child[-1].name = name
+
+    node = parent.child[{"name":name}]
+    self.node = node
+    node.type = type
+
+    if type == "dir":
+      node.child = []
+      self.child = node.child
+
+  def remove(self):
+    self.node.remove()
+
+function dpi:temp:
+  test = Node("pack.mcmeta", "txt")
+  test.remove()
+
+append function dpi:load:
+  function dpi:temp
+
 class FileSystem:
   def __init__():
     pass
+
