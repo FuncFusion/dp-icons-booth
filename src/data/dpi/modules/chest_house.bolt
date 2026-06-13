@@ -6,15 +6,13 @@ p = prefix
 
 append function dpi:load:
   last_used = expr.Scoreboard.objective("dpi.chest_house.open.last_used", "dummy")
-  # timer = expr.Scoreboard.objective("dpi.chest_house.open.timer", "dummy")
   timer = var[p + "timer"]
   debounce_interval = var[p + "debounce_interval"]
   chest_open = var[p + "state"]
-  in_bounding_box = var[p + "in_bounding_box"]
+  someone_inside = var[p + "someone_inside"]
+  self_inside = var[p + "self_inside"]
 
 append function dpi:tick/player:
-  title @s actionbar {score:{name:"#dpi.chest_house.timer",objective:"dpi.var"}}
-  
   x = 126
   y = 99
   z = -128
@@ -29,12 +27,12 @@ append function dpi:tick/player:
 
   in_bounding_box = 0
 
-  store result score f"#{p}in_bounding_box" dpi.var if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz]
-  # if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/in_bounding_box
-  # unless entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/outside_bounding_box
-  if in_bounding_box:
+  store success score f"{p}someone_inside" dpi.var if entity @a[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz]
+  store success score f"{p}self_inside" dpi.var if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz]
+  
+  if self_inside:
     function dpi:chest_house/in_bounding_box
-  else:
+  elif not someone_inside and not self_inside:
     function dpi:chest_house/outside_bounding_box
 
 function dpi:chest_house/in_bounding_box:
