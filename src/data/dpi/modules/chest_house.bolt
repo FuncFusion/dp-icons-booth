@@ -27,7 +27,8 @@ append function dpi:tick/player:
   dz = z2 - z
 
   if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/in_bounding_box
-  unless entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/outside_bounding_box
+  if chest_open:
+    unless entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/outside_bounding_box
 
 function dpi:chest_house/open:
   chest_open = 1
