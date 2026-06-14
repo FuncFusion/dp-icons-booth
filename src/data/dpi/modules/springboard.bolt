@@ -25,7 +25,7 @@ append function dpi:tick/player:
 function dpi:springboard/prime:
   if entity @s[tag=!dpi.springboard.pending]:
     tag @s add dpi.springboard.pending
-    timer["@s"] = 20
+    timer["@s"] = 14
 
   if timer["@s"]:
     timer["@s"] -= 1

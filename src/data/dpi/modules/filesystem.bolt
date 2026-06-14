@@ -1,25 +1,41 @@
-from dpi:config import var, storage, tree
-from bolt_expressions import Scoreboard, Data
+from dpi:config import var, storage, root
+import bolt_expressions as expr
 
 class Node:
-  def __init__(self, name, type, parent=tree.root):
+  def __init__(self, name, type, parent=root):
     parent.child.append({})
     parent.child[-1].name = name
-
-    node = parent.child[{"name":name}]
-    self.node = node
-    node.type = type
+    parent.child[-1].type = type
+    
+    self._name = name
+    self.parent = parent
+    self.type = type
 
     if type == "dir":
+      node = self.node()
       node.child = []
       self.child = node.child
+
+  def node(self):
+    return self.parent.child[{"name": self._name}]
 
   def remove(self):
     self.node.remove()
 
+  def rename(self, new_name, type=self.type):
+    self.parent.child[{"name": self._name}].name = new_name
+    self._name = new_name
+
+  def walk(self):
+    pass
+
 function dpi:temp:
-  test = Node("pack.mcmeta", "txt")
-  test.remove()
+  pack = Node("pack.mcmeta", "txt")
+  data = Node("data", "dir")
+  minecraft = Node("minecraft", "dir", data)
+  tags = Node("tags", "dir", minecraft)
+  function = Node("function", "dir", tags)
+  tick_function_tag = Node("tick.json", "json", function)
 
 append function dpi:load:
   function dpi:temp
