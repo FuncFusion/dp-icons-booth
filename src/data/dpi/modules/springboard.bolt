@@ -33,7 +33,7 @@ function dpi:springboard/prime:
   if jump["@s"] and timer["@s"] == 0:
     player_motion_api["$x"] = 0
     player_motion_api["$y"] = 22000
-    player_motion_api["$z"] = 7000
+    player_motion_api["$z"] = 0
 
     jump["@s"] = 0
 
