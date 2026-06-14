@@ -43,4 +43,4 @@ jump = Scoreboard.objective("dpi.jump", "custom:jump")
 player_motion_api = Scoreboard.objective("player_motion.api.launch")
 global_tick = var["#dpi.global_tick"]
 storage = Data.storage(dpi:main)
-tree = storage.tree
+root = storage.fs.root
