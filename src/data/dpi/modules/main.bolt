@@ -5,6 +5,8 @@ import dpi:springboard as springboard
 import dpi:chest_house as chest_house
 import dpi:lev_icons as lev_icons
 import dpi:gui as gui
+#temporary
+import dpi:text_displays as text_displays
 
 append function_tag minecraft:tick:
   values: 
@@ -25,6 +27,8 @@ append function_tag summit.booth:dpi/entities/summon:
 function dpi:entities/refresh:
   function dpi:entities/kill
   function dpi:entities/summon
+  #temporary
+  function dpi:entities/text_displays_summon
 
 append function dpi:entities/summon:
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
@@ -36,10 +40,15 @@ append function dpi:entities/summon:
     function dpi:aj/lev_icons/animations/structure_file_levitate/play
     function dpi:aj/lev_icons/animations/mcf_tick_levitate/play
 
+  summon text_display 114.5 93.8 -132.0 {Tags:["dpi.springboard_arrow", "summit.booth_entity.dpi"], shadow: 0b, text: "⬆", transformation: {left_rotation: [0.0f, 0.9659259f, 0.25881904f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.9999999f, 2.0f, 2.0f]}, background: 0}
+  # replace with booth definition loop
+  execute as @e[tag=dpi.springboard_arrow,limit=1] run function dpi:springboard/loop_22t_arrow
+
 append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.springboard.root] run function dpi:aj/springboard/remove/this
   execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/remove/this
   execute as @e[type=minecraft:item_display,tag=dpi.aj.lev_icons.root] run function dpi:aj/lev_icons/remove/this
+  kill @e[tag=summit.booth_entity.dpi]
 
 append function dpi:load:
   tellraw @a:
