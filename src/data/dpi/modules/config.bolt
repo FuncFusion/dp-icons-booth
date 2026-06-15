@@ -1,5 +1,11 @@
 from bolt_expressions import Scoreboard, Data
 
+var = Scoreboard.objective("dpi.var", "dummy")
+jump = Scoreboard.objective("dpi.jump", "custom:jump")
+player_motion_api = Scoreboard.objective("player_motion.api.launch")
+global_tick = var["#dpi.global_tick"]
+storage = Data.storage(dpi:main)
+root = storage.fs.root
 
 letter_to_size = {
     "a": 6,
@@ -37,10 +43,3 @@ letter_to_size = {
     " ": 4,
     "=": 5,
 }
-
-var = Scoreboard.objective("dpi.var", "dummy")
-jump = Scoreboard.objective("dpi.jump", "custom:jump")
-player_motion_api = Scoreboard.objective("player_motion.api.launch")
-global_tick = var["#dpi.global_tick"]
-storage = Data.storage(dpi:main)
-root = storage.fs.root
