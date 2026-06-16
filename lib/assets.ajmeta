@@ -10,6 +10,47 @@
 				"assets/dpi/models/blueprint/aj/chest_house/lid.json"
 			]
 		},
+		"dpi:aj/creators": {
+			"coreFiles": ["assets/minecraft/atlases/blocks.json", "pack.mcmeta"],
+			"versionedFiles": [
+				"assets/dpi/items/blueprint/aj/creators/baton.json",
+				"assets/dpi/items/blueprint/aj/creators/brush.json",
+				"assets/dpi/items/blueprint/aj/creators/display.json",
+				"assets/dpi/items/blueprint/aj/creators/display1.json",
+				"assets/dpi/items/blueprint/aj/creators/display2.json",
+				"assets/dpi/items/blueprint/aj/creators/display3.json",
+				"assets/dpi/items/blueprint/aj/creators/display4.json",
+				"assets/dpi/items/blueprint/aj/creators/display5.json",
+				"assets/dpi/items/blueprint/aj/creators/head.json",
+				"assets/dpi/items/blueprint/aj/creators/head1.json",
+				"assets/dpi/items/blueprint/aj/creators/head4.json",
+				"assets/dpi/items/blueprint/aj/creators/kb.json",
+				"assets/dpi/items/blueprint/aj/creators/left_hand.json",
+				"assets/dpi/items/blueprint/aj/creators/left_hand1.json",
+				"assets/dpi/items/blueprint/aj/creators/left_hand2.json",
+				"assets/dpi/items/blueprint/aj/creators/right_hand.json",
+				"assets/dpi/items/blueprint/aj/creators/right_hand1.json",
+				"assets/dpi/items/blueprint/aj/creators/right_hand2.json",
+				"assets/dpi/models/blueprint/aj/creators/baton.json",
+				"assets/dpi/models/blueprint/aj/creators/brush.json",
+				"assets/dpi/models/blueprint/aj/creators/display.json",
+				"assets/dpi/models/blueprint/aj/creators/display1.json",
+				"assets/dpi/models/blueprint/aj/creators/display2.json",
+				"assets/dpi/models/blueprint/aj/creators/display3.json",
+				"assets/dpi/models/blueprint/aj/creators/display4.json",
+				"assets/dpi/models/blueprint/aj/creators/display5.json",
+				"assets/dpi/models/blueprint/aj/creators/head.json",
+				"assets/dpi/models/blueprint/aj/creators/head1.json",
+				"assets/dpi/models/blueprint/aj/creators/head4.json",
+				"assets/dpi/models/blueprint/aj/creators/kb.json",
+				"assets/dpi/models/blueprint/aj/creators/left_hand.json",
+				"assets/dpi/models/blueprint/aj/creators/left_hand1.json",
+				"assets/dpi/models/blueprint/aj/creators/left_hand2.json",
+				"assets/dpi/models/blueprint/aj/creators/right_hand.json",
+				"assets/dpi/models/blueprint/aj/creators/right_hand1.json",
+				"assets/dpi/models/blueprint/aj/creators/right_hand2.json"
+			]
+		},
 		"dpi:aj/lev_icons": {
 			"coreFiles": ["assets/minecraft/atlases/blocks.json", "pack.mcmeta"],
 			"versionedFiles": [

@@ -1,0 +1,50 @@
+{
+	"textures": {
+		"0": "dpi:item/interior/authors",
+		"2": "dpi:icons/aseprite_file",
+		"particle": "minecraft:item/pufferfish"
+	},
+	"display": {
+		"head": {
+			"rotation": [0, 180, 0]
+		}
+	},
+	"elements": [
+		{
+			"from": [-4, 0.63636, 8],
+			"to": [20, 15.36364, 8],
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": 0,
+				"origin": [8, 7.72727, 8]
+			},
+			"faces": {
+				"north": {
+					"uv": [5.5, 10.75, 11, 14.125],
+					"texture": "#0"
+				},
+				"south": {
+					"uv": [0, 4, 5.5, 7.375],
+					"texture": "#0"
+				}
+			}
+		},
+		{
+			"from": [4.18182, 4.04545, 7.94545],
+			"to": [11.81818, 11.68182, 7.94545],
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": 0,
+				"origin": [8, 7.86364, 7.94545]
+			},
+			"faces": {
+				"north": {
+					"uv": [0, 0, 16, 16],
+					"texture": "#2"
+				}
+			}
+		}
+	]
+}
