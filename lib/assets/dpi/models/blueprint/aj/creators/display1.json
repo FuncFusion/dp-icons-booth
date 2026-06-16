@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "dpi:item/interior/authors",
-		"1": "dpi:icons/vscode_file",
+		"0": "dpi:blueprint/aj/creators/authors",
+		"1": "dpi:blueprint/aj/creators/vscode_file",
 		"particle": "minecraft:item/pufferfish"
 	},
 	"display": {

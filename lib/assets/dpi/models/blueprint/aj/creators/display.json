@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "dpi:item/interior/authors",
-		"4": "dpi:icons/neovim_file",
+		"0": "dpi:blueprint/aj/creators/authors",
+		"4": "dpi:blueprint/aj/creators/neovim_file",
 		"particle": "minecraft:item/pufferfish"
 	},
 	"display": {

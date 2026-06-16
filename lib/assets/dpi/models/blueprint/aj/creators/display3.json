@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "dpi:item/interior/authors",
-		"3": "dpi:icons/sublime_file",
+		"0": "dpi:blueprint/aj/creators/authors",
+		"3": "dpi:blueprint/aj/creators/sublime_file",
 		"particle": "minecraft:item/pufferfish"
 	},
 	"display": {

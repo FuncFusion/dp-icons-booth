@@ -1,7 +1,7 @@
 {
 	"textures": {
-		"0": "dpi:item/interior/authors",
-		"2": "dpi:icons/aseprite_file",
+		"0": "dpi:blueprint/aj/creators/authors",
+		"2": "dpi:blueprint/aj/creators/aseprite_file",
 		"particle": "minecraft:item/pufferfish"
 	},
 	"display": {
