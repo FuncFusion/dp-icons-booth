@@ -6,10 +6,11 @@ p = prefix
 
 append function dpi:load:
   last_used = expr.Scoreboard.objective("dpi.chest_house.open.last_used", "dummy")
-  timer = expr.Scoreboard.objective("dpi.chest_house.open.timer", "dummy")
-  debounce_interval = var[p + "open.debounce_interval"]
-  chest_open = var[p + "open.state"]
-  elapsed = var[p + "open.elapsed"]
+  timer = var[p + "timer"]
+  debounce_interval = var[p + "debounce_interval"]
+  chest_open = var[p + "state"]
+  someone_inside = var[p + "someone_inside"]
+  self_inside = var[p + "self_inside"]
 
 append function dpi:tick/player:
   x = 126
@@ -24,41 +25,52 @@ append function dpi:tick/player:
   dy = y2 - y
   dz = z2 - z
 
-  if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/in_bounding_box
-  unless entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz] run function dpi:chest_house/outside_bounding_box
+  in_bounding_box = 0
 
-function dpi:chest_house/open:
-  chest_open = 1
-  execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
-    function dpi:aj/chest_house/animations/chest_open/play
-    function dpi:lev_icons/fly_out
-
-function dpi:chest_house/close:
-  chest_open = 0
-  execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root]:
-    function dpi:aj/chest_house/animations/chest_close/play
-    function dpi:lev_icons/fly_in
+  store success score f"{p}someone_inside" dpi.var if entity @a[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz]
+  store success score f"{p}self_inside" dpi.var if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz]
+  
+  if self_inside:
+    function dpi:chest_house/in_bounding_box
+  elif not someone_inside and not self_inside:
+    function dpi:chest_house/outside_bounding_box
 
 function dpi:chest_house/in_bounding_box:
-  if timer["@s"]:
-    timer["@s"] -= 1
+  if timer:
+    timer -= 1
 
   unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/enter_bounding_box
 
-  if timer["@s"] == 0 and not chest_open:
+  if timer == 0 and not chest_open:
     function dpi:chest_house/open
 
 function dpi:chest_house/outside_bounding_box:
-  if timer["@s"]:
-    timer["@s"] -= 1
+  if timer:
+    timer -= 1
 
   if entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/exit_bounding_box
 
-  if timer["@s"] == 0 and chest_open:
+  if timer == 0 and chest_open:
     function dpi:chest_house/close
 
+function dpi:chest_house/open:
+  chest_open = 1
+  execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root] at @s:
+    function dpi:aj/chest_house/animations/chest_open/play
+    function dpi:lev_icons/fly_out
+    playsound minecraft:ui.toast.in block @a ~ ~10 ~ 3.0 0.69
+    playsound minecraft:block.chest.open block @a ~ ~10 ~ 3.0 0.80
+
+function dpi:chest_house/close:
+  chest_open = 0
+  execute as @n[type=minecraft:item_display,tag=dpi.aj.chest_house.root] at @s:
+    function dpi:aj/chest_house/animations/chest_close/play
+    function dpi:lev_icons/fly_in
+    playsound minecraft:ui.toast.out block @a ~ ~10 ~ 3.0 0.69
+    playsound minecraft:block.chest.close block @a ~ ~10 ~ 3.0 0.80
+
 function dpi:event/enter_bounding_box:
-  timer["@s"] = 15
+  timer = 15
   tag @s add dpi.chest_house.bounding_box
 
   execute run function dpi:chest_house/create_lid_collision:
@@ -66,7 +78,7 @@ function dpi:event/enter_bounding_box:
     fill 114 118 -109 113 118 -112 barrier
 
 function dpi:event/exit_bounding_box:
-  timer["@s"] = 12
+  timer = 12
   tag @s remove dpi.chest_house.bounding_box
 
   execute run function dpi:chest_house/remove_lid_collision:

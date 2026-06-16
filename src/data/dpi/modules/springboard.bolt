@@ -10,6 +10,8 @@ append function dpi:load:
   animation_guard = var[p + "animation_guard"]
   stepped = var[p + "stepped"]
   ready = var[p + "ready"]
+  arrow_pos = var[p + "arrow_pos"]
+  arrow_pos = 0
 
 append function dpi:tick/booth_entity:
   if entity @s[tag=dpi.aj.springboard.root] run function dpi:springboard/tick
@@ -25,7 +27,7 @@ append function dpi:tick/player:
 function dpi:springboard/prime:
   if entity @s[tag=!dpi.springboard.pending]:
     tag @s add dpi.springboard.pending
-    timer["@s"] = 20
+    timer["@s"] = 14
 
   if timer["@s"]:
     timer["@s"] -= 1
@@ -33,12 +35,13 @@ function dpi:springboard/prime:
   if jump["@s"] and timer["@s"] == 0:
     player_motion_api["$x"] = 0
     player_motion_api["$y"] = 22000
-    player_motion_api["$z"] = 7000
+    player_motion_api["$z"] = 2000
 
     jump["@s"] = 0
-    tag @s remove dpi.springboard.pending
 
-    function player_motion:api/launch_global_xyz
+    as @a[tag=dpi.springboard.pending] at @s run function player_motion:api/launch_global_xyz
+
+    tag @s remove dpi.springboard.pending
 
 function dpi:springboard/tick:
   execute
@@ -52,3 +55,12 @@ function dpi:springboard/tick:
   if not stepped and animation_guard:
     animation_guard = 0
     function dpi:aj/springboard/animations/animation_springboard_bounce/play
+
+function dpi:springboard/loop_22t_arrow:
+  arrow_pos -= 1
+  arrow_pos *= -1
+  if arrow_pos == 0:
+    tp @e[tag=dpi.springboard_arrow,limit=1] 114.5 93.8 -132.0
+  else:
+    tp @e[tag=dpi.springboard_arrow,limit=1] 114.5 94.3 -131.7
+  schedule function dpi:springboard/loop_22t_arrow 22

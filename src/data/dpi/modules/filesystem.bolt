@@ -1,3 +1,81 @@
+from dpi:config import var, storage
+import bolt_expressions as expr
+
+class Node:
+  def __init__(self, name, type, parent=storage.fs.root):
+    parent.child.append({})
+    parent.child[-1].name = name
+    parent.child[-1].type = type
+    
+    self._name = name
+    self.parent = parent
+    self.type = type
+
+    if type == "dir":
+      node = self.node()
+      node.child = []
+      self.child = node.child
+
+  def node(self):
+    return self.parent.child[{"name": self._name}]
+
+  def remove(self):
+    self.node.remove()
+
+  def rename(self, new_name, type=self.type):
+    self.parent.child[{"name": self._name}].name = new_name
+    self._name = new_name
+
+  def walk(self):
+    raw # walking
+    storage.fs.walk.input = self.node()
+    function dpi:fs/walk/init
+
+function dpi:fs/walk/init:
+  node = storage.fs.walk.input
+  stack = storage.args.input
+  stack = []
+  stack.append(node.child)
+  function dpi:fs/walk/main
+
+function dpi:fs/walk/main:
+  item = storage.args.input[-1][0]
+
+  if item:
+    tellraw @a [item.name, " ", item.type]
+
+    if item.child:
+      stack.append(item.child)
+      function dpi:fs/walk/main
+
+    item.remove()
+    function dpi:fs/walk/main
+
+  if stack[0] and not item:
+    stack[-1].remove()
+
+function dpi:temp:
+  root = Node("root", "dir")
+  pack = Node("pack.mcmeta", "txt", root)
+  pack = Node("pack.ajmeta", "txt", root)
+  pack = Node("README.md", "md", root)
+  data = Node("data", "dir", root)
+  minecraft = Node("minecraft", "dir", data)
+  tags = Node("tags", "dir", minecraft)
+  function_tag = Node("function", "dir", tags)
+  tick_function_tag = Node("tick.json", "json", function_tag)
+  load_function_tag = Node("load.json", "json", function_tag)
+  dpi_namespace = Node("dpi", "dir", data)
+  functions = Node("function", "dir", dpi_namespace)
+  tick = Node("tick.mcfunction", "mcf", functions)
+  load = Node("load.mcfunction", "mcf", functions)
+
+  root.walk()
+
+append function dpi:load:
+  function dpi:temp
+
 class FileSystem:
   def __init__():
     pass
+

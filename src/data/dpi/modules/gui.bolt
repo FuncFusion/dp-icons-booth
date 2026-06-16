@@ -1,5 +1,33 @@
 from dpi:config import storage, var, letter_to_size
 
+def _calculate_text_dimensions(text):
+    pixel = 1/16/2.5
+    max_line_length = 0
+    current_line_length = 1
+    line_lenght_limit = 197
+    lines = 1
+    
+    for char in text:
+        if char == "\n" or current_line_length >= line_lenght_limit:
+            lines += 1
+            if current_line_length > max_line_length:
+                max_line_length = current_line_length
+            current_line_length = 1
+        elif char.isupper():
+            current_line_length += 6
+        elif char in letter_to_size:
+            current_line_length += letter_to_size[char]
+        else:
+            current_line_length += 6
+
+    if current_line_length > max_line_length:
+        max_line_length = current_line_length
+
+    width = round(max_line_length * pixel, 4)
+    height = lines * pixel * 10
+
+    return [width, height]
+
 class Button:
     pixel = 1/16/2.5
 
@@ -8,30 +36,6 @@ class Button:
         self.width = 0.0
         self.height = 0.0
 
-    def determine_size(self):
-        max_line_length = 0
-        current_line_length = 1
-        lines = 1
-        
-        for char in self.text:
-            if char == "\n" or current_line_length >= 197:
-                lines += 1
-                if current_line_length > max_line_length:
-                    max_line_length = current_line_length
-                current_line_length = 1
-            elif char.isupper():
-                current_line_length += 6
-            elif char in letter_to_size:
-                current_line_length += letter_to_size[char]
-            else:
-                current_line_length += 6
-
-        if current_line_length > max_line_length:
-            max_line_length = current_line_length
-
-        self.width = round(max_line_length * self.pixel, 4)
-        self.height = lines * self.pixel * 10
-
     def spawn(self, pos, width=None, height=None):
         self.pos = pos
         
@@ -39,15 +43,18 @@ class Button:
             self.width = width
             self.height = height
         else:
-            self.determine_size() 
+            dimensions = _calculate_text_dimensions(self.text) 
+            width = dimensions[0]
+            height = dimensions[1]
 
         summon interaction ~ ~ ~-(self.width/2) {
+            Tags: ["summit.interactable", "dpi.button"],
             width: self.width,
             height: self.height
         }
 
         summon text_display ~ ~ ~ {
-            Tags: ["dpi.new_button"],
+            Tags: ["dpi.button"],
             transformation: {
                 translation: [(self.pixel * 1/2 * -1), 0.0f, 0.0f],
                 left_rotation: [0.0f, 0.0f, 0.0f, 1.0f],
@@ -58,19 +65,20 @@ class Button:
             text: self.text
         }
 
-append function dpi:load:
-    function dpi:temp
-
-function dpi:temp:
-    kill @e[type=text_display]
-    kill @e[type=interaction]
-    execute positioned 111 86 -118:
-        test = Button("The microscopic astronaut accidentally navigated his spaceship directly into a lukewarm cup of Earl Grey tea. He survived.")
-        test.spawn([])
+def get_icon(name):
+    return """{atlas:"items", sprite:"dpi:icons/""" + name + """, shadow_color:0}"""
 
 class Window:
-    def __init__():
-        pass
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def spawn():
+        summon text_display ~ ~ ~ {
+            Tags: ["dpi.window"],
+            alignment: "center",
+            text: self.text
+        }
 
 class Dropdown:
     def __init__():
