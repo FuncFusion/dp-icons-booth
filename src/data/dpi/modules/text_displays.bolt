@@ -1,4 +1,4 @@
-function dpi:entities/text_displays_summon:
+function dpi:entities/static/summon:
 	## wall 1
 	# ᴡᴇʟᴄᴏᴍᴇ
 	summon text_display 114.0 102.625 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"],shadow: 0b, text: "ᴡᴇʟᴄᴏᴍᴇ", transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},  background: 0}

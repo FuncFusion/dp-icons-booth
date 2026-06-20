@@ -27,8 +27,12 @@ append function_tag summit.booth:dpi/entities/summon:
 function dpi:entities/refresh:
   function dpi:entities/kill
   function dpi:entities/summon
-  #temporary
-  function dpi:entities/text_displays_summon
+  function dpi:entities/static/kill
+  function dpi:entities/static/summon
+
+function dpi:entities/static/kill:
+  kill @e[tag=summit.static]
+  kill @e[tag=dpi.button]
 
 append function dpi:entities/summon:
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
@@ -50,7 +54,7 @@ append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.lev_icons.root] run function dpi:aj/lev_icons/remove/this
   kill @e[tag=summit.booth_entity.dpi]
 
-append function dpi:load:
+prepend function dpi:load:
   tellraw @a:
     text: "Reloaded!"
     color: "green"
