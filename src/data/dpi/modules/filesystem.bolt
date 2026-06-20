@@ -1,4 +1,5 @@
 from dpi:config import var, storage
+import dpi:gui as gui
 import bolt_expressions as expr
 
 class Node:
@@ -26,10 +27,25 @@ class Node:
     self.parent.child[{"name": self._name}].name = new_name
     self._name = new_name
 
+  def render(self, pos, face):
+    left_click = "execute on attacker run say i left click"
+    right_click = "execute on target run say i right click"
+    message = self._name
+    button = gui.Button(left_click, right_click, message)
+    button.spawn(pos, face, 4, 0.25)
+
   def walk(self):
     raw # walking
     storage.fs.walk.input = self.node()
     function dpi:fs/walk/init
+
+append function dpi:load:
+    function dpi:temp
+
+function dpi:temp:
+  root = Node("root", "dir")
+  pack = Node("pack.mcmeta", "txt")
+  pack.render([113, 87, -113], "north")
 
 function dpi:fs/walk/init:
   node = storage.fs.walk.input
@@ -74,8 +90,3 @@ function dpi:fs/walk/main:
 #
 # append function dpi:load:
 #   function dpi:temp
-
-class FileSystem:
-  def __init__():
-    pass
-

@@ -34,6 +34,16 @@ def _calculate_text_dimensions(text):
 
     return [width, height]
 
+def determine_rotation(face):
+    if face == "north":
+        return [180, 0]
+    elif face == "south":
+        return [360, 0]
+    elif face == "west":
+        return [90, 0]
+    elif face == "east":
+        return [270, 0]
+
 class Button:
     pixel = 1/16/2.5
 
@@ -44,36 +54,27 @@ class Button:
         self.on_left_click = on_left_click
         self.on_right_click = on_right_click
 
-    def spawn(self, pos, width=None, height=None):
+    def spawn(self, pos, face, width=None, height=None):
         self.pos = pos
-        x = pos[0]
-        y = pos[1]
-        z = pos[2]
+        x = float(pos[0])
+        y = float(pos[1])
+        z = float(pos[2])
         
         if width is not None and height is not None:
             self.width = width
             self.height = height
-        elif self.text:
+        else:
             dimensions = _calculate_text_dimensions(self.text) 
-            width = dimensions[0]
-            height = dimensions[1]
+            self.width = dimensions[0]
+            self.height = dimensions[1]
 
         self.id = generate_random_string(15)
 
-        summon interaction x y (z - self.width/2) {
-            Tags: ["summit.interactable", "dpi.button", self.id],
-            width: self.width,
-            height: self.height,
-            data: {
-                summit_interactable: {
-                    on_left_click: self.on_left_click,
-                    on_right_click: self.on_right_click
-                }
-            }
-        }
-
+        rotation = determine_rotation(face)
+        
         if self.text:
-            summon text_display ~ ~ ~ {
+            summon text_display x y z {
+                Rotation: rotation,
                 Tags: ["dpi.button"],
                 transformation: {
                     translation: [(self.pixel * 1/2 * -1), 0.0f, 0.0f],
@@ -85,15 +86,40 @@ class Button:
                 text: self.text
             }
 
+        if face == "north":
+            z = z + self.width/2
+        elif face == "south":
+            z = z - self.width/2
+        elif face == "west":
+            x = x + self.width/2
+        elif face == "east":
+            x = x - self.width/2
+
+        summon interaction x y z {
+            Rotation: rotation,
+            Tags: ["summit.interactable", "dpi.button", self.id],
+            width: self.width,
+            height: self.height,
+            data: {
+                summit_interactable: {
+                    on_left_click: self.on_left_click,
+                    on_right_click: self.on_right_click
+                }
+            }
+        }
+
     def remove(self):
         kill @e[tag=self.id]
 
-function dpi:temp:
-    test = Button("execute on attacker run say i left click", "execute on target run say i right click")
-    test.spawn([113, 87, -113], 1, 1)
-
-append function dpi:load:
-    function dpi:temp
+# function dpi:temp:
+#     left_click = "execute on attacker run say i left click"
+#     right_click = "execute on target run say i right click"
+#     message = {text:"say gex"}
+#     test = Button(left_click, right_click, message)
+#     test.spawn([113, 86, -113], "north", 1, 1)
+#     test.spawn([113, 87, -113], "south", 1, 1)
+#     test.spawn([113, 88, -113], "west", 1, 1)
+#     test.spawn([113, 89, -113], "east", 1, 1)
 
 def get_icon(name):
     return """{atlas:"items", sprite:"dpi:icons/""" + name + """, shadow_color:0}"""
