@@ -2,6 +2,14 @@ from dpi:config import var, storage
 import dpi:gui as gui
 import bolt_expressions as expr
 
+named_icons = {
+  "pack.mcmeta": "pack.mcmeta_file",
+  "src": "src_folder",
+}
+
+def get_icon(name):
+    return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
+
 class Node:
   def __init__(self, name, type, parent=storage.fs.root):
     parent.child.append({})
@@ -28,10 +36,15 @@ class Node:
     self._name = new_name
 
   def render(self, pos, face):
-    left_click = "execute on attacker run say i left click"
     right_click = "execute on target run say i right click"
-    message = self._name
-    button = gui.Button(left_click, right_click, message)
+
+    if self._name in named_icons:
+      icon_name = named_icons[self._name]
+      icon = get_icon(icon_name)
+
+    message = [icon, " ", self._name]
+    print(message)
+    button = gui.Button("", right_click, message)
     button.spawn(pos, face, 4, 0.25)
 
   def walk(self):
@@ -44,7 +57,7 @@ append function dpi:load:
 
 function dpi:temp:
   root = Node("root", "dir")
-  pack = Node("pack.mcmeta", "txt")
+  pack = Node("src", "dir")
   pack.render([113, 87, -113], "north")
 
 function dpi:fs/walk/init:

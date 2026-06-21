@@ -1,3 +1,17 @@
-class tree:
-  def __init__(self):
-    pass
+import dpi:gui as gui
+
+class Tree:
+  def __init__(self, size):
+    self.size = size
+
+  def spawn(self, pos):
+    x = pos[0]
+    y = pos[1]
+    z = pos[2]
+
+    right_click_action = ""
+    long_empty_string = "                                    "
+    button = gui.Button("", right_click_action, long_empty_string)
+
+    for i in size:
+      button.spawn([x, y-i, z], "north", 0.25, 8)
