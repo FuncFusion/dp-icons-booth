@@ -1,3 +1,5 @@
+import dpi:gui as gui
+
 function dpi:entities/static/summon:
 	## wall 1
 	# ᴡᴇʟᴄᴏᴍᴇ
@@ -20,9 +22,189 @@ function dpi:entities/static/summon:
 	# deep dive
 	summon text_display 116.7 92.6 -111.0 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 160, shadow: 0b, text: [{shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/shell_file"}," In ",{color:"#4488e0",text:"5.0"},", the ",{color:"#4488e0",text:"deep dive update"},", our latest and biggest update, we ",{bold:true,text:"doubled"}," the amount of icons AGAIN by adding icons for tons of less popular, niche stuff. We also revamped our whole codebase, optimized icon svgs, and expanded our dynamic features even more!\n\n",{shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/video_file"}, " Watch the ", {color: "#478BE6", underlined: 1b, text: "5.0 trailer"}, " to see the everything in action!\n", {color: "dark_gray", text: "(click me or the image)"}], transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left"}
 
+	# trailer link interaction
+    gui.Button("", "execute on target run dialog show @s dpi:trailer_link").spawn([116.8, 92.6, -111.1], "north", 3.7, 0.8)
+
 	## wall 4
 	# ʟɪɴᴋꜱ
 	summon text_display 114.0 93.4 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"],shadow: 0b, text: "ʟɪɴᴋꜱ",transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},  background: 0}
 
 	# links
-	summon text_display 114.0 89.3875 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 360, shadow: 0b, text: [{atlas:"items",sprite:"dpi:icons/aseprite_file"}," You can find all of the assets used (and unused!) during the development of Datapack Icons in our ",{color:"#478BE6",underlined:true,text:"assets repo"},".\n\n",{atlas:"items",sprite:"dpi:icons/contributing_file"}," If you need to report a bug, request a new icon or suggest a feature, you can do that in our ",{atlas:"items",sprite:"dpi:icons/misc/discord"}," ",{color:"#478BE6",underlined:true,text:"discord server"}," or by opening a ",{color:"#478BE6",underlined:true,text:"github issue"},".\n\n",{atlas:"items",sprite:"dpi:icons/dimension_file"}," Datapack Icons isn't just for VS Code! We've ported the extension to other IDEs. Keep in mind they will probably have fewer features than the VS Code extension due to different extension capabilities.\n\n- ",{atlas:"items",sprite:"dpi:icons/sublime_file"},{underlined: true,color:"#478BE6",text:" Sublime Text",bold:true},{underlined: true,color:"#478BE6",text:" port"},"\n- ",{underlined: true,color:"#478BE6",text:"Zed",bold:true},{underlined: true,color:"#478BE6",text:" port\n\n"},"We are also planning a ",{atlas:"items",sprite:"dpi:icons/jetbrains_file"},{bold: true, text:" JetBrains"}," port and a ",{atlas:"items",sprite:"dpi:icons/neovim_file"},{bold: true, text:" Neovim"}," port in the future."], transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left"}
+	summon text_display 114.0 89.3875 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 360, shadow: 0b, text: [{atlas:"items",sprite:"dpi:icons/aseprite_file"}," You can find all of the assets used (and unused!) during the development of Datapack Icons in our ",{color:"#478BE6",underlined:true,text:"assets repo"},".\n\n",{atlas:"items",sprite:"dpi:icons/contributing_file"}," If you need to report a bug, request a new icon or suggest a feature, you can do that in our ",{atlas:"items",sprite:"dpi:icons/misc/discord"}," ",{color:"#478BE6",underlined:true,text:"discord server"}," or by opening a ",{color:"#478BE6",underlined:true,text:"github issue"},".\n\n",{atlas:"items",sprite:"dpi:icons/dimension_file"}," Datapack Icons isn't just for VS Code! We've ported the extension to other IDEs. Keep in mind they will probably have fewer features than the VS Code extension due to different extension capabilities.\n\n- ",{atlas:"items",sprite:"dpi:icons/sublime_file"}," ",{underlined: true,color:"#478BE6",text:"Sublime Text",bold:true},{underlined: true,color:"#478BE6",text:" port"},"\n- ",{underlined: true,color:"#478BE6",text:"Zed",bold:true},{underlined: true,color:"#478BE6",text:" port\n\n"},"We are also planning a ",{atlas:"items",sprite:"dpi:icons/jetbrains_file"},{bold: true, text:" JetBrains"}," port and a ",{atlas:"items",sprite:"dpi:icons/neovim_file"},{bold: true, text:" Neovim"}," port in the future."], transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left"}
+
+	# assets repo interaction
+    gui.Button("", "execute on target run dialog show @s dpi:assets_repo_link").spawn([115.15, 92.75, -122.9375], "south", 2, 0.5)
+	# discord link interaction
+    gui.Button("", "execute on target run dialog show @s dpi:discord_link").spawn([114.7, 92.0, -122.9375], "south", 2.5, 0.5)
+	# github issue interaction
+    gui.Button("", "execute on target run dialog show @s dpi:issues_link").spawn([110.25, 91.75, -122.9375], "south", 2, 0.5)
+	# sublime port interaction
+    gui.Button("", "execute on target run dialog show @s dpi:sublime_port_link").spawn([111.1, 90.4, -122.9375], "south", 3, 0.3)
+	# zed port interaction
+    gui.Button("", "execute on target run dialog show @s dpi:zed_port_link").spawn([111.1, 90.1, -122.9375], "south", 3, 0.3)
+
+dialog dpi:trailer_link:
+{
+  "type": "minecraft:confirmation",
+  "title": "Watch 5.0 trailer!",
+  "external_title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "youtube.com/watch?v=dQw4w9WgXcQ",
+      "color": "yellow"
+    },
+    "width": 500
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "after_action": "close",
+  "yes": {
+    "label": "Open link",
+    "action": {
+      "type": "minecraft:open_url",
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    }
+  },
+  "no": {
+    "label": "Close"
+  }
+}
+
+dialog dpi:assets_repo_link:
+{
+  "type": "minecraft:confirmation",
+  "title": "Find all the assets here!",
+  "external_title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "github.com/FuncFusion/mc-dp-icons-assets",
+      "color": "yellow"
+    },
+    "width": 500
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "after_action": "close",
+  "yes": {
+    "label": "Open link",
+    "action": {
+      "type": "minecraft:open_url",
+      "url": "https://github.com/FuncFusion/mc-dp-icons-assets"
+    }
+  },
+  "no": {
+    "label": "Close"
+  }
+}
+
+dialog dpi:discord_link:
+{
+  "type": "minecraft:confirmation",
+  "title": "Join our discord server!",
+  "external_title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "discord.gg/9FMRD9GvAq",
+      "color": "yellow"
+    },
+    "width": 500
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "after_action": "close",
+  "yes": {
+    "label": "Open link",
+    "action": {
+      "type": "minecraft:open_url",
+      "url": "https://discord.gg/9FMRD9GvAq"
+    }
+  },
+  "no": {
+    "label": "Close"
+  }
+}
+
+dialog dpi:issues_link:
+{
+  "type": "minecraft:confirmation",
+  "title": "You can open a github issue here!",
+  "external_title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "github.com/FuncFusion/mc-dp-icons/issues",
+      "color": "yellow"
+    },
+    "width": 500
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "after_action": "close",
+  "yes": {
+    "label": "Open link",
+    "action": {
+      "type": "minecraft:open_url",
+      "url": "https://github.com/FuncFusion/mc-dp-icons/issues"
+    }
+  },
+  "no": {
+    "label": "Close"
+  }
+}
+dialog dpi:sublime_port_link:
+{
+  "type": "minecraft:confirmation",
+  "title": "Sublime Text port",
+  "external_title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "github.com/FuncFusion/mc-dp-icons-sublime",
+      "color": "yellow"
+    },
+    "width": 500
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "after_action": "close",
+  "yes": {
+    "label": "Open link",
+    "action": {
+      "type": "minecraft:open_url",
+      "url": "https://github.com/FuncFusion/mc-dp-icons-sublime"
+    }
+  },
+  "no": {
+    "label": "Close"
+  }
+}
+dialog dpi:zed_port_link:
+{
+  "type": "minecraft:confirmation",
+  "title": "Zed port",
+  "external_title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "github.com/FuncFusion/mc-dp-icons-zed",
+      "color": "yellow"
+    },
+    "width": 500
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "after_action": "close",
+  "yes": {
+    "label": "Open link",
+    "action": {
+      "type": "minecraft:open_url",
+      "url": "https://github.com/FuncFusion/mc-dp-icons-zed"
+    }
+  },
+  "no": {
+    "label": "Close"
+  }
+}
