@@ -41,7 +41,7 @@ class Button:
                 text: self.text
             }
 
-        offset = self.width/2
+        offset = width/2
 
         if face == "north":
             z += offset
@@ -54,8 +54,8 @@ class Button:
 
         summon interaction x y z {
             Tags: ["summit.interactable", "dpi.button"],
-            width: self.width,
-            height: self.height,
+            width: width,
+            height: height,
             data: {
                 summit_interactable: {
                     on_left_click: self.on_left_click,
