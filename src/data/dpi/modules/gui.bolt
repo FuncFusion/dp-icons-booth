@@ -52,15 +52,19 @@ class Button:
         elif face == "east":
             x -= offset
 
+        actions = {on_left_click:"",on_right_click:""}
+
+        if self.on_left_click != "":
+            actions.on_left_click = self.on_left_click
+        if self.on_right_click != "":
+            actions.on_right_click = self.on_right_click
+
         summon interaction x y z {
             Tags: ["summit.interactable", "dpi.button"],
             width: width,
             height: height,
             data: {
-                summit_interactable: {
-                    on_left_click: self.on_left_click,
-                    on_right_click: self.on_right_click
-                }
+                summit_interactable: actions
             }
         }
 
