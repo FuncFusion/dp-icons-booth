@@ -1,4 +1,5 @@
 import dpi:gui as gui
+import re
 
 function dpi:entities/static/summon:
 	## wall 1
@@ -43,168 +44,52 @@ function dpi:entities/static/summon:
 	# zed port interaction
     gui.Button("", "execute on target run dialog show @s dpi:zed_port_link").spawn([111.1, 90.1, -122.9375], "south", 3, 0.3)
 
-dialog dpi:trailer_link:
-{
-  "type": "minecraft:confirmation",
-  "title": "Watch 5.0 trailer!",
-  "external_title": "",
-  "body": {
-    "type": "minecraft:plain_message",
-    "contents": {
-      "text": "youtube.com/watch?v=dQw4w9WgXcQ",
-      "color": "yellow"
+def add_url_dialogue(title, url):
+  pattern = r"^(?:https?://)?(?:www\.)?(.+)"
+
+  domain = re.sub(pattern, r"\1", url)
+
+  return {
+    "type": "minecraft:confirmation",
+    "title": title,
+    "external_title": "",
+    "body": {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "text": domain,
+        "color": "yellow"
+      },
+      "width": 500
     },
-    "width": 500
-  },
-  "inputs": [],
-  "can_close_with_escape": true,
-  "after_action": "close",
-  "yes": {
-    "label": "Open link",
-    "action": {
-      "type": "minecraft:open_url",
-      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    "inputs": [],
+    "can_close_with_escape": true,
+    "after_action": "close",
+    "yes": {
+      "label": "Open link",
+      "action": {
+        "type": "minecraft:open_url",
+        "url": url
+      }
+    },
+    "no": {
+      "label": "Close"
     }
-  },
-  "no": {
-    "label": "Close"
   }
-}
+
+dialog dpi:trailer_link:
+  add_url_dialogue("Watch 5.0 trailer!", "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
 dialog dpi:assets_repo_link:
-{
-  "type": "minecraft:confirmation",
-  "title": "Find all the assets here!",
-  "external_title": "",
-  "body": {
-    "type": "minecraft:plain_message",
-    "contents": {
-      "text": "github.com/FuncFusion/mc-dp-icons-assets",
-      "color": "yellow"
-    },
-    "width": 500
-  },
-  "inputs": [],
-  "can_close_with_escape": true,
-  "after_action": "close",
-  "yes": {
-    "label": "Open link",
-    "action": {
-      "type": "minecraft:open_url",
-      "url": "https://github.com/FuncFusion/mc-dp-icons-assets"
-    }
-  },
-  "no": {
-    "label": "Close"
-  }
-}
+  add_url_dialogue("Find all the assets here!", "https://github.com/FuncFusion/mc-dp-icons-assets")
 
 dialog dpi:discord_link:
-{
-  "type": "minecraft:confirmation",
-  "title": "Join our discord server!",
-  "external_title": "",
-  "body": {
-    "type": "minecraft:plain_message",
-    "contents": {
-      "text": "discord.gg/9FMRD9GvAq",
-      "color": "yellow"
-    },
-    "width": 500
-  },
-  "inputs": [],
-  "can_close_with_escape": true,
-  "after_action": "close",
-  "yes": {
-    "label": "Open link",
-    "action": {
-      "type": "minecraft:open_url",
-      "url": "https://discord.gg/9FMRD9GvAq"
-    }
-  },
-  "no": {
-    "label": "Close"
-  }
-}
+  add_url_dialogue("Join our discord server!", "https://discord.gg/9FMRD9GvAq")
 
 dialog dpi:issues_link:
-{
-  "type": "minecraft:confirmation",
-  "title": "You can open a github issue here!",
-  "external_title": "",
-  "body": {
-    "type": "minecraft:plain_message",
-    "contents": {
-      "text": "github.com/FuncFusion/mc-dp-icons/issues",
-      "color": "yellow"
-    },
-    "width": 500
-  },
-  "inputs": [],
-  "can_close_with_escape": true,
-  "after_action": "close",
-  "yes": {
-    "label": "Open link",
-    "action": {
-      "type": "minecraft:open_url",
-      "url": "https://github.com/FuncFusion/mc-dp-icons/issues"
-    }
-  },
-  "no": {
-    "label": "Close"
-  }
-}
+  add_url_dialogue("You can open a github issue here!", "https://github.com/FuncFusion/mc-dp-icons/issues")
+
 dialog dpi:sublime_port_link:
-{
-  "type": "minecraft:confirmation",
-  "title": "Sublime Text port",
-  "external_title": "",
-  "body": {
-    "type": "minecraft:plain_message",
-    "contents": {
-      "text": "github.com/FuncFusion/mc-dp-icons-sublime",
-      "color": "yellow"
-    },
-    "width": 500
-  },
-  "inputs": [],
-  "can_close_with_escape": true,
-  "after_action": "close",
-  "yes": {
-    "label": "Open link",
-    "action": {
-      "type": "minecraft:open_url",
-      "url": "https://github.com/FuncFusion/mc-dp-icons-sublime"
-    }
-  },
-  "no": {
-    "label": "Close"
-  }
-}
+  add_url_dialogue("Sublime Text port", "https://github.com/FuncFusion/mc-dp-icons-sublime")
+
 dialog dpi:zed_port_link:
-{
-  "type": "minecraft:confirmation",
-  "title": "Zed port",
-  "external_title": "",
-  "body": {
-    "type": "minecraft:plain_message",
-    "contents": {
-      "text": "github.com/FuncFusion/mc-dp-icons-zed",
-      "color": "yellow"
-    },
-    "width": 500
-  },
-  "inputs": [],
-  "can_close_with_escape": true,
-  "after_action": "close",
-  "yes": {
-    "label": "Open link",
-    "action": {
-      "type": "minecraft:open_url",
-      "url": "https://github.com/FuncFusion/mc-dp-icons-zed"
-    }
-  },
-  "no": {
-    "label": "Close"
-  }
-}
+  add_url_dialogue("Zed port", "https://github.com/FuncFusion/mc-dp-icons-zed")
