@@ -21,26 +21,33 @@ function dpi:tree/render/init:
   depth = var["#dpi.fs.depth"]
   depth = 0
   stack.append(node.child)
-  function dpi:tree/render/main
+  summon marker ~ ~ ~ {Tags:["dpi.tree.marker"]}
+  execute as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
+  kill @n[tag=dpi.tree.marker]
 
 function dpi:tree/render/main:
   item = stack[-1][0]
 
   if item:
     storage.node.render.input.node = item
-    execute positioned ~ ~ ~ run function dpi:node/render
+    execute at @s run function dpi:node/render
+    tellraw @a {nbt:"Pos", entity:"@s"}
+    execute at @s run tp @s ~ ~-0.3 ~
 
     if item.child:
       stack.append(item.child)
       depth += 1
-      execute positioned ~0.3 ~-0.3 ~ run function dpi:tree/render/main
+      execute at @s run tp @s ~0.3 ~ ~
+      execute at @s run function dpi:tree/render/main
+      execute at @s run tp @s ~-0.3 ~ ~
       depth -= 1
 
     item.remove()
-    execute positioned ~ ~-0.3 ~ run function dpi:tree/render/main
+    execute at @s run function dpi:tree/render/main
 
-  if stack[0] and not item:
-    stack[-1].remove()
+  if not item:
+    if stack[0]:
+      stack[-1].remove()
 
 append function dpi:temp:
   tree = Tree(15)
