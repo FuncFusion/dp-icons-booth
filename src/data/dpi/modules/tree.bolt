@@ -1,10 +1,13 @@
 import dpi:gui as gui
-from dpi:config import storage, var
+from dpi:config import storage, var, print_nbt
 from dpi:filesystem import Node
+import dpi:icons as icons
+
+def get_icon(name):
+  return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
 
 class Tree:
-  def __init__(self, size):
-    self.size = size
+  def __init__(self):
     self.root = Node("root", "dir")
 
   def render(self, pos):
@@ -13,6 +16,26 @@ class Tree:
     y = float(pos[1])
     z = float(pos[2])
     execute positioned x y z run function dpi:tree/render/init
+
+function dpi:node/render:
+  input = storage.node.render.input.node
+  right_click = "execute on target run say i right click"
+
+  icon = storage.icon
+  icon.remove()
+
+  execute run function dpi:node/get_icon with storage dpi:main node.render.input.node:
+    $data modify storage dpi:main icon set from storage dpi:main typed_icons."$(type)"
+    $data modify storage dpi:main icon set from storage dpi:main named_icons."$(name)"
+
+  if not icon:
+    icon = get_icon("generic_file")
+
+  empty_string = "                                              "
+  message = [print_nbt("icon"), " ", print_nbt("node.render.input.node.name"), empty_string]
+  # tellraw @a [*message, input.type]
+  button = gui.Button("", right_click, message)
+  button.spawn([0, 0, 0], "south", 4, 0.25)
 
 function dpi:tree/render/init:
   node = storage.tree.render.input
@@ -31,7 +54,6 @@ function dpi:tree/render/main:
   if item:
     storage.node.render.input.node = item
     execute at @s run function dpi:node/render
-    tellraw @a {nbt:"Pos", entity:"@s"}
     execute at @s run tp @s ~ ~-0.3 ~
 
     if item.child:
@@ -50,7 +72,7 @@ function dpi:tree/render/main:
       stack[-1].remove()
 
 append function dpi:temp:
-  tree = Tree(15)
+  tree = Tree()
   pack = Node("pack.mcmeta", "txt", tree.root)
   data = Node("data", "dir", tree.root)
   minecraft = Node("minecraft", "dir", data)

@@ -45,6 +45,7 @@ class Button:
                     scale: [1.0f, 1.0f, 1.0f]
                 },
                 alignment: "center",
+                background: 0,
                 text: self.text
             }
 
@@ -93,7 +94,7 @@ class Window:
     def spawn():
         summon text_display ~ ~ ~ {
             Tags: ["dpi.window"],
-            alignment: "center",
+            alignment: "left",
             text: self.text
         }
 
