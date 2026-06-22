@@ -7,6 +7,10 @@ global_tick = var["#dpi.global_tick"]
 storage = Data.storage(dpi:main)
 root = storage.fs.root
 
+def print_nbt(path):
+  return {nbt: path, storage: "dpi:main", interpret:true}
+
+
 letter_to_size = {
     "a": 6,
     "b": 6,

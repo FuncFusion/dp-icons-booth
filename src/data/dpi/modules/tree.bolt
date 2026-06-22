@@ -1,17 +1,63 @@
 import dpi:gui as gui
+from dpi:config import storage, var
+from dpi:filesystem import Node
 
 class Tree:
   def __init__(self, size):
     self.size = size
+    self.root = Node("root", "dir")
 
-  def spawn(self, pos):
-    x = pos[0]
-    y = pos[1]
-    z = pos[2]
+  def render(self, pos):
+    storage.tree.render.input = self.root.node()
+    x = float(pos[0])
+    y = float(pos[1])
+    z = float(pos[2])
+    execute positioned x y z run function dpi:tree/render/init
 
-    right_click_action = ""
-    long_empty_string = "                                    "
-    button = gui.Button("", right_click_action, long_empty_string)
+function dpi:tree/render/init:
+  node = storage.tree.render.input
+  stack = storage.args.input
+  stack = []
+  depth = var["#dpi.fs.depth"]
+  depth = 0
+  stack.append(node.child)
+  function dpi:tree/render/main
 
-    # for i in size:
-    #   button.spawn([x, y-i, z], "north", 0.25, 8)
+function dpi:tree/render/main:
+  item = stack[-1][0]
+
+  if item:
+    storage.node.render.input.node = item
+    execute positioned ~ ~ ~ run function dpi:node/render
+
+    if item.child:
+      stack.append(item.child)
+      depth += 1
+      execute positioned ~0.3 ~-0.3 ~ run function dpi:tree/render/main
+      depth -= 1
+
+    item.remove()
+    execute positioned ~ ~-0.3 ~ run function dpi:tree/render/main
+
+  if stack[0] and not item:
+    stack[-1].remove()
+
+append function dpi:temp:
+  tree = Tree(15)
+  pack = Node("pack.mcmeta", "txt", tree.root)
+  data = Node("data", "dir", tree.root)
+  minecraft = Node("minecraft", "dir", data)
+  tags = Node("tags", "dir", minecraft)
+  function_tag = Node("function", "dir", tags)
+  tick_function_tag = Node("tick.json", "json", function_tag)
+  load_function_tag = Node("load.json", "json", function_tag)
+  dpi_namespace = Node("dpi", "dir", data)
+  functions = Node("function", "dir", dpi_namespace)
+  tick = Node("tick.mcfunction", "mcf", functions)
+  load = Node("load.mcfunction", "mcf", functions)
+
+  # load_function_tag.render([112, 85, -123])
+  tree.render([112, 85, -123])
+
+append function dpi:load:
+  schedule function dpi:temp 2t replace

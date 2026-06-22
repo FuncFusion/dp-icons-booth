@@ -5,6 +5,7 @@ import dpi:springboard as springboard
 import dpi:chest_house as chest_house
 import dpi:lev_icons as lev_icons
 import dpi:gui as gui
+import dpi:tree as tree
 #temporary
 import dpi:text_displays as text_displays
 
@@ -31,7 +32,6 @@ function dpi:entities/refresh:
   function dpi:entities/static/summon
 
 function dpi:entities/static/kill:
-  kill @e[tag=summit.static]
   kill @e[tag=dpi.button]
 
 append function dpi:entities/summon:

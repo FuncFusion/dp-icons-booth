@@ -25,6 +25,13 @@ class Button:
         y = float(pos[1])
         z = float(pos[2])
 
+        use_relative = x == 0 and y == 0 and z == 0 
+
+        if use_relative:
+            x = "~"
+            y = "~"
+            z = "~"
+
         rotation = determine_rotation(face)
         
         if self.text:
@@ -43,14 +50,24 @@ class Button:
 
         offset = width/2
 
-        if face == "north":
-            z += offset
-        elif face == "south":
-            z -= offset
-        elif face == "west":
-            x += offset
-        elif face == "east":
-            x -= offset
+        if use_relative:
+            if face == "north":
+                z += f"{offset}"
+            elif face == "south":
+                z += f"-{offset}"
+            elif face == "west":
+                x += f"{offset}"
+            elif face == "east":
+                x += f"-{offset}"
+        else:
+            if face == "north":
+                z += offset
+            elif face == "south":
+                z -= offset
+            elif face == "west":
+                x += offset
+            elif face == "east":
+                x -= offset
 
         actions = {on_left_click:"",on_right_click:""}
 
