@@ -70,12 +70,13 @@ class Button:
             text: self.text
         }
 
-    def _spawn_interaction(self, pos, actions):
+    def _spawn_interaction(self, pos, actions, width, height, tags=[]):
         x = pos[0]
         y = pos[1]
         z = pos[2]
+
         summon interaction x y z {
-            Tags: ["summit.interactable", "dpi.button", "dpi.button.new.interaction"],
+            Tags: [*tags, "summit.interactable", "dpi.button", "dpi.button.new.interaction"],
             width: width,
             height: height,
             data: {
@@ -102,11 +103,11 @@ class Button:
             actions.on_right_click = self.on_right_click
 
         offset_pos = find_position_offset(face, pos, offset)
-        self._spawn_interaction(offset_pos, actions)
+        self._spawn_interaction(offset_pos, actions, width, height)
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
 
-    def spawn(self, face, width=1, height=1):
+    def spawn(self, face, width=1, height=1, tags=[]):
         offset = width/2
         pos = ["~","~","~"]
 
@@ -124,7 +125,7 @@ class Button:
             actions.on_right_click = self.on_right_click
 
         offset_pos = find_relative_position_offset(face, pos, offset)
-        self._spawn_interaction(offset_pos, actions)
+        self._spawn_interaction(offset_pos, actions, width, height, tags)
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
 

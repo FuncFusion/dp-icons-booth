@@ -6,7 +6,7 @@ def get_icon(name):
     return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
 
 class Node:
-  def __init__(self, name, type, parent=storage.fs.root):
+  def __init__(self, name, type, parent=storage.fs):
     parent.child.append({})
     parent.child[-1].name = name
     parent.child[-1].type = type
