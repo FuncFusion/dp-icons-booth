@@ -1,0 +1,43 @@
+from dpi:config import storage, var, print_nbt
+
+function dpi:tree/flatten/init:
+  node = storage.tree.flatten.input
+
+  depth = var["#dpi.fs.depth"]
+  depth = 0
+
+  snapshot = storage.tree.snapshot
+  snapshot = []
+
+  stack = storage.args.input
+  stack = []
+  stack.append(node.child)
+
+  function dpi:tree/flatten/main
+
+function dpi:tree/flatten/main:
+  item = stack[-1][0]
+
+  if item:
+    storage.node.render.input = item
+    function dpi:node/render/get_name
+    render_name = print_nbt("node.render.output")
+
+    snapshot.append({name:"", depth:0})
+    snapshot[-1].name = render_name
+    snapshot[-1].depth = depth
+
+    if item.child:
+      if not item.collapsed:
+        stack.append(item.child)
+        depth += 1
+        function dpi:tree/flatten/main
+        depth -= 1
+
+    item.remove()
+    function dpi:tree/flatten/main
+
+  if not item:
+    if stack[0]:
+      stack[-1].remove()
+

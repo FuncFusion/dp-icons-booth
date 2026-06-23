@@ -6,7 +6,6 @@ import dpi:chest_house as chest_house
 import dpi:lev_icons as lev_icons
 import dpi:gui as gui
 import dpi:tree as tree
-#temporary
 import dpi:text_displays as text_displays
 
 append function_tag minecraft:tick:
