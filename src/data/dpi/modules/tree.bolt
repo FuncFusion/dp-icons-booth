@@ -19,7 +19,6 @@ class Tree:
 
 function dpi:node/render:
   input = storage.node.render.input.node
-  right_click = "execute on target run say i right click"
 
   icon = storage.icon
   icon.remove()
@@ -34,8 +33,10 @@ function dpi:node/render:
   empty_string = "                                              "
   message = [print_nbt("icon"), " ", print_nbt("node.render.input.node.name"), empty_string]
   # tellraw @a [*message, input.type]
-  button = gui.Button("", right_click, message)
-  button.spawn([0, 0, 0], "south", 4, 0.25)
+  right_click = "execute on target run say i right click"
+  left_click = "execute on attacker run say i left click"
+  button = gui.Button(left_click, right_click, message)
+  button.spawn("south", 4, 0.25)
 
 function dpi:tree/render/init:
   node = storage.tree.render.input

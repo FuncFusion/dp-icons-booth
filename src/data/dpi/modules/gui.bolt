@@ -1,6 +1,6 @@
 from dpi:config import storage, var, letter_to_size
 
-def determine_rotation(face):
+def find_rotation(face):
     if face == "north":
         return [180, 0]
     elif face == "south":
@@ -10,6 +10,38 @@ def determine_rotation(face):
     elif face == "east":
         return [270, 0]
 
+def find_translation_offset(face, offset):
+    if face == "north":
+        return [0.0, 0.0, -offset]
+    elif face == "south":
+        return [0.0, 0.0, offset]
+    elif face == "west":
+        return [-offset, 0.0, 0.0]
+    elif face == "east":
+        return [offset, 0.0, 0.0]
+
+def find_relative_position_offset(face, pos, offset):
+    if face == "north":
+        pos[2] += f"{offset}"
+    elif face == "south":
+        pos[2] += f"-{offset}"
+    elif face == "west":
+        pos[0] += f"{offset}"
+    elif face == "east":
+        pos[0] += f"-{offset}"
+    return pos
+
+def find_position_offset(face, pos, offset):
+    if face == "north":
+        pos[2] += offset
+    elif face == "south":
+        pos[2] -= offset
+    elif face == "west":
+        pos[0] += offset
+    elif face == "east":
+        pos[0] -= offset
+    return pos
+        
 class Button:
     pixel = 1/16/2.5
 
@@ -20,55 +52,47 @@ class Button:
         self.on_left_click = on_left_click
         self.on_right_click = on_right_click
 
-    def spawn(self, pos, face, width=1, height=1):
-        x = float(pos[0])
-        y = float(pos[1])
-        z = float(pos[2])
+    def _spawn_text(self, pos, rotation, translation_offset):
+        x = pos[0]
+        y = pos[1]
+        z = pos[2]
+        summon text_display x y z {
+            Rotation: rotation,
+            Tags: ["dpi.button", "dpi.button.text", "dpi.button.new.text"],
+            transformation: {
+                translation: translation_offset,
+                left_rotation: [0.0f, 0.0f, 0.0f, 1.0f],
+                right_rotation: [0.0f, 0.0f, 0.0f, 1.0f],
+                scale: [1.0f, 1.0f, 1.0f]
+            },
+            alignment: "center",
+            background: 0,
+            text: self.text
+        }
 
-        use_relative = x == 0 and y == 0 and z == 0 
-
-        if use_relative:
-            x = "~"
-            y = "~"
-            z = "~"
-
-        rotation = determine_rotation(face)
-        
-        if self.text:
-            summon text_display x y z {
-                Rotation: rotation,
-                Tags: ["dpi.button"],
-                transformation: {
-                    translation: [(self.pixel * 1/2 * -1), 0.0f, 0.0f],
-                    left_rotation: [0.0f, 0.0f, 0.0f, 1.0f],
-                    right_rotation: [0.0f, 0.0f, 0.0f, 1.0f],
-                    scale: [1.0f, 1.0f, 1.0f]
-                },
-                alignment: "center",
-                background: 0,
-                text: self.text
+    def _spawn_interaction(self, pos, actions):
+        x = pos[0]
+        y = pos[1]
+        z = pos[2]
+        summon interaction x y z {
+            Tags: ["summit.interactable", "dpi.button", "dpi.button.new.interaction"],
+            width: width,
+            height: height,
+            data: {
+                summit_interactable: actions
             }
+        }
 
+    def spawn_abs(self, pos, face, width=1, height=1):
         offset = width/2
+        for coord in pos:
+            coord = float(coord)
 
-        if use_relative:
-            if face == "north":
-                z += f"{offset}"
-            elif face == "south":
-                z += f"-{offset}"
-            elif face == "west":
-                x += f"{offset}"
-            elif face == "east":
-                x += f"-{offset}"
-        else:
-            if face == "north":
-                z += offset
-            elif face == "south":
-                z -= offset
-            elif face == "west":
-                x += offset
-            elif face == "east":
-                x -= offset
+        rotation = find_rotation(face)
+        translation_offset = find_translation_offset(face, offset)
+
+        if self.text:
+            self._spawn_text(pos, rotation, translation_offset)
 
         actions = {on_left_click:"",on_right_click:""}
 
@@ -77,14 +101,32 @@ class Button:
         if self.on_right_click != "":
             actions.on_right_click = self.on_right_click
 
-        summon interaction x y z {
-            Tags: ["summit.interactable", "dpi.button"],
-            width: width,
-            height: height,
-            data: {
-                summit_interactable: actions
-            }
-        }
+        offset_pos = find_position_offset(face, pos, offset)
+        self._spawn_interaction(offset_pos, actions)
+
+        execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
+
+    def spawn(self, face, width=1, height=1):
+        offset = width/2
+        pos = ["~","~","~"]
+
+        rotation = find_rotation(face)
+        translation_offset = find_translation_offset(face, offset)
+
+        if self.text:
+            self._spawn_text(pos, rotation, translation_offset)
+
+        actions = {on_left_click:"",on_right_click:""}
+
+        if self.on_left_click != "":
+            actions.on_left_click = self.on_left_click
+        if self.on_right_click != "":
+            actions.on_right_click = self.on_right_click
+
+        offset_pos = find_relative_position_offset(face, pos, offset)
+        self._spawn_interaction(offset_pos, actions)
+
+        execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
 
 class Window:
     def __init__(self, width, height):
