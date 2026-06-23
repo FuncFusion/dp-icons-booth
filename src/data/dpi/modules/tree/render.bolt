@@ -45,6 +45,47 @@ function dpi:node/render/spawn:
     entity.data.node = input
     tag @s remove dpi.node.new
 
+function dpi:tree/render/init:
+  say gex
+  snapshot = storage.tree.render.input
+  tellraw @a snapshot
+  count = var["#dpi.count"]
+  count = 0
+  length = len(snapshot)
+  summon marker ~ ~ ~ {Tags:["dpi.tree.marker"]}
+  as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
+  kill @n[tag=dpi.tree.marker]
+
+function dpi:tree/render/main:
+  item = snapshot[0]
+  count += 1
+
+  storage.node.render.input = item
+  function dpi:node/render/get_name
+  render_name = print_nbt("node.render.output")
+  indent = {text:"  "}
+  message = storage.tree.render_message
+  message.remove()
+  message = [render_name]
+  message.prepend(indent)
+  
+  if item.depth:
+    depth = var["#dpi.depth"]
+    depth = item.depth
+
+    for i in range(10):
+      if depth == i:
+        for j in range(i):
+          message.prepend(indent)
+
+  tellraw @a print_nbt("tree.render_message")
+
+  snapshot.append(item)
+  item.remove()
+
+  if count < length:
+    at @s run function dpi:tree/render/main
+
 function dpi:tree/collapse/init:
   entity = expr.Data.entity("@s")
   node = storage.fs

@@ -19,16 +19,14 @@ function dpi:tree/flatten/main:
   item = stack[-1][0]
 
   if item:
-    storage.node.render.input = item
-    function dpi:node/render/get_name
-    render_name = print_nbt("node.render.output")
-
     snapshot.append({name:"", depth:0})
-    snapshot[-1].name = render_name
+    snapshot[-1].name = item.name
+    snapshot[-1].type = item.type
     snapshot[-1].depth = depth
 
     if item.child:
       if not item.collapsed:
+        snapshot[-1].nest = true
         stack.append(item.child)
         depth += 1
         function dpi:tree/flatten/main
