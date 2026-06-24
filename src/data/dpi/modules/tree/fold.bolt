@@ -9,6 +9,8 @@ function dpi:node/fold:
   match = storage.node.match
   match = entity.data.node
 
+  unless data storage dpi:main node.match{type:"dir"} run return 0
+
   if match.closed:
     entity.data.node.closed.remove()
     function dpi:node/expand/init
