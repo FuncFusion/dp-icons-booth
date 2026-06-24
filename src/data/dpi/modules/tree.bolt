@@ -1,4 +1,4 @@
 import ./tree/flatten as flatten
 import ./tree/object as object
 import ./tree/render as render
-import ./tree/collapse as collapse
+import ./tree/fold as fold

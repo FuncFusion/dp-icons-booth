@@ -38,7 +38,7 @@ function dpi:node/render/get_name:
 
 function dpi:node/render/spawn:
   right_click = "execute on passengers run tag @s add dpi.selected"
-  left_click = "function dpi:tree/collapse/init"
+  left_click = "function dpi:node/fold"
 
   button = gui.Button(left_click, right_click, name)
   button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"], [0.5, -0.5, 0.0])
