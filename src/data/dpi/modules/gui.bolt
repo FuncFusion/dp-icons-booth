@@ -107,12 +107,15 @@ class Button:
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
 
-    def spawn(self, face, width=1, height=1, tags=[]):
+    def spawn(self, face, width=1, height=1, tags=[], translation_override=[0.0, 0.0, 0.0]):
         offset = width/2
         pos = ["~","~","~"]
 
         rotation = find_rotation(face)
         translation_offset = find_translation_offset(face, offset)
+        translation_offset[0] += translation_override[0]
+        translation_offset[1] += translation_override[1]
+        translation_offset[2] += translation_override[2]
 
         if self.text:
             self._spawn_text(pos, rotation, translation_offset)

@@ -1,48 +1,66 @@
 import bolt_expressions as expr
-from dpi:config import storage, var
+from dpi:config import storage, var, print_nbt
+
+update_tree = var["#dpi.tree.update_pending"]
+update_snapshot = var["#dpi.tree.snapshot.update_pending"]
 
 function dpi:tree/collapse/init:
   entity = expr.Data.entity("@s")
-  node = storage.fs
   match = entity.data.node
-  stack = storage.args.input
-  stack = []
-  stack.append(node.child)
+  entity.data.node.closed = true
+
+  snapshot = storage.tree.snapshot
+
+  tellraw @a ["matching ", match, " in ", snapshot]
+
+  count = var["#dpi.count"]
+  count = 0
+  matched_depth = var["#dpi.matched_depth"]
+  matched_depth = 0
+  depth = var["#dpi.depth"]
+  depth = 0
+
+  length = len(snapshot)
   function dpi:tree/collapse/main
 
+function dpi:tree/collapse/main:
+  item = snapshot[0]
+  count += 1
+
+  tellraw @a ["ITER ", count, " name=", item.name, " depth=", item.depth, " matched=", matched_depth]
+
+  match_found = var["#dpi.match"]
+  match_found = 0
+  function dpi:tree/node/compare
+
+  if matched_depth:
+    depth = item.depth
+    if depth > matched_depth:
+      tellraw @a ["  REMOVE ", item.name, " (depth ", depth, " > ", matched_depth, ")"]
+      item.collapsed = true
+    else:
+      tellraw @a ["  STOP at ", item.name, " (depth ", depth, " <= ", matched_depth, ")"]
+      matched_depth = 0
+
+  if match_found:
+    item.closed = true
+    tellraw @a ["  MATCH ", item.name, " depth=", item.depth, " set matched_depth=", item.depth]
+    matched_depth = item.depth
+    update_tree = 1
+    update_snapshot = 0
+
+  snapshot.append(item)
+  item.remove()
+  if count < length:
+    at @s run function dpi:tree/collapse/main
+
 function dpi:tree/node/compare:
-  item = stack[-1][0]
+  item = snapshot[0]
   match_found = var["#dpi.match"]
   storage.temp = match
   execute store success score f"#dpi.match" dpi.var
-    run data modify storage dpi:main temp set from storage dpi:main args.input[-1][0]
+    run data modify storage dpi:main temp set from storage dpi:main tree.snapshot[0]
 
   execute store success score f"#dpi.match" dpi.var
     if score f"#dpi.match" dpi.var matches 0
-
-function dpi:tree/collapse/main:
-  item = stack[-1][0]
-
-  if not stack:
-    return 0
-
-  if item:
-    function dpi:tree/node/compare
-    match_found = var["#dpi.match"]
-    
-    if match_found:
-      item.collapsed = true
-      update_tree = 1
-      tellraw @a ["collapsing ", item]
-      stack.remove()
-
-    if item.child:
-      stack.append(item.child)
-      function dpi:tree/collapse/main
-
-    item.remove()
-    function dpi:tree/collapse/main
-
-  if stack[0] and not item:
-    stack[-1].remove()
 

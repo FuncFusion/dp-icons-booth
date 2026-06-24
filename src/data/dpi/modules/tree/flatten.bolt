@@ -25,12 +25,10 @@ function dpi:tree/flatten/main:
     snapshot[-1].depth = depth
 
     if item.child:
-      if not item.collapsed:
-        snapshot[-1].nest = true
-        stack.append(item.child)
-        depth += 1
-        function dpi:tree/flatten/main
-        depth -= 1
+      stack.append(item.child)
+      depth += 1
+      function dpi:tree/flatten/main
+      depth -= 1
 
     item.remove()
     function dpi:tree/flatten/main

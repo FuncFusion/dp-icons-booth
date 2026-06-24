@@ -6,6 +6,7 @@ from dpi:config import storage, var, print_nbt
 from dpi:tree/object import Tree
 from dpi:filesystem import Node
 
+update_snapshot = var["#dpi.tree.snapshot.update_pending"]
 update_tree = var["#dpi.tree.update_pending"]
 
 def get_icon(name):
@@ -25,10 +26,13 @@ function dpi:node/render/get_name:
     $data modify storage dpi:main icon set from storage dpi:generated typed_icons."$(type)"
     $data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)"
 
+  if input.closed:
+    icon = get_icon("generic_folder_closed")
+
   if not icon:
     icon = get_icon("generic_file")
 
-  empty_string = {text:"                                                            "}
+  empty_string = {text:"                                                         "}
   name = [print_nbt("icon"), {text:" "}, print_nbt("node.render.input.name"), empty_string]
   storage.node.render.output = name
 
@@ -37,7 +41,7 @@ function dpi:node/render/spawn:
   left_click = "function dpi:tree/collapse/init"
 
   button = gui.Button(left_click, right_click, name)
-  button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"])
+  button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"], [0.5, -0.5, 0.0])
 
   execute as @n[tag=dpi.node.new]:
     entity = expr.Data.entity("@s")
@@ -46,9 +50,7 @@ function dpi:node/render/spawn:
     tag @s remove dpi.node.new
 
 function dpi:tree/render/init:
-  say gex
   snapshot = storage.tree.render.input
-  tellraw @a snapshot
   count = var["#dpi.count"]
   count = 0
   length = len(snapshot)
@@ -59,10 +61,44 @@ function dpi:tree/render/init:
 function dpi:tree/render/main:
   item = snapshot[0]
   count += 1
+  depth = var["#dpi.depth"]
+  depth = item.depth
 
+  # function dpi:node/render/chat
+
+  if not item.collapsed:
+    at @s function dpi:tree/render/apply_depth
+    
+    storage.node.render.input = item
+    at @s function dpi:node/render
+    render_name = print_nbt("node.render.output")
+
+    at @s function dpi:tree/render/reset_depth
+    tp @s ~ ~-0.3 ~
+
+  snapshot.append(item)
+  item.remove()
+
+  if count < length:
+    at @s run function dpi:tree/render/main
+
+def move_marker(x):
+  for i in range(10):
+    if depth == i:
+      for j in range(i):
+        at @s tp @s ~0.3 ~ ~
+
+function dpi:tree/render/apply_depth:
+  move_marker(0.3)
+
+function dpi:tree/render/reset_depth:
+  move_marker(-0.3)
+
+function dpi:node/render/chat:
   storage.node.render.input = item
   function dpi:node/render/get_name
   render_name = print_nbt("node.render.output")
+
   indent = {text:"  "}
   message = storage.tree.render_message
   message.remove()
@@ -80,13 +116,6 @@ function dpi:tree/render/main:
 
   tellraw @a print_nbt("tree.render_message")
 
-  snapshot.append(item)
-  item.remove()
-
-  if count < length:
-    at @s run function dpi:tree/render/main
-
-
 append function dpi:temp:
   tree = Tree()
   pack = Node("pack.mcmeta", "txt", tree.root)
@@ -101,13 +130,14 @@ append function dpi:temp:
   tick = Node("tick.mcfunction", "mcf", functions)
   load = Node("load.mcfunction", "mcf", functions)
 
-  execute positioned 112 84 -123:
+  execute positioned 112 85 -123:
     tree.render()
 
-# append function dpi:tick:
-#   if update_tree:
-#     execute positioned 112 84 -123:
-#       tree.update()
+append function dpi:tick:
+  if update_tree:
+    execute positioned 112 85 -123:
+      tree.update()
 
 append function dpi:load:
+  update_snapshot = 1
   schedule function dpi:temp 2t replace
