@@ -48,6 +48,7 @@ function dpi:node/expand/main:
     if depth > matched_depth:
       tellraw @a ["  REMOVE ", item.name, " (depth ", depth, " > ", matched_depth, ")"]
       item.collapsed.remove()
+      item.closed.remove()
     else:
       tellraw @a ["  STOP at ", item.name, " (depth ", depth, " <= ", matched_depth, ")"]
       matched_depth = 0

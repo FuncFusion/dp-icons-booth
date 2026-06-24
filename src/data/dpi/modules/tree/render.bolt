@@ -37,7 +37,7 @@ function dpi:node/render/get_name:
   storage.node.render.output = name
 
 function dpi:node/render/spawn:
-  right_click = "execute on passengers run tag @s add dpi.selected"
+  right_click = "function dpi:node/select"
   left_click = "function dpi:node/fold"
 
   button = gui.Button(left_click, right_click, name)

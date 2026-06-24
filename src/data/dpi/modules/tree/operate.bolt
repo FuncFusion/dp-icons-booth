@@ -1,0 +1,5 @@
+
+function dpi:node/select:
+  say gex
+  tag @s add dpi.node.selected
+  on passengers run data modify entity @s text set value "say gex"

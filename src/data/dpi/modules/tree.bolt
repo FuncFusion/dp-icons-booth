@@ -2,3 +2,4 @@ import ./tree/flatten as flatten
 import ./tree/object as object
 import ./tree/render as render
 import ./tree/fold as fold
+import ./tree/operate as operate
