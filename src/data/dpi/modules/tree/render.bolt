@@ -86,51 +86,6 @@ function dpi:tree/render/main:
   if count < length:
     at @s run function dpi:tree/render/main
 
-function dpi:tree/collapse/init:
-  entity = expr.Data.entity("@s")
-  node = storage.fs
-  match = entity.data.node
-  stack = storage.args.input
-  stack = []
-  stack.append(node.child)
-  function dpi:tree/collapse/main
-
-function dpi:tree/node/compare:
-  item = stack[-1][0]
-  match_found = var["#dpi.match"]
-  storage.temp = match
-  execute store success score f"#dpi.match" dpi.var
-    run data modify storage dpi:main temp set from storage dpi:main args.input[-1][0]
-
-  execute store success score f"#dpi.match" dpi.var
-    if score f"#dpi.match" dpi.var matches 0
-
-function dpi:tree/collapse/main:
-  item = stack[-1][0]
-
-  if not stack:
-    return 0
-
-  if item:
-    function dpi:tree/node/compare
-    match_found = var["#dpi.match"]
-    
-    if match_found:
-      item.collapsed = true
-      update_tree = 1
-      tellraw @a ["collapsing ", item]
-      stack.remove()
-
-    if item.child:
-      stack.append(item.child)
-      function dpi:tree/collapse/main
-
-    item.remove()
-    function dpi:tree/collapse/main
-
-  if stack[0] and not item:
-    stack[-1].remove()
-
 
 append function dpi:temp:
   tree = Tree()

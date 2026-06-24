@@ -83,19 +83,18 @@ def main():
     with open(OUTPUT_PATH, "w") as f:
         json.dump(result, f, indent=2)
 
-    bolt_path = os.path.join(SCRIPT_DIR, "..", "src", "data", "dpi", "modules", "icons.bolt")
-    os.makedirs(os.path.dirname(bolt_path), exist_ok=True)
-    with open(bolt_path, "w") as f:
-        f.write("append function dpi:load:\n")
-        f.write("  data modify storage dpi:generated typed_icons set value {}\n")
-        f.write("  data modify storage dpi:generated named_icons set value {}\n")
+    mcf_path = os.path.join(SCRIPT_DIR, "..", "lib", "data", "dpi", "function", "load_icons.mcfunction")
+    os.makedirs(os.path.dirname(mcf_path), exist_ok=True)
+    with open(mcf_path, "w") as f:
+        f.write("data modify storage dpi:generated typed_icons set value {}\n")
+        f.write("data modify storage dpi:generated named_icons set value {}\n")
         for ext, icon in sorted(typed.items()):
-            f.write(f'  data modify storage dpi:generated typed_icons."{ext}" set value {{atlas:"items", sprite:"dpi:icons/{icon}", shadow_color:0}}\n')
+            f.write(f'data modify storage dpi:generated typed_icons."{ext}" set value {{atlas:"items", sprite:"dpi:icons/{icon}", shadow_color:0}}\n')
         for name, icon in sorted(named.items()):
-            f.write(f'  data modify storage dpi:generated named_icons."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}", shadow_color:0}}\n')
+            f.write(f'data modify storage dpi:generated named_icons."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}", shadow_color:0}}\n')
 
     print(f"Generated {OUTPUT_PATH}")
-    print(f"Generated {bolt_path}")
+    print(f"Generated {mcf_path}")
     print(f"  typed_icons: {len(typed)} entries")
     print(f"  named_icons: {len(named)} entries")
 
