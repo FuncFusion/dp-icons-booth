@@ -1,13 +1,12 @@
 {
 	"model": {
 	  "type": "minecraft:model",
-	  "model": "dpi:item/3d_icons/loot_table_file",
+	  "model": "dpi:item/interior/dpi_chest",
 	  "tints": [
 		  {
 			  "type": "minecraft:constant",
 			  "value": 66046
 		  }
 	  ]
-	},
-	"oversized_in_gui": true
+	}
   }
