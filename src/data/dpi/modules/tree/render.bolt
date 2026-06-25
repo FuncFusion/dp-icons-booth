@@ -37,7 +37,7 @@ function dpi:node/render/get_name:
   storage.node.render.output = name
 
 function dpi:node/render/spawn:
-  right_click = "function dpi:node/select"
+  right_click = "function dpi:node/toggle/select"
   left_click = "function dpi:node/fold"
 
   button = gui.Button(left_click, right_click, name)
@@ -130,12 +130,12 @@ append function dpi:temp:
   tick = Node("tick.mcfunction", "mcf", functions)
   load = Node("load.mcfunction", "mcf", functions)
 
-  execute positioned 112 85 -123:
+  execute positioned 112 86 -123:
     tree.render()
 
 append function dpi:tick:
   if update_tree:
-    execute positioned 112 85 -123:
+    execute positioned 112 86 -123:
       tree.update()
 
 append function dpi:load:
