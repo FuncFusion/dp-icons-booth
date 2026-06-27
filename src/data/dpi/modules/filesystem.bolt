@@ -5,15 +5,23 @@ import bolt_expressions as expr
 def get_icon(name):
     return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
 
+append function dpi:load:
+  global_id = var["#dpi.node.global_id"]
+  global_id = 0
+
 class Node:
   def __init__(self, name, type, parent=storage.fs):
-    parent.child.append({})
-    parent.child[-1].name = name
-    parent.child[-1].type = type
-    
     self._name = name
     self.parent = parent
     self.type = type
+
+    global_id = var["#dpi.node.global_id"]
+    global_id += 1
+
+    parent.child.append({})
+    parent.child[-1].name = name
+    parent.child[-1].type = type
+    parent.child[-1].id = global_id
 
     if type == "dir":
       node = self.node()

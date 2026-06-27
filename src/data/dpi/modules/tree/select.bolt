@@ -1,0 +1,42 @@
+import bolt_expressions as expr
+from dpi:config import print_nbt, storage, var
+
+function dpi:node/toggle/select:
+  if entity @s[tag=dpi.node.selected]:
+    return run function dpi:node/unselect
+
+  as @e[tag=dpi.node.selected] function dpi:node/unselect
+
+  function dpi:node/select
+
+function dpi:node/unselect:
+  tag @s remove dpi.node.selected
+
+  entity = expr.Data.entity("@s")
+  node = storage.node.select
+  node = entity.data.node
+
+  storage.node.render.input = node
+  function dpi:node/render/get_name
+  render_name = print_nbt("node.render.output")
+
+  execute on passengers:
+    entity.text = render_name
+
+
+function dpi:node/select:
+  tag @s add dpi.node.selected
+
+  entity = expr.Data.entity("@s")
+  node = storage.node.select
+  node = entity.data.node
+
+  storage.node.render.input = node
+  function dpi:node/render/get_name
+
+  storage.node.render.output[2].color = "aqua"
+  render_name = print_nbt("node.render.output")
+
+  execute on passengers:
+    entity.text = render_name
+

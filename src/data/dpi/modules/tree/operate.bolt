@@ -1,42 +1,50 @@
 import bolt_expressions as expr
-from dpi:config import print_nbt, storage, var
+from dpi:config import storage, var, print_nbt
 
-function dpi:node/toggle/select:
-  if entity @s[tag=dpi.node.selected]:
-    return run function dpi:node/unselect
+update_tree = var["#dpi.tree.update_pending"]
+update_snapshot = var["#dpi.tree.snapshot.update_pending"]
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
-  as @e[tag=dpi.node.selected] function dpi:node/unselect
+function dpi:node/remove:
+  as @n[tag=dpi.node.selected]:
+    match = var["#dpi.match"]
+    match = id["@s"]
+    function dpi:node/remove/init
 
-  function dpi:node/select
+function dpi:node/remove/init:
+  snapshot = storage.tree.snapshot
 
-function dpi:node/unselect:
-  tag @s remove dpi.node.selected
+  count = var["#dpi.count"]
+  count = 0
+  matched_depth = var["#dpi.matched_depth"]
+  matched_depth = 0
+  match_found = var["#dpi.match_found"]
+  depth = var["#dpi.depth"]
+  depth = 0
 
-  entity = expr.Data.entity("@s")
-  node = storage.node.select
-  node = entity.data.node
+  length = len(snapshot)
+  function dpi:node/remove/main
 
-  storage.node.render.input = node
-  function dpi:node/render/get_name
-  render_name = print_nbt("node.render.output")
+function dpi:node/remove/main:
+  item = snapshot[0]
+  count += 1
 
-  execute on passengers:
-    entity.text = render_name
+  function dpi:node/compare
 
+  if matched_depth:
+    depth = item.depth
+    if depth > matched_depth:
+      item.removed = true
+    else:
+      matched_depth = 0
 
-function dpi:node/select:
-  tag @s add dpi.node.selected
+  if match_found:
+    item.removed = true
+    matched_depth = item.depth
+    update_tree = 1
+    update_snapshot = 1
 
-  entity = expr.Data.entity("@s")
-  node = storage.node.select
-  node = entity.data.node
-
-  storage.node.render.input = node
-  function dpi:node/render/get_name
-
-  storage.node.render.output[2].color = "aqua"
-  render_name = print_nbt("node.render.output")
-
-  execute on passengers:
-    entity.text = render_name
-
+  snapshot.append(item)
+  item.remove()
+  if count < length:
+    function dpi:node/remove/main

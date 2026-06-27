@@ -7,11 +7,14 @@ function dpi:tree/flatten/init:
   depth = 1
 
   snapshot = storage.tree.snapshot
+  storage.tree.old_snapshot = snapshot
   snapshot = []
 
   stack = storage.args.input
   stack = []
   stack.append(node.child)
+
+  state = storage.state
 
   function dpi:tree/flatten/main
 
@@ -19,10 +22,17 @@ function dpi:tree/flatten/main:
   item = stack[-1][0]
 
   if item:
-    snapshot.append({name:"", depth:0})
-    snapshot[-1].name = item.name
-    snapshot[-1].type = item.type
-    snapshot[-1].depth = depth
+    raw function dpi:tree/flatten/preserve_state with storage dpi:main args.input[-1][0]
+
+    if state:
+      if not state.removed:
+        snapshot.append(state)
+    else:
+      snapshot.append({name:"", depth:0})
+      snapshot[-1].name = item.name
+      snapshot[-1].type = item.type
+      snapshot[-1].id = item.id
+      snapshot[-1].depth = depth
 
     if item.child:
       stack.append(item.child)
@@ -37,3 +47,6 @@ function dpi:tree/flatten/main:
     if stack[0]:
       stack[-1].remove()
 
+function dpi:tree/flatten/preserve_state:
+  state.remove()
+  $data modify storage dpi:main state set from storage dpi:main tree.old_snapshot[{id:$(id)}]

@@ -8,6 +8,7 @@ from dpi:filesystem import Node
 
 update_snapshot = var["#dpi.tree.snapshot.update_pending"]
 update_tree = var["#dpi.tree.update_pending"]
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
 def get_icon(name):
   return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
@@ -47,6 +48,9 @@ function dpi:node/render/spawn:
     entity = expr.Data.entity("@s")
     on passengers run tag @s add dpi.tree.node
     entity.data.node = input
+    id["@s"] = input.id
+    if data storage dpi:main node.render.input{type:"dir"} run tag @s add dpi.node.dir
+    if data storage dpi:main node.render.input.closed run tag @s add dpi.node.closed
     tag @s remove dpi.node.new
 
 function dpi:tree/render/init:
@@ -54,6 +58,7 @@ function dpi:tree/render/init:
   count = var["#dpi.count"]
   count = 0
   length = len(snapshot)
+  can_render = var["#dpi.can_render"]
   summon marker ~ ~ ~ {Tags:["dpi.tree.marker"]}
   as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
   kill @n[tag=dpi.tree.marker]
@@ -64,9 +69,13 @@ function dpi:tree/render/main:
   depth = var["#dpi.depth"]
   depth = item.depth
 
-  # function dpi:node/render/chat
+  can_render = 0
 
-  if not item.collapsed:
+  if not item.hidden:
+    if not item.removed:
+      can_render = 1
+
+  if can_render:
     at @s function dpi:tree/render/apply_depth
     
     storage.node.render.input = item
@@ -93,28 +102,6 @@ function dpi:tree/render/apply_depth:
 
 function dpi:tree/render/reset_depth:
   move_marker(-0.3)
-
-function dpi:node/render/chat:
-  storage.node.render.input = item
-  function dpi:node/render/get_name
-  render_name = print_nbt("node.render.output")
-
-  indent = {text:"  "}
-  message = storage.tree.render_message
-  message.remove()
-  message = [render_name]
-  message.prepend(indent)
-  
-  if item.depth:
-    depth = var["#dpi.depth"]
-    depth = item.depth
-
-    for i in range(10):
-      if depth == i:
-        for j in range(i):
-          message.prepend(indent)
-
-  tellraw @a print_nbt("tree.render_message")
 
 append function dpi:temp:
   tree = Tree()
