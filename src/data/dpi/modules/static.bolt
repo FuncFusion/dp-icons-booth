@@ -38,20 +38,24 @@ function dpi:entities/static/summon:
 	summon text_display 114.0 89.3875 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 360, shadow: 0b, text: [{atlas:"items",sprite:"dpi:icons/aseprite_file"}," You can find all of the assets used (and unused!) during the development of Datapack Icons in our ",{color:"#478BE6",underlined:true,text:"assets repo"},".\n\n",{atlas:"items",sprite:"dpi:icons/contributing_file"}," If you need to report a bug, request a new icon or suggest a feature, you can do that in our ",{atlas:"items",sprite:"dpi:icons/misc/discord"}," ",{color:"#478BE6",underlined:true,text:"discord server"}," or by opening a ",{color:"#478BE6",underlined:true,text:"github issue"},".\n\n",{atlas:"items",sprite:"dpi:icons/dimension_file"}," Datapack Icons isn't just for VS Code! We've ported the extension to other IDEs. Keep in mind they will probably have fewer features than the VS Code extension due to different extension capabilities.\n\n- ",{atlas:"items",sprite:"dpi:icons/sublime_file"}," ",{underlined: true,color:"#478BE6",text:"Sublime Text",bold:true},{underlined: true,color:"#478BE6",text:" port"},"\n- ",{underlined: true,color:"#478BE6",text:"Zed",bold:true},{underlined: true,color:"#478BE6",text:" port\n\n"},"We are also planning a ",{atlas:"items",sprite:"dpi:icons/jetbrains_file"},{bold: true, text:" JetBrains"}," port and a ",{atlas:"items",sprite:"dpi:icons/neovim_file"},{bold: true, text:" Neovim"}," port in the future."], transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left"}
 
 	# assets repo interaction
-    gui.Button("", "execute on target run dialog show @s dpi:assets_repo_link").spawn_abs([115.15, 92.75, -122.9375], "south", 2, 0.5)
+    gui.Button("execute on attacker run dialog show @s dpi:assets_repo_link", "execute on target run dialog show @s dpi:assets_repo_link").spawn_abs([115.15, 92.75, -122.9375], "south", 2, 0.5)
 	# discord link interaction
-    gui.Button("", "execute on target run dialog show @s dpi:discord_link").spawn_abs([114.7, 92.0, -122.9375], "south", 2.5, 0.5)
+    gui.Button("execute on attacker run dialog show @s dpi:discord_link", "execute on target run dialog show @s dpi:discord_link").spawn_abs([114.7, 92.0, -122.9375], "south", 2.5, 0.5)
 	# github issue interaction
-    gui.Button("", "execute on target run dialog show @s dpi:issues_link").spawn_abs([110.25, 91.75, -122.9375], "south", 2, 0.5)
+    gui.Button("execute on attacker run dialog show @s dpi:issues_link", "execute on target run dialog show @s dpi:issues_link").spawn_abs([110.25, 91.75, -122.9375], "south", 2, 0.5)
 	# sublime port interaction
-    gui.Button("", "execute on target run dialog show @s dpi:sublime_port_link").spawn_abs([111.1, 90.4, -122.9375], "south", 3, 0.3)
+    gui.Button("execute on attacker run dialog show @s dpi:sublime_port_link", "execute on target run dialog show @s dpi:sublime_port_link").spawn_abs([111.1, 90.4, -122.9375], "south", 3, 0.3)
 	# zed port interaction
-    gui.Button("", "execute on target run dialog show @s dpi:zed_port_link").spawn_abs([111.1, 90.1, -122.9375], "south", 3, 0.3)
+    gui.Button("execute on attacker run dialog show @s dpi:zed_port_link", "execute on target run dialog show @s dpi:zed_port_link").spawn_abs([111.1, 90.1, -122.9375], "south", 3, 0.3)
 
   ## chests
   # upper floor
   summon item_display 108.8750 102.0 -120.5 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.70710677f, 0.0f, 0.70710677f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]}}
-  gui.Button("execute on target run say ADVANCEMENT GRANT - EMERALD STICKER", "execute on target run say ADVANCEMENT GRANT - EMERALD STICKER").spawn_abs([109.1750, 101.5, -120.5], "east", 0.6, 0.6)
+  gui.Button("execute on attacker run say ADVANCEMENT GRANT - EMERALD STICKER", "execute on target run say ADVANCEMENT GRANT - EMERALD STICKER").spawn_abs([109.1750, 101.5, -120.5], "east", 0.6, 0.6)
+  
+  # welcome
+  summon item_display 108.8125 99.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]}}
+  gui.Button("execute on attacker run dialog show @s dpi:main_repo_link", "execute on target run dialog show @s dpi:main_repo_link").spawn_abs([109.1125, 98.5, -111.8125], "east", 0.6, 0.6)
 
 def add_url_dialogue(title, url):
   pattern = r"^(?:https?://)?(?:www\.)?(.+)"
@@ -88,6 +92,9 @@ def add_url_dialogue(title, url):
 dialog dpi:trailer_link:
   add_url_dialogue("Watch 5.0 trailer!", "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
+dialog dpi:main_repo_link:
+  add_url_dialogue("Main extension repository!", "https://github.com/FuncFusion/mc-dp-icons")
+
 dialog dpi:assets_repo_link:
   add_url_dialogue("Find all the assets here!", "https://github.com/FuncFusion/mc-dp-icons-assets")
 
@@ -102,3 +109,4 @@ dialog dpi:sublime_port_link:
 
 dialog dpi:zed_port_link:
   add_url_dialogue("Zed port", "https://github.com/FuncFusion/mc-dp-icons-zed")
+

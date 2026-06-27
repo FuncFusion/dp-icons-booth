@@ -7,6 +7,7 @@ import dpi:lev_icons as lev_icons
 import dpi:gui as gui
 import dpi:tree as tree
 import dpi:static as static
+import dpi:file_item as file_item
 
 append function_tag minecraft:tick:
   values: 
@@ -73,7 +74,7 @@ append function dpi:tick:
 
 append function dpi:tick/booth_entity:
   # emerald on the upper floor
-  execute as a2faf424-4fb9-4444-b486-29a39f24e675 at @s run rotate @s ~0.7 0
+  execute as a2faf424-4fb9-4444-b486-29a39f24e675 rotated as @s run rotate @s ~0.7 0
 
 append function dpi:tick/player:
   pass
