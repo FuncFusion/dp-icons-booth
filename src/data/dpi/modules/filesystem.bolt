@@ -1,15 +1,27 @@
-from dpi:config import var, storage
+from dpi:config import var, storage, print_nbt
+import dpi:gui as gui
 import bolt_expressions as expr
 
+def get_icon(name):
+    return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
+
+append function dpi:load:
+  global_id = var["#dpi.node.global_id"]
+  global_id = 0
+
 class Node:
-  def __init__(self, name, type, parent=storage.fs.root):
-    parent.child.append({})
-    parent.child[-1].name = name
-    parent.child[-1].type = type
-    
+  def __init__(self, name, type, parent=storage.fs):
     self._name = name
     self.parent = parent
     self.type = type
+
+    global_id = var["#dpi.node.global_id"]
+    global_id += 1
+
+    parent.child.append({})
+    parent.child[-1].name = name
+    parent.child[-1].type = type
+    parent.child[-1].id = global_id
 
     if type == "dir":
       node = self.node()
@@ -26,8 +38,14 @@ class Node:
     self.parent.child[{"name": self._name}].name = new_name
     self._name = new_name
 
+  def render(self, pos):
+    x = pos[0]
+    y = pos[1]
+    z = pos[2]
+    storage.node.render.input.node = self.node()
+    execute positioned x y z run function dpi:node/render
+
   def walk(self):
-    raw # walking
     storage.fs.walk.input = self.node()
     function dpi:fs/walk/init
 
@@ -39,7 +57,7 @@ function dpi:fs/walk/init:
   function dpi:fs/walk/main
 
 function dpi:fs/walk/main:
-  item = storage.args.input[-1][0]
+  item = stack[-1][0]
 
   if item:
     tellraw @a [item.name, " ", item.type]
@@ -53,29 +71,3 @@ function dpi:fs/walk/main:
 
   if stack[0] and not item:
     stack[-1].remove()
-
-function dpi:temp:
-  root = Node("root", "dir")
-  pack = Node("pack.mcmeta", "txt", root)
-  pack = Node("pack.ajmeta", "txt", root)
-  pack = Node("README.md", "md", root)
-  data = Node("data", "dir", root)
-  minecraft = Node("minecraft", "dir", data)
-  tags = Node("tags", "dir", minecraft)
-  function_tag = Node("function", "dir", tags)
-  tick_function_tag = Node("tick.json", "json", function_tag)
-  load_function_tag = Node("load.json", "json", function_tag)
-  dpi_namespace = Node("dpi", "dir", data)
-  functions = Node("function", "dir", dpi_namespace)
-  tick = Node("tick.mcfunction", "mcf", functions)
-  load = Node("load.mcfunction", "mcf", functions)
-
-  root.walk()
-
-append function dpi:load:
-  function dpi:temp
-
-class FileSystem:
-  def __init__():
-    pass
-

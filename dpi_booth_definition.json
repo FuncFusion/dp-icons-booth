@@ -15,7 +15,15 @@
 	"sticker_book": {
         "background_color": "#313338",
         "region": "patched_plateaus",
-        "stickers": []
+        "stickers": [
+            {
+                "sticker_id": "emerald",
+                "sticker_texture": "dpi:stickers/emerald",
+                "sticker_name": "Welcome to Datapack Icons Booth!",
+                "unobtained_text": "Enter the Booth and click the emerald",
+                "obtained_text": "Rewarded for entering the Booth and clicking the emerald"
+            }
+        ]
     },
 	"balloons": [
         {

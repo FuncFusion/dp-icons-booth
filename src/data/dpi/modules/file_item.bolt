@@ -1,0 +1,106 @@
+import os
+
+function dpi:file_item/give:
+    give @s paper[consumable={consume_seconds:999999999},custom_data={summit:{persist:{}},dpi:{file_item:1b}},item_name="File",item_model="dpi:file_item"]
+
+advancement dpi:file_item_use {
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:paper"
+          ],
+          "predicates": {
+            "minecraft:custom_data": "{dpi:{file_item:1b}}"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "dpi:file_item/use"
+  }
+}
+
+function dpi:file_item/use:
+    advancement revoke @s only dpi:file_item_use
+    dialog show @s dpi:file_item
+
+function dpi:file_item/submit_name:
+    $say filename - $(filename)
+
+function dpi:file_item/modify_icon:
+    $execute if items entity @s weapon.mainhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [{function:"minecraft:set_custom_model_data",strings:{values:["$(name)"],mode:"replace_all"}},{function:"minecraft:set_name",entity:"this",name:{text:"$(filename)",italic:0b},target:"custom_name"}]
+    $execute if items entity @s weapon.offhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [{function:"minecraft:set_custom_model_data",strings:{values:["$(name)"],mode:"replace_all"}},{function:"minecraft:set_name",entity:"this",name:{text:"$(filename)",italic:0b},target:"custom_name"}]
+
+dialog dpi:file_item {
+  "type": "minecraft:confirmation",
+  "title": "Give your file a name!",
+  "external_title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "text": "This item can become any file icon.\nJust input a filename with an extension and see the result!"
+    },
+    "width": 500
+  },
+  "inputs": [
+    {
+      "type": "minecraft:text",
+      "key": "file_item_name",
+      "label": "",
+      "label_visible": false
+    }
+  ],
+  "can_close_with_escape": true,
+  "after_action": "close",
+  "yes": {
+    "label": "Rename",
+    "action": {
+      "type": "minecraft:dynamic/run_command",
+      "template": "function dpi:file_item/submit_name {filename:\"$(file_item_name)\"}"
+    }
+  },
+  "no": {
+    "label": "Close"
+  }
+}
+
+def generate_item_models():
+    ICONS_DIR = './src/assets/dpi/textures/file_item_icons/'
+    cases = []
+
+    for filename in os.listdir(ICONS_DIR):
+        if filename.endswith('_file.png'):
+            name = filename[:-4]
+            
+            model f"dpi:item/file_item/{name}" {
+                "parent": "dpi:item/file_item_parent",
+                "textures": {
+                    "layer0": f"dpi:file_item_icons/{name}"
+                }
+            }
+            
+            cases.append({
+                "when": name,
+                "model": {
+                    "type": "minecraft:model",
+                    "model": f"dpi:item/file_item/{name}"
+                }
+            })
+
+    item_model dpi:file_item {
+        "model": {
+            "type": "minecraft:select",
+            "property": "minecraft:custom_model_data",
+            "cases": cases,
+            "fallback": {
+                "type": "minecraft:model",
+                "model": "dpi:item/file_item/generic_file"
+            }
+        }
+    }
+
+generate_item_models()

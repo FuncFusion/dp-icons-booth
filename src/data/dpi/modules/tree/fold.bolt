@@ -1,0 +1,124 @@
+import bolt_expressions as expr
+from dpi:config import storage, var, print_nbt
+
+update_tree = var["#dpi.tree.update_pending"]
+update_snapshot = var["#dpi.tree.snapshot.update_pending"]
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+
+function dpi:node/fold:
+  match = var["#dpi.match"]
+  closed = var["#dpi.closed"]
+  match = id["@s"]
+
+  unless entity @s[tag=dpi.node.dir] run return 0
+
+
+  closed = 0
+  if entity @s[tag=dpi.node.closed]:
+    closed = 1
+
+  if closed:
+    tag @s remove dpi.node.closed
+    function dpi:node/expand/init
+  else:
+    tag @s add dpi.node.closed
+    function dpi:node/collapse/init
+
+function dpi:node/expand/init:
+  snapshot = storage.tree.snapshot
+
+  count = var["#dpi.count"]
+  count = 0
+  matched_depth = var["#dpi.matched_depth"]
+  matched_depth = 0
+  depth = var["#dpi.depth"]
+  depth = 0
+
+  length = len(snapshot)
+  function dpi:node/expand/main
+
+function dpi:node/expand/main:
+  item = snapshot[0]
+  count += 1
+
+  match_found = var["#dpi.match_found"]
+  match_found = 0
+  function dpi:node/compare
+
+  if matched_depth:
+    depth = item.depth
+    if depth > matched_depth:
+      item.hidden.remove()
+      item.closed.remove()
+    else:
+      matched_depth = 0
+
+  if match_found:
+    item.closed.remove()
+    matched_depth = item.depth
+    update_tree = 1
+    update_snapshot = 0
+
+  snapshot.append(item)
+  item.remove()
+  if count < length:
+    function dpi:node/expand/main
+
+
+
+
+
+
+function dpi:node/collapse/init:
+  snapshot = storage.tree.snapshot
+
+
+  count = var["#dpi.count"]
+  count = 0
+  matched_depth = var["#dpi.matched_depth"]
+  matched_depth = 0
+  depth = var["#dpi.depth"]
+  depth = 0
+
+  length = len(snapshot)
+  function dpi:node/collapse/main
+
+function dpi:node/collapse/main:
+  item = snapshot[0]
+  count += 1
+
+  match_found = var["#dpi.match_found"]
+  match_found = 0
+  function dpi:node/compare
+
+  if matched_depth:
+    depth = item.depth
+    if depth > matched_depth:
+      item.hidden = true
+    else:
+      matched_depth = 0
+
+  if match_found:
+    item.closed = true
+    matched_depth = item.depth
+    update_tree = 1
+    update_snapshot = 0
+
+  snapshot.append(item)
+  item.remove()
+  if count < length:
+    function dpi:node/collapse/main
+
+function dpi:node/compare:
+  item = snapshot[0]
+  match = var["#dpi.match"]
+  compare = var["#dpi.compare"]
+  match_found = var["#dpi.match_found"]
+
+  match_found = 0
+
+  compare = item.id
+
+  if match == compare:
+    match_found = 1
+

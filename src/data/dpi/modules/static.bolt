@@ -1,0 +1,223 @@
+import dpi:gui as gui
+import re
+
+function dpi:entities/static/summon:
+	## wall 1
+	# ᴡᴇʟᴄᴏᴍᴇ
+	summon text_display 114.0 102.625 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"],shadow: 0b, text: "ᴡᴇʟᴄᴏᴍᴇ", transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},  background: 0}
+
+	# introduction
+	summon text_display 116.5625 98.9625 -111.0 {Tags:["summit.static","summit.booth_entity.dpi"], shadow: 0b, text: [{shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:item/logos/deta_rack"}, " ", {underlined: 1b, text: "Datapack Icons", bold: 1b}, " is a polished, Minecraft-inspired icon suite for the modern developer's workflow.\n\n", {shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/vscode_file"}, " Initially made as a small ", {color: "#5FCDE4", text: "VSCode"}, " icon theme with 25 icons, now it's sitting at over ",{text:"50k",color:"#96f3ff"}," installs! Featuring over ", {color: "gold", text: "321", bold: 1b}, " icons, lots of customizability features and ports to other IDEs.\n\n", {shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/atlases_file"}, {text:" Dive deeper",color:"#4488e0"}," into the booth to learn more, and try our ",{text: "fully-featured simulation", color:"aqua"}," of the VSCode extension waiting at the bottom!"], transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left"}
+
+	## wall 2
+	# ᴛʜᴇ ᴛɪᴍᴇʟɪɴᴇ
+	summon text_display 114.0 99.4 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"],shadow: 0b, text: "ᴛʜᴇ ᴛɪᴍᴇʟɪɴᴇ",transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},  background: 0}
+
+	# timeline
+	summon text_display 114.0 95.5875 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 360, shadow: 0b, text: [{shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/mcfunction_tick_file"}, " In ",{color:"#c9e2ff",text:"1.0"},", the ",{color:"#c9e2ff",text:"first release"},", we just made a few icons for some datapack files and folders. That's where the project got the name from.\n\n",{atlas: "minecraft:items", sprite: "dpi:icons/models_file"}," In ",{color:"#41d3ff",text:"2.0"},", the ",{color:"#41d3ff",text:"resource pack"}," update, we ",{bold:true,text:"doubled"}," the amount of icons by adding support for resource packs.\n\n",{atlas: "minecraft:items", sprite: "dpi:icons/python_file"}," In ",{color:"#1eff22",text:"3.0"},", the ",{color:"#1eff22",text:"programming update"},", we ",{bold:true,text:"doubled"}," the amount of icons again by adding icons for various programming languages and related files. We also added first dynamic features.\n\n",{atlas: "minecraft:items", sprite: "dpi:icons/misc/bedrock"}," In ",{color:"#606A73",text:"4.0"},", the ",{color:"#606A73",text:"bedrock update"},", we added icons for bedrock behavior packs and resource packs, as well as a couple more dynamic features. Fun fact - the idea for this project was inspired by bedrock's behavior pack documentation!"], transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left"}
+
+	## wall 3
+	# ᴅᴇᴇᴘ ᴅɪᴠᴇ
+	summon text_display 114.5 96.2 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"],shadow: 0b, text: "ᴅᴇᴇᴘ ᴅɪᴠᴇ", transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},  background: 0}
+
+	# deep dive
+	summon text_display 117.0 92.6 -111.0 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 160, shadow: 0b, text: [{shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/shell_file"}," In ",{color:"#4488e0",text:"5.0"},", the ",{color:"#4488e0",text:"deep dive update"},", our latest and biggest update, we ",{bold:true,text:"doubled"}," the amount of icons AGAIN by adding icons for tons of less popular, niche stuff. We also revamped our whole codebase, optimized icon svgs, and expanded our dynamic features even more!\n\n",{shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/video_file"}, " Watch the ", {color: "#478BE6", underlined: 1b, text: "5.0 trailer"}, " to see the everything in action!\n", {color: "dark_gray", text: "(click me or the image)"}], transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left"}
+
+	#trailer thumbnail
+	summon item_display 111.75 95.375 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:images/trailer_thumbnail"}, count: 1, id: "minecraft:painting"}, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]}}
+
+	# trailer link interactions
+    gui.Button("", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([117.1, 92.6, -111.1], "north", 3.7, 0.8)
+    gui.Button("", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([111.75, 92.8, -111.1], "north", 5, 3)
+
+	## wall 4
+	# ʟɪɴᴋꜱ
+	summon text_display 114.0 93.4 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"],shadow: 0b, text: "ʟɪɴᴋꜱ",transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},  background: 0}
+
+	# links
+	summon text_display 114.0 89.3875 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 360, shadow: 0b, text: [{atlas:"items",sprite:"dpi:icons/aseprite_file"}," You can find all of the assets used (and unused!) during the development of Datapack Icons in our ",{color:"#478BE6",underlined:true,text:"assets repo"},".\n\n",{atlas:"items",sprite:"dpi:icons/contributing_file"}," If you need to report a bug, request a new icon or suggest a feature, you can do that in our ",{atlas:"items",sprite:"dpi:icons/misc/discord"}," ",{color:"#478BE6",underlined:true,text:"discord server"}," or by opening a ",{color:"#478BE6",underlined:true,text:"github issue"},".\n\n",{atlas:"items",sprite:"dpi:icons/dimension_file"}," Datapack Icons isn't just for VS Code! We've ported the extension to other IDEs. Keep in mind they will probably have fewer features than the VS Code extension due to different extension capabilities.\n\n- ",{atlas:"items",sprite:"dpi:icons/sublime_file"}," ",{underlined: true,color:"#478BE6",text:"Sublime Text",bold:true},{underlined: true,color:"#478BE6",text:" port"},"\n- ",{underlined: true,color:"#478BE6",text:"Zed",bold:true},{underlined: true,color:"#478BE6",text:" port\n\n"},"We are also planning a ",{atlas:"items",sprite:"dpi:icons/jetbrains_file"},{bold: true, text:" JetBrains"}," port and a ",{atlas:"items",sprite:"dpi:icons/neovim_file"},{bold: true, text:" Neovim"}," port in the future."], transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left"}
+
+	# assets repo interaction
+    gui.Button("execute on attacker run dialog show @s dpi:assets_repo_link", "execute on target run dialog show @s dpi:assets_repo_link").spawn_abs([115.15, 92.75, -122.9375], "south", 2, 0.5)
+	# discord link interaction
+    gui.Button("execute on attacker run dialog show @s dpi:discord_link", "execute on target run dialog show @s dpi:discord_link").spawn_abs([114.7, 92.0, -122.9375], "south", 2.5, 0.5)
+	# github issue interaction
+    gui.Button("execute on attacker run dialog show @s dpi:issues_link", "execute on target run dialog show @s dpi:issues_link").spawn_abs([110.25, 91.75, -122.9375], "south", 2, 0.5)
+	# sublime port interaction
+    gui.Button("execute on attacker run dialog show @s dpi:sublime_port_link", "execute on target run dialog show @s dpi:sublime_port_link").spawn_abs([111.1, 90.4, -122.9375], "south", 3, 0.3)
+	# zed port interaction
+    gui.Button("execute on attacker run dialog show @s dpi:zed_port_link", "execute on target run dialog show @s dpi:zed_port_link").spawn_abs([111.1, 90.1, -122.9375], "south", 3, 0.3)
+
+  ## chests
+  # upper floor
+  summon item_display 108.8750 102.0 -120.5 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.70710677f, 0.0f, 0.70710677f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]}}
+  gui.Button("execute on attacker run say ADVANCEMENT GRANT - EMERALD STICKER", "execute on target run say ADVANCEMENT GRANT - EMERALD STICKER").spawn_abs([109.1750, 101.5, -120.5], "east", 0.6, 0.6)
+  
+  # welcome
+  summon item_display 108.8125 99.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]}}
+  gui.Button("execute on attacker run dialog show @s dpi:main_repo_link", "execute on target run dialog show @s dpi:main_repo_link").spawn_abs([109.1125, 98.5, -111.8125], "east", 0.6, 0.6)
+
+  # timeline
+  summon item_display 119.1875 96.0 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, -0.38268352f, 0.0f, 0.92387956f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999993f, 2.0000005f]}}
+  gui.Button("execute on attacker run dialog show @s dpi:timeline", "execute on target run dialog show @s dpi:timeline").spawn_abs([119.4825, 95.5, -122.1875], "east", 0.6, 0.6)
+
+  # deep dive
+  summon item_display 108.8125 93.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]}}
+  gui.Button("execute on attacker run dialog show @s dpi:did_watch_trailer", "execute on target run dialog show @s dpi:did_watch_trailer").spawn_abs([109.1125, 92.5, -111.8125], "east", 0.6, 0.6)
+
+  # links
+  summon item_display 119.1875 90.0 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, -0.38268352f, 0.0f, 0.92387956f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999993f, 2.0000005f]}}
+  gui.Button("execute on attacker run dialog show @s dpi:used_by_links", "execute on target run dialog show @s dpi:used_by_links").spawn_abs([119.4825, 89.5, -122.1875], "east", 0.6, 0.6)
+
+
+def add_url_dialogue(title, url):
+  pattern = r"^(?:https?://)?(?:www\.)?(.+)"
+
+  domain = re.sub(pattern, r"\1", url)
+
+  return {
+    "type": "minecraft:confirmation",
+    "title": title,
+    "external_title": "",
+    "body": {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "text": domain,
+        "color": "yellow"
+      },
+      "width": 500
+    },
+    "inputs": [],
+    "can_close_with_escape": true,
+    "after_action": "close",
+    "yes": {
+      "label": "Open link",
+      "action": {
+        "type": "minecraft:open_url",
+        "url": url
+      }
+    },
+    "no": {
+      "label": "Close"
+    }
+  }
+
+dialog dpi:trailer_link:
+  add_url_dialogue("Watch 5.0 trailer!", "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
+dialog dpi:main_repo_link:
+  add_url_dialogue("Check out the extension's repository!", "https://github.com/FuncFusion/mc-dp-icons")
+
+dialog dpi:assets_repo_link:
+  add_url_dialogue("Find all the assets here!", "https://github.com/FuncFusion/mc-dp-icons-assets")
+
+dialog dpi:discord_link:
+  add_url_dialogue("Join our discord server!", "https://discord.gg/9FMRD9GvAq")
+
+dialog dpi:issues_link:
+  add_url_dialogue("You can open a github issue here!", "https://github.com/FuncFusion/mc-dp-icons/issues")
+
+dialog dpi:sublime_port_link:
+  add_url_dialogue("Sublime Text port", "https://github.com/FuncFusion/mc-dp-icons-sublime")
+
+dialog dpi:zed_port_link:
+  add_url_dialogue("Zed port", "https://github.com/FuncFusion/mc-dp-icons-zed")
+
+dialog dpi:timeline {
+  "type": "minecraft:notice",
+  "title": "More fun facts",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "1.0 was released on March 31st, 2023. The project is more than 3 years old!\n\nFor one of the authors of this project, SuperAnt_, this project was his first ever github repository! It was also our first VS Code extension.\n\nThis extension works in web version of VS Code, but with limited features.\n\nWe have created 7 discord servers just to fill them with our icons as custom emojis, to use anywhere with nitro.",
+    "width": 200
+  },
+  "action": {
+    "label": "Cool!"
+  }
+}
+
+dialog dpi:did_watch_trailer {
+  "type": "minecraft:confirmation",
+  "title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "Have you watched the 5.0 trailer yet? 🙃",
+    "width": 220
+  },
+  "can_close_with_escape": true,
+  "yes": {
+    "label": "Yes!",
+    "action": {
+      "type": "minecraft:run_command",
+      "command": "say GRANT DEEP DIVE STICKER"
+    }
+  },
+  "no": {
+    "label": "Not yet",
+    "action": {
+      "type": "minecraft:show_dialog",
+      "dialog": {
+        "type": "minecraft:confirmation",
+        "title": "",
+        "body": {
+          "type": "minecraft:plain_message",
+          "contents": "Come back after watching the trailer to get a sticker!"
+        },
+        "yes": {
+          "label": "Open trailer link",
+          "action": {
+            "type": "minecraft:open_url",
+            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          }
+        },
+        "no": {
+          "label": "Later"
+        }
+      }
+    }
+  }
+}
+
+dialog dpi:used_by_links {
+  "type": "minecraft:multi_action",
+  "title": "Used By",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "We love seeing our icons power other creations! Here are some of the awesome projects that use Datapack Icons:",
+    "width": 260
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "exit_action": {
+    "label": "Close"
+  },
+  "actions": [
+    {
+      "label": "Scythe",
+      "tooltip": ["The dedicated IDE for Minecraft Datapacks and resource packs. ",{"text": "It also has a booth here!","color": "green"}],
+      "width": 100,
+      "action": {
+        "type": "minecraft:open_url",
+        "url": "https://scythe-editor.com/"
+      }
+    },
+    {
+      "label": "cord.nvim",
+      "tooltip": "A highly extensible Discord Rich Presence plugin for Neovim (features a custom Minecraft icon set built on Datapack Icons).",
+      "width": 100,
+      "action": {
+        "type": "minecraft:open_url",
+        "url": "https://github.com/vyfor/cord.nvim"
+      }
+    },
+    {
+      "label": "Animated Java website and docs",
+      "tooltip": ["Effortlessly craft complex animations for Minecraft: Java Edition. ",{"text": "It also has a booth here!","color": "green"}],
+      "width": 200,
+      "action": {
+        "type": "minecraft:open_url",
+        "url": "https://animated-java.dev/"
+      }
+    }
+  ]
+}

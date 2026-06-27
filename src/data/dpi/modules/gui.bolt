@@ -1,72 +1,136 @@
 from dpi:config import storage, var, letter_to_size
 
-def _calculate_text_dimensions(text):
-    pixel = 1/16/2.5
-    max_line_length = 0
-    current_line_length = 1
-    line_lenght_limit = 197
-    lines = 1
-    
-    for char in text:
-        if char == "\n" or current_line_length >= line_lenght_limit:
-            lines += 1
-            if current_line_length > max_line_length:
-                max_line_length = current_line_length
-            current_line_length = 1
-        elif char.isupper():
-            current_line_length += 6
-        elif char in letter_to_size:
-            current_line_length += letter_to_size[char]
-        else:
-            current_line_length += 6
+def find_rotation(face):
+    if face == "north":
+        return [180, 0]
+    elif face == "south":
+        return [360, 0]
+    elif face == "west":
+        return [90, 0]
+    elif face == "east":
+        return [270, 0]
 
-    if current_line_length > max_line_length:
-        max_line_length = current_line_length
+def find_translation_offset(face, offset):
+    if face == "north":
+        return [0.0, 0.0, -offset]
+    elif face == "south":
+        return [0.0, 0.0, offset]
+    elif face == "west":
+        return [-offset, 0.0, 0.0]
+    elif face == "east":
+        return [offset, 0.0, 0.0]
 
-    width = round(max_line_length * pixel, 4)
-    height = lines * pixel * 10
+def find_relative_position_offset(face, pos, offset):
+    if face == "north":
+        pos[2] += f"{offset}"
+    elif face == "south":
+        pos[2] += f"-{offset}"
+    elif face == "west":
+        pos[0] += f"{offset}"
+    elif face == "east":
+        pos[0] += f"-{offset}"
+    return pos
 
-    return [width, height]
-
+def find_position_offset(face, pos, offset):
+    if face == "north":
+        pos[2] += offset
+    elif face == "south":
+        pos[2] -= offset
+    elif face == "west":
+        pos[0] += offset
+    elif face == "east":
+        pos[0] -= offset
+    return pos
+        
 class Button:
     pixel = 1/16/2.5
 
-    def __init__(self, text):
+    def __init__(self, on_left_click, on_right_click, text=""):
         self.text = text
         self.width = 0.0
         self.height = 0.0
+        self.on_left_click = on_left_click
+        self.on_right_click = on_right_click
 
-    def spawn(self, pos, width=None, height=None):
-        self.pos = pos
-        
-        if width is not None and height is not None:
-            self.width = width
-            self.height = height
-        else:
-            dimensions = _calculate_text_dimensions(self.text) 
-            width = dimensions[0]
-            height = dimensions[1]
-
-        summon interaction ~ ~ ~-(self.width/2) {
-            Tags: ["summit.interactable", "dpi.button"],
-            width: self.width,
-            height: self.height
-        }
-
-        summon text_display ~ ~ ~ {
-            Tags: ["dpi.button"],
+    def _spawn_text(self, pos, rotation, translation_offset):
+        x = pos[0]
+        y = pos[1]
+        z = pos[2]
+        summon text_display x y z {
+            Rotation: rotation,
+            Tags: ["dpi.button", "dpi.button.text", "dpi.button.new.text", "summit.booth_entity.dpi"],
             transformation: {
-                translation: [(self.pixel * 1/2 * -1), 0.0f, 0.0f],
+                translation: translation_offset,
                 left_rotation: [0.0f, 0.0f, 0.0f, 1.0f],
                 right_rotation: [0.0f, 0.0f, 0.0f, 1.0f],
                 scale: [1.0f, 1.0f, 1.0f]
             },
             alignment: "center",
+            background: 0,
             text: self.text
         }
 
-def get_icon(name):
-    return """{atlas:"items", sprite:"dpi:icons/""" + name + """, shadow_color:0}"""
+    def _spawn_interaction(self, pos, actions, width, height, tags=[]):
+        x = pos[0]
+        y = pos[1]
+        z = pos[2]
+
+        summon interaction x y z {
+            Tags: [*tags, "summit.booth_entity.dpi", "summit.interactable", "dpi.button", "dpi.button.new.interaction"],
+            width: width,
+            height: height,
+            data: {
+                summit_interactable: actions
+            }
+        }
+
+    def spawn_abs(self, pos, face, width=1, height=1):
+        offset = width/2
+        for coord in pos:
+            coord = float(coord)
+
+        rotation = find_rotation(face)
+        translation_offset = find_translation_offset(face, offset)
+
+        if self.text:
+            self._spawn_text(pos, rotation, translation_offset)
+
+        actions = {on_left_click:"",on_right_click:""}
+
+        if self.on_left_click != "":
+            actions.on_left_click = self.on_left_click
+        if self.on_right_click != "":
+            actions.on_right_click = self.on_right_click
+
+        offset_pos = find_position_offset(face, pos, offset)
+        self._spawn_interaction(offset_pos, actions, width, height)
+
+        execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
+
+    def spawn(self, face, width=1, height=1, tags=[], translation_override=[0.0, 0.0, 0.0]):
+        offset = width/2
+        pos = ["~","~","~"]
+
+        rotation = find_rotation(face)
+        translation_offset = find_translation_offset(face, offset)
+        translation_offset[0] += translation_override[0]
+        translation_offset[1] += translation_override[1]
+        translation_offset[2] += translation_override[2]
+
+        if self.text:
+            self._spawn_text(pos, rotation, translation_offset)
+
+        actions = {on_left_click:"",on_right_click:""}
+
+        if self.on_left_click != "":
+            actions.on_left_click = self.on_left_click
+        if self.on_right_click != "":
+            actions.on_right_click = self.on_right_click
+
+        offset_pos = find_relative_position_offset(face, pos, offset)
+        self._spawn_interaction(offset_pos, actions, width, height, tags)
+
+        execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
 
 class Window:
     def __init__(self, width, height):
@@ -76,10 +140,10 @@ class Window:
     def spawn():
         summon text_display ~ ~ ~ {
             Tags: ["dpi.window"],
-            alignment: "center",
+            alignment: "left",
             text: self.text
         }
 
 class Dropdown:
-    def __init__():
-        pass
+    def __init__(self, options: list[Button]):
+        self.options = options

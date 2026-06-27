@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"0": "dpi:item/interior/authors",
+		"0": "dpi:blueprint/aj/creators/authors",
 		"particle": "minecraft:item/pufferfish"
 	},
 	"display": {

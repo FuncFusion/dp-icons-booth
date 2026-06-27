@@ -48,7 +48,12 @@
 				"assets/dpi/models/blueprint/aj/creators/left_hand2.json",
 				"assets/dpi/models/blueprint/aj/creators/right_hand.json",
 				"assets/dpi/models/blueprint/aj/creators/right_hand1.json",
-				"assets/dpi/models/blueprint/aj/creators/right_hand2.json"
+				"assets/dpi/models/blueprint/aj/creators/right_hand2.json",
+				"assets/dpi/textures/blueprint/aj/creators/aseprite_file.png",
+				"assets/dpi/textures/blueprint/aj/creators/authors.png",
+				"assets/dpi/textures/blueprint/aj/creators/neovim_file.png",
+				"assets/dpi/textures/blueprint/aj/creators/sublime_file.png",
+				"assets/dpi/textures/blueprint/aj/creators/vscode_file.png"
 			]
 		},
 		"dpi:aj/lev_icons": {

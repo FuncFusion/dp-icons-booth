@@ -1,0 +1,130 @@
+import dpi:gui as gui
+import dpi:icons as icons
+import bolt_expressions as expr
+
+from dpi:config import storage, var, print_nbt
+from dpi:tree/object import Tree
+from dpi:filesystem import Node
+
+update_snapshot = var["#dpi.tree.snapshot.update_pending"]
+update_tree = var["#dpi.tree.update_pending"]
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+
+def get_icon(name):
+  return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
+
+function dpi:node/render:
+  function dpi:node/render/get_name
+  function dpi:node/render/spawn
+
+function dpi:node/render/get_name:
+  input = storage.node.render.input
+
+  icon = storage.icon
+  icon.remove()
+
+  execute run function dpi:node/render/get_icon with storage dpi:main node.render.input:
+    $data modify storage dpi:main icon set from storage dpi:generated typed_icons."$(type)"
+    $data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)"
+
+  if input.closed:
+    icon = get_icon("generic_folder_closed")
+
+  if not icon:
+    icon = get_icon("generic_file")
+
+  empty_string = {text:"                                                         "}
+  name = [print_nbt("icon"), {text:" "}, print_nbt("node.render.input.name"), empty_string]
+  storage.node.render.output = name
+
+function dpi:node/render/spawn:
+  right_click = "function dpi:node/toggle/select"
+  left_click = "function dpi:node/fold"
+
+  button = gui.Button(left_click, right_click, name)
+  button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"], [0.5, -0.5, 0.0])
+
+  execute as @n[tag=dpi.node.new]:
+    entity = expr.Data.entity("@s")
+    on passengers run tag @s add dpi.tree.node
+    entity.data.node = input
+    id["@s"] = input.id
+    if data storage dpi:main node.render.input{type:"dir"} run tag @s add dpi.node.dir
+    if data storage dpi:main node.render.input.closed run tag @s add dpi.node.closed
+    tag @s remove dpi.node.new
+
+function dpi:tree/render/init:
+  snapshot = storage.tree.render.input
+  count = var["#dpi.count"]
+  count = 0
+  length = len(snapshot)
+  can_render = var["#dpi.can_render"]
+  summon marker ~ ~ ~ {Tags:["dpi.tree.marker"]}
+  as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
+  kill @n[tag=dpi.tree.marker]
+
+function dpi:tree/render/main:
+  item = snapshot[0]
+  count += 1
+  depth = var["#dpi.depth"]
+  depth = item.depth
+
+  can_render = 0
+
+  if not item.hidden:
+    if not item.removed:
+      can_render = 1
+
+  if can_render:
+    at @s function dpi:tree/render/apply_depth
+    
+    storage.node.render.input = item
+    at @s function dpi:node/render
+    render_name = print_nbt("node.render.output")
+
+    at @s function dpi:tree/render/reset_depth
+    tp @s ~ ~-0.3 ~
+
+  snapshot.append(item)
+  item.remove()
+
+  if count < length:
+    at @s run function dpi:tree/render/main
+
+def move_marker(x):
+  for i in range(10):
+    if depth == i:
+      for j in range(i):
+        at @s tp @s ~0.3 ~ ~
+
+function dpi:tree/render/apply_depth:
+  move_marker(0.3)
+
+function dpi:tree/render/reset_depth:
+  move_marker(-0.3)
+
+append function dpi:temp:
+  tree = Tree()
+  pack = Node("pack.mcmeta", "txt", tree.root)
+  data = Node("data", "dir", tree.root)
+  minecraft = Node("minecraft", "dir", data)
+  tags = Node("tags", "dir", minecraft)
+  function_tag = Node("function", "dir", tags)
+  tick_function_tag = Node("tick.json", "json", function_tag)
+  load_function_tag = Node("load.json", "json", function_tag)
+  dpi_namespace = Node("dpi", "dir", data)
+  functions = Node("function", "dir", dpi_namespace)
+  tick = Node("tick.mcfunction", "mcf", functions)
+  load = Node("load.mcfunction", "mcf", functions)
+
+  execute positioned 112 86 -123:
+    tree.render()
+
+append function dpi:tick:
+  if update_tree:
+    execute positioned 112 86 -123:
+      tree.update()
+
+append function dpi:load:
+  update_snapshot = 1
+  schedule function dpi:temp 2t replace

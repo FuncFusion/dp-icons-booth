@@ -1,0 +1,50 @@
+import bolt_expressions as expr
+from dpi:config import storage, var, print_nbt
+
+update_tree = var["#dpi.tree.update_pending"]
+update_snapshot = var["#dpi.tree.snapshot.update_pending"]
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+
+function dpi:node/remove:
+  as @n[tag=dpi.node.selected]:
+    match = var["#dpi.match"]
+    match = id["@s"]
+    function dpi:node/remove/init
+
+function dpi:node/remove/init:
+  snapshot = storage.tree.snapshot
+
+  count = var["#dpi.count"]
+  count = 0
+  matched_depth = var["#dpi.matched_depth"]
+  matched_depth = 0
+  match_found = var["#dpi.match_found"]
+  depth = var["#dpi.depth"]
+  depth = 0
+
+  length = len(snapshot)
+  function dpi:node/remove/main
+
+function dpi:node/remove/main:
+  item = snapshot[0]
+  count += 1
+
+  function dpi:node/compare
+
+  if matched_depth:
+    depth = item.depth
+    if depth > matched_depth:
+      item.removed = true
+    else:
+      matched_depth = 0
+
+  if match_found:
+    item.removed = true
+    matched_depth = item.depth
+    update_tree = 1
+    update_snapshot = 1
+
+  snapshot.append(item)
+  item.remove()
+  if count < length:
+    function dpi:node/remove/main

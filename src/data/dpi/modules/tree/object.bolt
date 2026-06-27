@@ -1,0 +1,32 @@
+import dpi:gui as gui
+from dpi:config import storage, var, print_nbt
+from dpi:filesystem import Node
+import dpi:icons as icons
+import bolt_expressions as expr
+
+update_tree = var["#dpi.tree.update_pending"]
+update_snapshot = var["#dpi.tree.snapshot.update_pending"]
+
+class Tree:
+  def __init__(self):
+    self.root = Node("root", "dir")
+
+  def build(self):
+    storage.tree.flatten.input = self.root.node()
+    execute positioned ~ ~ ~ run function dpi:tree/flatten/init
+
+  def render(self):
+    if update_snapshot:
+      self.build()
+
+    storage.tree.render.input = storage.tree.snapshot
+    execute positioned ~ ~ ~ run function dpi:tree/render/init
+
+  def kill(self):
+    kill @e[tag=dpi.tree.node]
+
+  def update(self):
+    update_tree = var["#dpi.tree.update_pending"]
+    self.kill()
+    self.render()
+    update_tree = 0
