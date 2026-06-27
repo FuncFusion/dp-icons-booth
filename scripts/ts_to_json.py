@@ -89,9 +89,9 @@ def main():
         f.write("data modify storage dpi:generated typed_icons set value {}\n")
         f.write("data modify storage dpi:generated named_icons set value {}\n")
         for ext, icon in sorted(typed.items()):
-            f.write(f'data modify storage dpi:generated typed_icons."{ext}" set value {{atlas:"items", sprite:"dpi:icons/{icon}", shadow_color:0}}\n')
+            f.write(f'data modify storage dpi:generated typed_icons."{ext}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
         for name, icon in sorted(named.items()):
-            f.write(f'data modify storage dpi:generated named_icons."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}", shadow_color:0}}\n')
+            f.write(f'data modify storage dpi:generated named_icons."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
 
     print(f"Generated {OUTPUT_PATH}")
     print(f"Generated {mcf_path}")
