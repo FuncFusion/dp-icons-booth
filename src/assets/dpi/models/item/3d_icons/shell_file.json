@@ -1,0 +1,79 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "dpi:item/3d_icons/shell_file",
+		"particle": "dpi:item/3d_icons/shell_file"
+	},
+	"elements": [
+		{
+			"from": [2, 2, 6],
+			"to": [14, 12, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5, 0, 8]},
+			"faces": {
+				"north": {"uv": [4, 0, 16, 10], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 10], "texture": "#0"},
+				"south": {"uv": [16, 0, 4, 10], "texture": "#0"},
+				"west": {"uv": [0, 10, 4, 0], "texture": "#0"},
+				"up": {"uv": [0, 0, 4, 12], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [16, 12, 4, 14], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 0, 6],
+			"to": [14, 2, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 6]},
+			"faces": {
+				"north": {"uv": [4, 10, 10, 12], "texture": "#0"},
+				"east": {"uv": [0, 10, 4, 12], "texture": "#0"},
+				"south": {"uv": [4, 10, 10, 12], "texture": "#0"},
+				"west": {"uv": [0, 2, 4, 4], "texture": "#0"},
+				"down": {"uv": [0, 4, 4, 10], "rotation": 90, "texture": "#0"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [45, 45, 0],
+			"translation": [-2.25, 1.75, 1.5],
+			"scale": [0.42, 0.42, 0.42]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [45, 45, 0],
+			"translation": [-2.25, 1.75, 1.5],
+			"scale": [0.42, 0.42, 0.42]
+		},
+		"firstperson_righthand": {
+			"rotation": [-17.2, 172, 0],
+			"translation": [0, 3.4, 0],
+			"scale": [0.34, 0.34, 0.34]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-17.2, 172, 0],
+			"translation": [0, 3.5, 0],
+			"scale": [0.34, 0.34, 0.34]
+		},
+		"ground": {
+			"translation": [0, 4.2, 0],
+			"scale": [0.72, 0.72, 0.72]
+		},
+		"gui": {
+			"rotation": [0, -165, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [1.18, 1.18, 2.36]
+		},
+		"head": {
+			"translation": [0, 14.5, 0]
+		},
+		"fixed": {
+			"rotation": [-90, 0, 0],
+			"translation": [0, 0, -8]
+		},
+		"on_shelf": {
+			"rotation": [0, -180, 0],
+			"translation": [0, 16, 0],
+			"scale": [1.75, 1.75, 1.75]
+		}
+	}
+}
