@@ -57,6 +57,19 @@ function dpi:entities/static/summon:
   summon item_display 108.8125 99.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]}}
   gui.Button("execute on attacker run dialog show @s dpi:main_repo_link", "execute on target run dialog show @s dpi:main_repo_link").spawn_abs([109.1125, 98.5, -111.8125], "east", 0.6, 0.6)
 
+  # timeline
+  summon item_display 119.1875 96.0 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, -0.38268352f, 0.0f, 0.92387956f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999993f, 2.0000005f]}}
+  gui.Button("execute on attacker run dialog show @s dpi:timeline", "execute on target run dialog show @s dpi:timeline").spawn_abs([119.4825, 95.5, -122.1875], "east", 0.6, 0.6)
+
+  # deep dive
+  summon item_display 108.8125 93.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]}}
+  gui.Button("execute on attacker run dialog show @s dpi:did_watch_trailer", "execute on target run dialog show @s dpi:did_watch_trailer").spawn_abs([109.1125, 92.5, -111.8125], "east", 0.6, 0.6)
+
+  # links
+  summon item_display 119.1875 90.0 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, -0.38268352f, 0.0f, 0.92387956f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999993f, 2.0000005f]}}
+  gui.Button("execute on attacker run dialog show @s dpi:used_by_links", "execute on target run dialog show @s dpi:used_by_links").spawn_abs([119.4825, 89.5, -122.1875], "east", 0.6, 0.6)
+
+
 def add_url_dialogue(title, url):
   pattern = r"^(?:https?://)?(?:www\.)?(.+)"
 
@@ -93,7 +106,7 @@ dialog dpi:trailer_link:
   add_url_dialogue("Watch 5.0 trailer!", "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
 dialog dpi:main_repo_link:
-  add_url_dialogue("Main extension repository!", "https://github.com/FuncFusion/mc-dp-icons")
+  add_url_dialogue("Check out the extension's repository!", "https://github.com/FuncFusion/mc-dp-icons")
 
 dialog dpi:assets_repo_link:
   add_url_dialogue("Find all the assets here!", "https://github.com/FuncFusion/mc-dp-icons-assets")
@@ -110,3 +123,101 @@ dialog dpi:sublime_port_link:
 dialog dpi:zed_port_link:
   add_url_dialogue("Zed port", "https://github.com/FuncFusion/mc-dp-icons-zed")
 
+dialog dpi:timeline {
+  "type": "minecraft:notice",
+  "title": "More fun facts",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "1.0 was released on March 31st, 2023. The project is more than 3 years old!\n\nFor one of the authors of this project, SuperAnt_, this project was his first ever github repository! It was also our first VS Code extension.\n\nThis extension works in web version of VS Code, but with limited features.\n\nWe have created 7 discord servers just to fill them with our icons as custom emojis, to use anywhere with nitro.",
+    "width": 200
+  },
+  "action": {
+    "label": "Cool!"
+  }
+}
+
+dialog dpi:did_watch_trailer {
+  "type": "minecraft:confirmation",
+  "title": "",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "Have you watched the 5.0 trailer yet? 🙃",
+    "width": 220
+  },
+  "can_close_with_escape": true,
+  "yes": {
+    "label": "Yes!",
+    "action": {
+      "type": "minecraft:run_command",
+      "command": "say GRANT DEEP DIVE STICKER"
+    }
+  },
+  "no": {
+    "label": "Not yet",
+    "action": {
+      "type": "minecraft:show_dialog",
+      "dialog": {
+        "type": "minecraft:confirmation",
+        "title": "",
+        "body": {
+          "type": "minecraft:plain_message",
+          "contents": "Come back after watching the trailer to get a sticker!"
+        },
+        "yes": {
+          "label": "Open trailer link",
+          "action": {
+            "type": "minecraft:open_url",
+            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          }
+        },
+        "no": {
+          "label": "Later"
+        }
+      }
+    }
+  }
+}
+
+dialog dpi:used_by_links {
+  "type": "minecraft:multi_action",
+  "title": "Used By",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": "We love seeing our icons power other creations! Here are some of the awesome projects that use Datapack Icons:",
+    "width": 260
+  },
+  "inputs": [],
+  "can_close_with_escape": true,
+  "exit_action": {
+    "label": "Close"
+  },
+  "actions": [
+    {
+      "label": "Scythe",
+      "tooltip": ["The dedicated IDE for Minecraft Datapacks and resource packs. ",{"text": "It also has a booth here!","color": "green"}],
+      "width": 100,
+      "action": {
+        "type": "minecraft:open_url",
+        "url": "https://scythe-editor.com/"
+      }
+    },
+    {
+      "label": "cord.nvim",
+      "tooltip": "A highly extensible Discord Rich Presence plugin for Neovim (features a custom Minecraft icon set built on Datapack Icons).",
+      "width": 100,
+      "action": {
+        "type": "minecraft:open_url",
+        "url": "https://github.com/vyfor/cord.nvim"
+      }
+    },
+    {
+      "label": "Animated Java website and docs",
+      "tooltip": ["Effortlessly craft complex animations for Minecraft: Java Edition. ",{"text": "It also has a booth here!","color": "green"}],
+      "width": 200,
+      "action": {
+        "type": "minecraft:open_url",
+        "url": "https://animated-java.dev/"
+      }
+    }
+  ]
+}

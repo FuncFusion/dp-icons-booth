@@ -74,7 +74,7 @@ append function dpi:tick:
 
 append function dpi:tick/booth_entity:
   # emerald on the upper floor
-  execute as a2faf424-4fb9-4444-b486-29a39f24e675 rotated as @s run rotate @s ~0.7 0
+  execute as a2faf424-4fb9-4444-b486-29a39f24e675 rotated as @s run rotate @s ~0.3 0
 
 append function dpi:tick/player:
   pass
