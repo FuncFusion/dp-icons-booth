@@ -1,0 +1,13 @@
+{
+	"model": {
+	  "type": "minecraft:model",
+	  "model": "dpi:item/3d_icons/lang_file",
+	  "tints": [
+		  {
+			  "type": "minecraft:constant",
+			  "value": 66046
+		  }
+	  ]
+	},
+	"oversized_in_gui": true
+  }
