@@ -56,6 +56,7 @@ dialog dpi:file_item {
   ],
   "can_close_with_escape": true,
   "after_action": "close",
+  "pause": false,
   "yes": {
     "label": "Rename",
     "action": {
