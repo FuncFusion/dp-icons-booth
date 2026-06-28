@@ -88,15 +88,21 @@ def main():
     with open(mcf_path, "w") as f:
         f.write("data modify storage dpi:generated typed_icons set value {}\n")
         f.write("data modify storage dpi:generated named_icons set value {}\n")
+        f.write("data modify storage dpi:generated typed_icon_names set value {}\n")
+        f.write("data modify storage dpi:generated named_icon_names set value {}\n")
         for ext, icon in sorted(typed.items()):
             f.write(f'data modify storage dpi:generated typed_icons."{ext}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
+            f.write(f'data modify storage dpi:generated typed_icon_names."{ext}" set value "{icon}"\n')
         for name, icon in sorted(named.items()):
             f.write(f'data modify storage dpi:generated named_icons."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
+            f.write(f'data modify storage dpi:generated named_icon_names."{name}" set value "{icon}"\n')
 
     print(f"Generated {OUTPUT_PATH}")
     print(f"Generated {mcf_path}")
     print(f"  typed_icons: {len(typed)} entries")
     print(f"  named_icons: {len(named)} entries")
+    print(f"  typed_icon_names: {len(typed)} entries")
+    print(f"  named_icon_names: {len(named)} entries")
 
 
 if __name__ == "__main__":

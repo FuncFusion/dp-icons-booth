@@ -1,7 +1,8 @@
+from dpi:config import var, storage, print_nbt
 import os
 
 function dpi:file_item/give:
-    give @s paper[consumable={consume_seconds:999999999},custom_data={summit:{persist:{}},dpi:{file_item:1b}},item_name="File",item_model="dpi:file_item"]
+  give @s paper[consumable={consume_seconds:999999999},custom_data={summit:{persist:{}},dpi:{file_item:1b}},item_name="File",item_model="dpi:file_item"]
 
 advancement dpi:file_item_use {
   "criteria": {
@@ -25,15 +26,118 @@ advancement dpi:file_item_use {
 }
 
 function dpi:file_item/use:
-    advancement revoke @s only dpi:file_item_use
-    dialog show @s dpi:file_item
+  advancement revoke @s only dpi:file_item_use
+  dialog show @s dpi:file_item
 
 function dpi:file_item/submit_name:
-    $say filename - $(filename)
+  file_name = storage.temp.file_name
+  $data modify storage dpi:main split_string.input set value "$(filename)"
+  file_name = storage.split_string.input
+  function dpi:split_string/init
 
+  storage.get_type.input = storage.split_string.output
+  function dpi:get_type/init
+
+  storage.join_string.input = storage.get_type.output
+  function dpi:join_string/init
+
+  file_type = storage.join_string.output
+
+  storage.modify_icon.input.icon_name = file_type
+
+  storage.icon_name.input.type = file_type
+  storage.icon_name.input.name = file_name 
+
+  execute run function dpi:file_item/get_icon_name with storage dpi:main icon_name.input:
+    $data modify storage dpi:main icon_name.output set from storage dpi:generated typed_icon_names."$(type)"
+    $data modify storage dpi:main icon_name.output set from storage dpi:generated named_icon_names."$(name)"
+
+  storage.modify_icon.input = {}
+  storage.modify_icon.input.file_name = file_name
+  storage.modify_icon.input.icon_name = storage.icon_name.output
+
+  function dpi:file_item/modify_icon with storage dpi:main modify_icon.input
+  
 function dpi:file_item/modify_icon:
-    $execute if items entity @s weapon.mainhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [{function:"minecraft:set_custom_model_data",strings:{values:["$(name)"],mode:"replace_all"}},{function:"minecraft:set_name",entity:"this",name:{text:"$(filename)",italic:0b},target:"custom_name"}]
-    $execute if items entity @s weapon.offhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [{function:"minecraft:set_custom_model_data",strings:{values:["$(name)"],mode:"replace_all"}},{function:"minecraft:set_name",entity:"this",name:{text:"$(filename)",italic:0b},target:"custom_name"}]
+  $say $(icon_name), $(file_name)
+  $execute if items entity @s weapon.mainhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [ { function:"minecraft:set_custom_model_data", strings:{ values:["$(icon_name)"], mode:"replace_all" } }, { function:"minecraft:set_name", entity:"this", name:{text:"$(file_name)",italic:0b}, target:"custom_name" } ]
+
+  $execute if items entity @s weapon.offhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [ { function:"minecraft:set_custom_model_data", strings:{values:["$(icon_name)"],mode:"replace_all"} }, { function:"minecraft:set_name", entity:"this", name:{text:"$(file_name)",italic:0b}, target:"custom_name" } ]
+
+function dpi:join_string/init:
+  js_input = storage.join_string.input
+  js_output = storage.join_string.output
+  js_output = ""
+  js_count = var["#dpi.js_count"]
+  js_count = 0
+  js_length = var["#dpi.js_length"]
+  js_length = len(js_input)
+  function dpi:join_string/main
+  tellraw @a ["join_string ", js_output]
+
+function dpi:join_string/main:
+  js_count += 1
+
+  js_item = js_input[0]
+
+  storage.join_string.default.input.str1 = js_output
+  storage.join_string.default.input.str2 = js_item
+  
+  function dpi:join_string/default with storage dpi:main join_string.default.input
+
+  js_output = storage.combined_string
+
+  js_item.remove()
+  
+  if js_count < js_length:
+    function dpi:join_string/main
+
+function dpi:join_string/default:
+  $data modify storage dpi:main combined_string set value "$(str1)$(str2)"
+
+function dpi:get_type/init:
+  gt_input = storage.get_type.input
+  gt_output = storage.get_type.output
+  gt_output = []
+  gt_count = var["#dpi.gt_count"]
+  gt_count = 0
+  gt_length = var["#dpi.gt_length"]
+  gt_length = len(gt_input)
+  function dpi:get_type/main
+  tellraw @a ["get_type ", gt_output]
+
+function dpi:get_type/main:
+  gt_count += 1
+
+  gt_item = gt_input[-1]
+
+  if gt_item == ".":
+    return 0
+  gt_output.prepend(gt_item)
+
+  gt_item.remove()
+  
+  if gt_count < gt_length:
+    function dpi:get_type/main
+
+function dpi:split_string/init:
+  input = storage.split_string.input[str]
+  output = storage.split_string.output
+  output = []
+  count = var["#dpi.count"]
+  count = 0
+  length = var["#dpi.length"]
+  length = len(input)
+  function dpi:split_string/loop
+  tellraw @a ["split string: ", output]
+
+function dpi:split_string/loop:
+  count += 1
+  output.append(input[0])
+  storage.split_string.input = input[1:]
+  if count < length:
+    function dpi:split_string/loop
+
 
 dialog dpi:file_item {
   "type": "minecraft:confirmation",
@@ -56,6 +160,7 @@ dialog dpi:file_item {
   ],
   "can_close_with_escape": true,
   "after_action": "close",
+  "pause": false,
   "yes": {
     "label": "Rename",
     "action": {
@@ -69,38 +174,38 @@ dialog dpi:file_item {
 }
 
 def generate_item_models():
-    ICONS_DIR = './src/assets/dpi/textures/file_item_icons/'
-    cases = []
+  ICONS_DIR = './src/assets/dpi/textures/file_item_icons/'
+  cases = []
 
-    for filename in os.listdir(ICONS_DIR):
-        if filename.endswith('_file.png'):
-            name = filename[:-4]
-            
-            model f"dpi:item/file_item/{name}" {
-                "parent": "dpi:item/file_item_parent",
-                "textures": {
-                    "layer0": f"dpi:file_item_icons/{name}"
-                }
-            }
-            
-            cases.append({
-                "when": name,
-                "model": {
-                    "type": "minecraft:model",
-                    "model": f"dpi:item/file_item/{name}"
-                }
-            })
-
-    item_model dpi:file_item {
-        "model": {
-            "type": "minecraft:select",
-            "property": "minecraft:custom_model_data",
-            "cases": cases,
-            "fallback": {
-                "type": "minecraft:model",
-                "model": "dpi:item/file_item/generic_file"
-            }
+  for filename in os.listdir(ICONS_DIR):
+    if filename.endswith('_file.png'):
+      name = filename[:-4]
+      
+      model f"dpi:item/file_item/{name}" {
+        "parent": "dpi:item/file_item_parent",
+        "textures": {
+          "layer0": f"dpi:file_item_icons/{name}"
         }
+      }
+      
+      cases.append({
+        "when": name,
+        "model": {
+          "type": "minecraft:model",
+          "model": f"dpi:item/file_item/{name}"
+        }
+      })
+
+  item_model dpi:file_item {
+    "model": {
+      "type": "minecraft:select",
+      "property": "minecraft:custom_model_data",
+      "cases": cases,
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "dpi:item/file_item/generic_file"
+      }
     }
+  }
 
 generate_item_models()

@@ -36,6 +36,7 @@ function dpi:node/render/get_name:
   empty_string = {text:"                                                         "}
   name = [print_nbt("icon"), {text:" "}, print_nbt("node.render.input.name"), empty_string]
   storage.node.render.output = name
+  storage.node.render.output_icon = print_nbt("icon")
 
 function dpi:node/render/spawn:
   right_click = "function dpi:node/toggle/select"
