@@ -4,21 +4,14 @@
 	"texture_size": [5, 5],
 	"textures": {
 		"0": "dpi:item/3d_icons/dimension_file",
-		"1": "dpi:item/3d_icons/dimension_file_shadow",
 		"particle": "dpi:item/3d_icons/dimension_file"
 	},
 	"elements": [
 		{
-			"from": [2, 0, 2],
-			"to": [14, 12, 14],
-			"rotation": {"angle": 0, "axis": "y", "origin": [2, 0, 2]},
+			"from": [0, 0, 0],
+			"to": [0, 16, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#1", "tintindex": 0},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0},
-				"south": {"uv": [16, 0, 0, 16], "texture": "#1", "tintindex": 0},
-				"west": {"uv": [16, 0, 0, 16], "texture": "#0", "tintindex": 0},
-				"up": {"uv": [16, 16, 0, 0], "texture": "#0", "tintindex": 0},
-				"down": {"uv": [16, 0, 0, 16], "texture": "#1", "tintindex": 0}
+				"west": {"uv": [16, 0, 0, 16], "texture": "#0", "tintindex": 0}
 			}
 		}
 	],

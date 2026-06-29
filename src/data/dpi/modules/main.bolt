@@ -77,4 +77,9 @@ append function dpi:tick/booth_entity:
   execute as a2faf424-4fb9-4444-b486-29a39f24e675 rotated as @s run rotate @s ~0.3 0
 
 append function dpi:tick/player:
-  pass
+  # portal to leave the booth
+  execute as @a[x=120.5,y=83,z=-119,dy=1] in minecraft:overworld:
+    tp @s 114.42 95.00 -124.30 -179.48 8.78
+    at @s playsound minecraft:item.chorus_fruit.teleport player @s ~ ~ ~
+
+    
