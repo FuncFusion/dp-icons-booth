@@ -96,6 +96,10 @@ function dpi:entities/static/summon:
   summon item_display 121.0 84.5 -118.5 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:portal"}, count: 1, id: "minecraft:end_portal_frame"}, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}}
   summon text_display 119.97961073860193 85.25 -118.5 {Tags:["summit.static","summit.booth_entity.dpi"], text: "Leave the booth\n⬇", transformation: {left_rotation: [0.0f, -0.7071068f, 0.0f, 0.7071068f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0}
 
+  ## creators
+  # ant balloon interaction
+  gui.Button("", "function dpi:creators/click_ant").spawn_abs([114,83,-107.6250], "north", 1.5, 1.5)
+
 
 def add_url_dialogue(title, url):
   pattern = r"^(?:https?://)?(?:www\.)?(.+)"

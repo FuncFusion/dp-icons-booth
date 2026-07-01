@@ -24,6 +24,29 @@ function dpi:creators/bth_idle_play:
     execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
       function dpi:aj/creators/animations/bth_busy/resume
 
+# balloon, not finished
+function dpi:creators/click_ant:
+  execute if entity @s[tag=giving_out_balloon] run return 1
+  tag @s add giving_out_balloon
+  execute on target run tag @s add balloon_reciever
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+    function dpi:aj/creators/animations/ant_busy/pause
+    function dpi:aj/creators/animations/ant_blowing_balloon/play
+
+  schedule function dpi:creators/give_balloon 72:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root] run function dpi:aj/creators/animations/ant_busy/resume
+    execute as @a[x=114.5,y=84,z=-16.8750,distance=..10,tag=balloon_reciever]:
+      # delete ↓
+      give @s bundle[item_model="dpi:dpi_balloon"]
+      # uncomment ↓
+      #function summit.balloon:give/dpi/dpi_balloon
+    tag @a remove balloon_reciever
+    
+  schedule function dpi:creators/giving_out_cooldown_finish 100:
+    tag @e[type=interaction,tag=giving_out_balloon] remove giving_out_balloon
+
+
+
 # other
 predicate dpi:creators/amandin_idle_chance
   {"condition":"minecraft:random_chance","chance": amandin_idle_chance}
