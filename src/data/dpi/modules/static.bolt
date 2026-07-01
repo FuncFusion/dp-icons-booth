@@ -21,7 +21,7 @@ function dpi:entities/static/summon:
 
 	## wall 3
 	# ᴅᴇᴇᴘ ᴅɪᴠᴇ
-	summon text_display 114.5 96.2 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"],shadow: 0b, text: "ᴅᴇᴇᴘ ᴅɪᴠᴇ", transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},  background: 0,brightness: {sky: 15, block: 15}}
+	summon text_display 114.5 96.2 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"],shadow: 0b, text: "ᴅᴇᴇᴘ ᴅɪᴠᴇ", transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]}, background: 0,brightness: {sky: 15, block: 15}}
 
 	# deep dive
 	summon text_display 117.0 92.6 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 160, shadow: 0b, text: [{shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/shell_file"}," In ",{color:"#4488e0",text:"5.0"},", the ",{color:"#4488e0",text:"deep dive update"},", our latest and biggest update, we ",{bold:true,text:"doubled"}," the amount of icons AGAIN by adding icons for tons of less popular, niche stuff. We also revamped our whole codebase, optimized icon svgs, and expanded our dynamic features even more!\n\n",{shadow_color: 0, atlas: "minecraft:items", sprite: "dpi:icons/video_file"}, " Watch the ", {color: "#478BE6", underlined: 1b, text: "5.0 trailer"}, " to see the everything in action!\n", {color: "dark_gray", text: "(click me or the image)"}], transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left",brightness: {sky: 15, block: 15}}
@@ -105,7 +105,7 @@ function dpi:entities/static/summon:
 
   summon text_display 114.5 85.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: "Project Lead. Manages the theme architecture, docs, and promotional assets.", line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0,brightness: {sky: 15, block: 15}}
 
-  summon text_display 114.5 84.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"},{text:" super.ant_\n",color:"#E88425"},{atlas:"items",sprite:"dpi:icons/modrinth_file"}," Modrinth"], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
+  summon text_display 114.5 84.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"},{text:" @super.ant_\n",color:"#E88425"},{atlas:"items",sprite:"dpi:icons/modrinth_file"}," Modrinth"], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
   gui.Button("", "execute on target run dialog show @s dpi:ant_github_link").spawn_abs([114.5, 84.5, -97.2875], "north", 1.6, 0.3)
   gui.Button("", "execute on target run dialog show @s dpi:ant_modrinth_link").spawn_abs([114.5, 84.0, -97.2875], "north", 1.6, 0.3)
@@ -115,7 +115,7 @@ function dpi:entities/static/summon:
 
   summon text_display 110.3 85.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: "Lead Artist. Designs all the icons, textures and artwork, maintains the assets repo.", line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0,brightness: {sky: 15, block: 15}}
 
-  summon text_display 110.3 84.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"},{text:" bth123\n",color:"#7DB309"}], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
+  summon text_display 110.3 84.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"},{text:" @bth123\n",color:"#7DB309"}], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
   gui.Button("", "execute on target run dialog show @s dpi:bth_github_link").spawn_abs([110.3, 84.5, -97.2875], "north", 1.6, 0.3)
 
@@ -124,7 +124,7 @@ function dpi:entities/static/summon:
 
   summon text_display 118.7 85.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: ["Lead developer behind all the code, included the extension in his ",{underlined: true,color:"#478BE6",text:"VS Code extension pack",},"."], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0,brightness: {sky: 15, block: 15}}
 
-  summon text_display 118.7 84.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"},{text:" amandin\n",color:"#A750D2"}], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
+  summon text_display 118.7 84.0 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"},{text:" @amandin\n",color:"#A750D2"}], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
   gui.Button("", "execute on target run dialog show @s dpi:dp_essentials_link").spawn_abs([118.6520, 84.8750, -97.2875], "north", 3.7, 0.8)
 
@@ -270,11 +270,18 @@ dialog dpi:used_by_links {
   "exit_action": {
     "label": "Close"
   },
+  "columns": 1,
   "actions": [
     {
       "label": "Scythe",
-      "tooltip": ["The dedicated IDE for Minecraft Datapacks and resource packs. ",{"text": "It also has a booth here!","color": "green"}],
-      "width": 100,
+      "tooltip": [
+        "The dedicated IDE for Minecraft Datapacks and resource packs. ",
+        {
+          "text": "It also has a booth here!",
+          "color": "green"
+        }
+      ],
+      "width": 180,
       "action": {
         "type": "minecraft:open_url",
         "url": "https://scythe-editor.com/"
@@ -283,7 +290,7 @@ dialog dpi:used_by_links {
     {
       "label": "cord.nvim",
       "tooltip": "A highly extensible Discord Rich Presence plugin for Neovim (features a custom Minecraft icon set built on Datapack Icons).",
-      "width": 100,
+      "width": 180,
       "action": {
         "type": "minecraft:open_url",
         "url": "https://github.com/vyfor/cord.nvim"
@@ -291,11 +298,28 @@ dialog dpi:used_by_links {
     },
     {
       "label": "Animated Java website and docs",
-      "tooltip": ["Effortlessly craft complex animations for Minecraft: Java Edition. ",{"text": "It also has a booth here!","color": "green"}],
-      "width": 200,
+      "tooltip": [
+        "Effortlessly craft complex animations for Minecraft: Java Edition. ",
+        {
+          "text": "It also has a booth here!",
+          "color": "green"
+        }
+      ],
+      "width": 180,
       "action": {
         "type": "minecraft:open_url",
         "url": "https://animated-java.dev/"
+      }
+    },
+    {
+      "label": "Rhombus",
+      "tooltip": [
+        "The Python-embedded Domain specific Language for Minecraft Terrain Generation."
+      ],
+      "width": 180,
+      "action": {
+        "type": "minecraft:open_url",
+        "url": "https://github.com/annhilati/rhombus"
       }
     }
   ]
