@@ -12,62 +12,74 @@ function animated_java:global/data_manager/read with storage animated_java:temp 
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.root_uuid set from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.blueprint_id set value "dpi:aj/creators"
-data modify storage animated_java:temp entry.data.rig_hash set value "b0e2803dfda97c55fb745004587730cd12807d46b7e4c2091790aae8588f0913"
+data modify storage animated_java:temp entry.data.rig_hash set value "2e7644d9c0ea7b0ad2f0934419061510079fc12825753e257785107a329e0be4"
 tp @s ~ ~ ~ ~ ~
-execute on passengers if entity @s[tag=dpi.aj.creators.node.head1] run function dpi:aj/creators/zzz/summon/as_node/head1
+execute on passengers if entity @s[tag=dpi.aj.creators.node.bth_head] run function dpi:aj/creators/zzz/summon/as_node/bth_head
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.head1 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.left_hand2] run function dpi:aj/creators/zzz/summon/as_node/left_hand2
+data modify storage animated_java:temp entry.data.uuids_by_name.bth_head set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.bth_brush] run function dpi:aj/creators/zzz/summon/as_node/bth_brush
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.left_hand2 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.brush] run function dpi:aj/creators/zzz/summon/as_node/brush
+data modify storage animated_java:temp entry.data.uuids_by_name.bth_brush set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.bth_right_hand] run function dpi:aj/creators/zzz/summon/as_node/bth_right_hand
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.brush set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.right_hand2] run function dpi:aj/creators/zzz/summon/as_node/right_hand2
+data modify storage animated_java:temp entry.data.uuids_by_name.bth_right_hand set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.bth_left_hand] run function dpi:aj/creators/zzz/summon/as_node/bth_left_hand
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.right_hand2 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.display2] run function dpi:aj/creators/zzz/summon/as_node/display2
+data modify storage animated_java:temp entry.data.uuids_by_name.bth_left_hand set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.bth_display_ase] run function dpi:aj/creators/zzz/summon/as_node/bth_display_ase
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.display2 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.display3] run function dpi:aj/creators/zzz/summon/as_node/display3
+data modify storage animated_java:temp entry.data.uuids_by_name.bth_display_ase set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.bth_display_subl] run function dpi:aj/creators/zzz/summon/as_node/bth_display_subl
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.display3 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.head] run function dpi:aj/creators/zzz/summon/as_node/head
+data modify storage animated_java:temp entry.data.uuids_by_name.bth_display_subl set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ama_head] run function dpi:aj/creators/zzz/summon/as_node/ama_head
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.head set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.left_hand1] run function dpi:aj/creators/zzz/summon/as_node/left_hand1
+data modify storage animated_java:temp entry.data.uuids_by_name.ama_head set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ama_right_hand] run function dpi:aj/creators/zzz/summon/as_node/ama_right_hand
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.left_hand1 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.right_hand1] run function dpi:aj/creators/zzz/summon/as_node/right_hand1
+data modify storage animated_java:temp entry.data.uuids_by_name.ama_right_hand set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ama_can] run function dpi:aj/creators/zzz/summon/as_node/ama_can
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.right_hand1 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.display1] run function dpi:aj/creators/zzz/summon/as_node/display1
+data modify storage animated_java:temp entry.data.uuids_by_name.ama_can set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ama_left_hand] run function dpi:aj/creators/zzz/summon/as_node/ama_left_hand
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.display1 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.display] run function dpi:aj/creators/zzz/summon/as_node/display
+data modify storage animated_java:temp entry.data.uuids_by_name.ama_left_hand set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ama_display_vsc] run function dpi:aj/creators/zzz/summon/as_node/ama_display_vsc
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.display set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.kb] run function dpi:aj/creators/zzz/summon/as_node/kb
+data modify storage animated_java:temp entry.data.uuids_by_name.ama_display_vsc set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ama_display_nvim] run function dpi:aj/creators/zzz/summon/as_node/ama_display_nvim
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.kb set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.baton] run function dpi:aj/creators/zzz/summon/as_node/baton
+data modify storage animated_java:temp entry.data.uuids_by_name.ama_display_nvim set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ama_kb_layer] run function dpi:aj/creators/zzz/summon/as_node/ama_kb_layer
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.baton set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.right_hand] run function dpi:aj/creators/zzz/summon/as_node/right_hand
+data modify storage animated_java:temp entry.data.uuids_by_name.ama_kb_layer set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ama_kb] run function dpi:aj/creators/zzz/summon/as_node/ama_kb
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.right_hand set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.left_hand] run function dpi:aj/creators/zzz/summon/as_node/left_hand
+data modify storage animated_java:temp entry.data.uuids_by_name.ama_kb set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_string] run function dpi:aj/creators/zzz/summon/as_node/ant_string
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.left_hand set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.head4] run function dpi:aj/creators/zzz/summon/as_node/head4
+data modify storage animated_java:temp entry.data.uuids_by_name.ant_string set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_balloon] run function dpi:aj/creators/zzz/summon/as_node/ant_balloon
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.head4 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.display4] run function dpi:aj/creators/zzz/summon/as_node/display4
+data modify storage animated_java:temp entry.data.uuids_by_name.ant_balloon set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_head] run function dpi:aj/creators/zzz/summon/as_node/ant_head
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.display4 set from storage animated_java:gu out
-execute on passengers if entity @s[tag=dpi.aj.creators.node.display5] run function dpi:aj/creators/zzz/summon/as_node/display5
+data modify storage animated_java:temp entry.data.uuids_by_name.ant_head set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_baton] run function dpi:aj/creators/zzz/summon/as_node/ant_baton
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
-data modify storage animated_java:temp entry.data.uuids_by_name.display5 set from storage animated_java:gu out
+data modify storage animated_java:temp entry.data.uuids_by_name.ant_baton set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_right_hand] run function dpi:aj/creators/zzz/summon/as_node/ant_right_hand
+data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
+data modify storage animated_java:temp entry.data.uuids_by_name.ant_right_hand set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_left_hand] run function dpi:aj/creators/zzz/summon/as_node/ant_left_hand
+data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
+data modify storage animated_java:temp entry.data.uuids_by_name.ant_left_hand set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_display_vsc] run function dpi:aj/creators/zzz/summon/as_node/ant_display_vsc
+data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
+data modify storage animated_java:temp entry.data.uuids_by_name.ant_display_vsc set from storage animated_java:gu out
+execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_display_obs] run function dpi:aj/creators/zzz/summon/as_node/ant_display_obs
+data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
+data modify storage animated_java:temp entry.data.uuids_by_name.ant_display_obs set from storage animated_java:gu out
 function dpi:aj/creators/zzz/set_default_pose
 # Data Manager: Write
 function animated_java:global/data_manager/write with storage animated_java:temp args

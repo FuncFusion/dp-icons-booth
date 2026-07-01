@@ -1,0 +1,113 @@
+{
+	"textures": {
+		"5": "dpi:blueprint/aj/creators/balloon",
+		"particle": "minecraft:item/pufferfish"
+	},
+	"display": {
+		"head": {
+			"rotation": [0, 180, 0]
+		}
+	},
+	"elements": [
+		{
+			"from": [8, -16, 7.53846],
+			"to": [8, 8, 8.46154],
+			"shade": false,
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": 0,
+				"origin": [6.98462, -16, 7.53846]
+			},
+			"faces": {
+				"north": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"east": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"south": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"west": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"up": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"down": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				}
+			},
+			"light_emission": 15
+		},
+		{
+			"from": [7.63077, -16, 8.83077],
+			"to": [7.63077, 8, 9.75385],
+			"shade": false,
+			"rotation": {
+				"x": 0,
+				"y": -90,
+				"z": 0,
+				"origin": [8.46154, -16, 8.83077]
+			},
+			"faces": {
+				"north": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"east": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"south": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"west": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"up": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				},
+				"down": {
+					"uv": [7.33425, 15.66863, 16, 16],
+					"rotation": 270,
+					"texture": "#5",
+					"tintindex": 0
+				}
+			},
+			"light_emission": 15
+		}
+	]
+}

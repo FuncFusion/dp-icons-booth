@@ -1,0 +1,32 @@
+amandin_idle_chance = 0.1
+bth_idle_chance = 0.3
+
+# idle plays
+function dpi:creators/amandin_idle_play:
+  schedule function dpi:creators/amandin_to_idle 3:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+      function dpi:aj/creators/animations/amandin_busy/pause
+      function dpi:aj/creators/animations/amandin_busy/set_frame {frame:0}
+      function dpi:aj/creators/animations/amandin_idle/play
+
+  schedule function dpi:creators/amandin_busy_resume 143:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+      function dpi:aj/creators/animations/amandin_busy/resume
+
+function dpi:creators/bth_idle_play:
+  schedule function dpi:creators/bth_to_idle 3:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+      function dpi:aj/creators/animations/bth_busy/pause
+      function dpi:aj/creators/animations/bth_busy/set_frame {frame:0}
+      function dpi:aj/creators/animations/bth_idle/play
+
+  schedule function dpi:creators/bth_busy_resume 139:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+      function dpi:aj/creators/animations/bth_busy/resume
+
+# other
+predicate dpi:creators/amandin_idle_chance
+  {"condition":"minecraft:random_chance","chance": amandin_idle_chance}
+
+predicate dpi:creators/bth_idle_chance
+  {"condition":"minecraft:random_chance","chance": bth_idle_chance}

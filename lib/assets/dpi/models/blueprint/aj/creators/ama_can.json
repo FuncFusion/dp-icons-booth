@@ -1,0 +1,88 @@
+{
+	"textures": {
+		"0": "dpi:blueprint/aj/creators/authors",
+		"particle": "minecraft:item/pufferfish"
+	},
+	"display": {
+		"head": {
+			"rotation": [0, 180, 0]
+		}
+	},
+	"elements": [
+		{
+			"from": [6.01, 6.01, 4.01],
+			"to": [9.99, 9.99, 11.99],
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": 0,
+				"origin": [7, 6, 7]
+			},
+			"faces": {
+				"north": {
+					"uv": [12.5, 3, 12, 3.5],
+					"texture": "#0"
+				},
+				"east": {
+					"uv": [11, 3, 11.5, 4],
+					"rotation": 90,
+					"texture": "#0"
+				},
+				"south": {
+					"uv": [12, 3, 12.5, 3.5],
+					"texture": "#0"
+				},
+				"west": {
+					"uv": [11, 3, 11.5, 4],
+					"rotation": 270,
+					"texture": "#0"
+				},
+				"up": {
+					"uv": [10.5, 3, 10, 4],
+					"texture": "#0"
+				},
+				"down": {
+					"uv": [10.5, 3, 11, 4],
+					"rotation": 180,
+					"texture": "#0"
+				}
+			}
+		},
+		{
+			"from": [7.01, 8.01, 4.01],
+			"to": [8.99, 9.99, 3.99],
+			"rotation": {
+				"x": -22.5,
+				"y": 0,
+				"z": 0,
+				"origin": [8, 8, 4]
+			},
+			"faces": {
+				"north": {
+					"uv": [11.5, 3.5, 11.75, 3.75],
+					"texture": "#0"
+				},
+				"east": {
+					"uv": [11.5, 3.5, 11.75, 3.75],
+					"texture": "#0"
+				},
+				"south": {
+					"uv": [11.5, 3.5, 11.75, 3.75],
+					"texture": "#0"
+				},
+				"west": {
+					"uv": [11.5, 3.5, 11.75, 3.75],
+					"texture": "#0"
+				},
+				"up": {
+					"uv": [11.5, 3.5, 11.75, 3.75],
+					"texture": "#0"
+				},
+				"down": {
+					"uv": [11.5, 3.5, 11.75, 3.75],
+					"texture": "#0"
+				}
+			}
+		}
+	]
+}

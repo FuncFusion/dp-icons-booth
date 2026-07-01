@@ -1,0 +1,29 @@
+{
+	"textures": {
+		"0": "dpi:blueprint/aj/creators/authors",
+		"particle": "minecraft:item/pufferfish"
+	},
+	"display": {
+		"head": {
+			"rotation": [0, 180, 0]
+		}
+	},
+	"elements": [
+		{
+			"from": [2.75, 7.75, 5.75],
+			"to": [21.25, 9.25, 15.25],
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": 0,
+				"origin": [8, 8, 8]
+			},
+			"faces": {
+				"up": {
+					"uv": [13.5, 2.25, 15.75, 3.375],
+					"texture": "#0"
+				}
+			}
+		}
+	]
+}
