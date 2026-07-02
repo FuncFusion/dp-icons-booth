@@ -50,10 +50,10 @@ class Node:
     function dpi:fs/walk/init
 
 function dpi:fs/walk/init:
-  node = storage.fs.walk.input
+  root = storage.fs.walk.input
   stack = storage.args.input
   stack = []
-  stack.append(node.children)
+  stack.append(root.children)
   function dpi:fs/walk/main
 
 function dpi:fs/walk/main:

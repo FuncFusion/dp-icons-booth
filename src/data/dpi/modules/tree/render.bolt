@@ -6,14 +6,13 @@ from dpi:config import storage, var, print_nbt
 from dpi:tree/object import Tree
 from dpi:filesystem import Node
 
-update_snapshot = var["#dpi.tree.snapshot.update_pending"]
 update_tree = var["#dpi.tree.update_pending"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
 def get_icon(name):
   return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
 
-function dpi:node/render:
+function dpi:node/summon:
   function dpi:node/render/get_name
   function dpi:node/render/spawn
 
@@ -55,48 +54,55 @@ function dpi:node/render/spawn:
     tag @s remove dpi.node.new
 
 function dpi:tree/render/init:
-  snapshot = storage.tree.render.input
-  count = var["#dpi.count"]
-  count = 0
-  length = len(snapshot)
-  can_render = var["#dpi.can_render"]
+  root = storage.tree.render.input
+
+  depth = var["#dpi.depth"]
+  depth = 1
+
+  stack = storage.args.input
+  stack = []
+  stack.append(root.children)
+
   summon marker ~ ~ ~ {Tags:["dpi.tree.marker"]}
   as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
   kill @n[tag=dpi.tree.marker]
 
 function dpi:tree/render/main:
-  item = snapshot[0]
-  count += 1
-  depth = var["#dpi.depth"]
-  depth = item.depth
+  children = stack[-1]
+  item = children[0]
 
-  can_render = 0
+  if item:
+    if not item.hidden:
+      at @s function dpi:node/render
 
-  if not item.hidden:
-    if not item.removed:
-      can_render = 1
+    if item.children:
+      stack.append(item.children)
+      depth += 1
+      at @s function dpi:tree/render/main
+      depth -= 1
 
-  if can_render:
-    at @s function dpi:tree/render/apply_depth
-    
-    storage.node.render.input = item
-    at @s function dpi:node/render
-    render_name = print_nbt("node.render.output")
+    item.remove()
+    at @s function dpi:tree/render/main
 
-    at @s function dpi:tree/render/reset_depth
-    tp @s ~ ~-0.3 ~
+  if not item:
+    if stack[0]:
+      stack[-1].remove()
 
-  snapshot.append(item)
-  item.remove()
+function dpi:node/render:
+  at @s function dpi:tree/render/apply_depth
+  
+  storage.node.render.input = item
+  at @s function dpi:node/summon
+  render_name = print_nbt("node.render.output")
 
-  if count < length:
-    at @s run function dpi:tree/render/main
+  at @s function dpi:tree/render/reset_depth
+  tp @s ~ ~-0.3 ~
 
 def move_marker(x):
   for i in range(10):
     if depth == i:
       for j in range(i):
-        at @s tp @s ~0.3 ~ ~
+        at @s tp @s ~x ~ ~
 
 function dpi:tree/render/apply_depth:
   move_marker(0.3)
@@ -121,14 +127,10 @@ append function dpi:temp:
   execute positioned 112 86 -123:
     tree.render()
 
-  storage.rebuild.input = tree.root.node()
-  function dpi:tree/rebuild/init
-
 append function dpi:tick:
   if update_tree:
     execute positioned 112 86 -123:
       tree.update()
 
 append function dpi:load:
-  update_snapshot = 1
   schedule function dpi:temp 2t replace

@@ -11,15 +11,8 @@ class Tree:
   def __init__(self):
     self.root = Node("root", "dir")
 
-  def build(self):
-    storage.tree.flatten.input = self.root.node()
-    execute positioned ~ ~ ~ run function dpi:tree/flatten/init
-
   def render(self):
-    if update_snapshot:
-      self.build()
-
-    storage.tree.render.input = storage.tree.snapshot
+    storage.tree.render.input = self.root.node()
     execute positioned ~ ~ ~ run function dpi:tree/render/init
 
   def kill(self):
