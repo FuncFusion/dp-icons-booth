@@ -121,6 +121,9 @@ append function dpi:temp:
   execute positioned 112 86 -123:
     tree.render()
 
+  storage.rebuild.input = tree.root.node()
+  function dpi:tree/rebuild/init
+
 append function dpi:tick:
   if update_tree:
     execute positioned 112 86 -123:

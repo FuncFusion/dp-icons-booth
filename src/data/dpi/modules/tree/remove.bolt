@@ -1,5 +1,6 @@
 import bolt_expressions as expr
 from dpi:config import storage, var, print_nbt
+import dpi:gui as gui
 
 update_tree = var["#dpi.tree.update_pending"]
 update_snapshot = var["#dpi.tree.snapshot.update_pending"]

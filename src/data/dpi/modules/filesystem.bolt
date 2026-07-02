@@ -18,24 +18,24 @@ class Node:
     global_id = var["#dpi.node.global_id"]
     global_id += 1
 
-    parent.child.append({})
-    parent.child[-1].name = name
-    parent.child[-1].type = type
-    parent.child[-1].id = global_id
+    parent.children.append({})
+    parent.children[-1].name = name
+    parent.children[-1].type = type
+    parent.children[-1].id = global_id
 
     if type == "dir":
       node = self.node()
-      node.child = []
-      self.child = node.child
+      node.children = []
+      self.children = node.children
 
   def node(self):
-    return self.parent.child[{"name": self._name}]
+    return self.parent.children[{"name": self._name}]
 
   def remove(self):
     self.node.remove()
 
   def rename(self, new_name, type=self.type):
-    self.parent.child[{"name": self._name}].name = new_name
+    self.parent.children[{"name": self._name}].name = new_name
     self._name = new_name
 
   def render(self, pos):
@@ -53,7 +53,7 @@ function dpi:fs/walk/init:
   node = storage.fs.walk.input
   stack = storage.args.input
   stack = []
-  stack.append(node.child)
+  stack.append(node.children)
   function dpi:fs/walk/main
 
 function dpi:fs/walk/main:
@@ -62,8 +62,8 @@ function dpi:fs/walk/main:
   if item:
     tellraw @a [item.name, " ", item.type]
 
-    if item.child:
-      stack.append(item.child)
+    if item.children:
+      stack.append(item.children)
       function dpi:fs/walk/main
 
     item.remove()

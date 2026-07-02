@@ -12,7 +12,7 @@ function dpi:tree/flatten/init:
 
   stack = storage.args.input
   stack = []
-  stack.append(node.child)
+  stack.append(node.children)
 
   state = storage.state
 
@@ -34,8 +34,8 @@ function dpi:tree/flatten/main:
       snapshot[-1].id = item.id
       snapshot[-1].depth = depth
 
-    if item.child:
-      stack.append(item.child)
+    if item.children:
+      stack.append(item.children)
       depth += 1
       function dpi:tree/flatten/main
       depth -= 1

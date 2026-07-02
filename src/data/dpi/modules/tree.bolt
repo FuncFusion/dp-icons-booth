@@ -3,4 +3,6 @@ import ./tree/object as object
 import ./tree/render as render
 import ./tree/fold as fold
 import ./tree/select as select
-import ./tree/operate as operate
+import ./tree/remove as remove
+import ./tree/create as create
+import ./tree/rebuild as rebuild

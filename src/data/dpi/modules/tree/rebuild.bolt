@@ -1,0 +1,42 @@
+from dpi:config import storage, var
+
+function dpi:tree/rebuild/init:
+  node = storage.rebuild.input
+
+  stack = storage.rebuild.args
+  stack.input = []
+  stack.input.append(node)
+  stack.new_node = []
+  stack.new_children.remove()
+
+  function dpi:tree/rebuild/main
+  output = storage.rebuild.args.new_children[0]
+  tellraw @a ["rebuild tree:\n", node.children, "\n\n" , output]
+
+function dpi:tree/rebuild/main:
+  new_children = stack.new_children[-1]
+  new_node = stack.new_node[-1]
+  input = stack.input[-1]
+
+  if input.children:
+    stack.new_children.append([])
+    children = storage.rebuild.children.input
+    children = input.children
+
+    execute run function dpi:tree/rebuild/children:
+      child = children[0]
+      new_children.append(child)
+      child.remove()
+      
+      if child:
+        input.append(child)
+        function dpi:tree/rebuild/children
+
+  entry = storage.temp.entry
+  entry.name = input.name
+  entry.type = input.type
+  entry.id = input.id
+  entry.children = new_children
+  new_node.append(entry)
+
+  input.remove()

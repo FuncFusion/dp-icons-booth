@@ -8,6 +8,7 @@ function dpi:node/toggle/select:
   as @e[tag=dpi.node.selected] function dpi:node/unselect
 
   function dpi:node/select
+  # on target run dialog show @s dpi:node/context_menu
 
 function dpi:node/unselect:
   tag @s remove dpi.node.selected

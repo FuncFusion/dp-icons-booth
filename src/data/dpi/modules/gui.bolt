@@ -95,11 +95,13 @@ class Button:
         if self.text:
             self._spawn_text(pos, rotation, translation_offset)
 
-        actions = {on_left_click:"",on_right_click:""}
+        actions = {}
 
         if self.on_left_click != "":
+            actions = {on_left_click:""}
             actions.on_left_click = self.on_left_click
         if self.on_right_click != "":
+            actions = {on_right_click:""}
             actions.on_right_click = self.on_right_click
 
         offset_pos = find_position_offset(face, pos, offset)
@@ -120,11 +122,13 @@ class Button:
         if self.text:
             self._spawn_text(pos, rotation, translation_offset)
 
-        actions = {on_left_click:"",on_right_click:""}
+        actions = {}
 
         if self.on_left_click != "":
+            actions = {on_left_click:""}
             actions.on_left_click = self.on_left_click
         if self.on_right_click != "":
+            actions = {on_right_click:""}
             actions.on_right_click = self.on_right_click
 
         offset_pos = find_relative_position_offset(face, pos, offset)
