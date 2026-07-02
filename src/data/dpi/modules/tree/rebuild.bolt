@@ -1,11 +1,11 @@
 from dpi:config import storage, var
 
 function dpi:tree/rebuild/init:
-  node = storage.rebuild.input
+  root = storage.rebuild.input
 
   stack = storage.rebuild.args
   stack.input = []
-  stack.input.append(node)
+  stack.input.append(root)
   stack.new_node = []
   stack.new_children.remove()
 

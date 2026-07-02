@@ -10,7 +10,7 @@ append function dpi:load:
   global_id = 0
 
 class Node:
-  def __init__(self, name, type, parent=storage.fs):
+  def __init__(self, name, type, parent=storage.fs.root):
     self._name = name
     self.parent = parent
     self.type = type
@@ -69,5 +69,6 @@ function dpi:fs/walk/main:
     item.remove()
     function dpi:fs/walk/main
 
-  if stack[0] and not item:
-    stack[-1].remove()
+  if not item:
+    if stack[0]:
+      stack[-1].remove()

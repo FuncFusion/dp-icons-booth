@@ -1,4 +1,4 @@
-from dpi:config import storage, var, letter_to_size
+from dpi:config import storage, var
 
 def find_rotation(face):
     if face == "north":
