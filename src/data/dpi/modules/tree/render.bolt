@@ -124,12 +124,12 @@ append function dpi:temp:
   tick = Node("tick.mcfunction", "mcf", functions)
   load = Node("load.mcfunction", "mcf", functions)
 
-  execute positioned 112 86 -123:
+  execute positioned 112.5 86.5 -123.95:
     tree.render()
 
 append function dpi:tick:
   if update_tree:
-    execute positioned 112 86 -123:
+    execute positioned 112.5 86.5 -123.95:
       tree.update()
 
 append function dpi:load:

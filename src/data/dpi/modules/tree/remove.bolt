@@ -13,48 +13,57 @@ function dpi:node/remove:
 
 function dpi:node/remove/init:
   root = storage.fs.root
+  root_node = root.children[0]
+  root_id = root_node.id
 
+  storage.rebuild.entry = []
+  storage.rebuild.relations = []
   stack = storage.rebuild.args
-  stack.input = []
-  stack.input.append(root)
-  stack.new_node = []
-  stack.new_children.remove()
+  stack = []
+  stack.append(root_node.children)
+
+  parent_stack = storage.rebuild.parent_ids
+  parent_stack = []
+  parent_stack.append(root_id)
 
   function dpi:node/remove/main
-  output = stack.new_children[0]
+
+  function dpi:tree/rebuild/link_pass
+
+  storage.rebuild.macro.id = root_id
+  function dpi:tree/rebuild/get_entry with storage dpi:main rebuild.macro
+  output = storage.rebuild.output
   tellraw @a ["removed tree:\n", output]
   root.children = []
-  root.children = output
+  root.children = [output]
   update_tree = 1
 
 function dpi:node/remove/main:
-  new_children = stack.new_children[-1]
-  new_node = stack.new_node[-1]
-  input = stack.input[-1]
+  children = stack[-1]
+  child = children[0]
 
-  if input.children:
-    stack.new_children.append([])
-    children = storage.rebuild.children.input
-    children = input.children
+  if child:
+    if child.id != match:
+      entry = storage.temp.entry
+      entry.name = child.name
+      entry.type = child.type
+      entry.id = child.id
+      entry.children = []
+      storage.rebuild.entry.append(entry)
 
-    execute run function dpi:node/remove/children:
-      child = children[0]
+      parent_id = parent_stack[-1]
+      if parent_id != -1:
+        storage.rebuild.relations.append([parent_id, child.id])
 
-      tellraw @a ["trying ", match, " to ", child.id]
+      if child.children:
+        stack.append(child.children)
+        parent_stack.append(child.id)
 
-      if child.id != match:
-        new_children.append(child)
-      child.remove()
-      
-      if child:
-        input.append(child)
-        function dpi:node/remove/children
+    child.remove()
+    function dpi:node/remove/main
 
-  entry = storage.temp.entry
-  entry.name = input.name
-  entry.type = input.type
-  entry.id = input.id
-  entry.children = new_children
-  new_node.append(entry)
-
-  input.remove()
+  if not child:
+    if stack[0]:
+      stack[-1].remove()
+      parent_stack[-1].remove()
+      function dpi:node/remove/main
