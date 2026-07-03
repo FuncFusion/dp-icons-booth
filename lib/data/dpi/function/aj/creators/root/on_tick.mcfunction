@@ -5,5 +5,7 @@ execute if entity @s[tag=dpi.aj.creators.animation.amandin_busy.playing] run fun
 execute if entity @s[tag=dpi.aj.creators.animation.amandin_idle.playing] run function dpi:aj/creators/animations/amandin_idle/zzz/on_tick
 execute if entity @s[tag=dpi.aj.creators.animation.ant_busy.playing] run function dpi:aj/creators/animations/ant_busy/zzz/on_tick
 execute if entity @s[tag=dpi.aj.creators.animation.ant_blowing_balloon.playing] run function dpi:aj/creators/animations/ant_blowing_balloon/zzz/on_tick
+execute if entity @s[tag=dpi.aj.creators.animation.ant_handout_to_busy.playing] run function dpi:aj/creators/animations/ant_handout_to_busy/zzz/on_tick
 execute if score @s aj.amandin_busy.frame matches -1 if predicate dpi:creators/amandin_idle_chance run function dpi:creators/amandin_idle_play
 execute if score @s aj.bth_busy.frame matches -1 if predicate dpi:creators/bth_idle_chance run function dpi:creators/bth_idle_play
+execute if entity @s[tag=dpi.transition_to_busy] if score @s aj.ant_handout_to_busy.frame matches 13.. run function dpi:creators/ant_transition_to_busy

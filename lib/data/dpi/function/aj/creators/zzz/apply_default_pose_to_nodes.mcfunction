@@ -13,11 +13,11 @@ $data merge entity $(ama_display_vsc) { transformation: [1.4044f,-0.1027f,1.174f
 $data merge entity $(ama_display_nvim) { transformation: [0.3184f,-0.1574f,1.7986f,0.6842f,0f,1.8264f,0.1598f,0.8438f,-1.8055f,-0.0277f,0.3171f,1.8158f,0f,0f,0f,1f], start_interpolation: 0 }
 $data merge entity $(ama_kb_layer) { transformation: [0.5f,0f,0.866f,1.6797f,0f,1f,0f,0.0625f,-0.866f,0f,0.5f,1.0915f,0f,0f,0f,1f], start_interpolation: 0 }
 $data merge entity $(ama_kb) { transformation: [0.5f,0f,0.866f,1.94f,0f,1f,0f,0.0938f,-0.866f,0f,0.5f,0.9531f,0f,0f,0f,1f], start_interpolation: 0 }
-$data merge entity $(ant_string) { transformation: [-1.0833f,0f,0f,-0.5f,0f,1.0833f,0f,0.125f,0f,0f,-1.0833f,-0.5625f,0f,0f,0f,1f], start_interpolation: 0 }
-$data merge entity $(ant_balloon) { transformation: [-1.25f,0f,0f,-0.5f,0f,1.25f,0f,0.125f,0f,0f,-1.25f,-0.5625f,0f,0f,0f,1f], start_interpolation: 0 }
-$data merge entity $(ant_head) { transformation: [-1f,0f,0f,0f,0f,1f,0f,0.625f,0f,0f,-1f,-3.125f,0f,0f,0f,1f], start_interpolation: 0 }
-$data merge entity $(ant_baton) { transformation: [-1f,0f,0f,-0.5f,0f,0.9763f,-0.2164f,-0.0731f,0f,-0.2164f,-0.9763f,-3.0608f,0f,0f,0f,1f], start_interpolation: 0 }
-$data merge entity $(ant_right_hand) { transformation: [-1f,0f,0f,-0.4375f,0f,1f,0f,0.0625f,0f,0f,-1f,-3.0625f,0f,0f,0f,1f], start_interpolation: 0 }
-$data merge entity $(ant_left_hand) { transformation: [-1f,0f,0f,0.5f,0f,1f,0f,0.0625f,0f,0f,-1f,-3.125f,0f,0f,0f,1f], start_interpolation: 0 }
+$data merge entity $(ant_string) { transformation: [-1.0833f,0f,0f,-0.5f,0f,1.0833f,0f,-0.125f,0f,0f,-1.0833f,2.5625f,0f,0f,0f,1f], start_interpolation: 0 }
+$data merge entity $(ant_balloon) { transformation: [-1.25f,0f,0f,-0.5f,0f,1.25f,0f,-0.125f,0f,0f,-1.25f,2.5625f,0f,0f,0f,1f], start_interpolation: 0 }
+$data merge entity $(ant_head) { transformation: [-1f,0f,0f,0f,0f,1f,0f,0.375f,0f,0f,-1f,0f,0f,0f,0f,1f], start_interpolation: 0 }
+$data merge entity $(ant_baton) { transformation: [-1f,0f,0f,-0.5f,0f,0.9763f,-0.2164f,-0.3231f,0f,-0.2164f,-0.9763f,0.0642f,0f,0f,0f,1f], start_interpolation: 0 }
+$data merge entity $(ant_right_hand) { transformation: [-1f,0f,0f,-0.4375f,0f,1f,0f,-0.1875f,0f,0f,-1f,0.0625f,0f,0f,0f,1f], start_interpolation: 0 }
+$data merge entity $(ant_left_hand) { transformation: [-1f,0f,0f,0.5f,0f,1f,0f,-0.1875f,0f,0f,-1f,0f,0f,0f,0f,1f], start_interpolation: 0 }
 $data merge entity $(ant_display_vsc) { transformation: [-1.7228f,-0.0546f,0.6247f,-1.375f,0f,1.8264f,0.1598f,0.8438f,-0.627f,0.1501f,-1.7162f,-1.75f,0f,0f,0f,1f], start_interpolation: 0 }
 $data merge entity $(ant_display_obs) { transformation: [-1.7228f,0.0546f,-0.6247f,1.375f,0f,1.8264f,0.1598f,0.8438f,0.627f,0.1501f,-1.7162f,-1.75f,0f,0f,0f,1f], start_interpolation: 0 }

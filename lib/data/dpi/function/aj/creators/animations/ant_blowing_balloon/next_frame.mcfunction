@@ -4,7 +4,7 @@ execute unless entity @s[type=minecraft:item_display,tag=dpi.aj.creators.root] r
 execute store result storage animated_java:temp args.id int 1 run scoreboard players get @s aj.id
 # Data Manager: Read
 function animated_java:global/data_manager/read with storage animated_java:temp args
-execute if score @s aj.ant_blowing_balloon.frame matches 73.. run scoreboard players set @s aj.ant_blowing_balloon.frame 1
+execute if score @s aj.ant_blowing_balloon.frame matches 141.. run scoreboard players set @s aj.ant_blowing_balloon.frame 1
 data remove storage animated_java:temp args
 execute store result storage animated_java:temp args.frame int 1 run scoreboard players get @s aj.ant_blowing_balloon.frame
 execute at @s run function dpi:aj/creators/animations/ant_blowing_balloon/zzz/apply_frame with storage animated_java:temp args

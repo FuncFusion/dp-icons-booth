@@ -5,4 +5,5 @@ scoreboard objectives remove aj.amandin_busy.frame
 scoreboard objectives remove aj.amandin_idle.frame
 scoreboard objectives remove aj.ant_busy.frame
 scoreboard objectives remove aj.ant_blowing_balloon.frame
+scoreboard objectives remove aj.ant_handout_to_busy.frame
 tellraw @a [[{color:gray,text:'\n '},{color:'#00aced',text:'ᴀɴɪᴍᴀᴛᴇᴅ ᴊᴀᴠᴀ'},{color:dark_gray,italic:true,text:'\n (dpi:aj/creators)'},'\n → '],[{text:'Successfully uninstalled ',color:green},{text:'dpi:aj/creators',color:yellow},{text:'!'},{text:'\n If you have exported multiple times, you may have to remove objectives from previous exports manually, as Animated Java only knows about the objectives from the most recent export.',color:gray,italic:true}],'\n']

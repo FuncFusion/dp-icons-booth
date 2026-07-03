@@ -50,6 +50,7 @@ append function dpi:entities/summon:
     function dpi:aj/creators/animations/amandin_busy/play
     function dpi:aj/creators/animations/ant_busy/play
     function dpi:aj/creators/animations/bth_busy/play
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.bone.ant_character.tree] at @s run tp @s ~ ~0.25 ~-3.125
 
   summon text_display 114.5 93.8 -132.0 {Tags:["dpi.springboard_arrow", "summit.booth_entity.dpi"], shadow: 0b, text: "⬆", transformation: {left_rotation: [0.0f, 0.9659259f, 0.25881904f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.9999999f, 2.0f, 2.0f]}, background: 0}
   # replace with booth definition loop

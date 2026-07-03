@@ -5,5 +5,5 @@ execute if score @s aj.tween_duration matches 0 on passengers run data modify en
 data remove storage animated_java:temp args
 execute store result storage animated_java:temp args.frame int 1 run scoreboard players get @s aj.ant_blowing_balloon.frame
 function dpi:aj/creators/animations/ant_blowing_balloon/zzz/apply_frame with storage animated_java:temp args
-execute if score @s aj.ant_blowing_balloon.frame matches 72 run return run function dpi:aj/creators/animations/ant_blowing_balloon/zzz/loop_mode_stop
+execute if score @s aj.ant_blowing_balloon.frame matches 140.. run return run function dpi:aj/creators/animations/ant_blowing_balloon/pause
 scoreboard players add @s aj.ant_blowing_balloon.frame 1

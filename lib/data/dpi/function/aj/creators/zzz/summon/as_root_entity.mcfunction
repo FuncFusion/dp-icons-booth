@@ -12,7 +12,7 @@ function animated_java:global/data_manager/read with storage animated_java:temp 
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.root_uuid set from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.blueprint_id set value "dpi:aj/creators"
-data modify storage animated_java:temp entry.data.rig_hash set value "ed93dae545079f857a70ec51014caefa3126bdb61debc90ab06fff17795f527d"
+data modify storage animated_java:temp entry.data.rig_hash set value "95704dd2c007e923a1e8a8104bac8b9bf28882e99f60ecf522c6caefbd4d42e3"
 tp @s ~ ~ ~ ~ ~
 execute on passengers if entity @s[tag=dpi.aj.creators.node.bth_head] run function dpi:aj/creators/zzz/summon/as_node/bth_head
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out

@@ -6,3 +6,4 @@ tag @s remove dpi.aj.creators.animation.amandin_busy.playing
 tag @s remove dpi.aj.creators.animation.amandin_idle.playing
 tag @s remove dpi.aj.creators.animation.ant_busy.playing
 tag @s remove dpi.aj.creators.animation.ant_blowing_balloon.playing
+tag @s remove dpi.aj.creators.animation.ant_handout_to_busy.playing
