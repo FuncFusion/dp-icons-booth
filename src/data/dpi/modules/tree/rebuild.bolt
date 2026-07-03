@@ -1,42 +1,56 @@
 from dpi:config import storage, var
 
 function dpi:tree/rebuild/init:
-  node = storage.rebuild.input
+  root = storage.fs.root
 
   stack = storage.rebuild.args
-  stack.input = []
-  stack.input.append(node)
-  stack.new_node = []
-  stack.new_children.remove()
+  stack.node = []
+  stack.node.append(root)
+  stack.new_children = []
+  stack.loops = []
 
   function dpi:tree/rebuild/main
-  output = storage.rebuild.args.new_children[0]
-  tellraw @a ["rebuild tree:\n", node.children, "\n\n" , output]
+  
+  output = storage.rebuild.output
+  tellraw @a ["original:\n", root]
+  tellraw @a ["rebuilt:\n", output]
 
 function dpi:tree/rebuild/main:
-  new_children = stack.new_children[-1]
-  new_node = stack.new_node[-1]
-  input = stack.input[-1]
+  stack.new_children.append([])
+  node = stack.node[-1]
 
-  if input.children:
-    stack.new_children.append([])
-    children = storage.rebuild.children.input
-    children = input.children
-
-    execute run function dpi:tree/rebuild/children:
-      child = children[0]
-      new_children.append(child)
-      child.remove()
-      
-      if child:
-        input.append(child)
-        function dpi:tree/rebuild/children
+  if node.children:
+    stack.loops.append(node.children)
+    function dpi:tree/rebuild/children
+    stack.loops[-1].remove()
 
   entry = storage.temp.entry
-  entry.name = input.name
-  entry.type = input.type
-  entry.id = input.id
-  entry.children = new_children
-  new_node.append(entry)
+  entry.name = node.name
+  entry.type = node.type
+  entry.id = node.id
+  
+  current_collected = stack.new_children[-1]
+  if current_collected[0]:
+    entry.children = current_collected
+  else:
+    entry.children.remove()
+  
+  stack.new_children[-1].remove()
+  stack.node[-1].remove()
+  
+  if stack.new_children[0]:
+    stack.new_children[-1].append(entry)
+  else:
+    storage.rebuild.output = entry
 
-  input.remove()
+function dpi:tree/rebuild/children:
+  current_layer = stack.loops[-1]
+  child = current_layer[0]
+
+  if child:
+    stack.node.append(child)
+    function dpi:tree/rebuild/main
+
+  current_layer[0].remove()
+  if current_layer[0]:
+    function dpi:tree/rebuild/children
