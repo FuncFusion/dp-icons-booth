@@ -60,9 +60,7 @@ function dpi:node/remove/children:
   if child:
     target_id = var["#dpi.target_id"]
     
-    if child.id == target_id:
-    
-    if child.id != target_id:
+    if not child.id == target_id:
       stack.node.append(child)
       function dpi:node/remove/main
 
