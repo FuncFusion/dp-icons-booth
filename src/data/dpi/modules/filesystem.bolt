@@ -6,6 +6,7 @@ def get_icon(name):
     return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
 
 append function dpi:load:
+  storage.fs.remove()
   global_id = var["#dpi.node.global_id"]
   global_id = 0
 

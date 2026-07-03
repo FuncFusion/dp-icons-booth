@@ -3,7 +3,6 @@ from dpi:config import storage, var, print_nbt
 import dpi:gui as gui
 
 update_tree = var["#dpi.tree.update_pending"]
-update_snapshot = var["#dpi.tree.snapshot.update_pending"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
 function dpi:node/remove:
@@ -13,39 +12,49 @@ function dpi:node/remove:
     function dpi:node/remove/init
 
 function dpi:node/remove/init:
-  snapshot = storage.tree.snapshot
+  root = storage.fs.root
 
-  count = var["#dpi.count"]
-  count = 0
-  matched_depth = var["#dpi.matched_depth"]
-  matched_depth = 0
-  match_found = var["#dpi.match_found"]
-  depth = var["#dpi.depth"]
-  depth = 0
+  stack = storage.rebuild.args
+  stack.input = []
+  stack.input.append(root)
+  stack.new_node = []
+  stack.new_children.remove()
 
-  length = len(snapshot)
   function dpi:node/remove/main
+  output = stack.new_children[0]
+  tellraw @a ["removed tree:\n", output]
+  root.children = []
+  root.children = output
+  update_tree = 1
 
 function dpi:node/remove/main:
-  item = snapshot[0]
-  count += 1
+  new_children = stack.new_children[-1]
+  new_node = stack.new_node[-1]
+  input = stack.input[-1]
 
-  function dpi:node/compare
+  if input.children:
+    stack.new_children.append([])
+    children = storage.rebuild.children.input
+    children = input.children
 
-  if matched_depth:
-    depth = item.depth
-    if depth > matched_depth:
-      item.removed = true
-    else:
-      matched_depth = 0
+    execute run function dpi:node/remove/children:
+      child = children[0]
 
-  if match_found:
-    item.removed = true
-    matched_depth = item.depth
-    update_tree = 1
-    update_snapshot = 1
+      tellraw @a ["trying ", match, " to ", child.id]
 
-  snapshot.append(item)
-  item.remove()
-  if count < length:
-    function dpi:node/remove/main
+      if child.id != match:
+        new_children.append(child)
+      child.remove()
+      
+      if child:
+        input.append(child)
+        function dpi:node/remove/children
+
+  entry = storage.temp.entry
+  entry.name = input.name
+  entry.type = input.type
+  entry.id = input.id
+  entry.children = new_children
+  new_node.append(entry)
+
+  input.remove()

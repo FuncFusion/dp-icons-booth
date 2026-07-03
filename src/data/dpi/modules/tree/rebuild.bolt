@@ -1,7 +1,7 @@
 from dpi:config import storage, var
 
 function dpi:tree/rebuild/init:
-  root = storage.rebuild.input
+  root = storage.fs.root
 
   stack = storage.rebuild.args
   stack.input = []
@@ -10,8 +10,10 @@ function dpi:tree/rebuild/init:
   stack.new_children.remove()
 
   function dpi:tree/rebuild/main
-  output = storage.rebuild.args.new_children[0]
-  tellraw @a ["rebuild tree:\n", node.children, "\n\n" , output]
+  output = stack.new_children[0]
+  rebuild = storage.rebuild.output
+  tellraw @a ["rebuild tree:\n", root.children, "\n\n" , rebuild]
+
 
 function dpi:tree/rebuild/main:
   new_children = stack.new_children[-1]
@@ -25,11 +27,15 @@ function dpi:tree/rebuild/main:
 
     execute run function dpi:tree/rebuild/children:
       child = children[0]
-      new_children.append(child)
-      child.remove()
+      tellraw @a ["  child: ", child.name, " id=", child.id]
+      stack.input.append(child)
+      stack.new_node.append([])
+      function dpi:tree/rebuild/main
+      new_children.append(stack.new_node[-1][0])
+      stack.new_node[-1].remove()
       
+      child.remove()
       if child:
-        input.append(child)
         function dpi:tree/rebuild/children
 
   entry = storage.temp.entry
@@ -38,5 +44,5 @@ function dpi:tree/rebuild/main:
   entry.id = input.id
   entry.children = new_children
   new_node.append(entry)
-
+  rebuild = input
   input.remove()
