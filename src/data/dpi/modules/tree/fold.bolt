@@ -1,124 +1,93 @@
+from dpi:config import storage, var
 import bolt_expressions as expr
-from dpi:config import storage, var, print_nbt
 
 update_tree = var["#dpi.tree.update_pending"]
-update_snapshot = var["#dpi.tree.snapshot.update_pending"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
+root = storage.fs.root
+stack = storage.rebuild.args
+output = storage.rebuild.output
+entry = storage.temp.entry
+
 function dpi:node/fold:
-  match = var["#dpi.match"]
-  closed = var["#dpi.closed"]
-  match = id["@s"]
+  target_id = var["#dpi.target_id"]
+  target_id = id["@s"]
 
   unless entity @s[tag=dpi.node.dir] run return 0
 
-
-  closed = 0
+  is_collapse = var["#dpi.is_collapse"]
+  is_collapse = 1
   if entity @s[tag=dpi.node.closed]:
-    closed = 1
+    is_collapse = 0
 
-  if closed:
-    tag @s remove dpi.node.closed
-    function dpi:node/expand/init
-  else:
+  if is_collapse:
     tag @s add dpi.node.closed
-    function dpi:node/collapse/init
+  else:
+    tag @s remove dpi.node.closed
 
-function dpi:node/expand/init:
-  snapshot = storage.tree.snapshot
+  function dpi:node/fold/init
 
-  count = var["#dpi.count"]
-  count = 0
-  matched_depth = var["#dpi.matched_depth"]
-  matched_depth = 0
-  depth = var["#dpi.depth"]
-  depth = 0
+function dpi:node/fold/init:
+  stack.node = []
+  stack.node.append(root)
+  stack.new_children = []
+  stack.loops = []
 
-  length = len(snapshot)
-  function dpi:node/expand/main
+  function dpi:node/fold/main
 
-function dpi:node/expand/main:
-  item = snapshot[0]
-  count += 1
+  root = output
+  update_tree = 1
 
-  match_found = var["#dpi.match_found"]
-  match_found = 0
-  function dpi:node/compare
+function dpi:node/fold/main:
+  stack.new_children.append([])
+  node = stack.node[-1]
+  target_id = var["#dpi.target_id"]
+  is_collapse = var["#dpi.is_collapse"]
 
-  if matched_depth:
-    depth = item.depth
-    if depth > matched_depth:
-      item.hidden.remove()
-      item.closed.remove()
+  if node.children:
+    stack.loops.append(node.children)
+    function dpi:node/fold/children
+    stack.loops[-1].remove()
+
+  entry.name = node.name
+  entry.type = node.type
+  entry.id = node.id
+
+  entry.closed.remove()
+  entry.hidden.remove()
+  if node.closed:
+    entry.closed = true
+  if node.hidden:
+    entry.hidden = true
+
+  if node.id == target_id:
+    if is_collapse:
+      entry.closed = true
     else:
-      matched_depth = 0
+      entry.closed.remove()
 
-  if match_found:
-    item.closed.remove()
-    matched_depth = item.depth
-    update_tree = 1
-    update_snapshot = 0
+  current_collected = stack.new_children[-1]
+  if current_collected[0]:
+    entry.children = current_collected
+  else:
+    entry.children.remove()
 
-  snapshot.append(item)
-  item.remove()
-  if count < length:
-    function dpi:node/expand/main
+  stack.new_children[-1].remove()
+  stack.node[-1].remove()
 
+  if stack.new_children[0]:
+    stack.new_children[-1].append(entry)
+  else:
+    output = entry
 
+function dpi:node/fold/children:
+  current_layer = stack.loops[-1]
+  child = current_layer[0]
 
+  if child:
+    stack.node.append(child)
+    function dpi:node/fold/main
 
-
-
-function dpi:node/collapse/init:
-  snapshot = storage.tree.snapshot
-
-
-  count = var["#dpi.count"]
-  count = 0
-  matched_depth = var["#dpi.matched_depth"]
-  matched_depth = 0
-  depth = var["#dpi.depth"]
-  depth = 0
-
-  length = len(snapshot)
-  function dpi:node/collapse/main
-
-function dpi:node/collapse/main:
-  item = snapshot[0]
-  count += 1
-
-  match_found = var["#dpi.match_found"]
-  match_found = 0
-  function dpi:node/compare
-
-  if matched_depth:
-    depth = item.depth
-    if depth > matched_depth:
-      item.hidden = true
-    else:
-      matched_depth = 0
-
-  if match_found:
-    item.closed = true
-    matched_depth = item.depth
-    update_tree = 1
-    update_snapshot = 0
-
-  snapshot.append(item)
-  item.remove()
-  if count < length:
-    function dpi:node/collapse/main
-
-function dpi:node/compare:
-  item = snapshot[0]
-  match = var["#dpi.match"]
-  compare = var["#dpi.compare"]
-  match_found = var["#dpi.match_found"]
-
-  match_found = 0
-
-  compare = item.id
-
-  if match == compare:
-    match_found = 1
-
+  current_layer[0].remove()
+  if current_layer[0]:
+    function dpi:node/fold/children
