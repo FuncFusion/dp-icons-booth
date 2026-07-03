@@ -59,6 +59,10 @@ class Button:
         summon text_display x y z {
             Rotation: rotation,
             Tags: ["dpi.button", "dpi.button.text", "dpi.button.new.text", "summit.booth_entity.dpi"],
+            brightness: {
+                sky: 15,
+                block: 15
+            },
             transformation: {
                 translation: translation_offset,
                 left_rotation: [0.0f, 0.0f, 0.0f, 1.0f],
