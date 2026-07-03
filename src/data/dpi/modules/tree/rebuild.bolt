@@ -16,7 +16,6 @@ function dpi:tree/rebuild/init:
   parent_stack.append(root_id)
 
   function dpi:tree/rebuild/main
-  tellraw @a [">> PASS 2: link"]
 
   function dpi:tree/rebuild/link_pass
 
@@ -27,7 +26,6 @@ function dpi:tree/rebuild/init:
 function dpi:tree/rebuild/main:
   children = stack[-1]
   child = children[0]
-  tellraw @a [">> main: ", child.name, " id=", child.id]
 
   if child:
     entry = storage.temp.entry
@@ -36,8 +34,6 @@ function dpi:tree/rebuild/main:
     entry.id = child.id
     entry.children = []
     storage.rebuild.entry.append(entry)
-
-    tellraw @a ["  child: ", child.name, " id=", child.id]
 
     parent_id = parent_stack[-1]
     if parent_id != -1:
@@ -49,7 +45,6 @@ function dpi:tree/rebuild/main:
 
     child.remove()
     function dpi:tree/rebuild/main
-    tellraw @a ["  after: ", child.name, " id=", child.id]
 
   if not child:
     if stack[0]:
@@ -60,7 +55,6 @@ function dpi:tree/rebuild/main:
 function dpi:tree/rebuild/link_pass:
   pair = storage.rebuild.relations[0]
   if pair:
-    tellraw @a ["  link: p=", pair[0], " c=", pair[1]]
     storage.rebuild.macro.parent_id = pair[0]
     storage.rebuild.macro.child_id = pair[1]
     function dpi:tree/rebuild/append_child with storage dpi:main rebuild.macro
