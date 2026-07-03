@@ -134,20 +134,21 @@ function dpi:entities/static/summon:
   gui.Button("function dpi:creators/click_ant", "function dpi:creators/click_ant").spawn_abs([114,83,-107.6250], "north", 1.5, 1.5)
 
 
-def add_url_dialogue(title, url):
+def add_url_dialogue(icon, title, url):
   pattern = r"^(?:https?://)?(?:www\.)?(.+)"
 
   domain = re.sub(pattern, r"\1", url)
 
   return {
     "type": "minecraft:confirmation",
-    "title": title,
+    "title": [{atlas:"items",sprite: icon}," ",{text: title}],
     "external_title": "",
     "body": {
       "type": "minecraft:plain_message",
       "contents": {
         "text": domain,
-        "color": "yellow"
+        "color": "yellow",
+        "underlined": true
       },
       "width": 500
     },
@@ -167,44 +168,44 @@ def add_url_dialogue(title, url):
   }
 
 dialog dpi:trailer_link:
-  add_url_dialogue("Watch 5.0 trailer!", "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+  add_url_dialogue("dpi:icons/video_file", "Watch 5.0 trailer!", "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
 dialog dpi:main_repo_link:
-  add_url_dialogue("Check out the extension's repository!", "https://github.com/FuncFusion/mc-dp-icons")
+  add_url_dialogue("dpi:icons/misc/antbot/github", "Check out the extension's repository!", "https://github.com/FuncFusion/mc-dp-icons")
 
 dialog dpi:assets_repo_link:
-  add_url_dialogue("Find all the assets here!", "https://github.com/FuncFusion/mc-dp-icons-assets")
+  add_url_dialogue("dpi:icons/aseprite_file", "Find all the assets here!", "https://github.com/FuncFusion/mc-dp-icons-assets")
 
 dialog dpi:discord_link:
-  add_url_dialogue("Join our discord server!", "https://discord.gg/9FMRD9GvAq")
+  add_url_dialogue("dpi:icons/misc/discord", "Join our discord server!", "https://discord.gg/9FMRD9GvAq")
 
 dialog dpi:issues_link:
-  add_url_dialogue("You can open a github issue here!", "https://github.com/FuncFusion/mc-dp-icons/issues")
+  add_url_dialogue("dpi:icons/misc/silverfish", "You can open a github issue here!", "https://github.com/FuncFusion/mc-dp-icons/issues")
 
 dialog dpi:sublime_port_link:
-  add_url_dialogue("Sublime Text port", "https://github.com/FuncFusion/mc-dp-icons-sublime")
+  add_url_dialogue("dpi:icons/sublime_file", "Sublime Text port", "https://github.com/FuncFusion/mc-dp-icons-sublime")
 
 dialog dpi:zed_port_link:
-  add_url_dialogue("Zed port", "https://github.com/FuncFusion/mc-dp-icons-zed")
+  add_url_dialogue("dpi:icons/misc/antbot/link", "Zed port", "https://github.com/FuncFusion/mc-dp-icons-zed")
 
 dialog dpi:dp_essentials_link:
-  add_url_dialogue("Datapack Essentials - Extension Pack", "https://marketplace.visualstudio.com/items?itemName=amandin.dpc-pack")
+  add_url_dialogue("dpi:icons/function_folder", "Datapack Essentials - Extension Pack", "https://marketplace.visualstudio.com/items?itemName=amandin.dpc-pack")
 
 dialog dpi:ant_github_link:
-  add_url_dialogue("SuperAnt_'s Github", "https://github.com/SuperAnt220")
+  add_url_dialogue("dpi:icons/misc/antbot/github", "SuperAnt_'s Github", "https://github.com/SuperAnt220")
 
 dialog dpi:ant_modrinth_link:
-  add_url_dialogue("SuperAnt_'s Modrinth", "https://modrinth.com/user/SuperAnt_")
+  add_url_dialogue("dpi:icons/modrinth_file", "SuperAnt_'s Modrinth", "https://modrinth.com/user/SuperAnt_")
 
 dialog dpi:bth_github_link:
-  add_url_dialogue("bth's Github", "https://github.com/bth123")
+  add_url_dialogue("dpi:icons/misc/antbot/github", "bth's Github", "https://github.com/bth123")
 
 dialog dpi:amandin_github_link:
-  add_url_dialogue("amandin's Github", "https://github.com/amqndin")
+  add_url_dialogue("dpi:icons/misc/antbot/github", "amandin's Github", "https://github.com/amqndin")
 
 dialog dpi:timeline {
   "type": "minecraft:notice",
-  "title": "More fun facts",
+  "title": [{"atlas":"items","sprite":"dpi:icons/timeline_file"}," More fun facts"],
   "body": {
     "type": "minecraft:plain_message",
     "contents": "1.0 was released on March 31st, 2023. The project is more than 3 years old!\n\nFor one of the authors of this project, SuperAnt_, this project was his first ever github repository! It was also our first VS Code extension.\n\nThis extension works in web version of VS Code, but with limited features.\n\nWe have created 7 discord servers just to fill them with our icons as custom emojis, to use anywhere with nitro.",
@@ -259,7 +260,7 @@ dialog dpi:did_watch_trailer {
 
 dialog dpi:used_by_links {
   "type": "minecraft:multi_action",
-  "title": "Used By",
+  "title": [{"atlas":"items","sprite":"dpi:icons/lang_file"}," Used By"],
   "body": {
     "type": "minecraft:plain_message",
     "contents": "We love seeing our icons power other creations! Here are some of the awesome projects that use Datapack Icons:",
@@ -330,7 +331,7 @@ dialog dpi:shardgate_tp {
   "title": "",
   "body": {
     "type": "minecraft:plain_message",
-    "contents": "Check out our friends at Shardgate Studios!\n\nThey make cool datapacks, maps, mc servers, and indie games!\n\nDo you want to teleport to their booth?",
+    "contents": [{"atlas":"items","sprite":"dpi:icons/dimension_file"}," Check out our friends at ",{"text":"Shard","color":"light_purple"},{"text":"gate","color":"green"}," Studios!\n\nThey make cool ",{"text":"datapacks","color":"#FF631A"},", ",{"text":"maps","color":"#CE231F"},", ",{"text":"minecraft servers","color":"gold"},", and ",{"text":"indie games","color":"#00ADEE"},"!","\n\nDo you want to teleport to their booth?"],
     "width": 250
   },
   "yes": {
