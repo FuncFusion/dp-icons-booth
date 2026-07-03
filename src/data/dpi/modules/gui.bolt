@@ -83,6 +83,7 @@ class Button:
             Tags: [*tags, "summit.booth_entity.dpi", "summit.interactable", "dpi.button", "dpi.button.new.interaction"],
             width: width,
             height: height,
+            response: true,
             data: {
                 summit_interactable: actions
             }
