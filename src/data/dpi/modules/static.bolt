@@ -30,8 +30,8 @@ function dpi:entities/static/summon:
 	summon item_display 111.75 95.375 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:images/trailer_thumbnail"}, count: 1, id: "minecraft:painting"}, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},brightness: {sky: 15, block: 15}}
 
 	# trailer link interactions
-    gui.Button("", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([117.1, 92.6, -111.1], "north", 3.7, 0.8)
-    gui.Button("", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([111.75, 92.8, -111.1], "north", 5, 3)
+    gui.Button("execute on attacker run dialog show @s dpi:trailer_link", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([117.1, 92.6, -111.1], "north", 3.7, 0.8)
+    gui.Button("execute on attacker run dialog show @s dpi:trailer_link", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([111.75, 92.8, -111.1], "north", 5, 3)
 
 	## wall 4
 	# ʟɪɴᴋꜱ
@@ -107,8 +107,8 @@ function dpi:entities/static/summon:
 
   summon text_display 114.5 83.3 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"}," @",{text:"super.ant_\n",color:"#E88425"},{atlas:"items",sprite:"dpi:icons/modrinth_file"}," Modrinth"], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
-  gui.Button("", "execute on target run dialog show @s dpi:ant_github_link").spawn_abs([114.5, 84.5, -97.2875], "north", 1.6, 0.3)
-  gui.Button("", "execute on target run dialog show @s dpi:ant_modrinth_link").spawn_abs([114.5, 84.0, -97.2875], "north", 1.6, 0.3)
+  gui.Button("execute on attacker run dialog show @s dpi:ant_github_link", "execute on target run dialog show @s dpi:ant_github_link").spawn_abs([114.5, 83.8, -97.2875], "north", 1.6, 0.3)
+  gui.Button("execute on attacker run dialog show @s dpi:ant_modrinth_link", "execute on target run dialog show @s dpi:ant_modrinth_link").spawn_abs([114.5, 83.3, -97.2875], "north", 1.6, 0.3)
 
   #bth #7DB309
   summon text_display 110.3 85.9375 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas: "minecraft:items", sprite: "dpi:icons/misc/creators/bth123"},{text:" bth123",color:"#7DB309"}], transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]}, background: 0,brightness: {sky: 15, block: 15}}
@@ -117,18 +117,18 @@ function dpi:entities/static/summon:
 
   summon text_display 110.3 83.3 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"}," @",{text:"bth123\n",color:"#7DB309"}], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
-  gui.Button("", "execute on target run dialog show @s dpi:bth_github_link").spawn_abs([110.3, 84.5, -97.2875], "north", 1.6, 0.3)
+  gui.Button("execute on attacker run dialog show @s dpi:bth_github_link", "execute on target run dialog show @s dpi:bth_github_link").spawn_abs([110.3, 83.8, -97.2875], "north", 1.6, 0.3)
 
   #amandin #8599ff
   summon text_display 118.7 85.9375 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas: "minecraft:items", sprite: "dpi:icons/misc/creators/amandin"},{text:" amandin",color:"#8599ff"}], transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]}, background: 0,brightness: {sky: 15, block: 15}}
 
-  summon text_display 118.7 84.3 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: ["Lead developer behind all the code, included the extension in his ",{underlined: true,color:"#478BE6",text:"VS Code extension pack",},".\n\nCreated the extension simulation for the booth."], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0,brightness: {sky: 15, block: 15}}
+  summon text_display 118.7 84.3 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: ["Lead developer behind all the code, included the extension in his ",{underlined: true,color:"#478BE6",text:"VS Code extension pack",},".\n\nCreated Datapack Icons simulation for the booth."], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0,brightness: {sky: 15, block: 15}}
 
   summon text_display 118.7 83.3 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"}," @",{text:"amandin\n",color:"#8599ff"}], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
-  gui.Button("", "execute on target run dialog show @s dpi:dp_essentials_link").spawn_abs([118.6520, 85.0, -97.2875], "north", 3.7, 0.8)
+  gui.Button("execute on attacker run dialog show @s dpi:dp_essentials_link", "execute on target run dialog show @s dpi:dp_essentials_link").spawn_abs([118.6520, 85.0, -97.2875], "north", 3.7, 0.8)
 
-  gui.Button("", "execute on target run dialog show @s dpi:amandin_github_link").spawn_abs([118.7, 82.8, -97.2875], "north", 1.6, 0.3)
+  gui.Button("execute on attacker run dialog show @s dpi:amandin_github_link", "execute on target run dialog show @s dpi:amandin_github_link").spawn_abs([118.7, 83.8, -97.2875], "north", 1.6, 0.3)
 
   # ant balloon interaction
   gui.Button("function dpi:creators/click_ant", "function dpi:creators/click_ant").spawn_abs([114,83,-107.6250], "north", 1.5, 1.5)
