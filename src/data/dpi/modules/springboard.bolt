@@ -1,5 +1,6 @@
 from dpi:config import var, jump, player_motion_api
 import bolt_expressions as expr
+import dpi:stickers as stickers
 
 prefix = "#dpi.springboard."
 p = prefix
@@ -39,7 +40,9 @@ function dpi:springboard/prime:
 
     jump["@s"] = 0
 
-    as @a[tag=dpi.springboard.pending] at @s run function player_motion:api/launch_global_xyz
+    as @a[tag=dpi.springboard.pending] at @s:
+     function player_motion:api/launch_global_xyz
+     function dpi:stickers/start_speedrun
 
     tag @s remove dpi.springboard.pending
 

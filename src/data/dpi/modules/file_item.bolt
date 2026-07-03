@@ -2,7 +2,10 @@ from dpi:config import var, storage, print_nbt
 import os
 
 function dpi:file_item/give:
-  give @s paper[consumable={consume_seconds:999999999},custom_data={summit:{persist:{}},dpi:{file_item:1b}},item_name="File",item_model="dpi:file_item"]
+  # change to other type of notification
+  execute if items entity @s container.* paper[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
+  execute if items entity @s enderchest.* paper[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
+  give @s paper[consumable={consume_seconds:999999999},custom_data={summit:{persist:{}},dpi:{file_item:1b}},item_name="File",item_model="dpi:file_item",lore=[[{atlas:"items",sprite:"dpi:item/logos/deta_rack",color:"white",italic:false}," ",{text:"DATAPACK",font:"dpi:tooltip",shadow_color:0}," ",{text:"ICONS",font:"dpi:tooltip",shadow_color:0}]]]
 
 advancement dpi:file_item_use {
   "criteria": {

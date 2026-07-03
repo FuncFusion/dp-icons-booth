@@ -1,0 +1,94 @@
+{
+	"providers": [
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/d.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "D"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/a.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "A"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/t.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "T"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/p.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "P"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/c.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "C"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/k.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "K"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/i.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "I"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/o.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "O"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/n.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "N"
+		]
+	  },
+	  {
+		"type": "bitmap",
+		"file": "dpi:item/collectibles/tooltip_label/s.png",
+		"height": 6,
+		"ascent": 6,
+		"chars": [
+		  "S"
+		]
+	  }
+	]
+  }

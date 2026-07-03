@@ -1,0 +1,40 @@
+from dpi:config import var
+import bolt_expressions as expr
+
+append function dpi:load:
+  speedrun_timer = expr.Scoreboard.objective("dpi.speedrun.timer", "dummy")
+  secs = var["#dpi.speedrun.secs"]
+  ms = var["#dpi.speedrun.ms"]
+  ms_prefix = var["#dpi.speedrun.ms_prefix"]
+  ms_prefix2 = var["#dpi.speedrun.ms_prefix2"]
+
+append function dpi:tick/player:
+  if speedrun_timer["@s"]:
+    speedrun_timer["@s"] -= 1
+  
+  if speedrun_timer["@s"] <= 0:
+    scoreboard players reset @s speedrun_timer
+
+function dpi:stickers/start_speedrun:
+  speedrun_timer["@s"] = 199
+
+function dpi:stickers/end_speedrun:
+  if speedrun_timer["@s"]:
+    function dpi:stickers/speedrun_time_calc
+    if speedrun_timer["@s"] <= 79:
+      title @s title ["Time: ",{text:"0", color:"red", extra:[{score:{objective:"dpi.var",name:"#dpi.speedrun.secs"}},".",{score:{objective:"dpi.var",name:"#dpi.speedrun.ms_prefix"}},{score:{objective:"dpi.var",name:"#dpi.speedrun.ms_prefix2"}},{score:{objective:"dpi.var",name:"#dpi.speedrun.ms"}}]}]
+    else:
+      title @s title ["Time: ",{text:"0", color:"green", extra:[{score:{objective:"dpi.var",name:"#dpi.speedrun.secs"}},".",{score:{objective:"dpi.var",name:"#dpi.speedrun.ms_prefix"}},{score:{objective:"dpi.var",name:"#dpi.speedrun.ms_prefix2"}},{score:{objective:"dpi.var",name:"#dpi.speedrun.ms"}}]}]
+      say ADVANCEMENT GRANT - SPEEDRUN STICKER
+    scoreboard players reset #dpi.speedrun.ms_prefix dpi.var
+    scoreboard players reset #dpi.speedrun.ms_prefix2 dpi.var
+
+function dpi:stickers/speedrun_time_calc:
+  ticks = 199 - speedrun_timer["@s"]
+  secs = ticks / 20
+  ms = ticks % 20 * 50
+  if ms == 50:
+    ms_prefix = 0
+  if ms == 0:
+    ms_prefix = 0
+    ms_prefix2 = 0
