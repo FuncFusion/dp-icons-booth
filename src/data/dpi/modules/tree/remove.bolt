@@ -27,6 +27,7 @@ function dpi:node/remove/init:
   parent_stack.append(root_id)
 
   function dpi:node/remove/main
+  tellraw @a [">> PASS 2: link"]
 
   function dpi:tree/rebuild/link_pass
 
@@ -41,8 +42,11 @@ function dpi:node/remove/init:
 function dpi:node/remove/main:
   children = stack[-1]
   child = children[0]
+  tellraw @a [">> main: ", child.name, " id=", child.id]
 
   if child:
+    tellraw @a ["  child: ", child.name, " id=", child.id]
+
     if child.id != match:
       entry = storage.temp.entry
       entry.name = child.name
@@ -61,6 +65,7 @@ function dpi:node/remove/main:
 
     child.remove()
     function dpi:node/remove/main
+    tellraw @a ["  after: ", child.name, " id=", child.id]
 
   if not child:
     if stack[0]:
