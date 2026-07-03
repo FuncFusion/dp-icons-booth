@@ -1,69 +1,71 @@
+from dpi:config import storage, var
 import bolt_expressions as expr
-from dpi:config import storage, var, print_nbt
-import dpi:gui as gui
 
 update_tree = var["#dpi.tree.update_pending"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
+root = storage.fs.root
+stack = storage.rebuild.args
+output = storage.rebuild.output
+entry = storage.temp.entry
+
 function dpi:node/remove:
   as @n[tag=dpi.node.selected]:
-    match = var["#dpi.match"]
-    match = id["@s"]
+    target_id = var["#dpi.target_id"]
+    target_id = id["@s"]
     function dpi:node/remove/init
 
 function dpi:node/remove/init:
-  root = storage.fs.root
-  root_node = root.children[0]
-  root_id = root_node.id
-
-  storage.rebuild.entry = []
-  storage.rebuild.relations = []
-  stack = storage.rebuild.args
-  stack = []
-  stack.append(root_node.children)
-
-  parent_stack = storage.rebuild.parent_ids
-  parent_stack = []
-  parent_stack.append(root_id)
+  stack.node = []
+  stack.node.append(root)
+  stack.new_children = []
+  stack.loops = []
 
   function dpi:node/remove/main
 
-  function dpi:tree/rebuild/link_pass
-
-  storage.rebuild.macro.id = root_id
-  function dpi:tree/rebuild/get_entry with storage dpi:main rebuild.macro
-  output = storage.rebuild.output
-  tellraw @a ["removed tree:\n", output]
-  root.children = []
-  root.children = [output]
+  root = output
   update_tree = 1
 
 function dpi:node/remove/main:
-  children = stack[-1]
-  child = children[0]
+  stack.new_children.append([])
+  node = stack.node[-1]
+
+  if node.children:
+    stack.loops.append(node.children)
+    function dpi:node/remove/children
+    stack.loops[-1].remove()
+
+  entry.name = node.name
+  entry.type = node.type
+  entry.id = node.id
+  
+  current_collected = stack.new_children[-1]
+  if current_collected[0]:
+    entry.children = current_collected
+  else:
+    entry.children.remove()
+  
+  stack.new_children[-1].remove()
+  stack.node[-1].remove()
+  
+  if stack.new_children[0]:
+    stack.new_children[-1].append(entry)
+  else:
+    output = entry
+
+function dpi:node/remove/children:
+  current_layer = stack.loops[-1]
+  child = current_layer[0]
 
   if child:
-    if child.id != match:
-      entry = storage.temp.entry
-      entry.name = child.name
-      entry.type = child.type
-      entry.id = child.id
-      entry.children = []
-      storage.rebuild.entry.append(entry)
-
-      parent_id = parent_stack[-1]
-      if parent_id != -1:
-        storage.rebuild.relations.append([parent_id, child.id])
-
-      if child.children:
-        stack.append(child.children)
-        parent_stack.append(child.id)
-
-    child.remove()
-    function dpi:node/remove/main
-
-  if not child:
-    if stack[0]:
-      stack[-1].remove()
-      parent_stack[-1].remove()
+    target_id = var["#dpi.target_id"]
+    
+    if child.id == target_id:
+    
+    if child.id != target_id:
+      stack.node.append(child)
       function dpi:node/remove/main
+
+  current_layer[0].remove()
+  if current_layer[0]:
+    function dpi:node/remove/children
