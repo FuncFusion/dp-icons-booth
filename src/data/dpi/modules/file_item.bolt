@@ -8,7 +8,7 @@ append function dpi:load:
 
 append function dpi:tick/player:
   if predicate dpi:sneaking:
-    if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{string_input:true}}]:
+    if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{file_item:true}}]:
       function dpi:string_input/submit
 
 append function dpi:temp:
@@ -17,9 +17,9 @@ append function dpi:temp:
 
 function dpi:file_item/give:
   # change to other type of notification
-  execute if items entity @s container.* paper[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
-  execute if items entity @s enderchest.* paper[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
-  give @s paper[
+  execute if items entity @s container.* writable_book[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
+  execute if items entity @s enderchest.* writable_book[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
+  give @s writable_book[
     consumable={consume_seconds:999999999},
     custom_data={
       summit:{ persist: {}, },
@@ -42,31 +42,10 @@ append function_tag summit.items:droppable/callback:
   values:
     - "dpi:file_item/dropped"
 
-function dpi:file_item/use:
-  advancement revoke @s only dpi:file_item_use
-  function dpi:string_input/init
-
 function dpi:file_item/dropped:
   say yo
-  if items entity @s contents writable_book[custom_data~{dpi:{string_input:true}}]
+  if items entity @s contents writable_book[custom_data~{dpi:{file_item:true}}]
     say gex
-
-function dpi:string_input/init:
-  item modify entity @s weapon.mainhand dpi:turn_equippable
-  item replace entity @s saddle from entity @s weapon.mainhand
-  item replace entity @s weapon.mainhand with writable_book[
-    custom_data={
-      smithed: {
-        droppable: {
-          kill: true,
-          callback: true
-        }
-      },
-      dpi:{
-        string_input:true
-      }
-    }
-  ] 1
 
 function dpi:string_input/submit:
   sio_output = storage.string_input.output
@@ -78,7 +57,6 @@ function dpi:string_input/submit:
   sio_length = len(sio_output)
 
   if sio_length < character_limit:
-    item replace entity @s weapon.mainhand from entity @s saddle
     tellraw @a ["string_input.sio_output ", sio_output]
     function dpi:file_item/submit_name
   else:
@@ -128,11 +106,12 @@ function dpi:file_item/submit_name:
   function dpi:file_item/modify_icon with storage dpi:main modify_icon.input
   
 function dpi:file_item/modify_icon:
+
   $say icon_name = $(icon_name)
   $say file_name = $(file_name)
-  $execute if items entity @s weapon.mainhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [ { function:"minecraft:set_custom_model_data", strings:{ values:["$(icon_name)"], mode:"replace_all" } }, { function:"minecraft:set_name", entity:"this", name:{text:"$(file_name)",italic:0b}, target:"custom_name" } ]
+  $execute if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [ { function:"minecraft:set_custom_model_data", strings:{ values:[$(icon_name)], mode:"replace_all" } }, { function:"minecraft:set_name", entity:"this", name:{text:$(file_name),italic:0b}, target:"custom_name" } ]
 
-  $execute if items entity @s weapon.offhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [ { function:"minecraft:set_custom_model_data", strings:{values:["$(icon_name)"],mode:"replace_all"} }, { function:"minecraft:set_name", entity:"this", name:{text:"$(file_name)",italic:0b}, target:"custom_name" } ]
+  $execute if items entity @s weapon.offhand writable_book[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [ { function:"minecraft:set_custom_model_data", strings:{values:[$(icon_name)],mode:"replace_all"} }, { function:"minecraft:set_name", entity:"this", name:{text:$(file_name),italic:0b}, target:"custom_name" } ]
 
 function dpi:join_string/init:
   js_input = storage.join_string.input
@@ -250,27 +229,6 @@ def generate_item_models():
   }
 
 generate_item_models()
-
-advancement dpi:file_item_use {
-  "criteria": {
-    "requirement": {
-      "trigger": "minecraft:using_item",
-      "conditions": {
-        "item": {
-          "items": [
-            "minecraft:paper"
-          ],
-          "predicates": {
-            "minecraft:custom_data": "{dpi:{file_item:1b}}"
-          }
-        }
-      }
-    }
-  },
-  "rewards": {
-    "function": "dpi:file_item/use"
-  }
-}
 
 predicate dpi:sneaking {
   "condition": "minecraft:entity_properties",
