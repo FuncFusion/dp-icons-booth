@@ -33,9 +33,9 @@ function dpi:file_item/give:
       [
         {atlas:"items", sprite:"dpi:item/logos/deta_rack", color:"white", italic:false},
         " ",
-        { text:"DATAPACK", font:"dpi:tooltip", shadow_color:0},
+        { text:"DATAPACK", font:"dpi:tooltip"},
         " ",
-        {text:"ICONS",font:"dpi:tooltip",shadow_color:0}
+        {text:"ICONS",font:"dpi:tooltip"}
       ]
     ]
   ]
