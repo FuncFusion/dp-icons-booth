@@ -2,10 +2,6 @@ import bolt_expressions as expr
 from dpi:config import var, storage, print_nbt, jump, get_icon
 import os
 
-append function dpi:load:
-  scoreboard objectives add dpi.open_book used:book
-  open_book = expr.Scoreboard.objective("dpi.open_book", "used:writable_book")
-
 append function dpi:tick/player:
   if predicate dpi:sneaking:
     if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{file_item:true}}]:
@@ -22,7 +18,7 @@ function dpi:file_item/give:
   give @s writable_book[
     consumable={consume_seconds:999999999},
     custom_data={
-      summit:{ persist: {}, },
+      summit:{ persist: {}, kill: true, callback: true },
       dpi:{ file_item:1b }
     },
     item_name="File",

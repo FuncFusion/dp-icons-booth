@@ -1,17 +1,22 @@
 from dpi:config import storage, var
+import bolt_expressions as expr
+
+update_tree = var["#dpi.tree.update_pending"]
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+
+root = storage.fs.root
+stack = storage.rebuild.args
+output = storage.rebuild.output
+entry = storage.temp.entry
 
 function dpi:tree/rebuild/init:
-  root = storage.fs.root
-
-  stack = storage.rebuild.args
   stack.node = []
   stack.node.append(root)
   stack.new_children = []
   stack.loops = []
 
   function dpi:tree/rebuild/main
-  
-  output = storage.rebuild.output
+
   tellraw @a ["original:\n", root]
   tellraw @a ["rebuilt:\n", output]
 
@@ -24,24 +29,23 @@ function dpi:tree/rebuild/main:
     function dpi:tree/rebuild/children
     stack.loops[-1].remove()
 
-  entry = storage.temp.entry
   entry.name = node.name
   entry.type = node.type
   entry.id = node.id
-  
+
   current_collected = stack.new_children[-1]
   if current_collected[0]:
     entry.children = current_collected
   else:
     entry.children.remove()
-  
+
   stack.new_children[-1].remove()
   stack.node[-1].remove()
-  
+
   if stack.new_children[0]:
     stack.new_children[-1].append(entry)
   else:
-    storage.rebuild.output = entry
+    output = entry
 
 function dpi:tree/rebuild/children:
   current_layer = stack.loops[-1]
