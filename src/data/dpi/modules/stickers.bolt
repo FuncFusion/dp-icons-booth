@@ -25,7 +25,7 @@ function dpi:stickers/end_speedrun:
       title @s title ["Time: ",{text:"0", color:"red", extra:[{score:{objective:"dpi.var",name:"#dpi.speedrun.secs"}},".",{score:{objective:"dpi.var",name:"#dpi.speedrun.ms_prefix"}},{score:{objective:"dpi.var",name:"#dpi.speedrun.ms_prefix2"}},{score:{objective:"dpi.var",name:"#dpi.speedrun.ms"}}]}]
     else:
       title @s title ["Time: ",{text:"0", color:"green", extra:[{score:{objective:"dpi.var",name:"#dpi.speedrun.secs"}},".",{score:{objective:"dpi.var",name:"#dpi.speedrun.ms_prefix"}},{score:{objective:"dpi.var",name:"#dpi.speedrun.ms_prefix2"}},{score:{objective:"dpi.var",name:"#dpi.speedrun.ms"}}]}]
-      say ADVANCEMENT GRANT - SPEEDRUN STICKER
+      advancement grant @s only summit.sticker_book:dpi/speedrun
     scoreboard players reset #dpi.speedrun.ms_prefix dpi.var
     scoreboard players reset #dpi.speedrun.ms_prefix2 dpi.var
 

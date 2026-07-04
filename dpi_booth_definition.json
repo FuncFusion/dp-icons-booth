@@ -12,6 +12,9 @@
             "on_player_exit": ""
 		}
 	},
+    "ticking_functions": {
+        "dpi:springboard/loop_22t_arrow": "22t"
+    },
 	"sticker_book": {
         "background_color": "#313338",
         "region": "patched_plateaus",
@@ -22,6 +25,34 @@
                 "sticker_name": "Welcome to Datapack Icons Booth!",
                 "unobtained_text": "Enter the Booth and click the emerald",
                 "obtained_text": "Rewarded for entering the Booth and clicking the emerald"
+            },
+            {
+                "sticker_id": "trailer",
+                "sticker_texture": "dpi:stickers/emerald",
+                "sticker_name": "5.0 Trailer!",
+                "unobtained_text": "Watch the 5.0 trailer and interact with the shell in the chest",
+                "obtained_text": "Rewarded for watching the 5.0 trailer"
+            },
+            {
+                "sticker_id": "speedrun",
+                "sticker_texture": "dpi:stickers/clock",
+                "sticker_name": "Speedrun!",
+                "unobtained_text": "Go from springboard into the portal to exit the booth in under 6 seconds",
+                "obtained_text": "Rewarded for speedrunning the booth in under 6 seconds"
+            },
+            {
+                "sticker_id": "tree",
+                "sticker_texture": "dpi:stickers/tree",
+                "sticker_name": "File tree!",
+                "unobtained_text": "Interact with the file tree simulation (tbd)",
+                "obtained_text": "Rewarded for interacting with the file tree simulation (tbd)"
+            },
+            {
+                "sticker_id": "deta_rack",
+                "sticker_texture": "dpi:stickers/main_logo",
+                "sticker_name": "Datapack Icons",
+                "unobtained_text": "Interact with EVERYTHING in the booth",
+                "obtained_text": "Rewarded for 100% complettion of the booth"
             }
         ]
     },

@@ -54,7 +54,7 @@ function dpi:entities/static/summon:
   ## chests
   # upper floor
   summon item_display 108.8750 102.0 -120.5 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.70710677f, 0.0f, 0.70710677f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]},brightness: {sky: 15, block: 15}}
-  gui.Button("execute on attacker run say ADVANCEMENT GRANT - EMERALD STICKER", "execute on target run say ADVANCEMENT GRANT - EMERALD STICKER").spawn_abs([109.1750, 101.5, -120.5], "east", 0.6, 0.6)
+  gui.Button("execute on attacker run advancement grant @s only summit.sticker_book:dpi/emerald", "execute on target run advancement grant @s only summit.sticker_book:dpi/emerald").spawn_abs([109.1750, 101.5, -120.5], "east", 0.6, 0.6)
 
   # welcome
   summon item_display 108.8125 99.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]},brightness: {sky: 15, block: 15}}
@@ -229,7 +229,7 @@ dialog dpi:did_watch_trailer {
     "label": "Yes!",
     "action": {
       "type": "minecraft:run_command",
-      "command": "say GRANT DEEP DIVE STICKER"
+      "command": "advancement grant @s only summit.sticker_book:dpi/trailer"
     }
   },
   "no": {
