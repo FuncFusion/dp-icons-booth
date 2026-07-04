@@ -29,7 +29,7 @@ function dpi:node/render/get_name:
   if not icon:
     icon = get_icon("generic_file")
 
-  empty_string = {text:"                                                         "}
+  empty_string = {text:"                                                                 "}
   name = [print_nbt("icon"), {text:" "}, print_nbt("node.render.input.name"), empty_string]
   storage.node.render.output = name
   storage.node.render.output_icon = print_nbt("icon")

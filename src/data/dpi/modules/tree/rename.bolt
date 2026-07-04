@@ -1,0 +1,127 @@
+from dpi:config import storage, var
+import bolt_expressions as expr
+
+update_tree = var["#dpi.tree.update_pending"]
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+
+root = storage.fs.root
+stack = storage.rebuild.args
+output = storage.rebuild.output
+entry = storage.temp.entry
+
+append function dpi:tick/player:
+  if predicate dpi:sneaking:
+    if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{rename_input:true}}]:
+      function dpi:node/rename/submit
+
+function dpi:node/rename/book:
+  item modify entity @s weapon.mainhand dpi:turn_equippable
+  item replace entity @s saddle from entity @s weapon.mainhand
+  item replace entity @s weapon.mainhand with writable_book[
+    custom_data={
+      dpi:{rename_input:true}
+    }
+  ] 1
+
+function dpi:node/rename/submit:
+  sio_output = storage.string_input.output
+  sio_length = var["#dpi.sio_length"]
+
+  executor = expr.Data.entity("@s")
+  sio_output = executor.SelectedItem.components."minecraft:writable_book_content".pages[0].raw
+  sio_length = len(sio_output)
+
+  if sio_length < 48:
+    item replace entity @s weapon.mainhand from entity @s saddle
+
+    storage.split_string.input = sio_output
+    function dpi:split_string/init
+
+    storage.get_type.input = storage.split_string.output
+    function dpi:get_type/init
+
+    storage.join_string.input = storage.get_type.output
+    function dpi:join_string/init
+
+    file_type = storage.join_string.output
+
+    storage.node.rename.input.file_name = sio_output
+    storage.node.rename.input.type = file_type
+
+    as @n[tag=dpi.node.selected]:
+      target_id = var["#dpi.target_id"]
+      target_id = id["@s"]
+      function dpi:node/rename
+  else:
+    tellraw @a [{text:"String can't be longer than 48 characters!", color:"red"}]
+
+function dpi:node/rename:
+  target_id = var["#dpi.target_id"]
+  function dpi:node/rename/init
+
+function dpi:node/rename/init:
+  stack.node = []
+  stack.node.append(root)
+  stack.new_children = []
+  stack.loops = []
+
+  function dpi:node/rename/main
+
+  root = output
+  update_tree = 1
+
+function dpi:node/rename/main:
+  stack.new_children.append([])
+  node = stack.node[-1]
+  target_id = var["#dpi.target_id"]
+
+  if node.children:
+    stack.loops.append(node.children)
+    function dpi:node/rename/children
+    stack.loops[-1].remove()
+
+  entry.name = node.name
+  entry.type = node.type
+  entry.id = node.id
+
+  entry.closed.remove()
+  entry.hidden.remove()
+  if node.closed:
+    entry.closed = true
+  if node.hidden:
+    entry.hidden = true
+
+  current_collected = stack.new_children[-1]
+  if current_collected[0]:
+    entry.children = current_collected
+  else:
+    entry.children.remove()
+
+  stack.new_children[-1].remove()
+  stack.node[-1].remove()
+
+  if stack.new_children[0]:
+    stack.new_children[-1].append(entry)
+  else:
+    output = entry
+
+function dpi:node/rename/children:
+  current_layer = stack.loops[-1]
+  child = current_layer[0]
+
+  if child:
+    target_id = var["#dpi.target_id"]
+
+    if child.id == target_id:
+      rename_input = storage.node.rename.input
+      child.name = rename_input.file_name
+      child.type = rename_input.type
+      stack.node.append(child)
+      function dpi:node/rename/main
+    else:
+      stack.node.append(child)
+      function dpi:node/rename/main
+
+  current_layer[0].remove()
+  if current_layer[0]:
+    function dpi:node/rename/children
