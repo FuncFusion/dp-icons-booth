@@ -23,12 +23,12 @@
                 "sticker_id": "emerald",
                 "sticker_texture": "dpi:stickers/emerald",
                 "sticker_name": "Welcome to Datapack Icons Booth!",
-                "unobtained_text": "Enter the Booth and click the emerald",
-                "obtained_text": "Rewarded for entering the Booth and clicking the emerald"
+                "unobtained_text": "Click the emerald on the top floor of the booth",
+                "obtained_text": "Rewarded for clicking the emerald on the top floor of the booth"
             },
             {
                 "sticker_id": "trailer",
-                "sticker_texture": "dpi:stickers/emerald",
+                "sticker_texture": "dpi:stickers/shell",
                 "sticker_name": "5.0 Trailer!",
                 "unobtained_text": "Watch the 5.0 trailer and interact with the shell in the chest",
                 "obtained_text": "Rewarded for watching the 5.0 trailer"
@@ -44,15 +44,15 @@
                 "sticker_id": "tree",
                 "sticker_texture": "dpi:stickers/tree",
                 "sticker_name": "File tree!",
-                "unobtained_text": "Interact with the file tree simulation (tbd)",
-                "obtained_text": "Rewarded for interacting with the file tree simulation (tbd)"
+                "unobtained_text": "Look at all workspace presets in the Datapack Icons simulation",
+                "obtained_text": "Rewarded for seeing all workspace presets in the Datapack Icons simulation"
             },
             {
                 "sticker_id": "deta_rack",
                 "sticker_texture": "dpi:stickers/main_logo",
                 "sticker_name": "Datapack Icons",
                 "unobtained_text": "Interact with EVERYTHING in the booth",
-                "obtained_text": "Rewarded for 100% complettion of the booth"
+                "obtained_text": "Rewarded for 100% completion of the booth"
             }
         ]
     },
