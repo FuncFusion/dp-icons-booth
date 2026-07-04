@@ -208,8 +208,8 @@ dialog dpi:timeline {
   "title": [{"atlas":"items","sprite":"dpi:icons/timeline_file"}," More fun facts"],
   "body": {
     "type": "minecraft:plain_message",
-    "contents": "1.0 was released on March 31st, 2023. The project is more than 3 years old!\n\nFor one of the authors of this project, SuperAnt_, this project was his first ever github repository! It was also our first VS Code extension.\n\nThis extension works in web version of VS Code, but with limited features.\n\nWe have created 7 discord servers just to fill them with our icons as custom emojis, to use anywhere with nitro.",
-    "width": 200
+    "contents": ["",{"text": "1.0", "color":"#c9e2ff"}," was released on March 31st, 2023. The project is more than ",{"text": "3 years old!", "color":"gold"},"\n\nFor one of the authors of this project, ",{"text": "SuperAnt_", "color":"#E88425"},", this project was his first ever github repository! It was also our first VS Code extension.\n\nThis extension works in ",{"text": "web version","color":"aqua"}," of VS Code, but with limited features.\n\nWe have created ",{"text": "7","bold":true,"color":"#8599ff"}," discord servers just to fill them with our icons as custom emojis, to use anywhere with nitro."],
+    "width": 220
   },
   "action": {
     "label": "Cool!"
@@ -221,7 +221,7 @@ dialog dpi:did_watch_trailer {
   "title": "",
   "body": {
     "type": "minecraft:plain_message",
-    "contents": "Have you watched the 5.0 trailer yet? 🙃",
+    "contents": ["Have you watched the ",{"text": "5.0", "color":"#4488e0"}," trailer yet? 🙃"],
     "width": 220
   },
   "can_close_with_escape": true,
@@ -241,7 +241,7 @@ dialog dpi:did_watch_trailer {
         "title": "",
         "body": {
           "type": "minecraft:plain_message",
-          "contents": "Come back after watching the trailer to get a sticker!"
+          "contents": ["Come back after watching the trailer to get a ",{"text": "sticker","color": "light_purple"},"!"]
         },
         "yes": {
           "label": "Open trailer link",
@@ -263,7 +263,7 @@ dialog dpi:used_by_links {
   "title": [{"atlas":"items","sprite":"dpi:icons/lang_file"}," Used By"],
   "body": {
     "type": "minecraft:plain_message",
-    "contents": "We love seeing our icons power other creations! Here are some of the awesome projects that use Datapack Icons:",
+    "contents": ["We love seeing our icons power other creations! Here are some of the ",{"text":"awesome","color":"gold"}," projects that use ",{"text": "Datapack Icons", "bold":true},":"],
     "width": 260
   },
   "inputs": [],
@@ -274,7 +274,7 @@ dialog dpi:used_by_links {
   "columns": 1,
   "actions": [
     {
-      "label": "Scythe",
+      "label": {"text": "Scythe", "color": "#d0baf5"},
       "tooltip": [
         "The dedicated IDE for Minecraft Datapacks and resource packs. ",
         {
@@ -289,7 +289,7 @@ dialog dpi:used_by_links {
       }
     },
     {
-      "label": "cord.nvim",
+      "label": {"text": "cord.nvim","color":"#dbe2ff"},
       "tooltip": "A highly extensible Discord Rich Presence plugin for Neovim (features a custom Minecraft icon set built on Datapack Icons).",
       "width": 180,
       "action": {
@@ -298,7 +298,7 @@ dialog dpi:used_by_links {
       }
     },
     {
-      "label": "Animated Java website and docs",
+      "label": {"text": "Animated Java website and docs", "color": "#76daff"},
       "tooltip": [
         "Effortlessly craft complex animations for Minecraft: Java Edition. ",
         {
@@ -313,7 +313,7 @@ dialog dpi:used_by_links {
       }
     },
     {
-      "label": "Rhombus",
+      "label": {"text":"Rhombus","color":"#d7ccff"},
       "tooltip": [
         "The Python-embedded Domain specific Language for Minecraft Terrain Generation."
       ],
