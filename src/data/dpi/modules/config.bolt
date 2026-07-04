@@ -10,3 +10,7 @@ root = storage.fs.root
 
 def print_nbt(path):
   return {nbt: path, storage: "dpi:main", interpret:true}
+
+def get_icon(name):
+  return {atlas:"items", sprite:"dpi:icons/" + name, shadow_color:0}
+

@@ -91,5 +91,3 @@ append function dpi:tick/player:
     tp @s 114.42 95.00 -124.30 -179.48 8.78
     at @s playsound minecraft:item.chorus_fruit.teleport player @s ~ ~ ~
     function dpi:stickers/end_speedrun
-
-    

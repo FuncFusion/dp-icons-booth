@@ -1,5 +1,5 @@
 import bolt_expressions as expr
-from dpi:config import var, storage, print_nbt
+from dpi:config import var, storage, print_nbt, jump, get_icon
 import os
 
 append function dpi:load:
@@ -7,10 +7,8 @@ append function dpi:load:
   open_book = expr.Scoreboard.objective("dpi.open_book", "used:writable_book")
 
 append function dpi:tick/player:
-  if open_book["@s"]:
-    open_book["@s"] = 0
-    if predicate dpi:sneaking:
-      say submit
+  if predicate dpi:sneaking:
+    if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{string_input:true}}]:
       function dpi:string_input/submit
 
 append function dpi:temp:
@@ -50,7 +48,7 @@ function dpi:file_item/use:
 
 function dpi:file_item/dropped:
   say yo
-  if items entity @s contents stone[custom_data~{dpi:{string_input:true}}]
+  if items entity @s contents writable_book[custom_data~{dpi:{string_input:true}}]
     say gex
 
 function dpi:string_input/init:
@@ -116,8 +114,12 @@ function dpi:file_item/submit_name:
   storage.icon_name.input.name = file_name 
 
   execute run function dpi:file_item/get_icon_name with storage dpi:main icon_name.input:
+    storage.icon_name.output.remove()
     $data modify storage dpi:main icon_name.output set from storage dpi:generated typed_icon_names."$(type)"
     $data modify storage dpi:main icon_name.output set from storage dpi:generated named_icon_names."$(name)"
+
+  if not storage.icon_name.output:
+    storage.icon_name.output = get_icon("generic_file")
 
   storage.modify_icon.input = {}
   storage.modify_icon.input.file_name = file_name
@@ -126,6 +128,8 @@ function dpi:file_item/submit_name:
   function dpi:file_item/modify_icon with storage dpi:main modify_icon.input
   
 function dpi:file_item/modify_icon:
+  $say icon_name = $(icon_name)
+  $say file_name = $(file_name)
   $execute if items entity @s weapon.mainhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [ { function:"minecraft:set_custom_model_data", strings:{ values:["$(icon_name)"], mode:"replace_all" } }, { function:"minecraft:set_name", entity:"this", name:{text:"$(file_name)",italic:0b}, target:"custom_name" } ]
 
   $execute if items entity @s weapon.offhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [ { function:"minecraft:set_custom_model_data", strings:{values:["$(icon_name)"],mode:"replace_all"} }, { function:"minecraft:set_name", entity:"this", name:{text:"$(file_name)",italic:0b}, target:"custom_name" } ]
@@ -265,5 +269,15 @@ advancement dpi:file_item_use {
   },
   "rewards": {
     "function": "dpi:file_item/use"
+  }
+}
+
+predicate dpi:sneaking {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "minecraft:flags": {
+      "is_sneaking": true
+    }
   }
 }
