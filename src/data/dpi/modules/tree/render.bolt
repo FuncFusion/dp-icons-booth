@@ -65,7 +65,7 @@ function dpi:tree/render/init:
 
   summon marker ~ ~ ~ {Tags:["dpi.tree.marker"]}
   as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
-  kill @n[tag=dpi.tree.marker]
+  kill @e[tag=dpi.tree.marker]
 
 function dpi:tree/render/main:
   children = stack[-1]
