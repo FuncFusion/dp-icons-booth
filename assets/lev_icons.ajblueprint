@@ -1,9 +1,9 @@
 {
 	"meta": {
 		"format": "animated-java:format/blueprint",
-		"format_version": "1.10.0-beta.7",
+		"format_version": "1.10.1",
 		"uuid": "6731e211-3ef4-c2ab-c131-57e64a3f20fa",
-		"save_location": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\lev_icons.ajblueprint",
+		"save_location": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\assets\\lev_icons.ajblueprint",
 		"last_used_blueprint_id": "dpi:aj/lev_icons"
 	},
 	"resolution": {
@@ -13,8 +13,9 @@
 	"blueprint_settings": {
 		"blueprint_id": "dpi:aj/lev_icons",
 		"render_box": [48, 48],
-		"resource_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib",
-		"data_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib",
+		"target_minecraft_version": "26.2",
+		"resource_pack": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\lib",
+		"data_pack": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\lib",
 		"custom_rig_entity_tags": "summit.booth_entity, summit.booth_entity.dpi",
 		"auto_update_rig_orientation": false
 	},
@@ -1114,7 +1115,7 @@
 		{
 			"name": "normal.png",
 			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib\\assets\\dpi\\textures\\blueprint\\aj\\chest_house\\normal.png",
-			"relative_path": "../lib/assets/dpi/textures/blueprint/aj/chest_house/normal.png",
+			"relative_path": "C:/Users/12345/AppData/Roaming/ModrinthApp/profiles/26.1-shap4 temp/saves/dpi_booth/datapacks/dp-icons-booth/lib/assets/dpi/textures/blueprint/aj/chest_house/normal.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
@@ -1140,14 +1141,14 @@
 			"frame_interpolate": false,
 			"visible": true,
 			"internal": true,
-			"saved": true,
+			"saved": false,
 			"uuid": "8c6fc653-54c8-4108-6d4e-192d746c7afe",
 			"source": "data:image/png;base64,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"
 		},
 		{
 			"name": "mcfunction_tick_file.png",
 			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\src\\assets\\dpi\\textures\\item\\icons\\mcfunction_tick_file.png",
-			"relative_path": "../src/assets/dpi/textures/item/icons/mcfunction_tick_file.png",
+			"relative_path": "C:/Users/12345/AppData/Roaming/ModrinthApp/profiles/26.1-shap4 temp/saves/dpi_booth/datapacks/dp-icons-booth/src/assets/dpi/textures/item/icons/mcfunction_tick_file.png",
 			"folder": "item/icons",
 			"namespace": "dpi",
 			"id": "1",
@@ -1173,14 +1174,14 @@
 			"frame_interpolate": false,
 			"visible": true,
 			"internal": true,
-			"saved": true,
+			"saved": false,
 			"uuid": "cc5356c5-cfa8-1eac-85f6-c421aec13b6c",
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABU0lEQVR4AezUP0tCURjH8edeqDUxKegNNDS19MchaKiopeAWNEsUVG4RLU2ObQ0OEb6AQKilKQhCkJqKxkIC+0NBUUmN3vweUM7gPZPhEY748T6e8yDP/Z2LvrT55QZwCbgEXAJ2J5BayIUIJg5DUGN39TLUrc8XQ52+R236s7U7ASafWorJ4lpcGUpWWGpY3kwINjJ9ohuZ+xQ0Gg2F3Ql8fVTV7M9PZTnfScv1za2w9v5aFajN2kepdC/IB9OCQqEooAe1lsi33QkwNnd/9rIvg+ltvjZ19LAlGN7LCpo2RSzanUBP3FfnnnibVFdugrXefl/AuWPgMRBw7qAP9IA6it0JMHXXT1J+y2MKNWt1V6cxQeVuRnTd37OCep/pancCueOUh/zFigdqZA5GPV32ZNzT6XvUnZuAafJW7dn9DLTqLk2/4xJwCfx7AqYHkL0/AAAA//+fopfdAAAABklEQVQDAB3KrUGSW0QYAAAAAElFTkSuQmCC"
 		},
 		{
 			"name": "python_file.png",
 			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\src\\assets\\dpi\\textures\\item\\icons\\python_file.png",
-			"relative_path": "../src/assets/dpi/textures/item/icons/python_file.png",
+			"relative_path": "C:/Users/12345/AppData/Roaming/ModrinthApp/profiles/26.1-shap4 temp/saves/dpi_booth/datapacks/dp-icons-booth/src/assets/dpi/textures/item/icons/python_file.png",
 			"folder": "item/icons",
 			"namespace": "dpi",
 			"id": "2",
@@ -1206,14 +1207,14 @@
 			"frame_interpolate": false,
 			"visible": true,
 			"internal": true,
-			"saved": true,
+			"saved": false,
 			"uuid": "561cfaba-f189-db10-44f1-3e5687ebbd98",
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA10lEQVR4AeyUsQrCMBCGLy7u+hBuTrrrInQQHHwUQcTBycHVJxEcik7O6uTmQ+grpPzDQQhHQ6ClOUjhI8mfDnfflfao4ycXkA1kA7oMTFYnCxbH0tYR82vRZcDv7P/6EPDzmHPaBjBvwPMeTMcEuEPsAZ95td/CunAurWkbkCpuOtNp4LY+Ux0xlnQaiOkw9G7aBt6XrQH3fWHArn8g4Hf1uP4IcG5GpXHhXFrTNiBVLGWz5ZCAdBfKdBmYb54GuPOV9qGu3XtdBtzKm9pnA9lA6wZCH2sFAAD///ub79wAAAAGSURBVAMAjUteQfB9ZnUAAAAASUVORK5CYII="
 		},
 		{
 			"name": "structure_file.png",
 			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\src\\assets\\dpi\\textures\\item\\icons\\structure_file.png",
-			"relative_path": "../src/assets/dpi/textures/item/icons/structure_file.png",
+			"relative_path": "C:/Users/12345/AppData/Roaming/ModrinthApp/profiles/26.1-shap4 temp/saves/dpi_booth/datapacks/dp-icons-booth/src/assets/dpi/textures/item/icons/structure_file.png",
 			"folder": "item/icons",
 			"namespace": "dpi",
 			"id": "3",
@@ -1239,14 +1240,14 @@
 			"frame_interpolate": false,
 			"visible": true,
 			"internal": true,
-			"saved": true,
+			"saved": false,
 			"uuid": "ff4a6dbb-6d8a-1b86-c9e0-aa950a488803",
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA3klEQVR4AeyUIQvCYBCGb0ZBsLggGiwGf9OMYtawIIiIYFjQLEb3mwwWg2KYRRCsk/eDDy7s2xhs7MINHna8XLh7jq1FDT86gBpQA2pAtoGBP0qzGA8naRnyfrayDWDyz+9Ni+nMgBqZJfm+CBzCiDjIgO3Le8s3sJ2vaHPaG1DzbeJdTCBYB8RBBnivq5ZvwDV5Vbl8A7g/bg9Q883t3XFvjs15r6uWb6Db7tHxcjag5pv4nT6BZRQSBxngva5atoFncveyuD2uXhlc2yOXbQAT1o0aUANqoHYDRZ/xHwAA//8+7+VSAAAABklEQVQDAA5OkEFcI0eLAAAAAElFTkSuQmCC"
 		},
 		{
 			"name": "json_file.png",
 			"path": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\src\\assets\\dpi\\textures\\item\\icons\\json_file.png",
-			"relative_path": "../src/assets/dpi/textures/item/icons/json_file.png",
+			"relative_path": "C:/Users/12345/AppData/Roaming/ModrinthApp/profiles/26.1-shap4 temp/saves/dpi_booth/datapacks/dp-icons-booth/src/assets/dpi/textures/item/icons/json_file.png",
 			"folder": "item/icons",
 			"namespace": "dpi",
 			"id": "4",
@@ -1272,7 +1273,7 @@
 			"frame_interpolate": false,
 			"visible": true,
 			"internal": true,
-			"saved": true,
+			"saved": false,
 			"uuid": "9c6d1727-f21b-f808-4d5b-8b8ed2e2fcdf",
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABBklEQVR4AeyUsQrCMBCGU5+hz9HNXfoAxQdwEpx8ADcHN8FVHBQnRwfp4lZcnNz6Go3PUPkDgQimuYuDWK5wSe563P/dDTdQP/4EQCYgE5AJ/M8E1suiresyaNzFSpoAxJvmqa7ng9Jad1pVHVsOBAnAV/C035pf9jYO8yABLFZlstndE7c2RCezuQnhhm8c5kECYNZkpUcBoFt07SrBR9yNUd5RAJ/EII44RdTNiQJwC3z7jgZAt+gaALjh4821aAAIWVF7I8a1KIDH7aLSNPWa3ZgUGBYA9gHEh6Nx5zbEtsyy4m1v+GBYACgCiDyfJiFDLsXYAJSinBwBkAnIBPo/gdBOeAEAAP//7i2wywAAAAZJREFUAwAOnpJB45wQOQAAAABJRU5ErkJggg=="
 		}

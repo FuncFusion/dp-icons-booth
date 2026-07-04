@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"4": "dpi:item/icons/json_file",
+		"4": "dpi:blueprint/aj/lev_icons/json_file",
 		"particle": "minecraft:item/pufferfish"
 	},
 	"display": {

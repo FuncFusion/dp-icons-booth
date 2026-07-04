@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"3": "dpi:item/icons/structure_file",
+		"3": "dpi:blueprint/aj/lev_icons/structure_file",
 		"particle": "minecraft:item/pufferfish"
 	},
 	"display": {

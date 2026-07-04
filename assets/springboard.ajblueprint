@@ -1,9 +1,9 @@
 {
 	"meta": {
 		"format": "animated-java:format/blueprint",
-		"format_version": "1.10.0-beta.7",
+		"format_version": "1.10.1",
 		"uuid": "09fc45d1-74ec-61ca-3bc4-bfc3dd708245",
-		"save_location": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\springboard.ajblueprint",
+		"save_location": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\assets\\springboard.ajblueprint",
 		"last_used_blueprint_id": "dpi:aj/springboard"
 	},
 	"resolution": {
@@ -13,8 +13,9 @@
 	"blueprint_settings": {
 		"blueprint_id": "dpi:aj/springboard",
 		"render_box": [48, 48],
-		"resource_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib",
-		"data_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib",
+		"target_minecraft_version": "26.2",
+		"resource_pack": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\lib",
+		"data_pack": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\lib",
 		"custom_rig_entity_tags": "summit.booth_entity, summit.booth_entity.dpi",
 		"auto_update_rig_orientation": false
 	},
@@ -1768,7 +1769,7 @@
 		{
 			"name": "spring_1.png",
 			"path": "C:\\Users\\linus\\Desktop\\springboard\\spring_1.png",
-			"relative_path": "../../../../../../../../../../../linus/Desktop/springboard/spring_1.png",
+			"relative_path": "C:/Users/linus/Desktop/springboard/spring_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
@@ -1801,7 +1802,7 @@
 		{
 			"name": "bounce_pad_top.png",
 			"path": "C:\\Users\\linus\\Desktop\\springboard\\bounce_pad_top.png",
-			"relative_path": "../../../../../../../../../../../linus/Desktop/springboard/bounce_pad_top.png",
+			"relative_path": "C:/Users/linus/Desktop/springboard/bounce_pad_top.png",
 			"folder": "",
 			"namespace": "",
 			"id": "1",

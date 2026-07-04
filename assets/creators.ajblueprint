@@ -1,9 +1,9 @@
 {
 	"meta": {
 		"format": "animated-java:format/blueprint",
-		"format_version": "1.10.0-beta.7",
+		"format_version": "1.10.1",
 		"uuid": "0c9a27ed-d21d-a866-ec33-9c33b772cf7e",
-		"save_location": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\assets\\creators.ajblueprint",
+		"save_location": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\assets\\creators.ajblueprint",
 		"last_used_blueprint_id": "dpi:aj/creators"
 	},
 	"resolution": {
@@ -13,8 +13,9 @@
 	"blueprint_settings": {
 		"blueprint_id": "dpi:aj/creators",
 		"render_box": [48, 48],
-		"resource_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib",
-		"data_pack": "C:\\Users\\12345\\AppData\\Roaming\\ModrinthApp\\profiles\\26.1-shap4 temp\\saves\\dpi_booth\\datapacks\\dp-icons-booth\\lib",
+		"target_minecraft_version": "26.2",
+		"resource_pack": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\lib",
+		"data_pack": "E:\\mc-dp-iconsv3.0\\dp-icons-booth\\lib",
 		"on_post_tick_function": "execute if score @s aj.amandin_busy.frame matches -1 if predicate dpi:creators/amandin_idle_chance run function dpi:creators/amandin_idle_play\nexecute if score @s aj.bth_busy.frame matches -1 if predicate dpi:creators/bth_idle_chance run function dpi:creators/bth_idle_play\nexecute if entity @s[tag=dpi.transition_to_busy] if score @s aj.ant_handout_to_busy.frame matches 13.. run function dpi:creators/ant_transition_to_busy",
 		"custom_rig_entity_tags": "summit.booth_entity, summit.booth_entity.dpi",
 		"auto_update_rig_orientation": false
@@ -4457,7 +4458,7 @@
 		{
 			"name": "authors.png",
 			"path": "/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/item/interior/authors.png",
-			"relative_path": "../../../../../../../../../../../../home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/item/interior/authors.png",
+			"relative_path": "C:/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/item/interior/authors.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
@@ -4490,7 +4491,7 @@
 		{
 			"name": "vscode_file.png",
 			"path": "/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/vscode_file.png",
-			"relative_path": "../../../../../../../../../../../../home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/vscode_file.png",
+			"relative_path": "C:/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/vscode_file.png",
 			"folder": "",
 			"namespace": "",
 			"id": "1",
@@ -4523,7 +4524,7 @@
 		{
 			"name": "aseprite_file.png",
 			"path": "/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/aseprite_file.png",
-			"relative_path": "../../../../../../../../../../../../home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/aseprite_file.png",
+			"relative_path": "C:/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/aseprite_file.png",
 			"folder": "",
 			"namespace": "",
 			"id": "2",
@@ -4556,7 +4557,7 @@
 		{
 			"name": "sublime_file.png",
 			"path": "/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/sublime_file.png",
-			"relative_path": "../../../../../../../../../../../../home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/sublime_file.png",
+			"relative_path": "C:/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/sublime_file.png",
 			"folder": "",
 			"namespace": "",
 			"id": "3",
@@ -4589,7 +4590,7 @@
 		{
 			"name": "neovim_file.png",
 			"path": "/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/neovim_file.png",
-			"relative_path": "../../../../../../../../../../../../home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/neovim_file.png",
+			"relative_path": "C:/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/icons/neovim_file.png",
 			"folder": "",
 			"namespace": "",
 			"id": "4",
@@ -4622,7 +4623,7 @@
 		{
 			"name": "balloon.png",
 			"path": "/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/item/collectibles/balloon.png",
-			"relative_path": "../../../../../../../../../../../../home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/item/collectibles/balloon.png",
+			"relative_path": "C:/home/betehe/projects/dp-icons-booth/src/assets/dpi/textures/item/collectibles/balloon.png",
 			"folder": "",
 			"namespace": "",
 			"id": "5",
@@ -14792,7 +14793,8 @@
 							"color": -1,
 							"uniform": true,
 							"interpolation": "linear",
-							"easing": "linear"
+							"easing": "linear",
+							"easingArgs": []
 						},
 						{
 							"channel": "scale",
@@ -14808,7 +14810,8 @@
 							"color": -1,
 							"uniform": true,
 							"interpolation": "linear",
-							"easing": "linear"
+							"easing": "linear",
+							"easingArgs": []
 						},
 						{
 							"channel": "scale",
@@ -14824,7 +14827,8 @@
 							"color": -1,
 							"uniform": true,
 							"interpolation": "linear",
-							"easing": "linear"
+							"easing": "linear",
+							"easingArgs": []
 						},
 						{
 							"channel": "scale",
@@ -14840,7 +14844,8 @@
 							"color": -1,
 							"uniform": true,
 							"interpolation": "linear",
-							"easing": "linear"
+							"easing": "linear",
+							"easingArgs": []
 						},
 						{
 							"channel": "scale",
@@ -14856,7 +14861,8 @@
 							"color": -1,
 							"uniform": true,
 							"interpolation": "linear",
-							"easing": "linear"
+							"easing": "linear",
+							"easingArgs": []
 						},
 						{
 							"channel": "scale",
@@ -14944,7 +14950,8 @@
 							"time": 7,
 							"color": -1,
 							"interpolation": "linear",
-							"easing": "linear"
+							"easing": "linear",
+							"easingArgs": []
 						},
 						{
 							"channel": "position",

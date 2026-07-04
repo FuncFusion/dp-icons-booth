@@ -7,7 +7,8 @@
 				"assets/dpi/items/blueprint/aj/chest_house/chest_house.json",
 				"assets/dpi/items/blueprint/aj/chest_house/lid.json",
 				"assets/dpi/models/blueprint/aj/chest_house/chest_house.json",
-				"assets/dpi/models/blueprint/aj/chest_house/lid.json"
+				"assets/dpi/models/blueprint/aj/chest_house/lid.json",
+				"assets/dpi/textures/blueprint/aj/chest_house/normal.png"
 			]
 		},
 		"dpi:aj/creators": {
@@ -75,7 +76,11 @@
 				"assets/dpi/models/blueprint/aj/lev_icons/json_file.json",
 				"assets/dpi/models/blueprint/aj/lev_icons/mcf_tick.json",
 				"assets/dpi/models/blueprint/aj/lev_icons/python.json",
-				"assets/dpi/models/blueprint/aj/lev_icons/structure_file.json"
+				"assets/dpi/models/blueprint/aj/lev_icons/structure_file.json",
+				"assets/dpi/textures/blueprint/aj/lev_icons/json_file.png",
+				"assets/dpi/textures/blueprint/aj/lev_icons/mcfunction_tick_file.png",
+				"assets/dpi/textures/blueprint/aj/lev_icons/python_file.png",
+				"assets/dpi/textures/blueprint/aj/lev_icons/structure_file.png"
 			]
 		},
 		"dpi:aj/springboard": {

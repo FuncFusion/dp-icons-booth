@@ -12,7 +12,7 @@ function animated_java:global/data_manager/read with storage animated_java:temp 
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.root_uuid set from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.blueprint_id set value "dpi:aj/lev_icons"
-data modify storage animated_java:temp entry.data.rig_hash set value "87251b1cda0118f675e89e2ccd7989fe72e5cadb5e5c9f81916c4fad9942ac67"
+data modify storage animated_java:temp entry.data.rig_hash set value "48fd5b25a70e78486790c9d7b82330bf4d199cf9fa635e01dcbb756565e7a2b5"
 tp @s ~ ~ ~ ~ ~
 execute on passengers if entity @s[tag=dpi.aj.lev_icons.node.mcf_tick] run function dpi:aj/lev_icons/zzz/summon/as_node/mcf_tick
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
