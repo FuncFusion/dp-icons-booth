@@ -1,50 +1,114 @@
+import bolt_expressions as expr
 from dpi:config import var, storage, print_nbt
 import os
+
+append function dpi:load:
+  scoreboard objectives add dpi.open_book used:book
+  open_book = expr.Scoreboard.objective("dpi.open_book", "used:writable_book")
+
+append function dpi:tick/player:
+  if open_book["@s"]:
+    open_book["@s"] = 0
+    if predicate dpi:sneaking:
+      say submit
+      function dpi:string_input/submit
+
+append function dpi:temp:
+  clear amqndin
+  as @a function dpi:file_item/give
 
 function dpi:file_item/give:
   # change to other type of notification
   execute if items entity @s container.* paper[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
   execute if items entity @s enderchest.* paper[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
-  give @s paper[consumable={consume_seconds:999999999},custom_data={summit:{persist:{}},dpi:{file_item:1b}},item_name="File",item_model="dpi:file_item",lore=[[{atlas:"items",sprite:"dpi:item/logos/deta_rack",color:"white",italic:false}," ",{text:"DATAPACK",font:"dpi:tooltip",shadow_color:0}," ",{text:"ICONS",font:"dpi:tooltip",shadow_color:0}]]]
+  give @s paper[
+    consumable={consume_seconds:999999999},
+    custom_data={
+      summit:{ persist: {}, },
+      dpi:{ file_item:1b }
+    },
+    item_name="File",
+    item_model="dpi:file_item",
+    lore=[
+      [
+        {atlas:"items", sprite:"dpi:item/logos/deta_rack", color:"white", italic:false},
+        " ",
+        { text:"DATAPACK", font:"dpi:tooltip", shadow_color:0},
+        " ",
+        {text:"ICONS",font:"dpi:tooltip",shadow_color:0}
+      ]
+    ]
+  ]
 
-advancement dpi:file_item_use {
-  "criteria": {
-    "requirement": {
-      "trigger": "minecraft:using_item",
-      "conditions": {
-        "item": {
-          "items": [
-            "minecraft:paper"
-          ],
-          "predicates": {
-            "minecraft:custom_data": "{dpi:{file_item:1b}}"
-          }
-        }
-      }
-    }
-  },
-  "rewards": {
-    "function": "dpi:file_item/use"
-  }
-}
+append function_tag summit.items:droppable/callback:
+  values:
+    - "dpi:file_item/dropped"
 
 function dpi:file_item/use:
   advancement revoke @s only dpi:file_item_use
-  dialog show @s dpi:file_item
+  function dpi:string_input/init
+
+function dpi:file_item/dropped:
+  say yo
+  if items entity @s contents stone[custom_data~{dpi:{string_input:true}}]
+    say gex
+
+function dpi:string_input/init:
+  item modify entity @s weapon.mainhand dpi:turn_equippable
+  item replace entity @s saddle from entity @s weapon.mainhand
+  item replace entity @s weapon.mainhand with writable_book[
+    custom_data={
+      smithed: {
+        droppable: {
+          kill: true,
+          callback: true
+        }
+      },
+      dpi:{
+        string_input:true
+      }
+    }
+  ] 1
+
+function dpi:string_input/submit:
+  sio_output = storage.string_input.output
+  character_limit = 48
+  sio_length = var["#dpi.sio_length"]
+
+  executor = expr.Data.entity("@s")
+  sio_output = executor.SelectedItem.components."minecraft:writable_book_content".pages[0].raw
+  sio_length = len(sio_output)
+
+  if sio_length < character_limit:
+    item replace entity @s weapon.mainhand from entity @s saddle
+    tellraw @a ["string_input.sio_output ", sio_output]
+    function dpi:file_item/submit_name
+  else:
+    tellraw @a [
+      {
+        text:f"String can't be longer than {character_limit} characters!",
+        color:"red"
+      }
+    ]
 
 function dpi:file_item/submit_name:
   file_name = storage.temp.file_name
-  $data modify storage dpi:main split_string.input set value "$(filename)"
+  data modify storage dpi:main split_string.input set from storage dpi:main string_input.output
   file_name = storage.split_string.input
   function dpi:split_string/init
+  tellraw @a ["split string ", storage.split_string.output]
 
   storage.get_type.input = storage.split_string.output
   function dpi:get_type/init
+  tellraw @a ["get_type ", storage.get_type.output]
 
   storage.join_string.input = storage.get_type.output
   function dpi:join_string/init
+  tellraw @a ["join_string ", storage.join_string.output]
 
   file_type = storage.join_string.output
+
+  tellraw @a ["file type ", file_type]
 
   storage.modify_icon.input.icon_name = file_type
 
@@ -62,7 +126,6 @@ function dpi:file_item/submit_name:
   function dpi:file_item/modify_icon with storage dpi:main modify_icon.input
   
 function dpi:file_item/modify_icon:
-  $say $(icon_name), $(file_name)
   $execute if items entity @s weapon.mainhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [ { function:"minecraft:set_custom_model_data", strings:{ values:["$(icon_name)"], mode:"replace_all" } }, { function:"minecraft:set_name", entity:"this", name:{text:"$(file_name)",italic:0b}, target:"custom_name" } ]
 
   $execute if items entity @s weapon.offhand paper[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [ { function:"minecraft:set_custom_model_data", strings:{values:["$(icon_name)"],mode:"replace_all"} }, { function:"minecraft:set_name", entity:"this", name:{text:"$(file_name)",italic:0b}, target:"custom_name" } ]
@@ -76,7 +139,6 @@ function dpi:join_string/init:
   js_length = var["#dpi.js_length"]
   js_length = len(js_input)
   function dpi:join_string/main
-  tellraw @a ["join_string ", js_output]
 
 function dpi:join_string/main:
   js_count += 1
@@ -107,7 +169,6 @@ function dpi:get_type/init:
   gt_length = var["#dpi.gt_length"]
   gt_length = len(gt_input)
   function dpi:get_type/main
-  tellraw @a ["get_type ", gt_output]
 
 function dpi:get_type/main:
   gt_count += 1
@@ -132,7 +193,6 @@ function dpi:split_string/init:
   length = var["#dpi.length"]
   length = len(input)
   function dpi:split_string/loop
-  tellraw @a ["split string: ", output]
 
 function dpi:split_string/loop:
   count += 1
@@ -141,38 +201,12 @@ function dpi:split_string/loop:
   if count < length:
     function dpi:split_string/loop
 
-
-dialog dpi:file_item {
-  "type": "minecraft:confirmation",
-  "title": "Give your file a name!",
-  "external_title": "",
-  "body": {
-    "type": "minecraft:plain_message",
-    "contents": {
-      "text": "This item can become any file icon.\nJust input a filename with an extension and see the result!"
-    },
-    "width": 500
-  },
-  "inputs": [
-    {
-      "type": "minecraft:text",
-      "key": "file_item_name",
-      "label": "",
-      "label_visible": false
+item_modifier dpi:turn_equippable {
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:equippable": {
+      "slot": "saddle"
     }
-  ],
-  "can_close_with_escape": true,
-  "after_action": "close",
-  "pause": false,
-  "yes": {
-    "label": "Rename",
-    "action": {
-      "type": "minecraft:dynamic/run_command",
-      "template": "function dpi:file_item/submit_name {filename:\"$(file_item_name)\"}"
-    }
-  },
-  "no": {
-    "label": "Close"
   }
 }
 
@@ -212,3 +246,24 @@ def generate_item_models():
   }
 
 generate_item_models()
+
+advancement dpi:file_item_use {
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:paper"
+          ],
+          "predicates": {
+            "minecraft:custom_data": "{dpi:{file_item:1b}}"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "dpi:file_item/use"
+  }
+}
