@@ -105,7 +105,7 @@ function dpi:node/create/main:
   if current_collected[0]:
     entry.children = current_collected
   else:
-    entry.children.remove()
+    entry.children = []
 
   stack.new_children[-1].remove()
   stack.node[-1].remove()
