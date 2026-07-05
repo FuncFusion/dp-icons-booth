@@ -1,4 +1,5 @@
 import dpi:gui as gui
+from dpi:trigger_actions import Action
 import re
 
 function dpi:entities/static/summon:
@@ -229,7 +230,7 @@ dialog dpi:did_watch_trailer {
     "label": "Yes!",
     "action": {
       "type": "minecraft:run_command",
-      "command": "advancement grant @s only summit.sticker_book:dpi/trailer"
+      "command": Action("trailer_sticker").trigger()
     }
   },
   "no": {
@@ -257,6 +258,9 @@ dialog dpi:did_watch_trailer {
     }
   }
 }
+
+append function dpi:trigger_callback/trailer_sticker:
+  advancement grant @s only summit.sticker_book:dpi/trailer
 
 dialog dpi:used_by_links {
   "type": "minecraft:multi_action",
@@ -338,10 +342,13 @@ dialog dpi:shardgate_tp {
     "label": "Teleport now!",
     "action": {
       "type": "minecraft:run_command",
-      "command": "execute in minecraft:overworld run tp @s -117.14 79.00 -220.98 1169.40 -30.00"
+      "command": Action("shardgate_tp").trigger()
     }
   },
   "no": {
     "label": "No"
   }
 }
+
+append function dpi:trigger_callback/shardgate_tp:
+  execute in minecraft:overworld run tp @s -117.14 79.00 -220.98 1169.40 -30.00
