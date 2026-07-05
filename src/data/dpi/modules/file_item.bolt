@@ -64,23 +64,12 @@ function dpi:string_input/submit:
     ]
 
 function dpi:file_item/submit_name:
-  file_name = storage.temp.file_name
-  data modify storage dpi:main split_string.input set from storage dpi:main string_input.output
-  file_name = storage.split_string.input
-  function dpi:split_string/init
-  tellraw @a ["split string ", storage.split_string.output]
+  storage.parse_input.input.raw_name = storage.string_input.output
+  storage.split_string.input = storage.string_input.output
+  function dpi:parse_input/init
 
-  storage.get_type.input = storage.split_string.output
-  function dpi:get_type/init
-  tellraw @a ["get_type ", storage.get_type.output]
-
-  storage.join_string.input = storage.get_type.output
-  function dpi:join_string/init
-  tellraw @a ["join_string ", storage.join_string.output]
-
-  file_type = storage.join_string.output
-
-  tellraw @a ["file type ", file_type]
+  file_name = storage.parse_input.output.file_name
+  file_type = storage.parse_input.output.type
 
   storage.modify_icon.input.icon_name = file_type
 
@@ -109,76 +98,7 @@ function dpi:file_item/modify_icon:
 
   $execute if items entity @s weapon.offhand writable_book[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [ { function:"minecraft:set_custom_model_data", strings:{values:[$(icon_name)],mode:"replace_all"} }, { function:"minecraft:set_name", entity:"this", name:{text:$(file_name),italic:0b}, target:"custom_name" } ]
 
-function dpi:join_string/init:
-  js_input = storage.join_string.input
-  js_output = storage.join_string.output
-  js_output = ""
-  js_count = var["#dpi.js_count"]
-  js_count = 0
-  js_length = var["#dpi.js_length"]
-  js_length = len(js_input)
-  function dpi:join_string/main
 
-function dpi:join_string/main:
-  js_count += 1
-
-  js_item = js_input[0]
-
-  storage.join_string.default.input.str1 = js_output
-  storage.join_string.default.input.str2 = js_item
-  
-  function dpi:join_string/default with storage dpi:main join_string.default.input
-
-  js_output = storage.combined_string
-
-  js_item.remove()
-  
-  if js_count < js_length:
-    function dpi:join_string/main
-
-function dpi:join_string/default:
-  $data modify storage dpi:main combined_string set value "$(str1)$(str2)"
-
-function dpi:get_type/init:
-  gt_input = storage.get_type.input
-  gt_output = storage.get_type.output
-  gt_output = []
-  gt_count = var["#dpi.gt_count"]
-  gt_count = 0
-  gt_length = var["#dpi.gt_length"]
-  gt_length = len(gt_input)
-  function dpi:get_type/main
-
-function dpi:get_type/main:
-  gt_count += 1
-
-  gt_item = gt_input[-1]
-
-  if gt_item == ".":
-    return 0
-  gt_output.prepend(gt_item)
-
-  gt_item.remove()
-  
-  if gt_count < gt_length:
-    function dpi:get_type/main
-
-function dpi:split_string/init:
-  input = storage.split_string.input[str]
-  output = storage.split_string.output
-  output = []
-  count = var["#dpi.count"]
-  count = 0
-  length = var["#dpi.length"]
-  length = len(input)
-  function dpi:split_string/loop
-
-function dpi:split_string/loop:
-  count += 1
-  output.append(input[0])
-  storage.split_string.input = input[1:]
-  if count < length:
-    function dpi:split_string/loop
 
 item_modifier dpi:turn_equippable {
   "function": "minecraft:set_components",

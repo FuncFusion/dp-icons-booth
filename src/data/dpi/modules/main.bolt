@@ -11,6 +11,7 @@ import dpi:file_item as file_item
 import dpi:creators as creators
 import dpi:stickers as stickers
 import dpi:trigger_actions as trigger_actions
+import dpi:parse_input as parse_input
 
 print("processed")
 
