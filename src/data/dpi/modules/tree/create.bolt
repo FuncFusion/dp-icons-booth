@@ -35,19 +35,12 @@ function dpi:node/create/submit:
   if sio_length < 48:
     item replace entity @s weapon.mainhand from entity @s saddle
 
+    storage.parse_input.input.raw_name = sio_output
     storage.split_string.input = sio_output
-    function dpi:split_string/init
+    function dpi:parse_input/init
 
-    storage.get_type.input = storage.split_string.output
-    function dpi:get_type/init
-
-    storage.join_string.input = storage.get_type.output
-    function dpi:join_string/init
-
-    file_type = storage.join_string.output
-
-    storage.node.create.input.file_name = sio_output
-    storage.node.create.input.type = file_type
+    storage.node.create.input.file_name = storage.parse_input.output.file_name
+    storage.node.create.input.type = storage.parse_input.output.type
 
     as @n[tag=dpi.node.selected]:
       parent_id = var["#dpi.parent_id"]
@@ -88,6 +81,8 @@ function dpi:node/create/main:
     new_child.name = create_input.file_name
     new_child.type = create_input.type
     new_child.id = global_id
+    if create_input.type == "dir":
+      new_child.children = []
     stack.new_children[-1].append(new_child)
 
   entry.name = node.name
@@ -128,6 +123,8 @@ function dpi:node/create/children:
       new_child.name = create_input.file_name
       new_child.type = create_input.type
       new_child.id = global_id
+      if create_input.type == "dir":
+        new_child.children = []
       stack.new_children[-1].append(new_child)
       parent_id = 0
 
