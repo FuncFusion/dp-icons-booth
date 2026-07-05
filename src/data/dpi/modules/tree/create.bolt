@@ -49,10 +49,10 @@ function dpi:node/create/submit:
     storage.node.create.input.file_name = sio_output
     storage.node.create.input.type = file_type
 
-    parent_id = var["#dpi.parent_id"]
-    parent_id = 10
-
-    function dpi:node/create
+    as @n[tag=dpi.node.selected]:
+      parent_id = var["#dpi.parent_id"]
+      parent_id = id["@s"]
+      function dpi:node/create
   else:
     tellraw @a [{text:"String can't be longer than 48 characters!", color:"red"}]
 
@@ -118,8 +118,19 @@ function dpi:node/create/main:
 function dpi:node/create/children:
   current_layer = stack.loops[-1]
   child = current_layer[0]
+  parent_id = var["#dpi.parent_id"]
 
   if child:
+    if child.id == parent_id and not child.children:
+      create_input = storage.node.create.input
+      global_id += 1
+      new_child = storage.temp.new_child
+      new_child.name = create_input.file_name
+      new_child.type = create_input.type
+      new_child.id = global_id
+      stack.new_children[-1].append(new_child)
+      parent_id = 0
+
     stack.node.append(child)
     function dpi:node/create/main
 
