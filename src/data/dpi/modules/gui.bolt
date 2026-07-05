@@ -124,12 +124,12 @@ class Button:
         rotation = find_rotation(face)
         translation_offset = find_translation_offset(face, offset)
 
-        if self.text:
-            self._spawn_text(pos, rotation, translation_offset)
-
         actions = self._setup_button_callback()
 
         offset_pos = find_position_offset(face, pos, offset)
+
+        if self.text:
+            self._spawn_text(offset_pos, rotation, translation_offset)
         self._spawn_interaction(offset_pos, actions, width, height, tags)
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
@@ -144,12 +144,12 @@ class Button:
         translation_offset[1] += translation_override[1]
         translation_offset[2] += translation_override[2]
 
-        if self.text:
-            self._spawn_text(pos, rotation, translation_offset)
-
         actions = self._setup_button_callback()
 
         offset_pos = find_relative_position_offset(face, pos, offset)
+
+        if self.text:
+            self._spawn_text(offset_pos, rotation, translation_offset)
         self._spawn_interaction(offset_pos, actions, width, height, tags)
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
