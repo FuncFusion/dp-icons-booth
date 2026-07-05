@@ -38,3 +38,69 @@ function dpi:stickers/speedrun_time_calc:
   if ms == 0:
     ms_prefix = 0
     ms_prefix2 = 0
+
+function dpi:stickers/completion:
+  advancement grant @s only summit.sticker_book:dpi/completion
+  # delete ↓
+  advancement revoke @s only dpi:stickers/completion
+  say completion!
+
+def generate_completion_advancement(tags):
+    criteria = {}
+    requirements = []
+
+    for tag in tags:
+        key = tag.split('.')[-1]
+        key_punch = f"{key}_punch"
+
+        criteria[key] = {
+            "trigger": "minecraft:player_interacted_with_entity",
+            "conditions": {
+                "entity": {
+                    "minecraft:entity_tags": {
+                        "any_of": [tag]
+                    }
+                }
+            }
+        }
+
+        criteria[key_punch] = {
+            "trigger": "minecraft:player_hurt_entity",
+            "conditions": {
+                "entity": {
+                    "minecraft:entity_tags": {
+                        "any_of": [tag]
+                    }
+                }
+            }
+        }
+        requirements.append([key, key_punch])
+
+    advancement dpi:stickers/completion {
+        "criteria": criteria,
+        "requirements": requirements,
+        "rewards": {
+            "function": "dpi:stickers/completion"
+        }
+    }
+
+generate_completion_advancement([
+    "dpi.button.trailer_link", 
+    "dpi.button.assets_repo_link",
+    "dpi.button.discord_link",
+    "dpi.button.issues_link",
+    "dpi.button.sublime_port_link",
+    "dpi.button.sublime_port_link",
+    "dpi.button.emerald_sticker",
+    "dpi.button.main_repo_link",
+    "dpi.button.timeline",
+    "dpi.button.did_watch_trailer",
+    "dpi.button.used_by_links",
+    "dpi.button.shardgate_tp",
+    "dpi.button.ant_github_link",
+    "dpi.button.ant_modrinth_link",
+    "dpi.button.dp_essentials_link",
+    "dpi.button.amandin_github_link",
+    "dpi.button.ant_balloon",
+    "dpi.waiting_for_click"
+])

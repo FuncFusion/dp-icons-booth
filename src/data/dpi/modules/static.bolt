@@ -30,8 +30,8 @@ function dpi:entities/static/summon:
 	summon item_display 111.75 95.375 -111.0625 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:images/trailer_thumbnail"}, count: 1, id: "minecraft:painting"}, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [5.0f, 5.0f, 5.0f]},brightness: {sky: 15, block: 15}}
 
 	# trailer link interactions
-    gui.Button("execute on attacker run dialog show @s dpi:trailer_link", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([117.1, 92.6, -111.1], "north", 3.7, 0.8)
-    gui.Button("execute on attacker run dialog show @s dpi:trailer_link", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([111.75, 92.8, -111.1], "north", 5, 3)
+    gui.Button("execute on attacker run dialog show @s dpi:trailer_link", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([117.1, 92.6, -111.1], "north", 3.7, 0.8, ["dpi.button.trailer_link","summit.static"])
+    gui.Button("execute on attacker run dialog show @s dpi:trailer_link", "execute on target run dialog show @s dpi:trailer_link").spawn_abs([111.75, 92.8, -111.1], "north", 5, 3, ["dpi.button.trailer_link","summit.static"])
 
 	## wall 4
 	# ʟɪɴᴋꜱ
@@ -41,55 +41,55 @@ function dpi:entities/static/summon:
 	summon text_display 114.0 89.3875 -122.9375 {Tags:["summit.static","summit.booth_entity.dpi"], line_width: 360, shadow: 0b, text: [{atlas:"items",sprite:"dpi:icons/aseprite_file"}," You can find all of the assets used (and unused!) during the development of Datapack Icons in our ",{color:"#478BE6",underlined:true,text:"assets repo"},".\n\n",{atlas:"items",sprite:"dpi:icons/contributing_file"}," If you need to report a bug, request a new icon or suggest a feature, you can do that in our ",{atlas:"items",sprite:"dpi:icons/misc/discord"}," ",{color:"#478BE6",underlined:true,text:"discord server"}," or by opening a ",{color:"#478BE6",underlined:true,text:"github issue"},".\n\n",{atlas:"items",sprite:"dpi:icons/dimension_file"}," Datapack Icons isn't just for VS Code! We've ported the extension to other IDEs. Keep in mind they will probably have fewer features than the VS Code extension due to different extension capabilities.\n\n- ",{atlas:"items",sprite:"dpi:icons/sublime_file"}," ",{underlined: true,color:"#478BE6",text:"Sublime Text",bold:true},{underlined: true,color:"#478BE6",text:" port"},"\n- ",{underlined: true,color:"#478BE6",text:"Zed",bold:true},{underlined: true,color:"#478BE6",text:" port\n\n"},"We are also planning a ",{atlas:"items",sprite:"dpi:icons/jetbrains_file"},{bold: true, text:" JetBrains"}," port and a ",{atlas:"items",sprite:"dpi:icons/neovim_file"},{bold: true, text:" Neovim"}," port in the future."], transformation: {left_rotation: [0.0f, 0.0f, 0.0f, 1.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left",brightness: {sky: 15, block: 15}}
 
 	# assets repo interaction
-    gui.Button("execute on attacker run dialog show @s dpi:assets_repo_link", "execute on target run dialog show @s dpi:assets_repo_link").spawn_abs([115.15, 92.75, -122.9375], "south", 2, 0.5)
+    gui.Button("execute on attacker run dialog show @s dpi:assets_repo_link", "execute on target run dialog show @s dpi:assets_repo_link").spawn_abs([115.15, 92.75, -122.9375], "south", 2, 0.5, ["dpi.button.assets_repo_link","summit.static"])
 	# discord link interaction
-    gui.Button("execute on attacker run dialog show @s dpi:discord_link", "execute on target run dialog show @s dpi:discord_link").spawn_abs([114.7, 92.0, -122.9375], "south", 2.5, 0.5)
+    gui.Button("execute on attacker run dialog show @s dpi:discord_link", "execute on target run dialog show @s dpi:discord_link").spawn_abs([114.7, 92.0, -122.9375], "south", 2.5, 0.5, ["dpi.button.discord_link","summit.static"])
 	# github issue interaction
-    gui.Button("execute on attacker run dialog show @s dpi:issues_link", "execute on target run dialog show @s dpi:issues_link").spawn_abs([110.25, 91.75, -122.9375], "south", 2, 0.5)
+    gui.Button("execute on attacker run dialog show @s dpi:issues_link", "execute on target run dialog show @s dpi:issues_link").spawn_abs([110.25, 91.75, -122.9375], "south", 2, 0.5, ["dpi.button.issues_link","summit.static"])
 	# sublime port interaction
-    gui.Button("execute on attacker run dialog show @s dpi:sublime_port_link", "execute on target run dialog show @s dpi:sublime_port_link").spawn_abs([111.1, 90.4, -122.9375], "south", 3, 0.3)
+    gui.Button("execute on attacker run dialog show @s dpi:sublime_port_link", "execute on target run dialog show @s dpi:sublime_port_link").spawn_abs([111.1, 90.4, -122.9375], "south", 3, 0.3, ["dpi.button.sublime_port_link","summit.static"])
 	# zed port interaction
-    gui.Button("execute on attacker run dialog show @s dpi:zed_port_link", "execute on target run dialog show @s dpi:zed_port_link").spawn_abs([111.1, 90.1, -122.9375], "south", 3, 0.3)
+    gui.Button("execute on attacker run dialog show @s dpi:zed_port_link", "execute on target run dialog show @s dpi:zed_port_link").spawn_abs([111.1, 90.1, -122.9375], "south", 3, 0.3, ["dpi.button.sublime_port_link","summit.static"])
 
   ## chests
   # upper floor
   summon item_display 108.8750 102.0 -120.5 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.70710677f, 0.0f, 0.70710677f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]},brightness: {sky: 15, block: 15}}
-  gui.Button("execute on attacker run advancement grant @s only summit.sticker_book:dpi/emerald", "execute on target run advancement grant @s only summit.sticker_book:dpi/emerald").spawn_abs([109.1750, 101.5, -120.5], "east", 0.6, 0.6)
+  gui.Button("execute on attacker run advancement grant @s only summit.sticker_book:dpi/emerald", "execute on target run advancement grant @s only summit.sticker_book:dpi/emerald").spawn_abs([109.1750, 101.5, -120.5], "east", 0.6, 0.6, ["dpi.button.emerald_sticker","summit.static"])
 
   # welcome
   summon item_display 108.8125 99.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]},brightness: {sky: 15, block: 15}}
 
   summon item_display 108.8125 99.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"],UUID: [I; 1392957161, 687162949, -1286853849, -972577856], item: {components: {"minecraft:item_model": "dpi:github"}, count: 1, id: "minecraft:emerald"}, teleport_duration: 1, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]},brightness: {sky: 15, block: 15}}
 
-  gui.Button("execute on attacker run dialog show @s dpi:main_repo_link", "execute on target run dialog show @s dpi:main_repo_link").spawn_abs([109.1125, 98.5, -111.8125], "east", 0.6, 0.6)
+  gui.Button("execute on attacker run dialog show @s dpi:main_repo_link", "execute on target run dialog show @s dpi:main_repo_link").spawn_abs([109.1125, 98.5, -111.8125], "east", 0.6, 0.6, ["dpi.button.main_repo_link","summit.static"])
 
   # timeline
   summon item_display 119.1875 96.0 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, -0.38268352f, 0.0f, 0.92387956f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999993f, 2.0000005f]},brightness: {sky: 15, block: 15}}
 
   summon item_display 119.1875 96.0 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"],UUID: [I;133959254,1516257621,-1264481968,2123940648], item: {components: {"minecraft:item_model": "dpi:timeline_file"}, count: 1, id: "minecraft:emerald"}, teleport_duration: 1, transformation: {left_rotation: [0.0f, -0.38268352f, 0.0f, 0.92387956f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]},brightness: {sky: 15, block: 15}}
 
-  gui.Button("execute on attacker run dialog show @s dpi:timeline", "execute on target run dialog show @s dpi:timeline").spawn_abs([119.4825, 95.5, -122.1875], "east", 0.6, 0.6)
+  gui.Button("execute on attacker run dialog show @s dpi:timeline", "execute on target run dialog show @s dpi:timeline").spawn_abs([119.4825, 95.5, -122.1875], "east", 0.6, 0.6, ["dpi.button.timeline","summit.static"])
 
   # deep dive
   summon item_display 108.8125 93.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]},brightness: {sky: 15, block: 15}}
 
   summon item_display 108.898 92.8125 -111.898 {Tags:["summit.static","summit.booth_entity.dpi"],UUID: [I;-40008202,-502511279,-1228288459,624291089], item: {components: {"minecraft:item_model": "dpi:shell_file"}, count: 1, id: "minecraft:emerald"}, teleport_duration: 1, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.99f, 0.99f, 0.99f]},brightness: {sky: 15, block: 15}}
 
-  gui.Button("execute on attacker run dialog show @s dpi:did_watch_trailer", "execute on target run dialog show @s dpi:did_watch_trailer").spawn_abs([109.1125, 92.5, -111.8125], "east", 0.6, 0.6)
+  gui.Button("execute on attacker run dialog show @s dpi:did_watch_trailer", "execute on target run dialog show @s dpi:did_watch_trailer").spawn_abs([109.1125, 92.5, -111.8125], "east", 0.6, 0.6, ["dpi.button.did_watch_trailer","summit.static"])
   
   # links
   summon item_display 119.1875 90.0 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, -0.38268352f, 0.0f, 0.92387956f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999993f, 2.0000005f]},brightness: {sky: 15, block: 15}}
 
   summon item_display 119.1875 89.8125 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"],UUID: [I;-1127019469,-2077079916,-1354428315,537888348], item: {components: {"minecraft:item_model": "dpi:lang_file"}, count: 1, id: "minecraft:emerald"}, teleport_duration: 1, transformation: {left_rotation: [0.0f, -0.38268352f, 0.0f, 0.92387956f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.99f, 0.99f, 0.99f]},brightness: {sky: 15, block: 15}}
 
-  gui.Button("execute on attacker run dialog show @s dpi:used_by_links", "execute on target run dialog show @s dpi:used_by_links").spawn_abs([119.4825, 89.5, -122.1875], "east", 0.6, 0.6)
+  gui.Button("execute on attacker run dialog show @s dpi:used_by_links", "execute on target run dialog show @s dpi:used_by_links").spawn_abs([119.4825, 89.5, -122.1875], "east", 0.6, 0.6, ["dpi.button.used_by_links","summit.static"])
   
   # shardgate
   summon item_display 108.8125 84.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]},brightness: {sky: 15, block: 15}}
 
   summon item_display 108.8125 83.938 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:shardgate"}, count: 1, id: "minecraft:emerald"}, teleport_duration: 1, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]},brightness: {sky: 15, block: 15}}
 
-  gui.Button("execute on attacker run dialog show @s dpi:shardgate_tp", "execute on target run dialog show @s dpi:shardgate_tp").spawn_abs([109.1125, 83.5, -111.8125], "east", 0.6, 0.6)
+  gui.Button("execute on attacker run dialog show @s dpi:shardgate_tp", "execute on target run dialog show @s dpi:shardgate_tp").spawn_abs([109.1125, 83.5, -111.8125], "east", 0.6, 0.6, ["dpi.button.shardgate_tp","summit.static"])
 
   ## portal to leave da booth
   summon item_display 121.0 83.5 -118.5 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:portal"}, count: 1, id: "minecraft:end_portal_frame"}, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]},brightness: {sky: 15, block: 15}}
@@ -107,8 +107,8 @@ function dpi:entities/static/summon:
 
   summon text_display 114.5 83.3 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"}," @",{text:"super.ant_\n",color:"#E88425"},{atlas:"items",sprite:"dpi:icons/modrinth_file"}," Modrinth"], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
-  gui.Button("execute on attacker run dialog show @s dpi:ant_github_link", "execute on target run dialog show @s dpi:ant_github_link").spawn_abs([114.5, 83.8, -97.2875], "north", 1.6, 0.3)
-  gui.Button("execute on attacker run dialog show @s dpi:ant_modrinth_link", "execute on target run dialog show @s dpi:ant_modrinth_link").spawn_abs([114.5, 83.3, -97.2875], "north", 1.6, 0.3)
+  gui.Button("execute on attacker run dialog show @s dpi:ant_github_link", "execute on target run dialog show @s dpi:ant_github_link").spawn_abs([114.5, 83.8, -97.2875], "north", 1.6, 0.3, ["dpi.button.ant_github_link","summit.static"])
+  gui.Button("execute on attacker run dialog show @s dpi:ant_modrinth_link", "execute on target run dialog show @s dpi:ant_modrinth_link").spawn_abs([114.5, 83.3, -97.2875], "north", 1.6, 0.3, ["dpi.button.ant_modrinth_link","summit.static"])
 
   #bth #7DB309
   summon text_display 110.3 85.9375 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas: "minecraft:items", sprite: "dpi:icons/misc/creators/bth123"},{text:" bth123",color:"#7DB309"}], transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]}, background: 0,brightness: {sky: 15, block: 15}}
@@ -117,7 +117,7 @@ function dpi:entities/static/summon:
 
   summon text_display 110.3 83.3 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"}," @",{text:"bth123\n",color:"#7DB309"}], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
-  gui.Button("execute on attacker run dialog show @s dpi:bth_github_link", "execute on target run dialog show @s dpi:bth_github_link").spawn_abs([110.3, 83.8, -97.2875], "north", 1.6, 0.3)
+  gui.Button("execute on attacker run dialog show @s dpi:bth_github_link", "execute on target run dialog show @s dpi:bth_github_link").spawn_abs([110.3, 83.8, -97.2875], "north", 1.6, 0.3, ["dpi.button.bth_github_link","summit.static"])
 
   #amandin #8599ff
   summon text_display 118.7 85.9375 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas: "minecraft:items", sprite: "dpi:icons/misc/creators/amandin"},{text:" amandin",color:"#8599ff"}], transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]}, background: 0,brightness: {sky: 15, block: 15}}
@@ -126,12 +126,12 @@ function dpi:entities/static/summon:
 
   summon text_display 118.7 83.3 -97.0625 {Tags: ["summit.static", "summit.booth_entity.dpi"], text: [{atlas:"items",sprite:"dpi:icons/misc/antbot/github"}," Github\n",{atlas:"items",sprite:"dpi:icons/misc/discord"}," @",{text:"amandin\n",color:"#8599ff"}], line_width: 160.0, transformation: {left_rotation: [0.0f, 1.0f, 0.0f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 1.0f, 1.0f]}, background: 0, alignment: "left", brightness: {sky: 15, block: 15}}
 
-  gui.Button("execute on attacker run dialog show @s dpi:dp_essentials_link", "execute on target run dialog show @s dpi:dp_essentials_link").spawn_abs([118.6520, 85.0, -97.2875], "north", 3.7, 0.8)
+  gui.Button("execute on attacker run dialog show @s dpi:dp_essentials_link", "execute on target run dialog show @s dpi:dp_essentials_link").spawn_abs([118.6520, 85.0, -97.2875], "north", 3.7, 0.8, ["dpi.button.dp_essentials_link","summit.static"])
 
-  gui.Button("execute on attacker run dialog show @s dpi:amandin_github_link", "execute on target run dialog show @s dpi:amandin_github_link").spawn_abs([118.7, 83.8, -97.2875], "north", 1.6, 0.3)
+  gui.Button("execute on attacker run dialog show @s dpi:amandin_github_link", "execute on target run dialog show @s dpi:amandin_github_link").spawn_abs([118.7, 83.8, -97.2875], "north", 1.6, 0.3, ["dpi.button.amandin_github_link","summit.static"])
 
   # ant balloon interaction
-  gui.Button("function dpi:creators/click_ant", "function dpi:creators/click_ant").spawn_abs([114,83,-107.6250], "north", 1.5, 1.5)
+  gui.Button("function dpi:creators/click_ant", "function dpi:creators/click_ant").spawn_abs([114,83,-107.6250], "north", 1.5, 1.5, ["dpi.button.ant_balloon"])
 
 
 def add_url_dialogue(icon, title, url):
