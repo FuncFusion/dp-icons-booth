@@ -89,7 +89,7 @@ class Button:
             }
         }
 
-    def spawn_abs(self, pos, face, width=1, height=1):
+    def spawn_abs(self, pos, face, width=1, height=1, tags=[]):
         offset = width/2
         for coord in pos:
             coord = float(coord)
@@ -108,7 +108,7 @@ class Button:
             actions.on_right_click = self.on_right_click
 
         offset_pos = find_position_offset(face, pos, offset)
-        self._spawn_interaction(offset_pos, actions, width, height)
+        self._spawn_interaction(offset_pos, actions, width, height, tags)
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
 
