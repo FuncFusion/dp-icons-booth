@@ -1,4 +1,5 @@
 from dpi:config import storage, var
+import bolt_expressions as expr
 
 def find_rotation(face):
     if face == "north":
@@ -41,6 +42,8 @@ def find_position_offset(face, pos, offset):
     elif face == "east":
         pos[0] -= offset
     return pos
+
+button_id = 1
         
 class Button:
     pixel = 1/16/2.5
@@ -51,6 +54,10 @@ class Button:
         self.height = 0.0
         self.on_left_click = on_left_click
         self.on_right_click = on_right_click
+
+        global button_id
+        self.id = button_id
+        button_id += 1
 
     def _spawn_text(self, pos, rotation, translation_offset):
         x = pos[0]
@@ -89,6 +96,26 @@ class Button:
             }
         }
 
+    def _setup_button_callback(self):
+        left_click_callback = f"dpi:button_callback/on_left_click/{self.id}"
+        right_click_callback = f"dpi:button_callback/on_right_click/{self.id}"
+
+        actions = {
+            on_left_click: "function " + left_click_callback,
+            on_right_click: "function " + right_click_callback
+        }
+
+        if self.on_left_click != "":
+            function left_click_callback:
+                execute on attacker run scoreboard players enable @s dpi.trigger_action 
+                raw self.on_left_click
+        if self.on_right_click != "":
+            function right_click_callback:
+                execute on target run scoreboard players enable @s dpi.trigger_action 
+                raw self.on_right_click
+
+        return actions
+
     def spawn_abs(self, pos, face, width=1, height=1, tags=[]):
         offset = width/2
         for coord in pos:
@@ -100,12 +127,7 @@ class Button:
         if self.text:
             self._spawn_text(pos, rotation, translation_offset)
 
-        actions = {on_left_click: "setblock ~ ~ ~ air keep", on_right_click: "setblock ~ ~ ~ air keep"}
-
-        if self.on_left_click != "":
-            actions.on_left_click = self.on_left_click
-        if self.on_right_click != "":
-            actions.on_right_click = self.on_right_click
+        actions = self._setup_button_callback()
 
         offset_pos = find_position_offset(face, pos, offset)
         self._spawn_interaction(offset_pos, actions, width, height, tags)
@@ -125,14 +147,7 @@ class Button:
         if self.text:
             self._spawn_text(pos, rotation, translation_offset)
 
-        actions = {}
-
-        if self.on_left_click != "" and self.on_right_click != "":
-            actions = {on_left_click: self.on_left_click, on_right_click: self.on_right_click}
-        elif self.on_left_click != "":
-            actions = {on_left_click: self.on_left_click}
-        elif self.on_right_click != "":
-            actions = {on_right_click: self.on_right_click}
+        actions = self._setup_button_callback()
 
         offset_pos = find_relative_position_offset(face, pos, offset)
         self._spawn_interaction(offset_pos, actions, width, height, tags)

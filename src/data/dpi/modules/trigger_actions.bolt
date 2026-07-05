@@ -1,0 +1,26 @@
+import bolt_expressions as expr
+
+action_id = 1
+
+append function dpi:load:
+  trigger_action = expr.Scoreboard.objective("dpi.trigger_action", "trigger")
+
+class Action:
+  def __init__(self, name):
+    global action_id trigger_action
+    self.id = action_id
+    action_id += 1
+
+    self.name = name
+    self.callback = "dpi:trigger_callback/" + self.name
+    
+    append function dpi:tick/player:
+      if trigger_action["@s"] == self.id:
+        function self.callback
+
+    prepend function self.callback:
+      pass
+      trigger_action["@s"].reset()
+
+  def trigger(self):
+    return f"trigger dpi.trigger_action set {self.id}"
