@@ -34,8 +34,12 @@ function dpi:node/render/get_name:
   storage.node.render.output = name
   storage.node.render.output_icon = print_nbt("icon")
 
+function dpi:node/right_click:
+  function dpi:node/toggle/select
+  execute on target run dialog show @s dpi:node/operate
+
 function dpi:node/render/spawn:
-  right_click = "function dpi:node/toggle/select"
+  right_click = "function dpi:node/right_click"
   left_click = "function dpi:node/fold"
 
   button = gui.Button(left_click, right_click, name)

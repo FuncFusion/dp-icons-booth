@@ -43,6 +43,16 @@ function dpi:node/select:
   execute on passengers:
     entity.text = render_name
 
+append function dpi:trigger_callback/create:
+  function dpi:node/create/book
+
+append function dpi:trigger_callback/rename:
+  function dpi:node/rename/book
+
+append function dpi:trigger_callback/remove:
+  function dpi:node/remove
+  # as @n[tag=dpi.node.selected]:
+  #   function dpi:node/remove
 
 dialog dpi:node/operate {
   "type": "minecraft:multi_action",
@@ -78,14 +88,3 @@ dialog dpi:node/operate {
     }
   ]
 }
-
-append function dpi:load:
-  on_left_click = "execute on attacker run dialog show @s dpi:node/operate"
-  on_right_click = "execute on target run dialog show @s dpi:node/operate"
-  test = gui.Button(on_left_click, on_right_click)
-  positioned 113 84 -119:
-    test.spawn("north")
-    
-
-append function dpi:trigger_callback/create:
-  say i am creating bullshiiiii
