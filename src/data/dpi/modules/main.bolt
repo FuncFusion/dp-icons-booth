@@ -1,4 +1,4 @@
-from dpi:config import var, global_tick, storage
+from dpi:config import var, storage
 from bolt_expressions import Scoreboard
 import dpi:filesystem as fs
 import dpi:springboard as springboard
@@ -75,8 +75,6 @@ prepend function dpi:load:
   function dpi:entities/refresh
 
 append function dpi:tick:
-  global_tick += 1
-
   as @a at @s run function dpi:tick/player
   as @e[
     type=#taglib:markerlike,
@@ -88,8 +86,9 @@ append function dpi:tick/booth_entity:
   execute as a2faf424-4fb9-4444-b486-29a39f24e675 rotated as @s run rotate @s ~0.3 0
 
 append function dpi:tick/player:
-  # portal to leave the booth
-  execute if entity @s[x=120.5,y=83,z=-119,dy=1] in minecraft:overworld:
-    tp @s 114.42 95.00 -124.30 -179.48 8.78
-    at @s playsound minecraft:item.chorus_fruit.teleport player @s ~ ~ ~
-    function dpi:stickers/end_speedrun
+  pass
+
+function dpi:exit_portal/on_player_enter:
+  tp @s 114.42 95.00 -124.30 -179.48 8.78
+  at @s playsound minecraft:item.chorus_fruit.teleport player @s ~ ~ ~
+  function dpi:stickers/end_speedrun

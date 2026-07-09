@@ -20,6 +20,14 @@
             "on_player_enter": "dpi:springboard/on_player_enter",
             "on_player_exit": "dpi:springboard/on_player_exit"
 		},
+        "exit_portal_trigger": {
+			"position": {
+				"x": {"min": 120, "max": 120},
+                "y": {"min": 83, "max": 84},
+                "z": {"min": -119, "max": -119}
+			},
+            "on_player_enter": "dpi:exit_portal/on_player_enter",
+		},
         "chest_house": {
 			"position": {
 				"x": {"min": 107, "max": 120},
