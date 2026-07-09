@@ -38,16 +38,13 @@ append function_tag summit:api/reset_player:
 function dpi:entities/refresh:
   function dpi:entities/kill
   function dpi:entities/summon
-  function dpi:entities/static/kill
-  function dpi:entities/static/summon
 
 function dpi:entities/reset_player:
   clear @s minecraft:writable_book[minecraft:custom_data~{dpi:{}}]
 
-function dpi:entities/static/kill:
-  kill @e[tag=dpi.button]
-
 append function dpi:entities/summon:
+  function dpi:entities/static/summon
+
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/lev_icons/summon {args:{}}
@@ -78,8 +75,6 @@ prepend function dpi:load:
   tellraw @a:
     text: "Reloaded!"
     color: "green"
-
-  function dpi:entities/refresh
 
 append function dpi:tick:
   as @a at @s run function dpi:tick/player

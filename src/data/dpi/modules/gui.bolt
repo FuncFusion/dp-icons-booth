@@ -156,18 +156,6 @@ class Button:
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
 
-class Window:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-
-    def spawn():
-        summon text_display ~ ~ ~ {
-            Tags: ["dpi.window"],
-            alignment: "left",
-            text: self.text
-        }
-
 dropdown_id = 1
 
 class Dropdown:
