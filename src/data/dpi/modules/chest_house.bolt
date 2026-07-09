@@ -12,6 +12,12 @@ append function dpi:load:
   someone_inside = var[p + "someone_inside"]
   self_inside = var[p + "self_inside"]
 
+function dpi:chest_house/on_player_enter:
+  tag @s add dpi.chest_house.bounding_box
+
+function dpi:chest_house/on_player_exit:
+  tag @s remove dpi.chest_house.bounding_box
+
 append function dpi:tick/player:
   x = 126
   y = 99
@@ -27,8 +33,8 @@ append function dpi:tick/player:
 
   in_bounding_box = 0
 
-  store success score f"{p}someone_inside" dpi.var if entity @a[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz]
-  store success score f"{p}self_inside" dpi.var if entity @s[x=x, y=y, z=z, dx=dx, dy=dy, dz=dz]
+  store success score f"{p}someone_inside" dpi.var if entity @p[tag=dpi.chest_house.bounding_box]
+  store success score f"{p}self_inside" dpi.var if entity @s[tag=dpi.chest_house.bounding_box]
   
   if self_inside:
     function dpi:chest_house/in_bounding_box
