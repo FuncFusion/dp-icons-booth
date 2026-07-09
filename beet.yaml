@@ -16,13 +16,6 @@ pipeline:
       - mecha
 
   - data_pack:
-      load:
-        - "https://vendors.internal.smithed.net/app/static/summit-dp-core.zip"
-    resource_pack:
-      load:
-        - "https://vendors.internal.smithed.net/app/static/summit-rp-core.zip"
-
-  - data_pack:
       load: ["lib"]
     resource_pack:
       load: ["lib"]
