@@ -66,4 +66,3 @@ function dpi:springboard/loop_22t_arrow:
     tp @e[tag=dpi.springboard_arrow,limit=1] 114.5 93.8 -132.0
   else:
     tp @e[tag=dpi.springboard_arrow,limit=1] 114.5 94.3 -131.7
-  schedule function dpi:springboard/loop_22t_arrow 22
