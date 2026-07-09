@@ -31,11 +31,18 @@ append function_tag summit.booth:dpi/entities/summon:
   values:
     - "dpi:entities/summon"
 
+append function_tag summit:api/reset_player:
+  values:
+    - "dpi:entities/reset_player"
+
 function dpi:entities/refresh:
   function dpi:entities/kill
   function dpi:entities/summon
   function dpi:entities/static/kill
   function dpi:entities/static/summon
+
+function dpi:entities/reset_player:
+  clear @s minecraft:writable_book[minecraft:custom_data~{dpi:{}}]
 
 function dpi:entities/static/kill:
   kill @e[tag=dpi.button]
