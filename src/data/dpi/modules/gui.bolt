@@ -144,6 +144,8 @@ class Button:
         translation_offset[1] += translation_override[1]
         translation_offset[2] += translation_override[2]
 
+        translation_offset[1] += -0.26
+
         actions = self._setup_button_callback()
 
         offset_pos = find_relative_position_offset(face, pos, offset)
@@ -166,6 +168,77 @@ class Window:
             text: self.text
         }
 
+dropdown_id = 1
+
 class Dropdown:
-    def __init__(self, options: list[Button]):
+    def __init__(self, name, options: list[Button]):
+        global dropdown_id
+        self.id = dropdown_id
+        dropdown_id += 1
+        toggle_fn = f"dpi:dropdown/toggle/{self.id}"
+        self.dropdown = Button("", toggle_fn, name)
         self.options = options
+
+    def _offset_pos(self, direction, face, off):
+        x = "~"
+        y = "~"
+        z = "~"
+        if direction == "right":
+            if face == "north":
+                x = f"~{off}"
+            elif face == "south":
+                x = f"~{-off}"
+            elif face == "west":
+                z = f"~{-off}"
+            elif face == "east":
+                z = f"~{off}"
+        elif direction == "left":
+            if face == "north":
+                x = f"~{-off}"
+            elif face == "south":
+                x = f"~{off}"
+            elif face == "west":
+                z = f"~{off}"
+            elif face == "east":
+                z = f"~{-off}"
+        elif direction == "up":
+            y = f"~{off}"
+        elif direction == "down":
+            y = f"~{-off}"
+        return [x, y, z]
+
+    def spawn(self, pos, face, direction, interval):
+        id = self.id
+
+        function f"dpi:dropdown/open/{id}":
+            state = var[f"#dpi.dropdown.{id}"]
+            state = 1
+            for i, option in enumerate(self.options):
+                off = i * interval
+                offset_pos = self._offset_pos(direction, face, off)
+                x = offset_pos[0]
+                y = offset_pos[1]
+                z = offset_pos[2]
+                execute positioned x y z:
+                    option.spawn(face, tags=[f"dpi.dropdown.options.{id}"])
+
+        function f"dpi:dropdown/close/{id}":
+            state = var[f"#dpi.dropdown.{id}"]
+            state = 0
+            kill @e[tag=f"dpi.dropdown.options.{id}"]
+
+        function f"dpi:dropdown/toggle/{id}":
+            state = var[f"#dpi.dropdown.{id}"]
+            if state == 1:
+                function f"dpi:dropdown/close/{id}"
+            else:
+                function f"dpi:dropdown/open/{id}"
+
+        self.dropdown.spawn_abs(pos, face, tags=["dpi.dropdown"])
+
+function dpi:what:
+    button = Button("", "", "test")
+    button2 = Button("", "", "option 2")
+    button3 = Button("", "", "option 3")
+    test = Dropdown("menu", [button, button2, button3])
+    test.spawn([0.0, 0.0, 0.0], "north", "right", 2.0)

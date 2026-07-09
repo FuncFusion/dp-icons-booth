@@ -1,0 +1,104 @@
+from dpi:filesystem import Node
+from dpi:trigger_actions import Action
+from dpi:config import storage, var
+
+append function dpi:trigger_callback/datapack_preset:
+  function dpi:fs/apply_preset/datapack
+
+function dpi:fs/apply_preset/datapack:
+  datapack_preset = storage.fs.preset.datapack
+
+  root = Node("root", "dir", datapack_preset)
+
+  pack = Node("pack.mcmeta", "txt", root)
+  data = Node("data", "dir", root)
+  minecraft = Node("minecraft", "dir", data)
+  tags = Node("tags", "dir", minecraft)
+  function_tag = Node("function", "dir", tags)
+  tick_function_tag = Node("tick.json", "json", function_tag)
+  load_function_tag = Node("load.json", "json", function_tag)
+  dpi_namespace = Node("dpi", "dir", data)
+  functions = Node("function", "dir", dpi_namespace)
+  tick = Node("tick.mcfunction", "mcf", functions)
+  load = Node("load.mcfunction", "mcf", functions)
+
+  storage.fs.root = datapack_preset
+
+append function dpi:trigger_callback/resourcepack_preset:
+  function dpi:fs/apply_preset/resourcepack
+
+function dpi:fs/apply_preset/resourcepack:
+  resourcepack_preset = storage.fs.preset.resourcepack
+
+  root = Node("root", "dir", resourcepack_preset)
+
+  pack = Node("pack.mcmeta", "txt", root)
+  data = Node("data", "dir", root)
+  minecraft = Node("minecraft", "dir", data)
+  tags = Node("tags", "dir", minecraft)
+  function_tag = Node("function", "dir", tags)
+  tick_function_tag = Node("tick.json", "json", function_tag)
+  load_function_tag = Node("load.json", "json", function_tag)
+  dpi_namespace = Node("dpi", "dir", data)
+  functions = Node("function", "dir", dpi_namespace)
+  tick = Node("tick.mcfunction", "mcf", functions)
+  load = Node("load.mcfunction", "mcf", functions)
+
+  storage.fs.root = resourcepack_preset
+
+append function dpi:trigger_callback/beet_preset:
+  function dpi:fs/apply_preset/beet
+
+function dpi:fs/apply_preset/beet:
+  beet_preset = storage.fs.preset.beet
+
+  root = Node("root", "dir", beet_preset)
+
+  pack = Node("pack.mcmeta", "txt", root)
+  data = Node("data", "dir", root)
+  minecraft = Node("minecraft", "dir", data)
+  tags = Node("tags", "dir", minecraft)
+  function_tag = Node("function", "dir", tags)
+  tick_function_tag = Node("tick.json", "json", function_tag)
+  load_function_tag = Node("load.json", "json", function_tag)
+  dpi_namespace = Node("dpi", "dir", data)
+  functions = Node("function", "dir", dpi_namespace)
+  tick = Node("tick.mcfunction", "mcf", functions)
+  load = Node("load.mcfunction", "mcf", functions)
+
+  storage.fs.root = beet_preset
+
+dialog dpi:fs/choose_preset {
+  "type": "minecraft:multi_action",
+  "title": {
+    "text": "choose preset"
+  },
+  "inputs": [],
+  "pause": false,
+  "columns": 1,
+  "actions": [
+    {
+      "label": {
+        "text": "datapack_preset"
+      },
+      "action": {
+        "type": "minecraft:run_command",
+        "command": Action("datapack_preset").trigger()
+      }
+    },
+    {
+      "label": "resourcepack_preset",
+      "action": {
+        "type": "minecraft:run_command",
+        "command": Action("resourcepack_preset").trigger()
+      }
+    },
+    {
+      "label": "beet_preset",
+      "action": {
+        "type": "minecraft:run_command",
+        "command": Action("beet_preset").trigger()
+      }
+    }
+  ]
+}

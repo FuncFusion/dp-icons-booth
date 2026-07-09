@@ -43,7 +43,7 @@ function dpi:node/render/spawn:
   left_click = "function dpi:node/fold"
 
   button = gui.Button(left_click, right_click, name)
-  button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"], [0.5, -0.5, 0.0])
+  button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"], [0.5, -0.25, 0.0])
 
   execute as @n[tag=dpi.node.new]:
     entity = expr.Data.entity("@s")
@@ -67,6 +67,15 @@ function dpi:tree/render/init:
   summon marker ~ ~ ~ {Tags:["dpi.tree.marker"]}
   as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
   kill @e[tag=dpi.tree.marker]
+
+  function dpi:tree/render/settings
+
+function dpi:tree/render/settings:
+  left_click = "execute on attacker run dialog show @s dpi:fs/choose_preset"
+  right_click = "execute on target run dialog show @s dpi:fs/choose_preset"
+  presets_button = gui.Button(left_click, right_click, "🔄")
+  execute positioned 112.5 85.5 -123.95:
+    presets_button.spawn("south", 0.25, 0.25)
 
 function dpi:tree/render/main:
   children = stack[-1]
@@ -114,24 +123,17 @@ function dpi:tree/render/reset_depth:
 
 append function dpi:temp:
   tree = Tree()
-  pack = Node("pack.mcmeta", "txt", tree.root)
-  data = Node("data", "dir", tree.root)
-  minecraft = Node("minecraft", "dir", data)
-  tags = Node("tags", "dir", minecraft)
-  function_tag = Node("function", "dir", tags)
-  tick_function_tag = Node("tick.json", "json", function_tag)
-  load_function_tag = Node("load.json", "json", function_tag)
-  dpi_namespace = Node("dpi", "dir", data)
-  functions = Node("function", "dir", dpi_namespace)
-  tick = Node("tick.mcfunction", "mcf", functions)
-  load = Node("load.mcfunction", "mcf", functions)
 
-  execute positioned 112.5 86.5 -123.95:
+  function dpi:fs/apply_preset/datapack
+  
+  tellraw @a tree.root.node()
+
+  execute positioned 114.5 86.5 -123.95:
     tree.render()
 
 append function dpi:tick:
   if update_tree:
-    execute positioned 112.5 86.5 -123.95:
+    execute positioned 114.5 86.5 -123.95:
       tree.update()
 
 append function dpi:load:
