@@ -45,7 +45,7 @@ function dpi:node/render/spawn:
   button = gui.Button(left_click, right_click, name)
   button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"], [0.5, -0.25, 0.0])
 
-  execute as @n[tag=dpi.node.new]:
+  execute as @n[tag=dpi.node.new, type=interaction]:
     entity = expr.Data.entity("@s")
     on passengers run tag @s add dpi.tree.node
     entity.data.node = input

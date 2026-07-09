@@ -17,8 +17,6 @@ function dpi:tree/rebuild/init:
 
   function dpi:tree/rebuild/main
 
-  tellraw @a ["original:\n", root]
-  tellraw @a ["rebuilt:\n", output]
 
 function dpi:tree/rebuild/main:
   stack.new_children.append([])

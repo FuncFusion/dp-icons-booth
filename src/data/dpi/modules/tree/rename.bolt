@@ -31,25 +31,19 @@ function dpi:node/rename/submit:
   sio_output = executor.SelectedItem.components."minecraft:writable_book_content".pages[0].raw
   sio_length = len(sio_output)
 
-  tellraw @a [">>SUBMIT sio_output=", sio_output]
-
   if sio_length < 48:
-    tellraw @a [">>SUBMIT passed"]
     item replace entity @s weapon.mainhand from entity @s saddle
 
     storage.parse_input.input.raw_name = sio_output
     storage.split_string.input = sio_output
     function dpi:parse_input/init
 
-    tellraw @a [">>SUBMIT parse_output=", storage.parse_input.output]
     storage.node.rename.input.file_name = storage.parse_input.output.file_name
     storage.node.rename.input.type = storage.parse_input.output.type
-    tellraw @a [">>SUBMIT rename_input=", storage.node.rename.input]
 
     as @n[tag=dpi.node.selected]:
       target_id = var["#dpi.target_id"]
       target_id = id["@s"]
-      tellraw @a [">>SUBMIT target_id=", target_id]
       function dpi:node/rename
   else:
     tellraw @a [{text:"String can't be longer than 48 characters!", color:"red"}]

@@ -24,7 +24,6 @@ function dpi:parse_input/init:
     storage.parse_input.output.file_name = raw_name
     storage.parse_input.output.type = storage.join_string.output
 
-  tellraw @a [">>PARSE output=", storage.parse_input.output]
 
 function dpi:split_string/init:
   input = storage.split_string.input[str]
@@ -38,7 +37,8 @@ function dpi:split_string/init:
 
 function dpi:split_string/loop:
   count += 1
-  tellraw @a [">>SPLIT count=", count, " char=", input[0], " rest=", input[1:]]
+
+
   output.append(input[0])
   storage.split_string.input = input[1:]
   if count < length:
@@ -64,7 +64,6 @@ function dpi:get_type/main:
   gt_count += 1
 
   gt_item = gt_input[-1]
-  tellraw @a [">>GT_ITEM idx=", gt_count, " val=", gt_item]
 
   if gt_item == ".":
     return 0

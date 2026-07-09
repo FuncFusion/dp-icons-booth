@@ -3,7 +3,11 @@ from dpi:trigger_actions import Action
 from dpi:config import print_nbt, storage, var
 import dpi:gui as gui
 
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+
 function dpi:node/toggle/select:
+  entity = expr.Data.entity("@s")
+
   if entity @s[tag=dpi.node.selected]:
     return run function dpi:node/unselect
 

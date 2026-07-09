@@ -53,7 +53,6 @@ function dpi:string_input/submit:
   sio_length = len(sio_output)
 
   if sio_length < character_limit:
-    tellraw @a ["string_input.sio_output ", sio_output]
     function dpi:file_item/submit_name
   else:
     tellraw @a [

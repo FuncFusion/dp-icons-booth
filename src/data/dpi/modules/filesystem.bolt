@@ -61,8 +61,6 @@ function dpi:fs/walk/main:
   item = stack[-1][0]
 
   if item:
-    tellraw @a [item.name, " ", item.type]
-
     if item.children:
       stack.append(item.children)
       function dpi:fs/walk/main
