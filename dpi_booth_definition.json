@@ -19,12 +19,19 @@
 			},
             "on_player_enter": "dpi:springboard/on_player_enter",
             "on_player_exit": "dpi:springboard/on_player_exit"
-		}
+		},
         "chest_house": {
 			"position": {
 				"x": {"min": 107, "max": 120},
                 "y": {"min": 95, "max": 117},
                 "z": {"min": -124, "max": -106}
+			},
+        },
+        "creators_room": {
+			"position": {
+				"x": {"min": 107, "max": 121},
+                "y": {"min": 81, "max": 88},
+                "z": {"min": -125, "max": -97}
 			},
         }
 	},
