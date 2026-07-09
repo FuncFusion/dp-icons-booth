@@ -27,6 +27,7 @@
                 "z": {"min": -119, "max": -119}
 			},
             "on_player_enter": "dpi:exit_portal/on_player_enter",
+            "on_player_exit": "dpi:exit_portal/on_player_exit"
 		},
         "chest_house": {
 			"position": {

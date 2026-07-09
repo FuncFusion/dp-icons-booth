@@ -11,10 +11,11 @@ append function dpi:load:
 append function dpi:tick/booth_player:
   if speedrun_timer["@s"]:
     speedrun_timer["@s"] -= 1
-  
-  if speedrun_timer["@s"] <= 0:
-    scoreboard players reset @s speedrun_timer
 
+function dpi:exit_portal/on_player_exit:
+  if speedrun_timer["@s"] <= 0:
+    speedrun_timer["@s"].reset()
+  
 function dpi:stickers/start_speedrun:
   speedrun_timer["@s"] = 199
 
