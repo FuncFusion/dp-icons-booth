@@ -44,7 +44,7 @@ function dpi:creators/click_ant:
       tag @a remove dpi.balloon_reciever
       function dpi:creators/give_balloon
 
-append function dpi:tick/player:
+append function dpi:tick/booth_player:
   execute if entity @s[tag=dpi.should_be_followed] run function dpi:creators/ant_follow_player
 
 function dpi:creators/give_balloon:

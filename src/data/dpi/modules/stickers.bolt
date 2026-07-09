@@ -8,7 +8,7 @@ append function dpi:load:
   ms_prefix = var["#dpi.speedrun.ms_prefix"]
   ms_prefix2 = var["#dpi.speedrun.ms_prefix2"]
 
-append function dpi:tick/player:
+append function dpi:tick/booth_player:
   if speedrun_timer["@s"]:
     speedrun_timer["@s"] -= 1
   

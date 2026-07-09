@@ -14,7 +14,7 @@ class Action:
     self.name = name
     self.callback = "dpi:trigger_callback/" + self.name
     
-    append function dpi:tick/player:
+    append function dpi:tick/booth_player:
       if trigger_action["@s"] == self.id:
         function self.callback
 

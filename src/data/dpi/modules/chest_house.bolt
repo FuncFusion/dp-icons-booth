@@ -18,7 +18,7 @@ function dpi:chest_house/on_player_enter:
 function dpi:chest_house/on_player_exit:
   tag @s remove dpi.chest_house.bounding_box
 
-append function dpi:tick/player:
+append function dpi:tick/booth_player:
   x = 126
   y = 99
   z = -128

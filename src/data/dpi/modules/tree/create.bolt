@@ -10,7 +10,7 @@ stack = storage.rebuild.args
 output = storage.rebuild.output
 entry = storage.temp.entry
 
-append function dpi:tick/player:
+append function dpi:tick/booth_player:
   if predicate dpi:sneaking:
     if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{create_input:true}}]:
       function dpi:node/create/submit
