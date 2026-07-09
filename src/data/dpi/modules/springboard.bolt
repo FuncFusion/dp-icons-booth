@@ -18,12 +18,19 @@ append function dpi:tick/booth_entity:
   if entity @s[tag=dpi.aj.springboard.root] run function dpi:springboard/tick
 
 append function dpi:tick/player:
-  if entity @s[x=113, y=93, z=-135, dx=2, dy=1, dz=2] run function dpi:springboard/prime
-  execute unless entity @s[x=113, y=93, z=-135, dx=2, dy=1, dz=2]:
-    tag @s remove dpi.springboard.pending
-
   if jump["@s"]:
     jump["@s"] = 0
+
+function dpi:springboard/on_player_enter:
+  tag @s add dpi.springboard.bounding_box
+  stepped = 1
+  function dpi:springboard/prime
+
+function dpi:springboard/on_player_exit:
+  tag @s remove dpi.springboard.bounding_box
+  unless entity @n[tag=dpi.springboard.bounding_box]:
+    stepped = 0
+  tag @s remove dpi.springboard.pending
 
 function dpi:springboard/prime:
   if entity @s[tag=!dpi.springboard.pending]:
@@ -47,10 +54,6 @@ function dpi:springboard/prime:
     tag @s remove dpi.springboard.pending
 
 function dpi:springboard/tick:
-  execute
-    store result score f"{p}stepped" dpi.var
-    if entity @p[x=113, y=93, z=-135, dx=2, dy=1, dz=2]
-
   if stepped and not animation_guard:
     animation_guard = 1
     function dpi:aj/springboard/animations/animation_springboard_prime/play
