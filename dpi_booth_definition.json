@@ -23,7 +23,7 @@
         "chest_house": {
 			"position": {
 				"x": {"min": 107, "max": 120},
-                "y": {"min": 95, "max": 117},
+                "y": {"min": 82, "max": 117},
                 "z": {"min": -124, "max": -106}
 			},
         },
