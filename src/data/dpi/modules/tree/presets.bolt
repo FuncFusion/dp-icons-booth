@@ -20,6 +20,9 @@ function dpi:tree/preset/apply_preset:
     "resourcepack":2,
     "beet":3
   }
+  
+  if preset_index < 1:
+    preset_index = preset_amount
 
   if preset_index > preset_amount:
     preset_index = 1
