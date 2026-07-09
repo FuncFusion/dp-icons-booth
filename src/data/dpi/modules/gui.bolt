@@ -59,13 +59,13 @@ class Button:
         self.id = button_id
         button_id += 1
 
-    def _spawn_text(self, pos, rotation, translation_offset):
+    def _spawn_text(self, pos, rotation, translation_offset, tags=[]):
         x = pos[0]
         y = pos[1]
         z = pos[2]
         summon text_display x y z {
             Rotation: rotation,
-            Tags: ["dpi.button", "dpi.button.text", "dpi.button.new.text", "summit.booth_entity.dpi"],
+            Tags: [*tags, "dpi.button", "dpi.button.text", "dpi.button.new.text", "summit.booth_entity.dpi"],
             brightness: {
                 sky: 15,
                 block: 15
@@ -129,7 +129,7 @@ class Button:
         offset_pos = find_position_offset(face, pos, offset)
 
         if self.text:
-            self._spawn_text(offset_pos, rotation, translation_offset)
+            self._spawn_text(offset_pos, rotation, translation_offset, tags)
         self._spawn_interaction(offset_pos, actions, width, height, tags)
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
@@ -151,7 +151,7 @@ class Button:
         offset_pos = find_relative_position_offset(face, pos, offset)
 
         if self.text:
-            self._spawn_text(offset_pos, rotation, translation_offset)
+            self._spawn_text(offset_pos, rotation, translation_offset, tags)
         self._spawn_interaction(offset_pos, actions, width, height, tags)
 
         execute as @n[tag=dpi.button.new.text] at @s run ride @s mount @n[tag=dpi.button.new.interaction]
