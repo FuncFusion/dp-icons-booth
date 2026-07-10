@@ -356,3 +356,4 @@ dialog dpi:shardgate_tp {
 
 append function dpi:trigger_callback/shardgate_tp:
   execute in minecraft:overworld run tp @s -117.14 79.00 -220.98 1169.40 -30.00
+  advancement grant @s only shardgate:secret/collab
