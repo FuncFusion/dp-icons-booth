@@ -34,14 +34,14 @@
 				"x": {"min": 107, "max": 120},
                 "y": {"min": 89, "max": 117},
                 "z": {"min": -124, "max": -106}
-			},
+			}
         },
         "creators_room": {
 			"position": {
 				"x": {"min": 107, "max": 121},
                 "y": {"min": 81, "max": 88},
                 "z": {"min": -125, "max": -97}
-			},
+			}
         }
 	},
     "ticking_functions": {
