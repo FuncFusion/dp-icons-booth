@@ -935,6 +935,7 @@
 				"data/dpi/function/aj/creators/zzz/apply_default_pose_to_nodes.mcfunction",
 				"data/dpi/function/aj/creators/zzz/as_node/as_data.mcfunction",
 				"data/dpi/function/aj/creators/zzz/as_node/execute_as_uuid.mcfunction",
+				"data/dpi/function/aj/creators/zzz/outdated_rig_warning.mcfunction",
 				"data/dpi/function/aj/creators/zzz/set_default_pose.mcfunction",
 				"data/dpi/function/aj/creators/zzz/set_default_pose_to_nodes.mcfunction",
 				"data/dpi/function/aj/creators/zzz/summon/animation_arg/if_empty.mcfunction",
