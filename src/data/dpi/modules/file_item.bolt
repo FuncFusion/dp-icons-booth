@@ -7,14 +7,14 @@ append function dpi:tick/player_sneaking:
     if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{file_item:true}}]:
       function dpi:string_input/submit
 
-append function dpi:temp:
-  clear amqndin
-  as @a function dpi:file_item/give
+#append function dpi:temp:
+  #clear amqndin
+  #as @a function dpi:file_item/give
 
 function dpi:file_item/give:
   # change to other type of notification
-  execute if items entity @s container.* writable_book[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
-  execute if items entity @s enderchest.* writable_book[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
+  execute if items entity @s container.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 1
+  execute if items entity @s enderchest.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 1
   give @s writable_book[
     consumable={consume_seconds:999999999},
     custom_data={
