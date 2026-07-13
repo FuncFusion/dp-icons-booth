@@ -42,9 +42,6 @@ function dpi:stickers/speedrun_time_calc:
 
 function dpi:stickers/completion:
   advancement grant @s only summit.sticker_book:dpi/completion
-  # delete ↓
-  advancement revoke @s only dpi:stickers/completion
-  say completion!
 
 def generate_completion_advancement(tags):
     criteria = {}
