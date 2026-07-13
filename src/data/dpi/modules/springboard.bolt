@@ -66,6 +66,6 @@ function dpi:springboard/loop_22t_arrow:
   arrow_pos -= 1
   arrow_pos *= -1
   if arrow_pos == 0:
-    tp @e[tag=dpi.springboard_arrow,limit=1] 114.5 93.8 -132.0
+    tp 7f8bd0c1-7db5-4438-a066-b701bc411a3c 114.5 93.8 -132.0
   else:
-    tp @e[tag=dpi.springboard_arrow,limit=1] 114.5 94.3 -131.7
+    tp 7f8bd0c1-7db5-4438-a066-b701bc411a3c 114.5 94.3 -131.7
