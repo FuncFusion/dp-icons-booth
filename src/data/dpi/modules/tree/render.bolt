@@ -199,4 +199,3 @@ append function dpi:tick:
   if update_tree:
     execute positioned 114.5 86.8 -123.95:
       tree.update()
-
