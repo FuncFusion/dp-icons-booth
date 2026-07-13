@@ -4,43 +4,43 @@
 	"bounding_boxes": {
 		"chest_trigger": {
 			"position": {
-				"x": {"min": 102, "max": 126},
-                "y": {"min": 99, "max": 124},
-                "z": {"min": -128, "max": -105}
+				"x": {"min": 102.0, "max": 127.0},
+                "y": {"min": 99.0, "max": 125.0},
+                "z": {"min": -128.0, "max": -104.0}
 			},
             "on_player_enter": "dpi:chest_house/on_player_enter",
             "on_player_exit": "dpi:chest_house/on_player_exit"
 		},
         "springboard_trigger": {
 			"position": {
-				"x": {"min": 113, "max": 115},
-                "y": {"min": 93, "max": 94},
-                "z": {"min": -135, "max": -133}
+				"x": {"min": 113.0, "max": 116.0},
+                "y": {"min": 93.0, "max": 95.0},
+                "z": {"min": -135.0, "max": -132.0}
 			},
             "on_player_enter": "dpi:springboard/on_player_enter",
             "on_player_exit": "dpi:springboard/on_player_exit"
 		},
         "exit_portal_trigger": {
 			"position": {
-				"x": {"min": 120, "max": 120},
-                "y": {"min": 83, "max": 84},
-                "z": {"min": -119, "max": -119}
+				"x": {"min": 120.0, "max": 121.0},
+                "y": {"min": 83.0, "max": 85.0},
+                "z": {"min": -119.0, "max": -118.0}
 			},
             "on_player_enter": "dpi:exit_portal/on_player_enter",
             "on_player_exit": "dpi:exit_portal/on_player_exit"
 		},
         "chest_house": {
 			"position": {
-				"x": {"min": 107, "max": 120},
-                "y": {"min": 89, "max": 117},
-                "z": {"min": -124, "max": -106}
+				"x": {"min": 107.0, "max": 121.0},
+                "y": {"min": 89.0, "max": 118.0},
+                "z": {"min": -124.0, "max": -105.0}
 			}
         },
         "creators_room": {
 			"position": {
-				"x": {"min": 107, "max": 121},
-                "y": {"min": 81, "max": 88},
-                "z": {"min": -125, "max": -97}
+				"x": {"min": 107.0, "max": 122.0},
+                "y": {"min": 81.0, "max": 89.0},
+                "z": {"min": -125.0, "max": -96.0}
 			}
         }
 	},

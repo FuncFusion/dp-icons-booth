@@ -53,7 +53,7 @@ append function dpi:entities/summon:
     function dpi:aj/lev_icons/animations/json_file_levitate/play
     function dpi:aj/lev_icons/animations/structure_file_levitate/play
     function dpi:aj/lev_icons/animations/mcf_tick_levitate/play
-  execute positioned 114 83 -104 run function dpi:aj/creators/summon {args:{}}
+  execute positioned 114 83 -104 rotated 0 0 run function dpi:aj/creators/summon {args:{}}
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
     function dpi:aj/creators/animations/amandin_busy/play
     function dpi:aj/creators/animations/ant_busy/play
