@@ -17,12 +17,18 @@ append function dpi:load:
 append function dpi:tick/booth_entity:
   if entity @s[tag=dpi.aj.springboard.root] run function dpi:springboard/tick
 
+append function dpi:tick/player:
+  if stepped:
+    function dpi:springboard/prime
+
 function dpi:springboard/on_player_enter:
+  say enter
   tag @s add dpi.springboard.bounding_box
   stepped = 1
   function dpi:springboard/prime
 
 function dpi:springboard/on_player_exit:
+  say exit
   tag @s remove dpi.springboard.bounding_box
   unless entity @n[tag=dpi.springboard.bounding_box]:
     stepped = 0
@@ -50,6 +56,9 @@ function dpi:springboard/prime:
      function dpi:stickers/start_speedrun
 
     tag @s remove dpi.springboard.pending
+
+  if jump["@s"]:
+    jump["@s"] = 0
 
 function dpi:springboard/tick:
   if stepped and not animation_guard:
