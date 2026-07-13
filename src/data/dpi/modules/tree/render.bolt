@@ -96,8 +96,7 @@ function dpi:tree/render/main:
   item = children[0]
 
   if item:
-    if not item.hidden:
-      at @s function dpi:node/render
+    at @s function dpi:node/render
 
     if item.children:
       if not item.closed:
