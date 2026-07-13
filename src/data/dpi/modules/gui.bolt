@@ -44,7 +44,7 @@ def find_position_offset(face, pos, offset):
     return pos
 
 button_id = 1
-        
+
 class Button:
     pixel = 1/16/2.5
 
