@@ -135,7 +135,7 @@ function dpi:tree/render/apply_depth:
 function dpi:tree/render/reset_depth:
   move_marker(-0.3)
 
-append function dpi:temp:
+append function dpi:tree/render:
   tree = Tree()
 
   storage.fs.root = storage.fs.preset.datapack
@@ -149,5 +149,3 @@ append function dpi:tick:
     execute positioned 114.5 86.5 -123.95:
       tree.update()
 
-append function dpi:load:
-  schedule function dpi:temp 2t replace
