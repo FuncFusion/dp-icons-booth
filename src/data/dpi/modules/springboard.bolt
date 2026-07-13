@@ -19,17 +19,6 @@ append function dpi:tick/booth_entity:
 
 append function dpi:tick/booth_player:
   if jump["@s"]:
-    if timer["@s"] == 0:
-      player_motion_api["$x"] = 0
-      player_motion_api["$y"] = 22000
-      player_motion_api["$z"] = 5000
-
-      as @a[tag=dpi.springboard.pending] at @s:
-        function player_motion:api/launch_global_xyz
-        function dpi:stickers/start_speedrun
-
-      tag @s remove dpi.springboard.pending
-
     jump["@s"] = 0
 
 function dpi:springboard/on_player_enter:
@@ -51,18 +40,18 @@ function dpi:springboard/prime:
   if timer["@s"]:
     timer["@s"] -= 1
 
-  # if jump["@s"] and timer["@s"] == 0:
-  #   player_motion_api["$x"] = 0
-  #   player_motion_api["$y"] = 22000
-  #   player_motion_api["$z"] = 5000
-  #
-  #   jump["@s"] = 0
-  #
-  #   as @a[tag=dpi.springboard.pending] at @s:
-  #    function player_motion:api/launch_global_xyz
-  #    function dpi:stickers/start_speedrun
-  #
-  #   tag @s remove dpi.springboard.pending
+  if jump["@s"] and timer["@s"] == 0:
+    player_motion_api["$x"] = 0
+    player_motion_api["$y"] = 22000
+    player_motion_api["$z"] = 5000
+
+    jump["@s"] = 0
+
+    as @a[tag=dpi.springboard.pending] at @s:
+     function player_motion:api/launch_global_xyz
+     function dpi:stickers/start_speedrun
+
+    tag @s remove dpi.springboard.pending
 
 function dpi:springboard/tick:
   if stepped and not animation_guard:

@@ -6,9 +6,8 @@ from dpi:config import storage, var, print_nbt, get_icon
 from dpi:tree/object import Tree
 from dpi:filesystem import Node
 
-append function dpi:load:
-  update_tree = var["#dpi.tree.update_pending"]
-  id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+update_tree = var["#dpi.tree.update_pending"]
+id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
 function dpi:node/summon:
   function dpi:node/render/get_name
