@@ -42,6 +42,13 @@
                 "y": {"min": 81.0, "max": 89.0},
                 "z": {"min": -125.0, "max": -96.0}
 			}
+        },
+        "booth_area": {
+            "position": {
+				"x": {"min": 95.0, "max": 133.0},
+                "y": {"min": 92.0, "max": 127.0},
+                "z": {"min": -142.0, "max": -96.0}
+			}
         }
 	},
     "ticking_functions": {
