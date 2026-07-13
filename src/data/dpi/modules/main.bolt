@@ -41,6 +41,7 @@ function dpi:entities/static/kill:
   kill @e[tag=dpi.button]
 
 append function dpi:entities/summon:
+  function dpi:entities/static/summon
   schedule function dpi:tree/render 2t
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
@@ -68,6 +69,7 @@ append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root] run function dpi:aj/chest_house/remove/this
   execute as @e[type=minecraft:item_display,tag=dpi.aj.lev_icons.root] run function dpi:aj/lev_icons/remove/this
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root] run function dpi:aj/creators/remove/this
+  function dpi:entities/static/kill
   kill @e[tag=summit.booth_entity.dpi]
 
 prepend function dpi:load:

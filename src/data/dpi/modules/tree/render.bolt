@@ -6,6 +6,8 @@ from dpi:config import storage, var, print_nbt, get_icon
 from dpi:tree/object import Tree
 from dpi:filesystem import Node
 
+stack = storage.rebuild.args
+
 update_tree = var["#dpi.tree.update_pending"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
@@ -58,69 +60,50 @@ function dpi:tree/render/init:
   root = storage.tree.render.input
 
   depth = var["#dpi.depth"]
-  depth = 1
+  depth = 0
 
-  stack = storage.args.input
-  stack = []
-  stack.append(root.children)
+  stack.node = []
+  stack.node.append(root)
+  stack.loops = []
+  stack.path = []
 
-  summon marker ~ ~ ~ {Tags:["dpi.tree.marker"]}
+  summon marker ~ ~ ~ {Tags:["dpi.tree.marker", "summit.booth_entity.dpi"]}
   as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
   kill @e[tag=dpi.tree.marker]
 
-  function dpi:tree/render/settings
-
-function dpi:tree/render/settings:
-  kill @e[tag=dpi.tree.preset_display]
-
-  preset_display = gui.Button("", "", print_nbt("fs.preset_name"))
-  execute positioned 111.5 84.8 -123.95:
-    preset_display.spawn("south", 2, 0.25, tags=["dpi.tree.preset_display"])
-
-  cycle_next_lmb = "execute on attacker run function dpi:tree/preset/cycle_next"
-  cycle_next_rmb = "execute on target run function dpi:tree/preset/cycle_next"
-
-  cycle_next_button = gui.Button(cycle_next_lmb, cycle_next_rmb, "next ➡")
-  execute positioned 112.0 84.5 -123.95:
-    cycle_next_button.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
-
-  cycle_back_lmb = "execute on attacker run function dpi:tree/preset/cycle_back"
-  cycle_back_rmb = "execute on target run function dpi:tree/preset/cycle_back"
-
-  cycle_back_button = gui.Button(cycle_back_lmb, cycle_back_rmb, "⬅ back")
-  execute positioned 111.0 84.5 -123.95:
-    cycle_back_button.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
-
 function dpi:tree/render/main:
-  children = stack[-1]
-  item = children[0]
+  node = stack.node[-1]
 
-  if item:
-    at @s function dpi:node/render
+  if node.children:
+    if not node.closed:
+      stack.loops.append(node.children)
+      depth += 1
+      function dpi:tree/render/children
+      depth -= 1
+      stack.loops[-1].remove()
 
-    if item.children:
-      if not item.closed:
-        stack.append(item.children)
-        depth += 1
-        at @s function dpi:tree/render/main
-        depth -= 1
+  if stack.path[0]:
+    at @s function dpi:tree/render/apply_depth
+    storage.node.render.input = node
+    at @s function dpi:node/summon
+    at @s function dpi:tree/render/reset_depth
+    tp @s ~ ~-0.3 ~
 
-    item.remove()
-    at @s function dpi:tree/render/main
+  stack.node[-1].remove()
 
-  if not item:
-    if stack[0]:
-      stack[-1].remove()
+function dpi:tree/render/children:
+  child = stack.loops[-1][0]
 
-function dpi:node/render:
-  at @s function dpi:tree/render/apply_depth
-  
-  storage.node.render.input = item
-  at @s function dpi:node/summon
-  render_name = print_nbt("node.render.output")
+  if child:
+    parent = stack.node[-1]
+    stack.path.append(parent.name)
+    stack.node.append(child)
+    function dpi:tree/render/main
+    stack.path[-1].remove()
 
-  at @s function dpi:tree/render/reset_depth
-  tp @s ~ ~-0.3 ~
+  stack.loops[-1][0].remove()
+  if stack.loops[-1][0]:
+    function dpi:tree/render/children
 
 def move_marker(x):
   for i in range(10):
@@ -134,7 +117,7 @@ function dpi:tree/render/apply_depth:
 function dpi:tree/render/reset_depth:
   move_marker(-0.3)
 
-append function dpi:temp:
+append function dpi:tree/render:
   tree = Tree()
 
   storage.fs.root = storage.fs.preset.datapack
@@ -147,6 +130,3 @@ append function dpi:tick:
   if update_tree:
     execute positioned 114.5 86.5 -123.95:
       tree.update()
-
-append function dpi:load:
-  schedule function dpi:temp 2t replace
