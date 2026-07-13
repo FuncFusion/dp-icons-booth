@@ -43,6 +43,7 @@ function dpi:entities/reset_player:
   clear @s minecraft:writable_book[minecraft:custom_data~{dpi:{}}]
 
 append function dpi:entities/summon:
+  schedule function dpi:tree/render 2t replace
   function dpi:entities/static/summon
   schedule function dpi:tree/render 2t
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
