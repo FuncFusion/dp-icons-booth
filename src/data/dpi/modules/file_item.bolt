@@ -32,9 +32,9 @@ function dpi:file_item/give:
         {text:"ICONS",font:"dpi:tooltip"}
       ],
       [""],
-      ["Right click to open"],
-      ["Write the desired filename"],
-      [{keybind:"key.drop"}," to apply!"]
+      [{text:"Right click to open",color:"dark_gray"}],
+      [{text:"Write the desired filename",color:"dark_gray"}],
+      [{keybind:"key.drop",color:"dark_gray"},{text:" to apply!",color:"dark_gray"}]
     ]
   ]
 
