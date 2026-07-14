@@ -117,7 +117,7 @@ function dpi:tree/render/apply_depth:
 function dpi:tree/render/reset_depth:
   move_marker(-0.3)
 
-append function dpi:tree/render:
+function dpi:tree/spawn:
   tree = Tree()
 
   storage.fs.root = storage.fs.preset.datapack
