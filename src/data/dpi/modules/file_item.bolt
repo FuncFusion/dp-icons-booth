@@ -91,8 +91,8 @@ function dpi:file_item/submit_name:
   
 function dpi:file_item/modify_icon:
 
-  $say icon_name = $(icon_name)
-  $say file_name = $(file_name)
+  #$say icon_name = $(icon_name)
+  #$say file_name = $(file_name)
   $execute if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [ { function:"minecraft:set_custom_model_data", strings:{ values:[$(icon_name)], mode:"replace_all" } }, { function:"minecraft:set_name", entity:"this", name:{text:$(file_name),italic:0b}, target:"custom_name" } ]
 
   $execute if items entity @s weapon.offhand writable_book[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [ { function:"minecraft:set_custom_model_data", strings:{values:[$(icon_name)],mode:"replace_all"} }, { function:"minecraft:set_name", entity:"this", name:{text:$(file_name),italic:0b}, target:"custom_name" } ]

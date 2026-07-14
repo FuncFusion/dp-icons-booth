@@ -39,7 +39,7 @@ def tp_path(x, y, z, icon_name, transition_duration=0.75, easing_type="out"):
         dz = round(current_pos[2] - prev_pos[2], 5)
 
         schedule function f"dpi:lev_icons/{icon_name}/{prefix}{tick}" tick replace:
-            execute as @n[tag=f"dpi.aj.lev_icons.bone.{icon_name}"] at @s run tp @s ~dx ~dy ~dz
+            execute as @e[type=item_display,tag=f"dpi.aj.lev_icons.bone.{icon_name}",limit=1] at @s run tp @s ~dx ~dy ~dz
 
         prev_pos = current_pos
         

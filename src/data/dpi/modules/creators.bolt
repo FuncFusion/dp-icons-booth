@@ -4,24 +4,24 @@ bth_idle_chance = 0.3
 # idle plays
 function dpi:creators/amandin_idle_play:
   schedule function dpi:creators/amandin_to_idle 3:
-    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root,limit=1]:
       function dpi:aj/creators/animations/amandin_busy/pause
       function dpi:aj/creators/animations/amandin_busy/set_frame {frame:0}
       function dpi:aj/creators/animations/amandin_idle/play
 
   schedule function dpi:creators/amandin_busy_resume 143:
-    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root,limit=1]:
       function dpi:aj/creators/animations/amandin_busy/resume
 
 function dpi:creators/bth_idle_play:
   schedule function dpi:creators/bth_to_idle 3:
-    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root,limit=1]:
       function dpi:aj/creators/animations/bth_busy/pause
       function dpi:aj/creators/animations/bth_busy/set_frame {frame:0}
       function dpi:aj/creators/animations/bth_idle/play
 
   schedule function dpi:creators/bth_busy_resume 139:
-    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root,limit=1]:
       function dpi:aj/creators/animations/bth_busy/resume
 
 # balloon
@@ -31,12 +31,12 @@ function dpi:creators/click_ant:
   tag @s add dpi.giving_out_balloon
   execute on attacker run tag @s add dpi.balloon_reciever
   execute on target run tag @s add dpi.balloon_reciever
-  execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root,limit=1]:
     function dpi:aj/creators/animations/ant_busy/pause
     function dpi:aj/creators/animations/ant_blowing_balloon/play
 
   schedule function dpi:creators/ant_start_following 100:
-    execute positioned 114.5 84 -106.8750 run tag @a[distance=..10,tag=dpi.balloon_reciever] add dpi.should_be_followed
+    execute positioned 114.5 84 -106.8750 run tag @a[distance=..10,tag=dpi.balloon_reciever,limit=1] add dpi.should_be_followed
 
   schedule function dpi:creators/wait_for_click 150:
     tag @e[type=interaction,tag=dpi.giving_out_balloon] add dpi.waiting_for_click
@@ -48,10 +48,10 @@ append function dpi:tick/booth_player:
   execute if entity @s[tag=dpi.should_be_followed] run function dpi:creators/ant_follow_player
 
 function dpi:creators/give_balloon:
-  execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+  execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root,limit=1]:
     function dpi:aj/creators/animations/ant_handout_to_busy/play
     tag @s add dpi.transition_to_busy
-  execute positioned 114.5 84 -106.8750 as @a[distance=..10,tag=dpi.balloon_reciever]:
+  execute positioned 114.5 84 -106.8750 as @a[distance=..10,tag=dpi.balloon_reciever,limit=1]:
     # delete ↓
     #give @s bundle[item_model="dpi:dpi_balloon"]
     # uncomment ↓
@@ -62,11 +62,11 @@ function dpi:creators/give_balloon:
   schedule clear dpi:creators/end_waiting
 
   schedule function dpi:creators/ant_busy_resume 33:
-    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
+    execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root,limit=1]:
       function dpi:aj/creators/animations/ant_busy/resume
   
   schedule function dpi:creators/giving_out_cooldown_finish 63:
-    tag @e[type=interaction,tag=dpi.giving_out_balloon] remove dpi.giving_out_balloon
+    tag @e[type=interaction,tag=dpi.giving_out_balloon,limit=1] remove dpi.giving_out_balloon
 
 function dpi:creators/ant_follow_player:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.bone.ant_character.tree] positioned 114.5 84 -106.8750 facing entity @a[distance=..10,tag=dpi.balloon_reciever,limit=1] feet positioned as @s rotated ~180 0 positioned ^ ^ ^5 rotated as @s positioned ^ ^ ^40 facing entity @s eyes facing ^ ^ ^-1 run rotate @s ~ ~
