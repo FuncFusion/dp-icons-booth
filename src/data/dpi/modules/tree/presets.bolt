@@ -1,6 +1,7 @@
 from dpi:filesystem import Node
 from dpi:trigger_actions import Action
-from dpi:config import storage, var
+from dpi:config import storage, var, print_nbt
+import dpi:gui as gui
 
 preset_index = var["#dpi.tree.preset_index"]
 preset_amount = var["#dpi.tree.preset_amount"]
