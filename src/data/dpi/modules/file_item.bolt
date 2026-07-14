@@ -30,7 +30,11 @@ function dpi:file_item/give:
         { text:"DATAPACK", font:"dpi:tooltip"},
         " ",
         {text:"ICONS",font:"dpi:tooltip"}
-      ]
+      ],
+      [""],
+      ["Right click to open"],
+      ["Write the desired filename"],
+      [{keybind:"key.drop"}," to apply!"]
     ]
   ]
 
