@@ -64,16 +64,16 @@ function dpi:chest_house/open:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root,limit=1] at @s:
     function dpi:aj/chest_house/animations/chest_open/play
     function dpi:lev_icons/fly_out
-    playsound minecraft:ui.toast.in block @a ~ ~10 ~ 3.0 0.69
-    playsound minecraft:block.chest.open block @a ~ ~10 ~ 3.0 0.80
+    playsound minecraft:ui.toast.in block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.69
+    playsound minecraft:block.chest.open block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.80
 
 function dpi:chest_house/close:
   chest_open = 0
   execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root,limit=1] at @s:
     function dpi:aj/chest_house/animations/chest_close/play
     function dpi:lev_icons/fly_in
-    playsound minecraft:ui.toast.out block @a ~ ~10 ~ 3.0 0.69
-    playsound minecraft:block.chest.close block @a ~ ~10 ~ 3.0 0.80
+    playsound minecraft:ui.toast.out block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.69
+    playsound minecraft:block.chest.close block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.80
 
 function dpi:event/enter_bounding_box:
   timer = 15
