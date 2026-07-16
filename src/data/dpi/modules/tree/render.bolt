@@ -9,6 +9,7 @@ from dpi:filesystem import Node
 stack = storage.rebuild.args
 
 update_tree = var["#dpi.tree.update_pending"]
+in_namespace = var["#dpi.tree.in_namespace"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 
 function dpi:node/summon:
@@ -26,7 +27,12 @@ function dpi:node/render/get_name:
     $data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)"
 
   if input.closed:
-    icon = get_icon("generic_folder_closed")
+    if in_namespace and input.type == "dir":
+      icon = get_icon("namespace_folder_closed")
+    else:
+      icon = get_icon("generic_folder_closed")
+  elif in_namespace and input.type == "dir":
+    icon = get_icon("namespace_folder")
 
   if not icon:
     icon = get_icon("generic_file")
@@ -61,6 +67,7 @@ function dpi:tree/render/init:
 
   depth = var["#dpi.depth"]
   depth = 0
+  in_namespace = 0
 
   stack.node = []
   stack.node.append(root)
@@ -77,7 +84,6 @@ function dpi:tree/render/main:
   if stack.path[0]:
     at @s function dpi:tree/render/apply_depth
     storage.node.render.input = node
-    tellraw @a [stack.path, node.name]
     at @s function dpi:node/summon
     at @s function dpi:tree/render/reset_depth
     tp @s ~ ~-0.3 ~
@@ -96,11 +102,22 @@ function dpi:tree/render/children:
   child = stack.loops[-1][0]
 
   if child:
-    parent = stack.node[-1]
-    stack.path.append(parent.name)
+    storage.temp.parent = stack.node[-1]
+    stack.path.append(storage.temp.parent.name)
     stack.node.append(child)
 
+    entry = storage.temp.current_child
+    entry = child
+    in_namespace = 0
+    tellraw @a [stack.path, entry.name, "parent:", storage.temp.parent.name]
+    if storage.temp.parent.name == "data":
+      in_namespace = 1
+      tellraw @a ["in namespace: parent is data"]
+    if storage.temp.parent.name == "assets":
+      in_namespace = 1
+      tellraw @a ["in namespace: parent is assets"]
     at @s function dpi:tree/render/main
+
     stack.path[-1].remove()
 
   stack.loops[-1][0].remove()
