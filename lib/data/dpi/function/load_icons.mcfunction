@@ -1418,16 +1418,22 @@ data modify storage dpi:generated typed_icons."zsh" set value {atlas:"items", sp
 data modify storage dpi:generated typed_icon_names."zsh" set value "shell_file"
 data modify storage dpi:generated typed_icons."zst" set value {atlas:"items", sprite:"dpi:icons/archive_file"}
 data modify storage dpi:generated typed_icon_names."zst" set value "archive_file"
-data modify storage dpi:generated typed_icons."�" set value {atlas:"items", sprite:"dpi:icons/mojo_file"}
-data modify storage dpi:generated typed_icon_names."�" set value "mojo_file"
 data modify storage dpi:generated named_icons.".bloop" set value {atlas:"items", sprite:"dpi:icons/scala_folder"}
 data modify storage dpi:generated named_icon_names.".bloop" set value "scala_folder"
+data modify storage dpi:generated named_icons.".bloop_file" set value {atlas:"items", sprite:"dpi:icons/scala_file"}
+data modify storage dpi:generated named_icon_names.".bloop_file" set value "scala_file"
 data modify storage dpi:generated named_icons.".cargo" set value {atlas:"items", sprite:"dpi:icons/cargo_folder"}
 data modify storage dpi:generated named_icon_names.".cargo" set value "cargo_folder"
+data modify storage dpi:generated named_icons.".cargo_file" set value {atlas:"items", sprite:"dpi:icons/cargo_file"}
+data modify storage dpi:generated named_icon_names.".cargo_file" set value "cargo_file"
 data modify storage dpi:generated named_icons.".dart_tool" set value {atlas:"items", sprite:"dpi:icons/dart_folder"}
 data modify storage dpi:generated named_icon_names.".dart_tool" set value "dart_folder"
+data modify storage dpi:generated named_icons.".dart_tool_file" set value {atlas:"items", sprite:"dpi:icons/dart_file"}
+data modify storage dpi:generated named_icon_names.".dart_tool_file" set value "dart_file"
 data modify storage dpi:generated named_icons.".docker" set value {atlas:"items", sprite:"dpi:icons/docker_folder"}
 data modify storage dpi:generated named_icon_names.".docker" set value "docker_folder"
+data modify storage dpi:generated named_icons.".docker_file" set value {atlas:"items", sprite:"dpi:icons/docker_file"}
+data modify storage dpi:generated named_icon_names.".docker_file" set value "docker_file"
 data modify storage dpi:generated named_icons.".editorconfig" set value {atlas:"items", sprite:"dpi:icons/editorconfig_file"}
 data modify storage dpi:generated named_icon_names.".editorconfig" set value "editorconfig_file"
 data modify storage dpi:generated named_icons.".eslintrc" set value {atlas:"items", sprite:"dpi:icons/config_file"}
@@ -1440,10 +1446,14 @@ data modify storage dpi:generated named_icons.".eslintrc.yml" set value {atlas:"
 data modify storage dpi:generated named_icon_names.".eslintrc.yml" set value "config_file"
 data modify storage dpi:generated named_icons.".git" set value {atlas:"items", sprite:"dpi:icons/git_folder"}
 data modify storage dpi:generated named_icon_names.".git" set value "git_folder"
+data modify storage dpi:generated named_icons.".git_file" set value {atlas:"items", sprite:"dpi:icons/git_file"}
+data modify storage dpi:generated named_icon_names.".git_file" set value "git_file"
 data modify storage dpi:generated named_icons.".gitattributes" set value {atlas:"items", sprite:"dpi:icons/git_file"}
 data modify storage dpi:generated named_icon_names.".gitattributes" set value "git_file"
 data modify storage dpi:generated named_icons.".github" set value {atlas:"items", sprite:"dpi:icons/github_folder"}
 data modify storage dpi:generated named_icon_names.".github" set value "github_folder"
+data modify storage dpi:generated named_icons.".github_file" set value {atlas:"items", sprite:"dpi:icons/github_file"}
+data modify storage dpi:generated named_icon_names.".github_file" set value "github_file"
 data modify storage dpi:generated named_icons.".gitlab-ci.yaml" set value {atlas:"items", sprite:"dpi:icons/fox_file"}
 data modify storage dpi:generated named_icon_names.".gitlab-ci.yaml" set value "fox_file"
 data modify storage dpi:generated named_icons.".gitlab-ci.yml" set value {atlas:"items", sprite:"dpi:icons/fox_file"}
@@ -1452,8 +1462,12 @@ data modify storage dpi:generated named_icons.".gitmodules" set value {atlas:"it
 data modify storage dpi:generated named_icon_names.".gitmodules" set value "git_file"
 data modify storage dpi:generated named_icons.".godot" set value {atlas:"items", sprite:"dpi:icons/godot_folder"}
 data modify storage dpi:generated named_icon_names.".godot" set value "godot_folder"
+data modify storage dpi:generated named_icons.".godot_file" set value {atlas:"items", sprite:"dpi:icons/godot_file"}
+data modify storage dpi:generated named_icon_names.".godot_file" set value "godot_file"
 data modify storage dpi:generated named_icons.".gradle" set value {atlas:"items", sprite:"dpi:icons/gradle_folder"}
 data modify storage dpi:generated named_icon_names.".gradle" set value "gradle_folder"
+data modify storage dpi:generated named_icons.".gradle_file" set value {atlas:"items", sprite:"dpi:icons/gradle_file"}
+data modify storage dpi:generated named_icon_names.".gradle_file" set value "gradle_file"
 data modify storage dpi:generated named_icons.".gvimrc" set value {atlas:"items", sprite:"dpi:icons/vim_file"}
 data modify storage dpi:generated named_icon_names.".gvimrc" set value "vim_file"
 data modify storage dpi:generated named_icons.".hintrc" set value {atlas:"items", sprite:"dpi:icons/config_file"}
@@ -1466,18 +1480,28 @@ data modify storage dpi:generated named_icons.".hintrc.yml" set value {atlas:"it
 data modify storage dpi:generated named_icon_names.".hintrc.yml" set value "config_file"
 data modify storage dpi:generated named_icons.".idea" set value {atlas:"items", sprite:"dpi:icons/jetbrains_folder"}
 data modify storage dpi:generated named_icon_names.".idea" set value "jetbrains_folder"
+data modify storage dpi:generated named_icons.".idea_file" set value {atlas:"items", sprite:"dpi:icons/jetbrains_file"}
+data modify storage dpi:generated named_icon_names.".idea_file" set value "jetbrains_file"
 data modify storage dpi:generated named_icons.".julia" set value {atlas:"items", sprite:"dpi:icons/julia_folder"}
 data modify storage dpi:generated named_icon_names.".julia" set value "julia_folder"
+data modify storage dpi:generated named_icons.".julia_file" set value {atlas:"items", sprite:"dpi:icons/julia_file"}
+data modify storage dpi:generated named_icon_names.".julia_file" set value "julia_file"
 data modify storage dpi:generated named_icons.".m2" set value {atlas:"items", sprite:"dpi:icons/maven_folder"}
 data modify storage dpi:generated named_icon_names.".m2" set value "maven_folder"
+data modify storage dpi:generated named_icons.".m2_file" set value {atlas:"items", sprite:"dpi:icons/maven_file"}
+data modify storage dpi:generated named_icon_names.".m2_file" set value "maven_file"
 data modify storage dpi:generated named_icons.".mcattributes" set value {atlas:"items", sprite:"dpi:icons/config_file"}
 data modify storage dpi:generated named_icon_names.".mcattributes" set value "config_file"
 data modify storage dpi:generated named_icons.".mcdefinitions" set value {atlas:"items", sprite:"dpi:icons/config_file"}
 data modify storage dpi:generated named_icon_names.".mcdefinitions" set value "config_file"
 data modify storage dpi:generated named_icons.".metals" set value {atlas:"items", sprite:"dpi:icons/scala_folder"}
 data modify storage dpi:generated named_icon_names.".metals" set value "scala_folder"
+data modify storage dpi:generated named_icons.".metals_file" set value {atlas:"items", sprite:"dpi:icons/scala_file"}
+data modify storage dpi:generated named_icon_names.".metals_file" set value "scala_file"
 data modify storage dpi:generated named_icons.".mvn" set value {atlas:"items", sprite:"dpi:icons/maven_folder"}
 data modify storage dpi:generated named_icon_names.".mvn" set value "maven_folder"
+data modify storage dpi:generated named_icons.".mvn_file" set value {atlas:"items", sprite:"dpi:icons/maven_file"}
+data modify storage dpi:generated named_icon_names.".mvn_file" set value "maven_file"
 data modify storage dpi:generated named_icons.".npmrc" set value {atlas:"items", sprite:"dpi:icons/npm_file"}
 data modify storage dpi:generated named_icon_names.".npmrc" set value "npm_file"
 data modify storage dpi:generated named_icons.".prettierrc" set value {atlas:"items", sprite:"dpi:icons/prettier_file"}
@@ -1492,14 +1516,22 @@ data modify storage dpi:generated named_icons.".prettierrc.yml" set value {atlas
 data modify storage dpi:generated named_icon_names.".prettierrc.yml" set value "prettier_file"
 data modify storage dpi:generated named_icons.".terraform" set value {atlas:"items", sprite:"dpi:icons/terraform_folder"}
 data modify storage dpi:generated named_icon_names.".terraform" set value "terraform_folder"
+data modify storage dpi:generated named_icons.".terraform_file" set value {atlas:"items", sprite:"dpi:icons/terraform_file"}
+data modify storage dpi:generated named_icon_names.".terraform_file" set value "terraform_file"
 data modify storage dpi:generated named_icons.".vim" set value {atlas:"items", sprite:"dpi:icons/vim_folder"}
 data modify storage dpi:generated named_icon_names.".vim" set value "vim_folder"
+data modify storage dpi:generated named_icons.".vim_file" set value {atlas:"items", sprite:"dpi:icons/vim_file"}
+data modify storage dpi:generated named_icon_names.".vim_file" set value "vim_file"
 data modify storage dpi:generated named_icons.".vimrc" set value {atlas:"items", sprite:"dpi:icons/vim_file"}
 data modify storage dpi:generated named_icon_names.".vimrc" set value "vim_file"
 data modify storage dpi:generated named_icons.".vs" set value {atlas:"items", sprite:"dpi:icons/vs_folder"}
 data modify storage dpi:generated named_icon_names.".vs" set value "vs_folder"
+data modify storage dpi:generated named_icons.".vs_file" set value {atlas:"items", sprite:"dpi:icons/vs_file"}
+data modify storage dpi:generated named_icon_names.".vs_file" set value "vs_file"
 data modify storage dpi:generated named_icons.".vscode" set value {atlas:"items", sprite:"dpi:icons/vscode_folder"}
 data modify storage dpi:generated named_icon_names.".vscode" set value "vscode_folder"
+data modify storage dpi:generated named_icons.".vscode_file" set value {atlas:"items", sprite:"dpi:icons/vscode_file"}
+data modify storage dpi:generated named_icon_names.".vscode_file" set value "vscode_file"
 data modify storage dpi:generated named_icons."CHANGELOG" set value {atlas:"items", sprite:"dpi:icons/timeline_file"}
 data modify storage dpi:generated named_icon_names."CHANGELOG" set value "timeline_file"
 data modify storage dpi:generated named_icons."CHANGELOG.md" set value {atlas:"items", sprite:"dpi:icons/timeline_file"}
@@ -1546,8 +1578,12 @@ data modify storage dpi:generated named_icons."README.txt" set value {atlas:"ite
 data modify storage dpi:generated named_icon_names."README.txt" set value "readme_file"
 data modify storage dpi:generated named_icons."__pycache__" set value {atlas:"items", sprite:"dpi:icons/python_folder"}
 data modify storage dpi:generated named_icon_names."__pycache__" set value "python_folder"
+data modify storage dpi:generated named_icons."__pycache___file" set value {atlas:"items", sprite:"dpi:icons/python_file"}
+data modify storage dpi:generated named_icon_names."__pycache___file" set value "python_file"
 data modify storage dpi:generated named_icons."__tests__" set value {atlas:"items", sprite:"dpi:icons/test_environment_folder"}
 data modify storage dpi:generated named_icon_names."__tests__" set value "test_environment_folder"
+data modify storage dpi:generated named_icons."__tests___file" set value {atlas:"items", sprite:"dpi:icons/test_environment_file"}
+data modify storage dpi:generated named_icon_names."__tests___file" set value "test_environment_file"
 data modify storage dpi:generated named_icons."_gvimrc" set value {atlas:"items", sprite:"dpi:icons/vim_file"}
 data modify storage dpi:generated named_icon_names."_gvimrc" set value "vim_file"
 data modify storage dpi:generated named_icons."_vimrc" set value {atlas:"items", sprite:"dpi:icons/vim_file"}
@@ -1556,48 +1592,88 @@ data modify storage dpi:generated named_icons."accesstransformer.cfg" set value 
 data modify storage dpi:generated named_icon_names."accesstransformer.cfg" set value "forge_file"
 data modify storage dpi:generated named_icons."advancement" set value {atlas:"items", sprite:"dpi:icons/advancement_folder"}
 data modify storage dpi:generated named_icon_names."advancement" set value "advancement_folder"
+data modify storage dpi:generated named_icons."advancement_file" set value {atlas:"items", sprite:"dpi:icons/advancement_file"}
+data modify storage dpi:generated named_icon_names."advancement_file" set value "advancement_file"
 data modify storage dpi:generated named_icons."advancements" set value {atlas:"items", sprite:"dpi:icons/advancement_folder"}
 data modify storage dpi:generated named_icon_names."advancements" set value "advancement_folder"
+data modify storage dpi:generated named_icons."advancements_file" set value {atlas:"items", sprite:"dpi:icons/advancement_file"}
+data modify storage dpi:generated named_icon_names."advancements_file" set value "advancement_file"
 data modify storage dpi:generated named_icons."alpine" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."alpine" set value "linux_folder"
+data modify storage dpi:generated named_icons."alpine_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."alpine_file" set value "linux_file"
 data modify storage dpi:generated named_icons."animation_controllers" set value {atlas:"items", sprite:"dpi:icons/video_folder"}
 data modify storage dpi:generated named_icon_names."animation_controllers" set value "video_folder"
+data modify storage dpi:generated named_icons."animation_controllers_file" set value {atlas:"items", sprite:"dpi:icons/video_file"}
+data modify storage dpi:generated named_icon_names."animation_controllers_file" set value "video_file"
 data modify storage dpi:generated named_icons."animations" set value {atlas:"items", sprite:"dpi:icons/video_folder"}
 data modify storage dpi:generated named_icon_names."animations" set value "video_folder"
+data modify storage dpi:generated named_icons."animations_file" set value {atlas:"items", sprite:"dpi:icons/video_file"}
+data modify storage dpi:generated named_icon_names."animations_file" set value "video_file"
 data modify storage dpi:generated named_icons."ant.xml" set value {atlas:"items", sprite:"dpi:icons/ant_file"}
 data modify storage dpi:generated named_icon_names."ant.xml" set value "ant_file"
 data modify storage dpi:generated named_icons."app" set value {atlas:"items", sprite:"dpi:icons/executable_folder"}
 data modify storage dpi:generated named_icon_names."app" set value "executable_folder"
+data modify storage dpi:generated named_icons."app_file" set value {atlas:"items", sprite:"dpi:icons/executable_file"}
+data modify storage dpi:generated named_icon_names."app_file" set value "executable_file"
 data modify storage dpi:generated named_icons."appimage" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."appimage" set value "linux_folder"
+data modify storage dpi:generated named_icons."appimage_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."appimage_file" set value "linux_file"
 data modify storage dpi:generated named_icons."appsettings.json" set value {atlas:"items", sprite:"dpi:icons/config_file"}
 data modify storage dpi:generated named_icon_names."appsettings.json" set value "config_file"
 data modify storage dpi:generated named_icons."archive" set value {atlas:"items", sprite:"dpi:icons/archive_folder"}
 data modify storage dpi:generated named_icon_names."archive" set value "archive_folder"
+data modify storage dpi:generated named_icons."archive_file" set value {atlas:"items", sprite:"dpi:icons/archive_file"}
+data modify storage dpi:generated named_icon_names."archive_file" set value "archive_file"
 data modify storage dpi:generated named_icons."archived" set value {atlas:"items", sprite:"dpi:icons/archive_folder"}
 data modify storage dpi:generated named_icon_names."archived" set value "archive_folder"
+data modify storage dpi:generated named_icons."archived_file" set value {atlas:"items", sprite:"dpi:icons/archive_file"}
+data modify storage dpi:generated named_icon_names."archived_file" set value "archive_file"
 data modify storage dpi:generated named_icons."archives" set value {atlas:"items", sprite:"dpi:icons/archive_folder"}
 data modify storage dpi:generated named_icon_names."archives" set value "archive_folder"
+data modify storage dpi:generated named_icons."archives_file" set value {atlas:"items", sprite:"dpi:icons/archive_file"}
+data modify storage dpi:generated named_icon_names."archives_file" set value "archive_file"
 data modify storage dpi:generated named_icons."archlinux" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."archlinux" set value "linux_folder"
+data modify storage dpi:generated named_icons."archlinux_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."archlinux_file" set value "linux_file"
 data modify storage dpi:generated named_icons."assets" set value {atlas:"items", sprite:"dpi:icons/assets_folder_closed"}
 data modify storage dpi:generated named_icon_names."assets" set value "assets_folder_closed"
+data modify storage dpi:generated named_icons."assets_file" set value {atlas:"items", sprite:"dpi:icons/assets_file"}
+data modify storage dpi:generated named_icon_names."assets_file" set value "assets_file"
 data modify storage dpi:generated named_icons."atlases" set value {atlas:"items", sprite:"dpi:icons/atlases_folder"}
 data modify storage dpi:generated named_icon_names."atlases" set value "atlases_folder"
+data modify storage dpi:generated named_icons."atlases_file" set value {atlas:"items", sprite:"dpi:icons/atlases_file"}
+data modify storage dpi:generated named_icon_names."atlases_file" set value "atlases_file"
 data modify storage dpi:generated named_icons."atmospherics" set value {atlas:"items", sprite:"dpi:icons/fogs_folder"}
 data modify storage dpi:generated named_icon_names."atmospherics" set value "fogs_folder"
+data modify storage dpi:generated named_icons."atmospherics_file" set value {atlas:"items", sprite:"dpi:icons/fogs_file"}
+data modify storage dpi:generated named_icon_names."atmospherics_file" set value "fogs_file"
 data modify storage dpi:generated named_icons."attachables" set value {atlas:"items", sprite:"dpi:icons/attachables_folder"}
 data modify storage dpi:generated named_icon_names."attachables" set value "attachables_folder"
+data modify storage dpi:generated named_icons."attachables_file" set value {atlas:"items", sprite:"dpi:icons/attachables_file"}
+data modify storage dpi:generated named_icon_names."attachables_file" set value "attachables_file"
 data modify storage dpi:generated named_icons."audio" set value {atlas:"items", sprite:"dpi:icons/audio_folder"}
 data modify storage dpi:generated named_icon_names."audio" set value "audio_folder"
+data modify storage dpi:generated named_icons."audio_file" set value {atlas:"items", sprite:"dpi:icons/audio_file"}
+data modify storage dpi:generated named_icon_names."audio_file" set value "audio_file"
 data modify storage dpi:generated named_icons."backlog" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."backlog" set value "todo_folder"
+data modify storage dpi:generated named_icons."backlog_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."backlog_file" set value "todo_file"
 data modify storage dpi:generated named_icons."banner_pattern" set value {atlas:"items", sprite:"dpi:icons/banner_pattern_folder"}
 data modify storage dpi:generated named_icon_names."banner_pattern" set value "banner_pattern_folder"
+data modify storage dpi:generated named_icons."banner_pattern_file" set value {atlas:"items", sprite:"dpi:icons/banner_pattern_file"}
+data modify storage dpi:generated named_icon_names."banner_pattern_file" set value "banner_pattern_file"
 data modify storage dpi:generated named_icons."bartershops" set value {atlas:"items", sprite:"dpi:icons/trading_folder"}
 data modify storage dpi:generated named_icon_names."bartershops" set value "trading_folder"
+data modify storage dpi:generated named_icons."bartershops_file" set value {atlas:"items", sprite:"dpi:icons/trading_file"}
+data modify storage dpi:generated named_icon_names."bartershops_file" set value "trading_file"
 data modify storage dpi:generated named_icons."bash" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."bash" set value "shell_folder"
+data modify storage dpi:generated named_icons."bash_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."bash_file" set value "shell_file"
 data modify storage dpi:generated named_icons."beet.json" set value {atlas:"items", sprite:"dpi:icons/beet_file"}
 data modify storage dpi:generated named_icon_names."beet.json" set value "beet_file"
 data modify storage dpi:generated named_icons."beet.yaml" set value {atlas:"items", sprite:"dpi:icons/beet_file"}
@@ -1606,28 +1682,46 @@ data modify storage dpi:generated named_icons."beet.yml" set value {atlas:"items
 data modify storage dpi:generated named_icon_names."beet.yml" set value "beet_file"
 data modify storage dpi:generated named_icons."bin" set value {atlas:"items", sprite:"dpi:icons/executable_folder"}
 data modify storage dpi:generated named_icon_names."bin" set value "executable_folder"
+data modify storage dpi:generated named_icons."bin_file" set value {atlas:"items", sprite:"dpi:icons/executable_file"}
+data modify storage dpi:generated named_icon_names."bin_file" set value "executable_file"
 data modify storage dpi:generated named_icons."biomes" set value {atlas:"items", sprite:"dpi:icons/worldgen_folder"}
 data modify storage dpi:generated named_icon_names."biomes" set value "worldgen_folder"
 data modify storage dpi:generated named_icons."biomes_client.json" set value {atlas:"items", sprite:"dpi:icons/biomes_client.json_file"}
 data modify storage dpi:generated named_icon_names."biomes_client.json" set value "biomes_client.json_file"
+data modify storage dpi:generated named_icons."biomes_file" set value {atlas:"items", sprite:"dpi:icons/worldgen_file"}
+data modify storage dpi:generated named_icon_names."biomes_file" set value "worldgen_file"
 data modify storage dpi:generated named_icons."block_culling" set value {atlas:"items", sprite:"dpi:icons/block_culling_folder"}
 data modify storage dpi:generated named_icon_names."block_culling" set value "block_culling_folder"
+data modify storage dpi:generated named_icons."block_culling_file" set value {atlas:"items", sprite:"dpi:icons/block_culling_file"}
+data modify storage dpi:generated named_icon_names."block_culling_file" set value "block_culling_file"
 data modify storage dpi:generated named_icons."blocks" set value {atlas:"items", sprite:"dpi:icons/blocks_folder"}
 data modify storage dpi:generated named_icon_names."blocks" set value "blocks_folder"
 data modify storage dpi:generated named_icons."blocks.json" set value {atlas:"items", sprite:"dpi:icons/blocks.json_file"}
 data modify storage dpi:generated named_icon_names."blocks.json" set value "blocks.json_file"
+data modify storage dpi:generated named_icons."blocks_file" set value {atlas:"items", sprite:"dpi:icons/blocks_file"}
+data modify storage dpi:generated named_icon_names."blocks_file" set value "blocks_file"
 data modify storage dpi:generated named_icons."blockstates" set value {atlas:"items", sprite:"dpi:icons/blockstates_folder"}
 data modify storage dpi:generated named_icon_names."blockstates" set value "blockstates_folder"
+data modify storage dpi:generated named_icons."blockstates_file" set value {atlas:"items", sprite:"dpi:icons/blockstates_file"}
+data modify storage dpi:generated named_icon_names."blockstates_file" set value "blockstates_file"
 data modify storage dpi:generated named_icons."blocktextures" set value {atlas:"items", sprite:"dpi:icons/image_folder"}
 data modify storage dpi:generated named_icon_names."blocktextures" set value "image_folder"
+data modify storage dpi:generated named_icons."blocktextures_file" set value {atlas:"items", sprite:"dpi:icons/image_file"}
+data modify storage dpi:generated named_icon_names."blocktextures_file" set value "image_file"
 data modify storage dpi:generated named_icons."blocktypelist" set value {atlas:"items", sprite:"dpi:icons/blocks_folder"}
 data modify storage dpi:generated named_icon_names."blocktypelist" set value "blocks_folder"
+data modify storage dpi:generated named_icons."blocktypelist_file" set value {atlas:"items", sprite:"dpi:icons/blocks_file"}
+data modify storage dpi:generated named_icon_names."blocktypelist_file" set value "blocks_file"
 data modify storage dpi:generated named_icons."build" set value {atlas:"items", sprite:"dpi:icons/executable_folder"}
 data modify storage dpi:generated named_icon_names."build" set value "executable_folder"
 data modify storage dpi:generated named_icons."build.xml" set value {atlas:"items", sprite:"dpi:icons/ant_file"}
 data modify storage dpi:generated named_icon_names."build.xml" set value "ant_file"
 data modify storage dpi:generated named_icons."buildSrc" set value {atlas:"items", sprite:"dpi:icons/gradle_folder"}
 data modify storage dpi:generated named_icon_names."buildSrc" set value "gradle_folder"
+data modify storage dpi:generated named_icons."buildSrc_file" set value {atlas:"items", sprite:"dpi:icons/gradle_file"}
+data modify storage dpi:generated named_icon_names."buildSrc_file" set value "gradle_file"
+data modify storage dpi:generated named_icons."build_file" set value {atlas:"items", sprite:"dpi:icons/executable_file"}
+data modify storage dpi:generated named_icon_names."build_file" set value "executable_file"
 data modify storage dpi:generated named_icons."bukkit.yaml" set value {atlas:"items", sprite:"dpi:icons/bukkit_file"}
 data modify storage dpi:generated named_icon_names."bukkit.yaml" set value "bukkit_file"
 data modify storage dpi:generated named_icons."bukkit.yml" set value {atlas:"items", sprite:"dpi:icons/bukkit_file"}
@@ -1640,32 +1734,58 @@ data modify storage dpi:generated named_icons."cabal.project.local" set value {a
 data modify storage dpi:generated named_icon_names."cabal.project.local" set value "haskell_file"
 data modify storage dpi:generated named_icons."camera" set value {atlas:"items", sprite:"dpi:icons/spyglass_folder"}
 data modify storage dpi:generated named_icon_names."camera" set value "spyglass_folder"
+data modify storage dpi:generated named_icons."camera_file" set value {atlas:"items", sprite:"dpi:icons/spyglass_file"}
+data modify storage dpi:generated named_icon_names."camera_file" set value "spyglass_file"
 data modify storage dpi:generated named_icons."cameras" set value {atlas:"items", sprite:"dpi:icons/spyglass_folder"}
 data modify storage dpi:generated named_icon_names."cameras" set value "spyglass_folder"
+data modify storage dpi:generated named_icons."cameras_file" set value {atlas:"items", sprite:"dpi:icons/spyglass_file"}
+data modify storage dpi:generated named_icon_names."cameras_file" set value "spyglass_file"
 data modify storage dpi:generated named_icons."cat_sound_variant" set value {atlas:"items", sprite:"dpi:icons/cat_variant_folder"}
 data modify storage dpi:generated named_icon_names."cat_sound_variant" set value "cat_variant_folder"
+data modify storage dpi:generated named_icons."cat_sound_variant_file" set value {atlas:"items", sprite:"dpi:icons/cat_variant_file"}
+data modify storage dpi:generated named_icon_names."cat_sound_variant_file" set value "cat_variant_file"
 data modify storage dpi:generated named_icons."cat_variant" set value {atlas:"items", sprite:"dpi:icons/cat_variant_folder"}
 data modify storage dpi:generated named_icon_names."cat_variant" set value "cat_variant_folder"
+data modify storage dpi:generated named_icons."cat_variant_file" set value {atlas:"items", sprite:"dpi:icons/cat_variant_file"}
+data modify storage dpi:generated named_icon_names."cat_variant_file" set value "cat_variant_file"
 data modify storage dpi:generated named_icons."centos" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."centos" set value "linux_folder"
+data modify storage dpi:generated named_icons."centos_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."centos_file" set value "linux_file"
 data modify storage dpi:generated named_icons."characters" set value {atlas:"items", sprite:"dpi:icons/entities_folder"}
 data modify storage dpi:generated named_icon_names."characters" set value "entities_folder"
+data modify storage dpi:generated named_icons."characters_file" set value {atlas:"items", sprite:"dpi:icons/entities_file"}
+data modify storage dpi:generated named_icon_names."characters_file" set value "entities_file"
 data modify storage dpi:generated named_icons."chat_type" set value {atlas:"items", sprite:"dpi:icons/chat_type_folder"}
 data modify storage dpi:generated named_icon_names."chat_type" set value "chat_type_folder"
+data modify storage dpi:generated named_icons."chat_type_file" set value {atlas:"items", sprite:"dpi:icons/chat_type_file"}
+data modify storage dpi:generated named_icon_names."chat_type_file" set value "chat_type_file"
 data modify storage dpi:generated named_icons."chicken_sound_variant" set value {atlas:"items", sprite:"dpi:icons/chicken_variant_folder"}
 data modify storage dpi:generated named_icon_names."chicken_sound_variant" set value "chicken_variant_folder"
+data modify storage dpi:generated named_icons."chicken_sound_variant_file" set value {atlas:"items", sprite:"dpi:icons/chicken_variant_file"}
+data modify storage dpi:generated named_icon_names."chicken_sound_variant_file" set value "chicken_variant_file"
 data modify storage dpi:generated named_icons."chicken_variant" set value {atlas:"items", sprite:"dpi:icons/chicken_variant_folder"}
 data modify storage dpi:generated named_icon_names."chicken_variant" set value "chicken_variant_folder"
+data modify storage dpi:generated named_icons."chicken_variant_file" set value {atlas:"items", sprite:"dpi:icons/chicken_variant_file"}
+data modify storage dpi:generated named_icon_names."chicken_variant_file" set value "chicken_variant_file"
 data modify storage dpi:generated named_icons."ci" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."ci" set value "config_folder"
+data modify storage dpi:generated named_icons."ci_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."ci_file" set value "config_file"
 data modify storage dpi:generated named_icons."cli" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."cli" set value "shell_folder"
+data modify storage dpi:generated named_icons."cli_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."cli_file" set value "shell_file"
 data modify storage dpi:generated named_icons."client_biome.json" set value {atlas:"items", sprite:"dpi:icons/biomes_client.json_file"}
 data modify storage dpi:generated named_icon_names."client_biome.json" set value "biomes_client.json_file"
 data modify storage dpi:generated named_icons."cmd" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."cmd" set value "shell_folder"
+data modify storage dpi:generated named_icons."cmd_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."cmd_file" set value "shell_file"
 data modify storage dpi:generated named_icons."color_grading" set value {atlas:"items", sprite:"dpi:icons/shaders_folder"}
 data modify storage dpi:generated named_icon_names."color_grading" set value "shaders_folder"
+data modify storage dpi:generated named_icons."color_grading_file" set value {atlas:"items", sprite:"dpi:icons/shaders_file"}
+data modify storage dpi:generated named_icon_names."color_grading_file" set value "shaders_file"
 data modify storage dpi:generated named_icons."compose.override.json" set value {atlas:"items", sprite:"dpi:icons/docker_file"}
 data modify storage dpi:generated named_icon_names."compose.override.json" set value "docker_file"
 data modify storage dpi:generated named_icons."compose.override.yaml" set value {atlas:"items", sprite:"dpi:icons/docker_file"}
@@ -1684,42 +1804,80 @@ data modify storage dpi:generated named_icons."config.json" set value {atlas:"it
 data modify storage dpi:generated named_icon_names."config.json" set value "config_file"
 data modify storage dpi:generated named_icons."config.toml" set value {atlas:"items", sprite:"dpi:icons/cargo_file"}
 data modify storage dpi:generated named_icon_names."config.toml" set value "cargo_file"
+data modify storage dpi:generated named_icons."config_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."config_file" set value "config_file"
 data modify storage dpi:generated named_icons."configs" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."configs" set value "config_folder"
+data modify storage dpi:generated named_icons."configs_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."configs_file" set value "config_file"
 data modify storage dpi:generated named_icons."cosmetics" set value {atlas:"items", sprite:"dpi:icons/trim_material_folder"}
 data modify storage dpi:generated named_icon_names."cosmetics" set value "trim_material_folder"
+data modify storage dpi:generated named_icons."cosmetics_file" set value {atlas:"items", sprite:"dpi:icons/trim_material_file"}
+data modify storage dpi:generated named_icon_names."cosmetics_file" set value "trim_material_file"
 data modify storage dpi:generated named_icons."cow_sound_variant" set value {atlas:"items", sprite:"dpi:icons/cow_variant_folder"}
 data modify storage dpi:generated named_icon_names."cow_sound_variant" set value "cow_variant_folder"
+data modify storage dpi:generated named_icons."cow_sound_variant_file" set value {atlas:"items", sprite:"dpi:icons/cow_variant_file"}
+data modify storage dpi:generated named_icon_names."cow_sound_variant_file" set value "cow_variant_file"
 data modify storage dpi:generated named_icons."cow_variant" set value {atlas:"items", sprite:"dpi:icons/cow_variant_folder"}
 data modify storage dpi:generated named_icon_names."cow_variant" set value "cow_variant_folder"
+data modify storage dpi:generated named_icons."cow_variant_file" set value {atlas:"items", sprite:"dpi:icons/cow_variant_file"}
+data modify storage dpi:generated named_icon_names."cow_variant_file" set value "cow_variant_file"
 data modify storage dpi:generated named_icons."crates" set value {atlas:"items", sprite:"dpi:icons/cargo_folder"}
 data modify storage dpi:generated named_icon_names."crates" set value "cargo_folder"
+data modify storage dpi:generated named_icons."crates_file" set value {atlas:"items", sprite:"dpi:icons/cargo_file"}
+data modify storage dpi:generated named_icon_names."crates_file" set value "cargo_file"
 data modify storage dpi:generated named_icons."css" set value {atlas:"items", sprite:"dpi:icons/css_folder"}
 data modify storage dpi:generated named_icon_names."css" set value "css_folder"
+data modify storage dpi:generated named_icons."css_file" set value {atlas:"items", sprite:"dpi:icons/css_file"}
+data modify storage dpi:generated named_icon_names."css_file" set value "css_file"
 data modify storage dpi:generated named_icons."damage_type" set value {atlas:"items", sprite:"dpi:icons/damage_type_folder"}
 data modify storage dpi:generated named_icon_names."damage_type" set value "damage_type_folder"
+data modify storage dpi:generated named_icons."damage_type_file" set value {atlas:"items", sprite:"dpi:icons/damage_type_file"}
+data modify storage dpi:generated named_icon_names."damage_type_file" set value "damage_type_file"
 data modify storage dpi:generated named_icons."data" set value {atlas:"items", sprite:"dpi:icons/data_folder_closed"}
 data modify storage dpi:generated named_icon_names."data" set value "data_folder_closed"
+data modify storage dpi:generated named_icons."data_file" set value {atlas:"items", sprite:"dpi:icons/data_file"}
+data modify storage dpi:generated named_icon_names."data_file" set value "data_file"
 data modify storage dpi:generated named_icons."database" set value {atlas:"items", sprite:"dpi:icons/database_folder"}
 data modify storage dpi:generated named_icon_names."database" set value "database_folder"
+data modify storage dpi:generated named_icons."database_file" set value {atlas:"items", sprite:"dpi:icons/database_file"}
+data modify storage dpi:generated named_icon_names."database_file" set value "database_file"
 data modify storage dpi:generated named_icons."datapacks" set value {atlas:"items", sprite:"dpi:icons/datapacks_folder"}
 data modify storage dpi:generated named_icon_names."datapacks" set value "datapacks_folder"
+data modify storage dpi:generated named_icons."datapacks_file" set value {atlas:"items", sprite:"dpi:icons/datapacks_file"}
+data modify storage dpi:generated named_icon_names."datapacks_file" set value "datapacks_file"
 data modify storage dpi:generated named_icons."db" set value {atlas:"items", sprite:"dpi:icons/database_folder"}
 data modify storage dpi:generated named_icon_names."db" set value "database_folder"
+data modify storage dpi:generated named_icons."db_file" set value {atlas:"items", sprite:"dpi:icons/database_file"}
+data modify storage dpi:generated named_icon_names."db_file" set value "database_file"
 data modify storage dpi:generated named_icons."deb" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."deb" set value "linux_folder"
+data modify storage dpi:generated named_icons."deb_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."deb_file" set value "linux_file"
 data modify storage dpi:generated named_icons."debian" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."debian" set value "linux_folder"
+data modify storage dpi:generated named_icons."debian_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."debian_file" set value "linux_file"
 data modify storage dpi:generated named_icons."dialog" set value {atlas:"items", sprite:"dpi:icons/dialog_folder"}
 data modify storage dpi:generated named_icon_names."dialog" set value "dialog_folder"
+data modify storage dpi:generated named_icons."dialog_file" set value {atlas:"items", sprite:"dpi:icons/dialog_file"}
+data modify storage dpi:generated named_icon_names."dialog_file" set value "dialog_file"
 data modify storage dpi:generated named_icons."dialogue" set value {atlas:"items", sprite:"dpi:icons/chat_type_folder"}
 data modify storage dpi:generated named_icon_names."dialogue" set value "chat_type_folder"
+data modify storage dpi:generated named_icons."dialogue_file" set value {atlas:"items", sprite:"dpi:icons/chat_type_file"}
+data modify storage dpi:generated named_icon_names."dialogue_file" set value "chat_type_file"
 data modify storage dpi:generated named_icons."dimension" set value {atlas:"items", sprite:"dpi:icons/dimension_folder"}
 data modify storage dpi:generated named_icon_names."dimension" set value "dimension_folder"
+data modify storage dpi:generated named_icons."dimension_file" set value {atlas:"items", sprite:"dpi:icons/dimension_file"}
+data modify storage dpi:generated named_icon_names."dimension_file" set value "dimension_file"
 data modify storage dpi:generated named_icons."dimension_type" set value {atlas:"items", sprite:"dpi:icons/dimension_type_folder"}
 data modify storage dpi:generated named_icon_names."dimension_type" set value "dimension_type_folder"
+data modify storage dpi:generated named_icons."dimension_type_file" set value {atlas:"items", sprite:"dpi:icons/dimension_type_file"}
+data modify storage dpi:generated named_icon_names."dimension_type_file" set value "dimension_type_file"
 data modify storage dpi:generated named_icons."dist" set value {atlas:"items", sprite:"dpi:icons/executable_folder"}
 data modify storage dpi:generated named_icon_names."dist" set value "executable_folder"
+data modify storage dpi:generated named_icons."dist_file" set value {atlas:"items", sprite:"dpi:icons/executable_file"}
+data modify storage dpi:generated named_icon_names."dist_file" set value "executable_file"
 data modify storage dpi:generated named_icons."docker-compose.override.yaml" set value {atlas:"items", sprite:"dpi:icons/docker_file"}
 data modify storage dpi:generated named_icon_names."docker-compose.override.yaml" set value "docker_file"
 data modify storage dpi:generated named_icons."docker-compose.override.yml" set value {atlas:"items", sprite:"dpi:icons/docker_file"}
@@ -1730,54 +1888,100 @@ data modify storage dpi:generated named_icons."docker-compose.yml" set value {at
 data modify storage dpi:generated named_icon_names."docker-compose.yml" set value "docker_file"
 data modify storage dpi:generated named_icons."drops" set value {atlas:"items", sprite:"dpi:icons/loot_table_folder"}
 data modify storage dpi:generated named_icon_names."drops" set value "loot_table_folder"
+data modify storage dpi:generated named_icons."drops_file" set value {atlas:"items", sprite:"dpi:icons/loot_table_file"}
+data modify storage dpi:generated named_icon_names."drops_file" set value "loot_table_file"
 data modify storage dpi:generated named_icons."elm-stuff" set value {atlas:"items", sprite:"dpi:icons/elm_folder"}
 data modify storage dpi:generated named_icon_names."elm-stuff" set value "elm_folder"
+data modify storage dpi:generated named_icons."elm-stuff_file" set value {atlas:"items", sprite:"dpi:icons/elm_file"}
+data modify storage dpi:generated named_icon_names."elm-stuff_file" set value "elm_file"
 data modify storage dpi:generated named_icons."enchantment" set value {atlas:"items", sprite:"dpi:icons/enchantment_folder"}
 data modify storage dpi:generated named_icon_names."enchantment" set value "enchantment_folder"
+data modify storage dpi:generated named_icons."enchantment_file" set value {atlas:"items", sprite:"dpi:icons/enchantment_file"}
+data modify storage dpi:generated named_icon_names."enchantment_file" set value "enchantment_file"
 data modify storage dpi:generated named_icons."enchantment_provider" set value {atlas:"items", sprite:"dpi:icons/enchantment_folder"}
 data modify storage dpi:generated named_icon_names."enchantment_provider" set value "enchantment_folder"
+data modify storage dpi:generated named_icons."enchantment_provider_file" set value {atlas:"items", sprite:"dpi:icons/enchantment_file"}
+data modify storage dpi:generated named_icon_names."enchantment_provider_file" set value "enchantment_file"
 data modify storage dpi:generated named_icons."entities" set value {atlas:"items", sprite:"dpi:icons/entities_folder"}
 data modify storage dpi:generated named_icon_names."entities" set value "entities_folder"
+data modify storage dpi:generated named_icons."entities_file" set value {atlas:"items", sprite:"dpi:icons/entities_file"}
+data modify storage dpi:generated named_icon_names."entities_file" set value "entities_file"
 data modify storage dpi:generated named_icons."entity" set value {atlas:"items", sprite:"dpi:icons/entities_folder"}
 data modify storage dpi:generated named_icon_names."entity" set value "entities_folder"
+data modify storage dpi:generated named_icons."entity_file" set value {atlas:"items", sprite:"dpi:icons/entities_file"}
+data modify storage dpi:generated named_icon_names."entity_file" set value "entities_file"
 data modify storage dpi:generated named_icons."environments" set value {atlas:"items", sprite:"dpi:icons/fogs_folder"}
 data modify storage dpi:generated named_icon_names."environments" set value "fogs_folder"
+data modify storage dpi:generated named_icons."environments_file" set value {atlas:"items", sprite:"dpi:icons/fogs_file"}
+data modify storage dpi:generated named_icon_names."environments_file" set value "fogs_file"
 data modify storage dpi:generated named_icons."equipment" set value {atlas:"items", sprite:"dpi:icons/equipment_folder"}
 data modify storage dpi:generated named_icon_names."equipment" set value "equipment_folder"
+data modify storage dpi:generated named_icons."equipment_file" set value {atlas:"items", sprite:"dpi:icons/equipment_file"}
+data modify storage dpi:generated named_icon_names."equipment_file" set value "equipment_file"
 data modify storage dpi:generated named_icons."etc" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."etc" set value "config_folder"
+data modify storage dpi:generated named_icons."etc_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."etc_file" set value "config_file"
 data modify storage dpi:generated named_icons."fabric-mod.json" set value {atlas:"items", sprite:"dpi:icons/fabric_file"}
 data modify storage dpi:generated named_icon_names."fabric-mod.json" set value "fabric_file"
 data modify storage dpi:generated named_icons."feature_rules" set value {atlas:"items", sprite:"dpi:icons/features_folder"}
 data modify storage dpi:generated named_icon_names."feature_rules" set value "features_folder"
+data modify storage dpi:generated named_icons."feature_rules_file" set value {atlas:"items", sprite:"dpi:icons/features_file"}
+data modify storage dpi:generated named_icon_names."feature_rules_file" set value "features_file"
 data modify storage dpi:generated named_icons."features" set value {atlas:"items", sprite:"dpi:icons/features_folder"}
 data modify storage dpi:generated named_icon_names."features" set value "features_folder"
+data modify storage dpi:generated named_icons."features_file" set value {atlas:"items", sprite:"dpi:icons/features_file"}
+data modify storage dpi:generated named_icon_names."features_file" set value "features_file"
 data modify storage dpi:generated named_icons."fedora" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."fedora" set value "linux_folder"
+data modify storage dpi:generated named_icons."fedora_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."fedora_file" set value "linux_file"
 data modify storage dpi:generated named_icons."flatpak" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."flatpak" set value "linux_folder"
+data modify storage dpi:generated named_icons."flatpak_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."flatpak_file" set value "linux_file"
 data modify storage dpi:generated named_icons."flipbook_textures.json" set value {atlas:"items", sprite:"dpi:icons/video_file"}
 data modify storage dpi:generated named_icon_names."flipbook_textures.json" set value "video_file"
 data modify storage dpi:generated named_icons."fogs" set value {atlas:"items", sprite:"dpi:icons/fogs_folder"}
 data modify storage dpi:generated named_icon_names."fogs" set value "fogs_folder"
+data modify storage dpi:generated named_icons."fogs_file" set value {atlas:"items", sprite:"dpi:icons/fogs_file"}
+data modify storage dpi:generated named_icon_names."fogs_file" set value "fogs_file"
 data modify storage dpi:generated named_icons."font" set value {atlas:"items", sprite:"dpi:icons/font_folder"}
 data modify storage dpi:generated named_icon_names."font" set value "font_folder"
+data modify storage dpi:generated named_icons."font_file" set value {atlas:"items", sprite:"dpi:icons/font_file"}
+data modify storage dpi:generated named_icon_names."font_file" set value "font_file"
 data modify storage dpi:generated named_icons."fonts" set value {atlas:"items", sprite:"dpi:icons/font_folder"}
 data modify storage dpi:generated named_icon_names."fonts" set value "font_folder"
+data modify storage dpi:generated named_icons."fonts_file" set value {atlas:"items", sprite:"dpi:icons/font_file"}
+data modify storage dpi:generated named_icon_names."fonts_file" set value "font_file"
 data modify storage dpi:generated named_icons."frog_variant" set value {atlas:"items", sprite:"dpi:icons/frog_variant_folder"}
 data modify storage dpi:generated named_icon_names."frog_variant" set value "frog_variant_folder"
+data modify storage dpi:generated named_icons."frog_variant_file" set value {atlas:"items", sprite:"dpi:icons/frog_variant_file"}
+data modify storage dpi:generated named_icon_names."frog_variant_file" set value "frog_variant_file"
 data modify storage dpi:generated named_icons."function" set value {atlas:"items", sprite:"dpi:icons/function_folder"}
 data modify storage dpi:generated named_icon_names."function" set value "function_folder"
+data modify storage dpi:generated named_icons."function_file" set value {atlas:"items", sprite:"dpi:icons/function_file"}
+data modify storage dpi:generated named_icon_names."function_file" set value "function_file"
 data modify storage dpi:generated named_icons."functions" set value {atlas:"items", sprite:"dpi:icons/function_folder"}
 data modify storage dpi:generated named_icon_names."functions" set value "function_folder"
+data modify storage dpi:generated named_icons."functions_file" set value {atlas:"items", sprite:"dpi:icons/function_file"}
+data modify storage dpi:generated named_icon_names."functions_file" set value "function_file"
 data modify storage dpi:generated named_icons."gameplayconfigs" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."gameplayconfigs" set value "config_folder"
+data modify storage dpi:generated named_icons."gameplayconfigs_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."gameplayconfigs_file" set value "config_file"
 data modify storage dpi:generated named_icons."gentoo" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."gentoo" set value "linux_folder"
+data modify storage dpi:generated named_icons."gentoo_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."gentoo_file" set value "linux_file"
 data modify storage dpi:generated named_icons."github" set value {atlas:"items", sprite:"dpi:icons/github_folder"}
 data modify storage dpi:generated named_icon_names."github" set value "github_folder"
+data modify storage dpi:generated named_icons."github_file" set value {atlas:"items", sprite:"dpi:icons/github_file"}
+data modify storage dpi:generated named_icon_names."github_file" set value "github_file"
 data modify storage dpi:generated named_icons."gnu" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."gnu" set value "linux_folder"
+data modify storage dpi:generated named_icons."gnu_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."gnu_file" set value "linux_file"
 data modify storage dpi:generated named_icons."gnumakefile" set value {atlas:"items", sprite:"dpi:icons/recipe_file"}
 data modify storage dpi:generated named_icon_names."gnumakefile" set value "recipe_file"
 data modify storage dpi:generated named_icons."go.sum" set value {atlas:"items", sprite:"dpi:icons/lock_file"}
@@ -1788,126 +1992,214 @@ data modify storage dpi:generated named_icons."gradle-wrapper.properties" set va
 data modify storage dpi:generated named_icon_names."gradle-wrapper.properties" set value "gradle_file"
 data modify storage dpi:generated named_icons."gradle.properties" set value {atlas:"items", sprite:"dpi:icons/gradle_file"}
 data modify storage dpi:generated named_icon_names."gradle.properties" set value "gradle_file"
+data modify storage dpi:generated named_icons."gradle_file" set value {atlas:"items", sprite:"dpi:icons/gradle_file"}
+data modify storage dpi:generated named_icon_names."gradle_file" set value "gradle_file"
 data modify storage dpi:generated named_icons."gradlew" set value {atlas:"items", sprite:"dpi:icons/gradle_file"}
 data modify storage dpi:generated named_icon_names."gradlew" set value "gradle_file"
 data modify storage dpi:generated named_icons."gradlew.bat" set value {atlas:"items", sprite:"dpi:icons/gradle_file"}
 data modify storage dpi:generated named_icon_names."gradlew.bat" set value "gradle_file"
 data modify storage dpi:generated named_icons."grub" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."grub" set value "linux_folder"
+data modify storage dpi:generated named_icons."grub_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."grub_file" set value "linux_file"
 data modify storage dpi:generated named_icons."haxelib.json" set value {atlas:"items", sprite:"dpi:icons/haxe_file"}
 data modify storage dpi:generated named_icon_names."haxelib.json" set value "haxe_file"
 data modify storage dpi:generated named_icons."helpers" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."helpers" set value "config_folder"
+data modify storage dpi:generated named_icons."helpers_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."helpers_file" set value "config_file"
 data modify storage dpi:generated named_icons."icons" set value {atlas:"items", sprite:"dpi:icons/image_folder"}
 data modify storage dpi:generated named_icon_names."icons" set value "image_folder"
+data modify storage dpi:generated named_icons."icons_file" set value {atlas:"items", sprite:"dpi:icons/image_file"}
+data modify storage dpi:generated named_icon_names."icons_file" set value "image_file"
 data modify storage dpi:generated named_icons."images" set value {atlas:"items", sprite:"dpi:icons/image_folder"}
 data modify storage dpi:generated named_icon_names."images" set value "image_folder"
+data modify storage dpi:generated named_icons."images_file" set value {atlas:"items", sprite:"dpi:icons/image_file"}
+data modify storage dpi:generated named_icon_names."images_file" set value "image_file"
 data modify storage dpi:generated named_icons."init.d" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."init.d" set value "linux_folder"
+data modify storage dpi:generated named_icons."init.d_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."init.d_file" set value "linux_file"
 data modify storage dpi:generated named_icons."init.lua" set value {atlas:"items", sprite:"dpi:icons/neovim_file"}
 data modify storage dpi:generated named_icon_names."init.lua" set value "neovim_file"
 data modify storage dpi:generated named_icons."init.vim" set value {atlas:"items", sprite:"dpi:icons/neovim_file"}
 data modify storage dpi:generated named_icon_names."init.vim" set value "neovim_file"
 data modify storage dpi:generated named_icons."instances" set value {atlas:"items", sprite:"dpi:icons/structure_folder"}
 data modify storage dpi:generated named_icon_names."instances" set value "structure_folder"
+data modify storage dpi:generated named_icons."instances_file" set value {atlas:"items", sprite:"dpi:icons/structure_file"}
+data modify storage dpi:generated named_icon_names."instances_file" set value "structure_file"
 data modify storage dpi:generated named_icons."instrument" set value {atlas:"items", sprite:"dpi:icons/instrument_folder"}
 data modify storage dpi:generated named_icon_names."instrument" set value "instrument_folder"
+data modify storage dpi:generated named_icons."instrument_file" set value {atlas:"items", sprite:"dpi:icons/instrument_file"}
+data modify storage dpi:generated named_icon_names."instrument_file" set value "instrument_file"
 data modify storage dpi:generated named_icons."item_catalog" set value {atlas:"items", sprite:"dpi:icons/item_modifier_folder"}
 data modify storage dpi:generated named_icon_names."item_catalog" set value "item_modifier_folder"
+data modify storage dpi:generated named_icons."item_catalog_file" set value {atlas:"items", sprite:"dpi:icons/item_modifier_file"}
+data modify storage dpi:generated named_icon_names."item_catalog_file" set value "item_modifier_file"
 data modify storage dpi:generated named_icons."item_modifier" set value {atlas:"items", sprite:"dpi:icons/item_modifier_folder"}
 data modify storage dpi:generated named_icon_names."item_modifier" set value "item_modifier_folder"
+data modify storage dpi:generated named_icons."item_modifier_file" set value {atlas:"items", sprite:"dpi:icons/item_modifier_file"}
+data modify storage dpi:generated named_icon_names."item_modifier_file" set value "item_modifier_file"
 data modify storage dpi:generated named_icons."item_modifiers" set value {atlas:"items", sprite:"dpi:icons/item_modifier_folder"}
 data modify storage dpi:generated named_icon_names."item_modifiers" set value "item_modifier_folder"
+data modify storage dpi:generated named_icons."item_modifiers_file" set value {atlas:"items", sprite:"dpi:icons/item_modifier_file"}
+data modify storage dpi:generated named_icon_names."item_modifiers_file" set value "item_modifier_file"
 data modify storage dpi:generated named_icons."items" set value {atlas:"items", sprite:"dpi:icons/items_folder"}
 data modify storage dpi:generated named_icon_names."items" set value "items_folder"
+data modify storage dpi:generated named_icons."items_file" set value {atlas:"items", sprite:"dpi:icons/items_file"}
+data modify storage dpi:generated named_icon_names."items_file" set value "items_file"
 data modify storage dpi:generated named_icons."javascript" set value {atlas:"items", sprite:"dpi:icons/javascript_folder"}
 data modify storage dpi:generated named_icon_names."javascript" set value "javascript_folder"
+data modify storage dpi:generated named_icons."javascript_file" set value {atlas:"items", sprite:"dpi:icons/javascript_file"}
+data modify storage dpi:generated named_icon_names."javascript_file" set value "javascript_file"
 data modify storage dpi:generated named_icons."javascripts" set value {atlas:"items", sprite:"dpi:icons/javascript_folder"}
 data modify storage dpi:generated named_icon_names."javascripts" set value "javascript_folder"
+data modify storage dpi:generated named_icons."javascripts_file" set value {atlas:"items", sprite:"dpi:icons/javascript_file"}
+data modify storage dpi:generated named_icon_names."javascripts_file" set value "javascript_file"
 data modify storage dpi:generated named_icons."js" set value {atlas:"items", sprite:"dpi:icons/javascript_folder"}
 data modify storage dpi:generated named_icon_names."js" set value "javascript_folder"
+data modify storage dpi:generated named_icons."js_file" set value {atlas:"items", sprite:"dpi:icons/javascript_file"}
+data modify storage dpi:generated named_icon_names."js_file" set value "javascript_file"
 data modify storage dpi:generated named_icons."jsconfig.json" set value {atlas:"items", sprite:"dpi:icons/jsconfig_file"}
 data modify storage dpi:generated named_icon_names."jsconfig.json" set value "jsconfig_file"
 data modify storage dpi:generated named_icons."jukebox_song" set value {atlas:"items", sprite:"dpi:icons/jukebox_song_folder"}
 data modify storage dpi:generated named_icon_names."jukebox_song" set value "jukebox_song_folder"
+data modify storage dpi:generated named_icons."jukebox_song_file" set value {atlas:"items", sprite:"dpi:icons/jukebox_song_file"}
+data modify storage dpi:generated named_icon_names."jukebox_song_file" set value "jukebox_song_file"
 data modify storage dpi:generated named_icons."kali" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."kali" set value "linux_folder"
+data modify storage dpi:generated named_icons."kali_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."kali_file" set value "linux_file"
 data modify storage dpi:generated named_icons."kalilinux" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."kalilinux" set value "linux_folder"
+data modify storage dpi:generated named_icons."kalilinux_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."kalilinux_file" set value "linux_file"
 data modify storage dpi:generated named_icons."kanban" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."kanban" set value "todo_folder"
+data modify storage dpi:generated named_icons."kanban_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."kanban_file" set value "todo_file"
 data modify storage dpi:generated named_icons."kbuild" set value {atlas:"items", sprite:"dpi:icons/recipe_file"}
 data modify storage dpi:generated named_icon_names."kbuild" set value "recipe_file"
 data modify storage dpi:generated named_icons."lang" set value {atlas:"items", sprite:"dpi:icons/lang_folder"}
 data modify storage dpi:generated named_icon_names."lang" set value "lang_folder"
+data modify storage dpi:generated named_icons."lang_file" set value {atlas:"items", sprite:"dpi:icons/lang_file"}
+data modify storage dpi:generated named_icon_names."lang_file" set value "lang_file"
 data modify storage dpi:generated named_icons."language_names.json" set value {atlas:"items", sprite:"dpi:icons/lang_file"}
 data modify storage dpi:generated named_icon_names."language_names.json" set value "lang_file"
 data modify storage dpi:generated named_icons."languages" set value {atlas:"items", sprite:"dpi:icons/lang_folder"}
 data modify storage dpi:generated named_icon_names."languages" set value "lang_folder"
 data modify storage dpi:generated named_icons."languages.json" set value {atlas:"items", sprite:"dpi:icons/lang_file"}
 data modify storage dpi:generated named_icon_names."languages.json" set value "lang_file"
+data modify storage dpi:generated named_icons."languages_file" set value {atlas:"items", sprite:"dpi:icons/lang_file"}
+data modify storage dpi:generated named_icon_names."languages_file" set value "lang_file"
 data modify storage dpi:generated named_icons."less" set value {atlas:"items", sprite:"dpi:icons/css_folder"}
 data modify storage dpi:generated named_icon_names."less" set value "css_folder"
+data modify storage dpi:generated named_icons."less_file" set value {atlas:"items", sprite:"dpi:icons/css_file"}
+data modify storage dpi:generated named_icon_names."less_file" set value "css_file"
 data modify storage dpi:generated named_icons."level.dat" set value {atlas:"items", sprite:"dpi:icons/level.dat_file"}
 data modify storage dpi:generated named_icon_names."level.dat" set value "level.dat_file"
 data modify storage dpi:generated named_icons."lib" set value {atlas:"items", sprite:"dpi:icons/archive_folder"}
 data modify storage dpi:generated named_icon_names."lib" set value "archive_folder"
+data modify storage dpi:generated named_icons."lib_file" set value {atlas:"items", sprite:"dpi:icons/archive_file"}
+data modify storage dpi:generated named_icon_names."lib_file" set value "archive_file"
 data modify storage dpi:generated named_icons."libs" set value {atlas:"items", sprite:"dpi:icons/archive_folder"}
 data modify storage dpi:generated named_icon_names."libs" set value "archive_folder"
+data modify storage dpi:generated named_icons."libs_file" set value {atlas:"items", sprite:"dpi:icons/archive_file"}
+data modify storage dpi:generated named_icon_names."libs_file" set value "archive_file"
 data modify storage dpi:generated named_icons."linux" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."linux" set value "linux_folder"
+data modify storage dpi:generated named_icons."linux_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."linux_file" set value "linux_file"
 data modify storage dpi:generated named_icons."load.json" set value {atlas:"items", sprite:"dpi:icons/load.json_file"}
 data modify storage dpi:generated named_icon_names."load.json" set value "load.json_file"
 data modify storage dpi:generated named_icons."logs" set value {atlas:"items", sprite:"dpi:icons/log_folder"}
 data modify storage dpi:generated named_icon_names."logs" set value "log_folder"
+data modify storage dpi:generated named_icons."logs_file" set value {atlas:"items", sprite:"dpi:icons/log_file"}
+data modify storage dpi:generated named_icon_names."logs_file" set value "log_file"
 data modify storage dpi:generated named_icons."loot_table" set value {atlas:"items", sprite:"dpi:icons/loot_table_folder"}
 data modify storage dpi:generated named_icon_names."loot_table" set value "loot_table_folder"
+data modify storage dpi:generated named_icons."loot_table_file" set value {atlas:"items", sprite:"dpi:icons/loot_table_file"}
+data modify storage dpi:generated named_icon_names."loot_table_file" set value "loot_table_file"
 data modify storage dpi:generated named_icons."loot_tables" set value {atlas:"items", sprite:"dpi:icons/loot_table_folder"}
 data modify storage dpi:generated named_icon_names."loot_tables" set value "loot_table_folder"
+data modify storage dpi:generated named_icons."loot_tables_file" set value {atlas:"items", sprite:"dpi:icons/loot_table_file"}
+data modify storage dpi:generated named_icon_names."loot_tables_file" set value "loot_table_file"
 data modify storage dpi:generated named_icons."makefile" set value {atlas:"items", sprite:"dpi:icons/recipe_file"}
 data modify storage dpi:generated named_icon_names."makefile" set value "recipe_file"
 data modify storage dpi:generated named_icons."manifest.json" set value {atlas:"items", sprite:"dpi:icons/pack.mcmeta_file"}
 data modify storage dpi:generated named_icon_names."manifest.json" set value "pack.mcmeta_file"
 data modify storage dpi:generated named_icons."materials" set value {atlas:"items", sprite:"dpi:icons/materials_folder"}
 data modify storage dpi:generated named_icon_names."materials" set value "materials_folder"
+data modify storage dpi:generated named_icons."materials_file" set value {atlas:"items", sprite:"dpi:icons/materials_file"}
+data modify storage dpi:generated named_icon_names."materials_file" set value "materials_file"
 data modify storage dpi:generated named_icons."mcdoc" set value {atlas:"items", sprite:"dpi:icons/spyglass_folder"}
 data modify storage dpi:generated named_icon_names."mcdoc" set value "spyglass_folder"
+data modify storage dpi:generated named_icons."mcdoc_file" set value {atlas:"items", sprite:"dpi:icons/spyglass_file"}
+data modify storage dpi:generated named_icon_names."mcdoc_file" set value "spyglass_file"
 data modify storage dpi:generated named_icons."mcmod.info" set value {atlas:"items", sprite:"dpi:icons/forge_file"}
 data modify storage dpi:generated named_icon_names."mcmod.info" set value "forge_file"
 data modify storage dpi:generated named_icons."migrations" set value {atlas:"items", sprite:"dpi:icons/database_folder"}
 data modify storage dpi:generated named_icon_names."migrations" set value "database_folder"
+data modify storage dpi:generated named_icons."migrations_file" set value {atlas:"items", sprite:"dpi:icons/database_file"}
+data modify storage dpi:generated named_icon_names."migrations_file" set value "database_file"
 data modify storage dpi:generated named_icons."milestones" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."milestones" set value "todo_folder"
+data modify storage dpi:generated named_icons."milestones_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."milestones_file" set value "todo_file"
 data modify storage dpi:generated named_icons."models" set value {atlas:"items", sprite:"dpi:icons/models_folder"}
 data modify storage dpi:generated named_icon_names."models" set value "models_folder"
+data modify storage dpi:generated named_icons."models_file" set value {atlas:"items", sprite:"dpi:icons/models_file"}
+data modify storage dpi:generated named_icon_names."models_file" set value "models_file"
 data modify storage dpi:generated named_icons."modrinth.index.json" set value {atlas:"items", sprite:"dpi:icons/modrinth_file"}
 data modify storage dpi:generated named_icon_names."modrinth.index.json" set value "modrinth_file"
 data modify storage dpi:generated named_icons."mods" set value {atlas:"items", sprite:"dpi:icons/jar_folder"}
 data modify storage dpi:generated named_icon_names."mods" set value "jar_folder"
 data modify storage dpi:generated named_icons."mods.toml" set value {atlas:"items", sprite:"dpi:icons/forge_file"}
 data modify storage dpi:generated named_icon_names."mods.toml" set value "forge_file"
+data modify storage dpi:generated named_icons."mods_file" set value {atlas:"items", sprite:"dpi:icons/jar_file"}
+data modify storage dpi:generated named_icon_names."mods_file" set value "jar_file"
 data modify storage dpi:generated named_icons."music" set value {atlas:"items", sprite:"dpi:icons/jukebox_song_folder"}
 data modify storage dpi:generated named_icon_names."music" set value "jukebox_song_folder"
+data modify storage dpi:generated named_icons."music_file" set value {atlas:"items", sprite:"dpi:icons/jukebox_song_file"}
+data modify storage dpi:generated named_icon_names."music_file" set value "jukebox_song_file"
 data modify storage dpi:generated named_icons."neoforge.mods.toml" set value {atlas:"items", sprite:"dpi:icons/fox_file"}
 data modify storage dpi:generated named_icon_names."neoforge.mods.toml" set value "fox_file"
 data modify storage dpi:generated named_icons."nim" set value {atlas:"items", sprite:"dpi:icons/nim_folder"}
 data modify storage dpi:generated named_icon_names."nim" set value "nim_folder"
+data modify storage dpi:generated named_icons."nim_file" set value {atlas:"items", sprite:"dpi:icons/nim_file"}
+data modify storage dpi:generated named_icon_names."nim_file" set value "nim_file"
 data modify storage dpi:generated named_icons."nimcache" set value {atlas:"items", sprite:"dpi:icons/nim_folder"}
 data modify storage dpi:generated named_icon_names."nimcache" set value "nim_folder"
+data modify storage dpi:generated named_icons."nimcache_file" set value {atlas:"items", sprite:"dpi:icons/nim_file"}
+data modify storage dpi:generated named_icon_names."nimcache_file" set value "nim_file"
 data modify storage dpi:generated named_icons."nixos" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."nixos" set value "linux_folder"
+data modify storage dpi:generated named_icons."nixos_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."nixos_file" set value "linux_file"
 data modify storage dpi:generated named_icons."node_modules" set value {atlas:"items", sprite:"dpi:icons/npm_folder"}
 data modify storage dpi:generated named_icon_names."node_modules" set value "npm_folder"
+data modify storage dpi:generated named_icons."node_modules_file" set value {atlas:"items", sprite:"dpi:icons/npm_file"}
+data modify storage dpi:generated named_icon_names."node_modules_file" set value "npm_file"
 data modify storage dpi:generated named_icons."npc" set value {atlas:"items", sprite:"dpi:icons/trading_folder"}
 data modify storage dpi:generated named_icon_names."npc" set value "trading_folder"
+data modify storage dpi:generated named_icons."npc_file" set value {atlas:"items", sprite:"dpi:icons/trading_file"}
+data modify storage dpi:generated named_icon_names."npc_file" set value "trading_file"
 data modify storage dpi:generated named_icons."nvim" set value {atlas:"items", sprite:"dpi:icons/neovim_folder"}
 data modify storage dpi:generated named_icon_names."nvim" set value "neovim_folder"
+data modify storage dpi:generated named_icons."nvim_file" set value {atlas:"items", sprite:"dpi:icons/neovim_file"}
+data modify storage dpi:generated named_icon_names."nvim_file" set value "neovim_file"
 data modify storage dpi:generated named_icons."objective" set value {atlas:"items", sprite:"dpi:icons/waypoint_style_folder"}
 data modify storage dpi:generated named_icon_names."objective" set value "waypoint_style_folder"
+data modify storage dpi:generated named_icons."objective_file" set value {atlas:"items", sprite:"dpi:icons/waypoint_style_file"}
+data modify storage dpi:generated named_icon_names."objective_file" set value "waypoint_style_file"
 data modify storage dpi:generated named_icons."opensuse" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."opensuse" set value "linux_folder"
+data modify storage dpi:generated named_icons."opensuse_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."opensuse_file" set value "linux_file"
 data modify storage dpi:generated named_icons."out" set value {atlas:"items", sprite:"dpi:icons/executable_folder"}
 data modify storage dpi:generated named_icon_names."out" set value "executable_folder"
+data modify storage dpi:generated named_icons."out_file" set value {atlas:"items", sprite:"dpi:icons/executable_file"}
+data modify storage dpi:generated named_icon_names."out_file" set value "executable_file"
 data modify storage dpi:generated named_icons."pack.mcmeta" set value {atlas:"items", sprite:"dpi:icons/pack.mcmeta_file"}
 data modify storage dpi:generated named_icon_names."pack.mcmeta" set value "pack.mcmeta_file"
 data modify storage dpi:generated named_icons."package-lock.json" set value {atlas:"items", sprite:"dpi:icons/lock_file"}
@@ -1916,8 +2208,12 @@ data modify storage dpi:generated named_icons."package.json" set value {atlas:"i
 data modify storage dpi:generated named_icon_names."package.json" set value "npm_file"
 data modify storage dpi:generated named_icons."packages" set value {atlas:"items", sprite:"dpi:icons/archive_folder"}
 data modify storage dpi:generated named_icon_names."packages" set value "archive_folder"
+data modify storage dpi:generated named_icons."packages_file" set value {atlas:"items", sprite:"dpi:icons/archive_file"}
+data modify storage dpi:generated named_icon_names."packages_file" set value "archive_file"
 data modify storage dpi:generated named_icons."painting_variant" set value {atlas:"items", sprite:"dpi:icons/image_folder"}
 data modify storage dpi:generated named_icon_names."painting_variant" set value "image_folder"
+data modify storage dpi:generated named_icons."painting_variant_file" set value {atlas:"items", sprite:"dpi:icons/image_file"}
+data modify storage dpi:generated named_icon_names."painting_variant_file" set value "image_file"
 data modify storage dpi:generated named_icons."paper-global.yaml" set value {atlas:"items", sprite:"dpi:icons/paper_file"}
 data modify storage dpi:generated named_icon_names."paper-global.yaml" set value "paper_file"
 data modify storage dpi:generated named_icons."paper-global.yml" set value {atlas:"items", sprite:"dpi:icons/paper_file"}
@@ -1936,122 +2232,212 @@ data modify storage dpi:generated named_icons."paper-world.yml" set value {atlas
 data modify storage dpi:generated named_icon_names."paper-world.yml" set value "paper_file"
 data modify storage dpi:generated named_icons."particles" set value {atlas:"items", sprite:"dpi:icons/particles_folder"}
 data modify storage dpi:generated named_icon_names."particles" set value "particles_folder"
+data modify storage dpi:generated named_icons."particles_file" set value {atlas:"items", sprite:"dpi:icons/particles_file"}
+data modify storage dpi:generated named_icon_names."particles_file" set value "particles_file"
 data modify storage dpi:generated named_icons."pdxinfo" set value {atlas:"items", sprite:"dpi:icons/playdate_file"}
 data modify storage dpi:generated named_icon_names."pdxinfo" set value "playdate_file"
 data modify storage dpi:generated named_icons."pig_sound_variant" set value {atlas:"items", sprite:"dpi:icons/pig_variant_folder"}
 data modify storage dpi:generated named_icon_names."pig_sound_variant" set value "pig_variant_folder"
+data modify storage dpi:generated named_icons."pig_sound_variant_file" set value {atlas:"items", sprite:"dpi:icons/pig_variant_file"}
+data modify storage dpi:generated named_icon_names."pig_sound_variant_file" set value "pig_variant_file"
 data modify storage dpi:generated named_icons."pig_variant" set value {atlas:"items", sprite:"dpi:icons/pig_variant_folder"}
 data modify storage dpi:generated named_icon_names."pig_variant" set value "pig_variant_folder"
+data modify storage dpi:generated named_icons."pig_variant_file" set value {atlas:"items", sprite:"dpi:icons/pig_variant_file"}
+data modify storage dpi:generated named_icon_names."pig_variant_file" set value "pig_variant_file"
 data modify storage dpi:generated named_icons."pkg" set value {atlas:"items", sprite:"dpi:icons/archive_folder"}
 data modify storage dpi:generated named_icon_names."pkg" set value "archive_folder"
+data modify storage dpi:generated named_icons."pkg_file" set value {atlas:"items", sprite:"dpi:icons/archive_file"}
+data modify storage dpi:generated named_icon_names."pkg_file" set value "archive_file"
 data modify storage dpi:generated named_icons."planning" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."planning" set value "todo_folder"
+data modify storage dpi:generated named_icons."planning_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."planning_file" set value "todo_file"
 data modify storage dpi:generated named_icons."plans" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."plans" set value "todo_folder"
+data modify storage dpi:generated named_icons."plans_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."plans_file" set value "todo_file"
 data modify storage dpi:generated named_icons."plugin.yaml" set value {atlas:"items", sprite:"dpi:icons/bukkit_file"}
 data modify storage dpi:generated named_icon_names."plugin.yaml" set value "bukkit_file"
 data modify storage dpi:generated named_icons."plugin.yml" set value {atlas:"items", sprite:"dpi:icons/bukkit_file"}
 data modify storage dpi:generated named_icon_names."plugin.yml" set value "bukkit_file"
 data modify storage dpi:generated named_icons."plugins" set value {atlas:"items", sprite:"dpi:icons/jar_folder"}
 data modify storage dpi:generated named_icon_names."plugins" set value "jar_folder"
+data modify storage dpi:generated named_icons."plugins_file" set value {atlas:"items", sprite:"dpi:icons/jar_file"}
+data modify storage dpi:generated named_icon_names."plugins_file" set value "jar_file"
 data modify storage dpi:generated named_icons."pnpm-lock.yaml" set value {atlas:"items", sprite:"dpi:icons/lock_file"}
 data modify storage dpi:generated named_icon_names."pnpm-lock.yaml" set value "lock_file"
 data modify storage dpi:generated named_icons."pnpm-lock.yml" set value {atlas:"items", sprite:"dpi:icons/lock_file"}
 data modify storage dpi:generated named_icon_names."pnpm-lock.yml" set value "lock_file"
 data modify storage dpi:generated named_icons."portaltypes" set value {atlas:"items", sprite:"dpi:icons/dimension_type_folder"}
 data modify storage dpi:generated named_icon_names."portaltypes" set value "dimension_type_folder"
+data modify storage dpi:generated named_icons."portaltypes_file" set value {atlas:"items", sprite:"dpi:icons/dimension_type_file"}
+data modify storage dpi:generated named_icon_names."portaltypes_file" set value "dimension_type_file"
 data modify storage dpi:generated named_icons."posix" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."posix" set value "linux_folder"
+data modify storage dpi:generated named_icons."posix_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."posix_file" set value "linux_file"
 data modify storage dpi:generated named_icons."post_effect" set value {atlas:"items", sprite:"dpi:icons/shaders_folder"}
 data modify storage dpi:generated named_icon_names."post_effect" set value "shaders_folder"
+data modify storage dpi:generated named_icons."post_effect_file" set value {atlas:"items", sprite:"dpi:icons/shaders_file"}
+data modify storage dpi:generated named_icon_names."post_effect_file" set value "shaders_file"
 data modify storage dpi:generated named_icons."postcss" set value {atlas:"items", sprite:"dpi:icons/css_folder"}
 data modify storage dpi:generated named_icon_names."postcss" set value "css_folder"
+data modify storage dpi:generated named_icons."postcss_file" set value {atlas:"items", sprite:"dpi:icons/css_file"}
+data modify storage dpi:generated named_icon_names."postcss_file" set value "css_file"
 data modify storage dpi:generated named_icons."powershell" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."powershell" set value "shell_folder"
+data modify storage dpi:generated named_icons."powershell_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."powershell_file" set value "shell_file"
 data modify storage dpi:generated named_icons."predicate" set value {atlas:"items", sprite:"dpi:icons/predicate_folder"}
 data modify storage dpi:generated named_icon_names."predicate" set value "predicate_folder"
+data modify storage dpi:generated named_icons."predicate_file" set value {atlas:"items", sprite:"dpi:icons/predicate_file"}
+data modify storage dpi:generated named_icon_names."predicate_file" set value "predicate_file"
 data modify storage dpi:generated named_icons."predicates" set value {atlas:"items", sprite:"dpi:icons/predicate_folder"}
 data modify storage dpi:generated named_icon_names."predicates" set value "predicate_folder"
+data modify storage dpi:generated named_icons."predicates_file" set value {atlas:"items", sprite:"dpi:icons/predicate_file"}
+data modify storage dpi:generated named_icon_names."predicates_file" set value "predicate_file"
 data modify storage dpi:generated named_icons."prefabeditorcreationsettings" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."prefabeditorcreationsettings" set value "config_folder"
+data modify storage dpi:generated named_icons."prefabeditorcreationsettings_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."prefabeditorcreationsettings_file" set value "config_file"
 data modify storage dpi:generated named_icons."prefablist" set value {atlas:"items", sprite:"dpi:icons/features_folder"}
 data modify storage dpi:generated named_icon_names."prefablist" set value "features_folder"
+data modify storage dpi:generated named_icons."prefablist_file" set value {atlas:"items", sprite:"dpi:icons/features_file"}
+data modify storage dpi:generated named_icon_names."prefablist_file" set value "features_file"
 data modify storage dpi:generated named_icons."prefabs" set value {atlas:"items", sprite:"dpi:icons/features_folder"}
 data modify storage dpi:generated named_icon_names."prefabs" set value "features_folder"
+data modify storage dpi:generated named_icons."prefabs_file" set value {atlas:"items", sprite:"dpi:icons/features_file"}
+data modify storage dpi:generated named_icon_names."prefabs_file" set value "features_file"
 data modify storage dpi:generated named_icons."project.godot" set value {atlas:"items", sprite:"dpi:icons/godot_project_file"}
 data modify storage dpi:generated named_icon_names."project.godot" set value "godot_project_file"
 data modify storage dpi:generated named_icons."projectileconfigs" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."projectileconfigs" set value "config_folder"
+data modify storage dpi:generated named_icons."projectileconfigs_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."projectileconfigs_file" set value "config_file"
 data modify storage dpi:generated named_icons."publish" set value {atlas:"items", sprite:"dpi:icons/executable_folder"}
 data modify storage dpi:generated named_icon_names."publish" set value "executable_folder"
+data modify storage dpi:generated named_icons."publish_file" set value {atlas:"items", sprite:"dpi:icons/executable_file"}
+data modify storage dpi:generated named_icon_names."publish_file" set value "executable_file"
 data modify storage dpi:generated named_icons."purpur.yaml" set value {atlas:"items", sprite:"dpi:icons/purpur_file"}
 data modify storage dpi:generated named_icon_names."purpur.yaml" set value "purpur_file"
 data modify storage dpi:generated named_icons."purpur.yml" set value {atlas:"items", sprite:"dpi:icons/purpur_file"}
 data modify storage dpi:generated named_icon_names."purpur.yml" set value "purpur_file"
 data modify storage dpi:generated named_icons."pwsh" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."pwsh" set value "shell_folder"
+data modify storage dpi:generated named_icons."pwsh_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."pwsh_file" set value "shell_file"
 data modify storage dpi:generated named_icons."pyproject.toml" set value {atlas:"items", sprite:"dpi:icons/requirements.txt_file"}
 data modify storage dpi:generated named_icon_names."pyproject.toml" set value "requirements.txt_file"
 data modify storage dpi:generated named_icons."quilt.mod.json" set value {atlas:"items", sprite:"dpi:icons/quilt_file"}
 data modify storage dpi:generated named_icon_names."quilt.mod.json" set value "quilt_file"
 data modify storage dpi:generated named_icons."raspbian" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."raspbian" set value "linux_folder"
+data modify storage dpi:generated named_icons."raspbian_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."raspbian_file" set value "linux_file"
 data modify storage dpi:generated named_icons."recipe" set value {atlas:"items", sprite:"dpi:icons/recipe_folder"}
 data modify storage dpi:generated named_icon_names."recipe" set value "recipe_folder"
+data modify storage dpi:generated named_icons."recipe_file" set value {atlas:"items", sprite:"dpi:icons/recipe_file"}
+data modify storage dpi:generated named_icon_names."recipe_file" set value "recipe_file"
 data modify storage dpi:generated named_icons."recipes" set value {atlas:"items", sprite:"dpi:icons/recipe_folder"}
 data modify storage dpi:generated named_icon_names."recipes" set value "recipe_folder"
+data modify storage dpi:generated named_icons."recipes_file" set value {atlas:"items", sprite:"dpi:icons/recipe_file"}
+data modify storage dpi:generated named_icon_names."recipes_file" set value "recipe_file"
 data modify storage dpi:generated named_icons."redhat" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."redhat" set value "linux_folder"
+data modify storage dpi:generated named_icons."redhat_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."redhat_file" set value "linux_file"
 data modify storage dpi:generated named_icons."release" set value {atlas:"items", sprite:"dpi:icons/executable_folder"}
 data modify storage dpi:generated named_icon_names."release" set value "executable_folder"
+data modify storage dpi:generated named_icons."release_file" set value {atlas:"items", sprite:"dpi:icons/executable_file"}
+data modify storage dpi:generated named_icon_names."release_file" set value "executable_file"
 data modify storage dpi:generated named_icons."releases" set value {atlas:"items", sprite:"dpi:icons/executable_folder"}
 data modify storage dpi:generated named_icon_names."releases" set value "executable_folder"
+data modify storage dpi:generated named_icons."releases_file" set value {atlas:"items", sprite:"dpi:icons/executable_file"}
+data modify storage dpi:generated named_icon_names."releases_file" set value "executable_file"
 data modify storage dpi:generated named_icons."render_controllers" set value {atlas:"items", sprite:"dpi:icons/render_controllers_folder"}
 data modify storage dpi:generated named_icon_names."render_controllers" set value "render_controllers_folder"
+data modify storage dpi:generated named_icons."render_controllers_file" set value {atlas:"items", sprite:"dpi:icons/render_controllers_file"}
+data modify storage dpi:generated named_icon_names."render_controllers_file" set value "render_controllers_file"
 data modify storage dpi:generated named_icons."requirements.txt" set value {atlas:"items", sprite:"dpi:icons/requirements.txt_file"}
 data modify storage dpi:generated named_icon_names."requirements.txt" set value "requirements.txt_file"
 data modify storage dpi:generated named_icons."resources" set value {atlas:"items", sprite:"dpi:icons/database_folder"}
 data modify storage dpi:generated named_icon_names."resources" set value "database_folder"
+data modify storage dpi:generated named_icons."resources_file" set value {atlas:"items", sprite:"dpi:icons/database_file"}
+data modify storage dpi:generated named_icon_names."resources_file" set value "database_file"
 data modify storage dpi:generated named_icons."responsecurves" set value {atlas:"items", sprite:"dpi:icons/trim_pattern_folder"}
 data modify storage dpi:generated named_icon_names."responsecurves" set value "trim_pattern_folder"
+data modify storage dpi:generated named_icons."responsecurves_file" set value {atlas:"items", sprite:"dpi:icons/trim_pattern_file"}
+data modify storage dpi:generated named_icon_names."responsecurves_file" set value "trim_pattern_file"
 data modify storage dpi:generated named_icons."roadmap" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."roadmap" set value "todo_folder"
+data modify storage dpi:generated named_icons."roadmap_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."roadmap_file" set value "todo_file"
 data modify storage dpi:generated named_icons."rpm" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."rpm" set value "linux_folder"
+data modify storage dpi:generated named_icons."rpm_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."rpm_file" set value "linux_file"
 data modify storage dpi:generated named_icons."sandstone.config.ts" set value {atlas:"items", sprite:"dpi:icons/sandstone_file"}
 data modify storage dpi:generated named_icon_names."sandstone.config.ts" set value "sandstone_file"
 data modify storage dpi:generated named_icons."sass" set value {atlas:"items", sprite:"dpi:icons/css_folder"}
 data modify storage dpi:generated named_icon_names."sass" set value "css_folder"
+data modify storage dpi:generated named_icons."sass_file" set value {atlas:"items", sprite:"dpi:icons/css_file"}
+data modify storage dpi:generated named_icon_names."sass_file" set value "css_file"
 data modify storage dpi:generated named_icons."screeneffects" set value {atlas:"items", sprite:"dpi:icons/shaders_folder"}
 data modify storage dpi:generated named_icon_names."screeneffects" set value "shaders_folder"
+data modify storage dpi:generated named_icons."screeneffects_file" set value {atlas:"items", sprite:"dpi:icons/shaders_file"}
+data modify storage dpi:generated named_icon_names."screeneffects_file" set value "shaders_file"
 data modify storage dpi:generated named_icons."script" set value {atlas:"items", sprite:"dpi:icons/javascript_folder"}
 data modify storage dpi:generated named_icon_names."script" set value "javascript_folder"
+data modify storage dpi:generated named_icons."script_file" set value {atlas:"items", sprite:"dpi:icons/javascript_file"}
+data modify storage dpi:generated named_icon_names."script_file" set value "javascript_file"
 data modify storage dpi:generated named_icons."scripts" set value {atlas:"items", sprite:"dpi:icons/javascript_folder"}
 data modify storage dpi:generated named_icon_names."scripts" set value "javascript_folder"
+data modify storage dpi:generated named_icons."scripts_file" set value {atlas:"items", sprite:"dpi:icons/javascript_file"}
+data modify storage dpi:generated named_icon_names."scripts_file" set value "javascript_file"
 data modify storage dpi:generated named_icons."scss" set value {atlas:"items", sprite:"dpi:icons/css_folder"}
 data modify storage dpi:generated named_icon_names."scss" set value "css_folder"
+data modify storage dpi:generated named_icons."scss_file" set value {atlas:"items", sprite:"dpi:icons/css_file"}
+data modify storage dpi:generated named_icon_names."scss_file" set value "css_file"
 data modify storage dpi:generated named_icons."seeds" set value {atlas:"items", sprite:"dpi:icons/database_folder"}
 data modify storage dpi:generated named_icon_names."seeds" set value "database_folder"
+data modify storage dpi:generated named_icons."seeds_file" set value {atlas:"items", sprite:"dpi:icons/database_file"}
+data modify storage dpi:generated named_icon_names."seeds_file" set value "database_file"
 data modify storage dpi:generated named_icons."settings" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."settings" set value "config_folder"
 data modify storage dpi:generated named_icons."settings.json" set value {atlas:"items", sprite:"dpi:icons/config_file"}
 data modify storage dpi:generated named_icon_names."settings.json" set value "config_file"
+data modify storage dpi:generated named_icons."settings_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."settings_file" set value "config_file"
 data modify storage dpi:generated named_icons."sh" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."sh" set value "shell_folder"
+data modify storage dpi:generated named_icons."sh_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."sh_file" set value "shell_file"
 data modify storage dpi:generated named_icons."shaders" set value {atlas:"items", sprite:"dpi:icons/shaders_folder"}
 data modify storage dpi:generated named_icon_names."shaders" set value "shaders_folder"
+data modify storage dpi:generated named_icons."shaders_file" set value {atlas:"items", sprite:"dpi:icons/shaders_file"}
+data modify storage dpi:generated named_icon_names."shaders_file" set value "shaders_file"
 data modify storage dpi:generated named_icons."shell" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."shell" set value "shell_folder"
+data modify storage dpi:generated named_icons."shell_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."shell_file" set value "shell_file"
 data modify storage dpi:generated named_icons."shells" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."shells" set value "shell_folder"
+data modify storage dpi:generated named_icons."shells_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."shells_file" set value "shell_file"
 data modify storage dpi:generated named_icons."snap" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."snap" set value "linux_folder"
+data modify storage dpi:generated named_icons."snap_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."snap_file" set value "linux_file"
 data modify storage dpi:generated named_icons."sounds" set value {atlas:"items", sprite:"dpi:icons/audio_folder"}
 data modify storage dpi:generated named_icon_names."sounds" set value "audio_folder"
 data modify storage dpi:generated named_icons."sounds.json" set value {atlas:"items", sprite:"dpi:icons/sounds.json_file"}
 data modify storage dpi:generated named_icon_names."sounds.json" set value "sounds.json_file"
+data modify storage dpi:generated named_icons."sounds_file" set value {atlas:"items", sprite:"dpi:icons/audio_file"}
+data modify storage dpi:generated named_icon_names."sounds_file" set value "audio_file"
 data modify storage dpi:generated named_icons."spawn_rules" set value {atlas:"items", sprite:"dpi:icons/spawn_rules_folder"}
 data modify storage dpi:generated named_icon_names."spawn_rules" set value "spawn_rules_folder"
+data modify storage dpi:generated named_icons."spawn_rules_file" set value {atlas:"items", sprite:"dpi:icons/spawn_rules_file"}
+data modify storage dpi:generated named_icon_names."spawn_rules_file" set value "spawn_rules_file"
 data modify storage dpi:generated named_icons."spigot.yaml" set value {atlas:"items", sprite:"dpi:icons/spigot_file"}
 data modify storage dpi:generated named_icon_names."spigot.yaml" set value "spigot_file"
 data modify storage dpi:generated named_icons."spigot.yml" set value {atlas:"items", sprite:"dpi:icons/spigot_file"}
@@ -2062,123 +2448,231 @@ data modify storage dpi:generated named_icons."splashes.txt" set value {atlas:"i
 data modify storage dpi:generated named_icon_names."splashes.txt" set value "splashes.json_file"
 data modify storage dpi:generated named_icons."sprites" set value {atlas:"items", sprite:"dpi:icons/image_folder"}
 data modify storage dpi:generated named_icon_names."sprites" set value "image_folder"
+data modify storage dpi:generated named_icons."sprites_file" set value {atlas:"items", sprite:"dpi:icons/image_file"}
+data modify storage dpi:generated named_icon_names."sprites_file" set value "image_file"
 data modify storage dpi:generated named_icons."sql" set value {atlas:"items", sprite:"dpi:icons/database_folder"}
 data modify storage dpi:generated named_icon_names."sql" set value "database_folder"
+data modify storage dpi:generated named_icons."sql_file" set value {atlas:"items", sprite:"dpi:icons/database_file"}
+data modify storage dpi:generated named_icon_names."sql_file" set value "database_file"
 data modify storage dpi:generated named_icons."src" set value {atlas:"items", sprite:"dpi:icons/src_folder_closed"}
 data modify storage dpi:generated named_icon_names."src" set value "src_folder_closed"
+data modify storage dpi:generated named_icons."src_file" set value {atlas:"items", sprite:"dpi:icons/src_file"}
+data modify storage dpi:generated named_icon_names."src_file" set value "src_file"
 data modify storage dpi:generated named_icons."structure" set value {atlas:"items", sprite:"dpi:icons/structure_folder"}
 data modify storage dpi:generated named_icon_names."structure" set value "structure_folder"
+data modify storage dpi:generated named_icons."structure_file" set value {atlas:"items", sprite:"dpi:icons/structure_file"}
+data modify storage dpi:generated named_icon_names."structure_file" set value "structure_file"
 data modify storage dpi:generated named_icons."structures" set value {atlas:"items", sprite:"dpi:icons/structure_folder"}
 data modify storage dpi:generated named_icon_names."structures" set value "structure_folder"
+data modify storage dpi:generated named_icons."structures_file" set value {atlas:"items", sprite:"dpi:icons/structure_file"}
+data modify storage dpi:generated named_icon_names."structures_file" set value "structure_file"
 data modify storage dpi:generated named_icons."styles" set value {atlas:"items", sprite:"dpi:icons/css_folder"}
 data modify storage dpi:generated named_icon_names."styles" set value "css_folder"
+data modify storage dpi:generated named_icons."styles_file" set value {atlas:"items", sprite:"dpi:icons/css_file"}
+data modify storage dpi:generated named_icon_names."styles_file" set value "css_file"
 data modify storage dpi:generated named_icons."stylesheets" set value {atlas:"items", sprite:"dpi:icons/css_folder"}
 data modify storage dpi:generated named_icon_names."stylesheets" set value "css_folder"
+data modify storage dpi:generated named_icons."stylesheets_file" set value {atlas:"items", sprite:"dpi:icons/css_file"}
+data modify storage dpi:generated named_icon_names."stylesheets_file" set value "css_file"
 data modify storage dpi:generated named_icons."sulfur_cube_archetype" set value {atlas:"items", sprite:"dpi:icons/sulfur_cube_archetype_folder"}
 data modify storage dpi:generated named_icon_names."sulfur_cube_archetype" set value "sulfur_cube_archetype_folder"
+data modify storage dpi:generated named_icons."sulfur_cube_archetype_file" set value {atlas:"items", sprite:"dpi:icons/sulfur_cube_archetype_file"}
+data modify storage dpi:generated named_icon_names."sulfur_cube_archetype_file" set value "sulfur_cube_archetype_file"
 data modify storage dpi:generated named_icons."suse" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."suse" set value "linux_folder"
+data modify storage dpi:generated named_icons."suse_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."suse_file" set value "linux_file"
 data modify storage dpi:generated named_icons."systemd" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."systemd" set value "linux_folder"
+data modify storage dpi:generated named_icons."systemd_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."systemd_file" set value "linux_file"
 data modify storage dpi:generated named_icons."tag_patterns" set value {atlas:"items", sprite:"dpi:icons/tags_folder"}
 data modify storage dpi:generated named_icon_names."tag_patterns" set value "tags_folder"
+data modify storage dpi:generated named_icons."tag_patterns_file" set value {atlas:"items", sprite:"dpi:icons/tags_file"}
+data modify storage dpi:generated named_icon_names."tag_patterns_file" set value "tags_file"
 data modify storage dpi:generated named_icons."tags" set value {atlas:"items", sprite:"dpi:icons/tags_folder"}
 data modify storage dpi:generated named_icon_names."tags" set value "tags_folder"
+data modify storage dpi:generated named_icons."tags_file" set value {atlas:"items", sprite:"dpi:icons/tags_file"}
+data modify storage dpi:generated named_icon_names."tags_file" set value "tags_file"
 data modify storage dpi:generated named_icons."target" set value {atlas:"items", sprite:"dpi:icons/jar_folder"}
 data modify storage dpi:generated named_icon_names."target" set value "jar_folder"
+data modify storage dpi:generated named_icons."target_file" set value {atlas:"items", sprite:"dpi:icons/jar_file"}
+data modify storage dpi:generated named_icon_names."target_file" set value "jar_file"
 data modify storage dpi:generated named_icons."terminal" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."terminal" set value "shell_folder"
+data modify storage dpi:generated named_icons."terminal_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."terminal_file" set value "shell_file"
 data modify storage dpi:generated named_icons."terrain_texture.json" set value {atlas:"items", sprite:"dpi:icons/atlases_file"}
 data modify storage dpi:generated named_icon_names."terrain_texture.json" set value "atlases_file"
 data modify storage dpi:generated named_icons."test" set value {atlas:"items", sprite:"dpi:icons/test_environment_folder"}
 data modify storage dpi:generated named_icon_names."test" set value "test_environment_folder"
 data modify storage dpi:generated named_icons."test_environment" set value {atlas:"items", sprite:"dpi:icons/test_environment_folder"}
 data modify storage dpi:generated named_icon_names."test_environment" set value "test_environment_folder"
+data modify storage dpi:generated named_icons."test_environment_file" set value {atlas:"items", sprite:"dpi:icons/test_environment_file"}
+data modify storage dpi:generated named_icon_names."test_environment_file" set value "test_environment_file"
+data modify storage dpi:generated named_icons."test_file" set value {atlas:"items", sprite:"dpi:icons/test_environment_file"}
+data modify storage dpi:generated named_icon_names."test_file" set value "test_environment_file"
 data modify storage dpi:generated named_icons."test_instance" set value {atlas:"items", sprite:"dpi:icons/test_instance_folder"}
 data modify storage dpi:generated named_icon_names."test_instance" set value "test_instance_folder"
+data modify storage dpi:generated named_icons."test_instance_file" set value {atlas:"items", sprite:"dpi:icons/test_instance_file"}
+data modify storage dpi:generated named_icon_names."test_instance_file" set value "test_instance_file"
 data modify storage dpi:generated named_icons."tests" set value {atlas:"items", sprite:"dpi:icons/test_environment_folder"}
 data modify storage dpi:generated named_icon_names."tests" set value "test_environment_folder"
+data modify storage dpi:generated named_icons."tests_file" set value {atlas:"items", sprite:"dpi:icons/test_environment_file"}
+data modify storage dpi:generated named_icon_names."tests_file" set value "test_environment_file"
 data modify storage dpi:generated named_icons."texts" set value {atlas:"items", sprite:"dpi:icons/text_folder"}
 data modify storage dpi:generated named_icon_names."texts" set value "text_folder"
+data modify storage dpi:generated named_icons."texts_file" set value {atlas:"items", sprite:"dpi:icons/text_file"}
+data modify storage dpi:generated named_icon_names."texts_file" set value "text_file"
 data modify storage dpi:generated named_icons."textures" set value {atlas:"items", sprite:"dpi:icons/image_folder"}
 data modify storage dpi:generated named_icon_names."textures" set value "image_folder"
+data modify storage dpi:generated named_icons."textures_file" set value {atlas:"items", sprite:"dpi:icons/image_file"}
+data modify storage dpi:generated named_icon_names."textures_file" set value "image_file"
 data modify storage dpi:generated named_icons."tick.json" set value {atlas:"items", sprite:"dpi:icons/tick.json_file"}
 data modify storage dpi:generated named_icon_names."tick.json" set value "tick.json_file"
 data modify storage dpi:generated named_icons."tickets" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."tickets" set value "todo_folder"
+data modify storage dpi:generated named_icons."tickets_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."tickets_file" set value "todo_file"
 data modify storage dpi:generated named_icons."timeline" set value {atlas:"items", sprite:"dpi:icons/timeline_folder"}
 data modify storage dpi:generated named_icon_names."timeline" set value "timeline_folder"
+data modify storage dpi:generated named_icons."timeline_file" set value {atlas:"items", sprite:"dpi:icons/timeline_file"}
+data modify storage dpi:generated named_icon_names."timeline_file" set value "timeline_file"
 data modify storage dpi:generated named_icons."tintgradients" set value {atlas:"items", sprite:"dpi:icons/shaders_folder"}
 data modify storage dpi:generated named_icon_names."tintgradients" set value "shaders_folder"
+data modify storage dpi:generated named_icons."tintgradients_file" set value {atlas:"items", sprite:"dpi:icons/shaders_file"}
+data modify storage dpi:generated named_icon_names."tintgradients_file" set value "shaders_file"
 data modify storage dpi:generated named_icons."todo" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."todo" set value "todo_folder"
 data modify storage dpi:generated named_icons."todo.md" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
 data modify storage dpi:generated named_icon_names."todo.md" set value "todo_file"
 data modify storage dpi:generated named_icons."todo.txt" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
 data modify storage dpi:generated named_icon_names."todo.txt" set value "todo_file"
+data modify storage dpi:generated named_icons."todo_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."todo_file" set value "todo_file"
 data modify storage dpi:generated named_icons."todos" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."todos" set value "todo_folder"
+data modify storage dpi:generated named_icons."todos_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
+data modify storage dpi:generated named_icon_names."todos_file" set value "todo_file"
 data modify storage dpi:generated named_icons."trade_set" set value {atlas:"items", sprite:"dpi:icons/trading_folder"}
 data modify storage dpi:generated named_icon_names."trade_set" set value "trading_folder"
+data modify storage dpi:generated named_icons."trade_set_file" set value {atlas:"items", sprite:"dpi:icons/trading_file"}
+data modify storage dpi:generated named_icon_names."trade_set_file" set value "trading_file"
 data modify storage dpi:generated named_icons."trading" set value {atlas:"items", sprite:"dpi:icons/trading_folder"}
 data modify storage dpi:generated named_icon_names."trading" set value "trading_folder"
+data modify storage dpi:generated named_icons."trading_file" set value {atlas:"items", sprite:"dpi:icons/trading_file"}
+data modify storage dpi:generated named_icon_names."trading_file" set value "trading_file"
 data modify storage dpi:generated named_icons."trails" set value {atlas:"items", sprite:"dpi:icons/particles_folder"}
 data modify storage dpi:generated named_icon_names."trails" set value "particles_folder"
+data modify storage dpi:generated named_icons."trails_file" set value {atlas:"items", sprite:"dpi:icons/particles_file"}
+data modify storage dpi:generated named_icon_names."trails_file" set value "particles_file"
 data modify storage dpi:generated named_icons."trial_spawner" set value {atlas:"items", sprite:"dpi:icons/trial_spawner_folder"}
 data modify storage dpi:generated named_icon_names."trial_spawner" set value "trial_spawner_folder"
+data modify storage dpi:generated named_icons."trial_spawner_file" set value {atlas:"items", sprite:"dpi:icons/trial_spawner_file"}
+data modify storage dpi:generated named_icon_names."trial_spawner_file" set value "trial_spawner_file"
 data modify storage dpi:generated named_icons."trim_material" set value {atlas:"items", sprite:"dpi:icons/trim_material_folder"}
 data modify storage dpi:generated named_icon_names."trim_material" set value "trim_material_folder"
+data modify storage dpi:generated named_icons."trim_material_file" set value {atlas:"items", sprite:"dpi:icons/trim_material_file"}
+data modify storage dpi:generated named_icon_names."trim_material_file" set value "trim_material_file"
 data modify storage dpi:generated named_icons."trim_pattern" set value {atlas:"items", sprite:"dpi:icons/trim_pattern_folder"}
 data modify storage dpi:generated named_icon_names."trim_pattern" set value "trim_pattern_folder"
+data modify storage dpi:generated named_icons."trim_pattern_file" set value {atlas:"items", sprite:"dpi:icons/trim_pattern_file"}
+data modify storage dpi:generated named_icon_names."trim_pattern_file" set value "trim_pattern_file"
 data modify storage dpi:generated named_icons."tsconfig.json" set value {atlas:"items", sprite:"dpi:icons/tsconfig_file"}
 data modify storage dpi:generated named_icon_names."tsconfig.json" set value "tsconfig_file"
 data modify storage dpi:generated named_icons."typst-packages" set value {atlas:"items", sprite:"dpi:icons/typst_folder"}
 data modify storage dpi:generated named_icon_names."typst-packages" set value "typst_folder"
+data modify storage dpi:generated named_icons."typst-packages_file" set value {atlas:"items", sprite:"dpi:icons/typst_file"}
+data modify storage dpi:generated named_icon_names."typst-packages_file" set value "typst_file"
 data modify storage dpi:generated named_icons."ubuntu" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."ubuntu" set value "linux_folder"
+data modify storage dpi:generated named_icons."ubuntu_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."ubuntu_file" set value "linux_file"
 data modify storage dpi:generated named_icons."ui" set value {atlas:"items", sprite:"dpi:icons/ui_folder"}
 data modify storage dpi:generated named_icon_names."ui" set value "ui_folder"
+data modify storage dpi:generated named_icons."ui_file" set value {atlas:"items", sprite:"dpi:icons/ui_file"}
+data modify storage dpi:generated named_icon_names."ui_file" set value "ui_file"
 data modify storage dpi:generated named_icons."unix" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."unix" set value "linux_folder"
+data modify storage dpi:generated named_icons."unix_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."unix_file" set value "linux_file"
 data modify storage dpi:generated named_icons."util" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."util" set value "config_folder"
+data modify storage dpi:generated named_icons."util_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."util_file" set value "config_file"
 data modify storage dpi:generated named_icons."utilities" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."utilities" set value "config_folder"
+data modify storage dpi:generated named_icons."utilities_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."utilities_file" set value "config_file"
 data modify storage dpi:generated named_icons."utils" set value {atlas:"items", sprite:"dpi:icons/config_folder"}
 data modify storage dpi:generated named_icon_names."utils" set value "config_folder"
+data modify storage dpi:generated named_icons."utils_file" set value {atlas:"items", sprite:"dpi:icons/config_file"}
+data modify storage dpi:generated named_icon_names."utils_file" set value "config_file"
 data modify storage dpi:generated named_icons."vfx" set value {atlas:"items", sprite:"dpi:icons/video_folder"}
 data modify storage dpi:generated named_icon_names."vfx" set value "video_folder"
+data modify storage dpi:generated named_icons."vfx_file" set value {atlas:"items", sprite:"dpi:icons/video_file"}
+data modify storage dpi:generated named_icon_names."vfx_file" set value "video_file"
 data modify storage dpi:generated named_icons."villager_trade" set value {atlas:"items", sprite:"dpi:icons/trading_folder"}
 data modify storage dpi:generated named_icon_names."villager_trade" set value "trading_folder"
+data modify storage dpi:generated named_icons."villager_trade_file" set value {atlas:"items", sprite:"dpi:icons/trading_file"}
+data modify storage dpi:generated named_icon_names."villager_trade_file" set value "trading_file"
 data modify storage dpi:generated named_icons."waypoint_style" set value {atlas:"items", sprite:"dpi:icons/waypoint_style_folder"}
 data modify storage dpi:generated named_icon_names."waypoint_style" set value "waypoint_style_folder"
+data modify storage dpi:generated named_icons."waypoint_style_file" set value {atlas:"items", sprite:"dpi:icons/waypoint_style_file"}
+data modify storage dpi:generated named_icon_names."waypoint_style_file" set value "waypoint_style_file"
 data modify storage dpi:generated named_icons."weathers" set value {atlas:"items", sprite:"dpi:icons/tags_folder"}
 data modify storage dpi:generated named_icon_names."weathers" set value "tags_folder"
+data modify storage dpi:generated named_icons."weathers_file" set value {atlas:"items", sprite:"dpi:icons/tags_file"}
+data modify storage dpi:generated named_icon_names."weathers_file" set value "tags_file"
 data modify storage dpi:generated named_icons."webpack.config.cjs" set value {atlas:"items", sprite:"dpi:icons/config_file"}
 data modify storage dpi:generated named_icon_names."webpack.config.cjs" set value "config_file"
 data modify storage dpi:generated named_icons."webpack.config.mjs" set value {atlas:"items", sprite:"dpi:icons/config_file"}
 data modify storage dpi:generated named_icon_names."webpack.config.mjs" set value "config_file"
 data modify storage dpi:generated named_icons."wolf_sound_variant" set value {atlas:"items", sprite:"dpi:icons/wolf_variant_folder"}
 data modify storage dpi:generated named_icon_names."wolf_sound_variant" set value "wolf_variant_folder"
+data modify storage dpi:generated named_icons."wolf_sound_variant_file" set value {atlas:"items", sprite:"dpi:icons/wolf_variant_file"}
+data modify storage dpi:generated named_icon_names."wolf_sound_variant_file" set value "wolf_variant_file"
 data modify storage dpi:generated named_icons."wolf_variant" set value {atlas:"items", sprite:"dpi:icons/wolf_variant_folder"}
 data modify storage dpi:generated named_icon_names."wolf_variant" set value "wolf_variant_folder"
+data modify storage dpi:generated named_icons."wolf_variant_file" set value {atlas:"items", sprite:"dpi:icons/wolf_variant_file"}
+data modify storage dpi:generated named_icon_names."wolf_variant_file" set value "wolf_variant_file"
 data modify storage dpi:generated named_icons."wordlists" set value {atlas:"items", sprite:"dpi:icons/text_folder"}
 data modify storage dpi:generated named_icon_names."wordlists" set value "text_folder"
+data modify storage dpi:generated named_icons."wordlists_file" set value {atlas:"items", sprite:"dpi:icons/text_file"}
+data modify storage dpi:generated named_icon_names."wordlists_file" set value "text_file"
 data modify storage dpi:generated named_icons."world" set value {atlas:"items", sprite:"dpi:icons/worldgen_folder"}
 data modify storage dpi:generated named_icon_names."world" set value "worldgen_folder"
 data modify storage dpi:generated named_icons."world_clock" set value {atlas:"items", sprite:"dpi:icons/timeline_folder"}
 data modify storage dpi:generated named_icon_names."world_clock" set value "timeline_folder"
+data modify storage dpi:generated named_icons."world_clock_file" set value {atlas:"items", sprite:"dpi:icons/timeline_file"}
+data modify storage dpi:generated named_icon_names."world_clock_file" set value "timeline_file"
+data modify storage dpi:generated named_icons."world_file" set value {atlas:"items", sprite:"dpi:icons/worldgen_file"}
+data modify storage dpi:generated named_icon_names."world_file" set value "worldgen_file"
 data modify storage dpi:generated named_icons."worldgen" set value {atlas:"items", sprite:"dpi:icons/worldgen_folder"}
 data modify storage dpi:generated named_icon_names."worldgen" set value "worldgen_folder"
+data modify storage dpi:generated named_icons."worldgen_file" set value {atlas:"items", sprite:"dpi:icons/worldgen_file"}
+data modify storage dpi:generated named_icon_names."worldgen_file" set value "worldgen_file"
 data modify storage dpi:generated named_icons."wsl" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."wsl" set value "linux_folder"
+data modify storage dpi:generated named_icons."wsl_file" set value {atlas:"items", sprite:"dpi:icons/linux_file"}
+data modify storage dpi:generated named_icon_names."wsl_file" set value "linux_file"
 data modify storage dpi:generated named_icons."zig" set value {atlas:"items", sprite:"dpi:icons/zig_folder"}
 data modify storage dpi:generated named_icon_names."zig" set value "zig_folder"
 data modify storage dpi:generated named_icons."zig-cache" set value {atlas:"items", sprite:"dpi:icons/zig_folder"}
 data modify storage dpi:generated named_icon_names."zig-cache" set value "zig_folder"
+data modify storage dpi:generated named_icons."zig-cache_file" set value {atlas:"items", sprite:"dpi:icons/zig_file"}
+data modify storage dpi:generated named_icon_names."zig-cache_file" set value "zig_file"
 data modify storage dpi:generated named_icons."zig-out" set value {atlas:"items", sprite:"dpi:icons/zig_folder"}
 data modify storage dpi:generated named_icon_names."zig-out" set value "zig_folder"
+data modify storage dpi:generated named_icons."zig-out_file" set value {atlas:"items", sprite:"dpi:icons/zig_file"}
+data modify storage dpi:generated named_icon_names."zig-out_file" set value "zig_file"
+data modify storage dpi:generated named_icons."zig_file" set value {atlas:"items", sprite:"dpi:icons/zig_file"}
+data modify storage dpi:generated named_icon_names."zig_file" set value "zig_file"
 data modify storage dpi:generated named_icons."zombie_nautilus_variant" set value {atlas:"items", sprite:"dpi:icons/zombie_nautilus_variant_folder"}
 data modify storage dpi:generated named_icon_names."zombie_nautilus_variant" set value "zombie_nautilus_variant_folder"
+data modify storage dpi:generated named_icons."zombie_nautilus_variant_file" set value {atlas:"items", sprite:"dpi:icons/zombie_nautilus_variant_file"}
+data modify storage dpi:generated named_icon_names."zombie_nautilus_variant_file" set value "zombie_nautilus_variant_file"
 data modify storage dpi:generated named_icons."zsh" set value {atlas:"items", sprite:"dpi:icons/shell_folder"}
 data modify storage dpi:generated named_icon_names."zsh" set value "shell_folder"
+data modify storage dpi:generated named_icons."zsh_file" set value {atlas:"items", sprite:"dpi:icons/shell_file"}
+data modify storage dpi:generated named_icon_names."zsh_file" set value "shell_file"
