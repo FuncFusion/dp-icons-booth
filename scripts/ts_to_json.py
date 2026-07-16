@@ -72,6 +72,8 @@ def main():
 
             for fol in entry.get("foldernames", []):
                 named[fol] = icon_name
+                if icon_name.endswith("_folder"):
+                    named[f"{fol}_file"] = icon_name.removesuffix("_folder") + "_file"
 
     typed.setdefault("dir", "generic_folder")
     typed.setdefault("mcfunction", "mcfunction_file")
