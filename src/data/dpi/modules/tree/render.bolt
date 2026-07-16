@@ -74,6 +74,14 @@ function dpi:tree/render/init:
 function dpi:tree/render/main:
   node = stack.node[-1]
 
+  if stack.path[0]:
+    at @s function dpi:tree/render/apply_depth
+    storage.node.render.input = node
+    tellraw @a [stack.path, node.name]
+    at @s function dpi:node/summon
+    at @s function dpi:tree/render/reset_depth
+    tp @s ~ ~-0.3 ~
+
   if node.children:
     if not node.closed:
       stack.loops.append(node.children)
@@ -91,13 +99,6 @@ function dpi:tree/render/children:
     parent = stack.node[-1]
     stack.path.append(parent.name)
     stack.node.append(child)
-
-    at @s function dpi:tree/render/apply_depth
-    storage.node.render.input = child
-    tellraw @a [stack.path, child.name]
-    at @s function dpi:node/summon
-    at @s function dpi:tree/render/reset_depth
-    tp @s ~ ~-0.3 ~
 
     at @s function dpi:tree/render/main
     stack.path[-1].remove()
