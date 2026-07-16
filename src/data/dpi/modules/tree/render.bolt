@@ -10,15 +10,18 @@ stack = storage.rebuild.args
 
 update_tree = var["#dpi.tree.update_pending"]
 in_namespace = var["#dpi.tree.in_namespace"]
-parent_ns = var["#dpi.tree.parent_ns"]
+parent_is_namespace = var["#dpi.tree.parent_is_namespace"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+depth = var["#dpi.depth"]
+render_input = storage.node.render.input
+parent = storage.temp.parent
+resource_type = storage.temp.resource_type
 
 function dpi:node/summon:
   function dpi:node/render/get_name
   function dpi:node/render/spawn
 
 function dpi:node/render/get_name:
-  input = storage.node.render.input
 
   icon = storage.icon
   icon.remove()
@@ -29,12 +32,12 @@ function dpi:node/render/get_name:
     $execute if data storage dpi:generated named_icons."$(resource_type)_file" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)_file"
     $data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)"
 
-  if input.closed:
-    if in_namespace and input.type == "dir":
+  if render_input.closed:
+    if in_namespace and render_input.type == "dir":
       icon = get_icon("namespace_folder_closed")
     else:
       icon = get_icon("generic_folder_closed")
-  elif in_namespace and input.type == "dir":
+  elif in_namespace and render_input.type == "dir":
     icon = get_icon("namespace_folder")
 
   if not icon:
@@ -59,8 +62,8 @@ function dpi:node/render/spawn:
   execute as @n[tag=dpi.node.new, type=interaction]:
     entity = expr.Data.entity("@s")
     on passengers run tag @s add dpi.tree.node
-    entity.data.node = input
-    id["@s"] = input.id
+    entity.data.node = render_input
+    id["@s"] = render_input.id
     if data storage dpi:main node.render.input{type:"dir"} run tag @s add dpi.node.dir
     if data storage dpi:main node.render.input.closed run tag @s add dpi.node.closed
     tag @s remove dpi.node.new
@@ -68,10 +71,9 @@ function dpi:node/render/spawn:
 function dpi:tree/render/init:
   root = storage.tree.render.input
 
-  depth = var["#dpi.depth"]
   depth = 0
   in_namespace = 0
-  storage.temp.resource_type = "none"
+  resource_type = "none"
 
   stack.node = []
   stack.node.append(root)
@@ -88,8 +90,8 @@ function dpi:tree/render/main:
 
   if stack.path[0]:
     at @s function dpi:tree/render/apply_depth
-    storage.node.render.input = node
-    storage.node.render.input.resource_type = storage.temp.resource_type
+    render_input = node
+    render_input.resource_type = resource_type
     at @s function dpi:node/summon
     at @s function dpi:tree/render/reset_depth
     tp @s ~ ~-0.3 ~
@@ -110,19 +112,19 @@ function dpi:tree/render/children:
   child = stack.loops[-1][0]
 
   if child:
-    storage.temp.parent = stack.node[-1]
-    stack.path.append(storage.temp.parent.name)
+    parent = stack.node[-1]
+    stack.path.append(parent.name)
 
     entry = storage.temp.current_child
     entry = child
     in_namespace = 0
-    if storage.temp.parent.name == "data":
+    if parent.name == "data":
       in_namespace = 1
-    if storage.temp.parent.name == "assets":
+    if parent.name == "assets":
       in_namespace = 1
-    parent_ns = stack.in_namespace[-1]
-    if parent_ns:
-      storage.temp.resource_type = entry.name
+    parent_is_namespace = stack.in_namespace[-1]
+    if parent_is_namespace:
+      resource_type = entry.name
     stack.node.append(child)
     at @s function dpi:tree/render/main
 
