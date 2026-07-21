@@ -14,9 +14,9 @@ function dpi:node/toggle/select:
   as @e[tag=dpi.node.selected] function dpi:node/unselect
 
   function dpi:node/select
-  # on target run dialog show @s dpi:node/context_menu
 
 function dpi:node/unselect:
+  function dpi:node/context_menu/kill
   tag @s remove dpi.node.selected
 
   entity = expr.Data.entity("@s")
@@ -30,8 +30,8 @@ function dpi:node/unselect:
   execute on passengers:
     entity.text = render_name
 
-
 function dpi:node/select:
+  function dpi:node/context_menu/spawn
   tag @s add dpi.node.selected
 
   entity = expr.Data.entity("@s")
@@ -47,16 +47,42 @@ function dpi:node/select:
   execute on passengers:
     entity.text = render_name
 
+function dpi:node/context_menu/spawn:
+  remove_button_action = "function dpi:trigger_callback/remove"
+
+  remove_button = gui.Button(remove_button_action, remove_button_action, "d")
+  execute positioned ~-2.2 ~ ~2:
+    remove_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu"])
+
+  rename_button_action = "function dpi:trigger_callback/rename"
+
+  rename_button = gui.Button(rename_button_action, rename_button_action, "e")
+  execute positioned ~-2.4 ~ ~2:
+    rename_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu"])
+
+  create_button_action = "function dpi:trigger_callback/create"
+
+  create_button = gui.Button(create_button_action, create_button_action, "a")
+  execute positioned ~-2.6 ~ ~2:
+    create_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu"])
+
+function dpi:node/context_menu/kill:
+  kill @e[tag=dpi.node.context_menu]
+
 append function dpi:trigger_callback/create:
-  function dpi:node/create/book
+  execute on attacker run function dpi:node/create/book
+  execute on target run function dpi:node/create/book
+  function dpi:node/unselect
 
 append function dpi:trigger_callback/rename:
-  function dpi:node/rename/book
+  execute on attacker run function dpi:node/rename/book
+  execute on target run function dpi:node/rename/book
+  function dpi:node/unselect
 
 append function dpi:trigger_callback/remove:
-  function dpi:node/remove
-  # as @n[tag=dpi.node.selected]:
-  #   function dpi:node/remove
+  execute on attacker run function dpi:node/remove/book
+  execute on target run function dpi:node/remove/book
+  function dpi:node/unselect
 
 dialog dpi:node/operate {
   "type": "minecraft:multi_action",
