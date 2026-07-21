@@ -14,6 +14,7 @@ class Tree:
   def render(self):
     storage.tree.render.input = self.root.node()
     execute positioned ~ ~ ~ run function dpi:tree/render/init
+    function dpi:tree/render/presets
 
   def kill(self):
     kill @e[tag=dpi.tree.node]
