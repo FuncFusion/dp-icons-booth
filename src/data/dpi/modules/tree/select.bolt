@@ -71,12 +71,10 @@ function dpi:node/context_menu/kill:
 append function dpi:trigger_callback/create:
   execute on attacker run function dpi:node/create/book
   execute on target run function dpi:node/create/book
-  as @e[tag=dpi.node.selected] function dpi:node/unselect
 
 append function dpi:trigger_callback/rename:
   execute on attacker run function dpi:node/rename/book
   execute on target run function dpi:node/rename/book
-  as @e[tag=dpi.node.selected] function dpi:node/unselect
 
 append function dpi:trigger_callback/remove:
   function dpi:node/remove
