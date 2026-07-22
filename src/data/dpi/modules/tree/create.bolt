@@ -70,14 +70,10 @@ function dpi:node/create/main:
   node = stack.node[-1]
   parent_id = var["#dpi.parent_id"]
 
-  tellraw @a ["[create/main] node:", storage.rebuild.args.node[-1], " parent_id:", var["#dpi.parent_id"]]
-
   if node.children:
     stack.loops.append(node.children)
     function dpi:node/create/children
     stack.loops[-1].remove()
-
-  tellraw @a ["[create/main after] node id:", storage.rebuild.args.node[-1].id, " parent_id:", var["#dpi.parent_id"]]
 
   if node.id == parent_id:
     create_input = storage.node.create.input
@@ -120,11 +116,8 @@ function dpi:node/create/children:
   child = current_layer[0]
   parent_id = var["#dpi.parent_id"]
 
-  tellraw @a ["[create/children] child:", storage.rebuild.args.loops[-1][0], " parent_id:", var["#dpi.parent_id"]]
-
   if child:
     if child.id == parent_id and not child.children:
-      tellraw @a ["[create/children] LEAF MATCH child:", storage.rebuild.args.loops[-1][0]]
       create_input = storage.node.create.input
       global_id += 1
       new_child = storage.temp.new_child
@@ -135,7 +128,6 @@ function dpi:node/create/children:
         new_child.children = []
       stack.new_children[-1].append(new_child)
       parent_id = 0
-      tellraw @a ["[create/children] parent_id=0, now var=", var["#dpi.parent_id"]]
 
     stack.node.append(child)
     function dpi:node/create/main
