@@ -38,16 +38,16 @@ function dpi:node/remove/main:
   entry.name = node.name
   entry.type = node.type
   entry.id = node.id
-  
+
   current_collected = stack.new_children[-1]
   if current_collected[0]:
     entry.children = current_collected
   else:
-    entry.children = []
-  
+    entry.children.remove()
+
   stack.new_children[-1].remove()
   stack.node[-1].remove()
-  
+
   if stack.new_children[0]:
     stack.new_children[-1].append(entry)
   else:
@@ -59,7 +59,7 @@ function dpi:node/remove/children:
 
   if child:
     target_id = var["#dpi.target_id"]
-    
+
     if not child.id == target_id:
       stack.node.append(child)
       function dpi:node/remove/main
