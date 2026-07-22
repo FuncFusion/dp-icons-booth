@@ -13,6 +13,7 @@ in_namespace = var["#dpi.tree.in_namespace"]
 parent_is_namespace = var["#dpi.tree.parent_is_namespace"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 depth = var["#dpi.depth"]
+xmas_theme = var["#dpi.xmas_theme"]
 render_input = storage.node.render.input
 parent = storage.temp.parent
 resource_type = storage.temp.resource_type
@@ -40,14 +41,29 @@ function dpi:node/render/get_name:
 
   if render_input.closed:
     if in_namespace and render_input.type == "dir":
-      icon = get_icon("namespace_folder_closed")
+      if xmas_theme:
+        icon = get_icon("namespace_folder_closed_xmas")
+      else:
+        icon = get_icon("namespace_folder_closed")
     else:
-      icon = get_icon("generic_folder_closed")
+      if xmas_theme:
+        icon = get_icon("generic_folder_closed_xmas")
+      else:
+        icon = get_icon("generic_folder_closed")
   elif in_namespace and render_input.type == "dir":
-    icon = get_icon("namespace_folder")
+    if xmas_theme:
+      icon = get_icon("namespace_folder_xmas")
+      function dpi:xmas/try_named_icon with storage dpi:main node.render.input
+    else:
+      icon = get_icon("namespace_folder")
+  elif xmas_theme and not render_input.closed and render_input.type == "dir":
+    icon = get_icon("generic_folder_xmas")
+    function dpi:xmas/try_named_icon with storage dpi:main node.render.input
 
   if not icon:
     icon = get_icon("generic_file")
+
+  tellraw @a ["[render] name:", storage.node.render.input.name, " type:", storage.node.render.input.type, " closed:", storage.node.render.input.closed, " in_ns:", var["#dpi.tree.in_namespace"], " xmas:", var["#dpi.xmas_theme"], " icon:", storage.icon.sprite]
 
   function dpi:node/render/build_name
 

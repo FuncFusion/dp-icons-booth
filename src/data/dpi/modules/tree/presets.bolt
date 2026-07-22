@@ -6,6 +6,22 @@ import dpi:gui as gui
 preset_index = var["#dpi.tree.preset_index"]
 preset_amount = var["#dpi.tree.preset_amount"]
 update_tree = var["#dpi.tree.update_pending"]
+xmas_theme = var["#dpi.xmas_theme"]
+
+function dpi:xmas/toggle:
+  if xmas_theme:
+    xmas_theme = 0
+  else:
+    xmas_theme = 1
+  update_tree = 1
+
+function dpi:xmas/try_named_icon:
+  $execute if data storage dpi:generated named_icons."$(name)_xmas" run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)_xmas"
+
+function dpi:xmas/init:
+  data modify storage dpi:generated typed_icons."dir_xmas" set value {atlas:"items", sprite:"dpi:icons/generic_folder_xmas"}
+  data modify storage dpi:generated named_icons."tags_xmas" set value {atlas:"items", sprite:"dpi:icons/tags_folder_xmas"}
+  data modify storage dpi:generated named_icons."function_xmas" set value {atlas:"items", sprite:"dpi:icons/function_folder_xmas"}
 
 function dpi:tree/render/presets:
   kill @e[tag=dpi.tree.preset_display]
@@ -27,6 +43,14 @@ function dpi:tree/render/presets:
   cycle_back_button = gui.Button(cycle_back_lmb, cycle_back_rmb, "⬅ back")
   execute positioned 110.75 84.25 -123.95:
     cycle_back_button.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
+
+  if xmas_theme:
+    storage.xmas_button_text = {text:"🎄 Xmas", color:"green"}
+  else:
+    storage.xmas_button_text = {text:"❄ Xmas", color:"dark_gray"}
+  xmas_toggle = gui.Button("function dpi:xmas/toggle", "function dpi:xmas/toggle", print_nbt("xmas_button_text"))
+  execute positioned 111.25 84.85 -123.95:
+    xmas_toggle.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
 function dpi:tree/preset/cycle_back:
   preset_index -= 1
@@ -62,6 +86,8 @@ append function dpi:load:
 
   for preset in presets.keys():
     function f"dpi:fs/preset/{preset}"
+
+  function dpi:xmas/init
 
 function dpi:fs/preset/datapack:
   datapack_preset = storage.fs.preset.datapack
