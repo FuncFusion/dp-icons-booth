@@ -46,6 +46,7 @@ function dpi:node/rename/submit:
       target_id = var["#dpi.target_id"]
       target_id = id["@s"]
       function dpi:node/rename
+      function dpi:node/unselect
   else:
     tellraw @a [{text:"String can't be longer than 48 characters!", color:"red"}]
 
