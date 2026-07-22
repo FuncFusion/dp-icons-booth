@@ -107,10 +107,12 @@ class Button:
 
         if self.on_left_click != "":
             function left_click_callback:
+                execute on attacker run playsound ui.button.click master @s ~ ~ ~ 1
                 execute on attacker run scoreboard players enable @s dpi.trigger_action 
                 raw self.on_left_click
         if self.on_right_click != "":
             function right_click_callback:
+                execute on target run playsound ui.button.click master @s ~ ~ ~ 1
                 execute on target run scoreboard players enable @s dpi.trigger_action 
                 raw self.on_right_click
 
