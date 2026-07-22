@@ -24,11 +24,11 @@ function dpi:node/unselect:
   node = entity.data.node
 
   storage.node.render.input = node
-  function dpi:node/render/get_name
-  render_name = print_nbt("node.render.output")
-
   execute on passengers:
-    entity.text = render_name
+    storage.temp.display_text = entity.text
+  storage.temp.display_text.extra[1] = storage.node.render.input.name
+  execute on passengers:
+    entity.text = storage.temp.display_text
 
 function dpi:node/select:
   function dpi:node/context_menu/spawn
@@ -39,13 +39,12 @@ function dpi:node/select:
   node = entity.data.node
 
   storage.node.render.input = node
-  function dpi:node/render/get_name
-
-  storage.node.render.output[2].color = "aqua"
-  render_name = print_nbt("node.render.output")
-
   execute on passengers:
-    entity.text = render_name
+    storage.temp.display_text = entity.text
+  storage.temp.display_text.extra[1] = {text: "", color: "aqua"}
+  storage.temp.display_text.extra[1].text = storage.node.render.input.name
+  execute on passengers:
+    entity.text = storage.temp.display_text
 
 function dpi:node/context_menu/spawn:
   remove_button_action = "function dpi:trigger_callback/remove"
@@ -72,17 +71,16 @@ function dpi:node/context_menu/kill:
 append function dpi:trigger_callback/create:
   execute on attacker run function dpi:node/create/book
   execute on target run function dpi:node/create/book
-  function dpi:node/unselect
+  as @e[tag=dpi.node.selected] function dpi:node/unselect
 
 append function dpi:trigger_callback/rename:
   execute on attacker run function dpi:node/rename/book
   execute on target run function dpi:node/rename/book
-  function dpi:node/unselect
+  as @e[tag=dpi.node.selected] function dpi:node/unselect
 
 append function dpi:trigger_callback/remove:
-  execute on attacker run function dpi:node/remove/book
-  execute on target run function dpi:node/remove/book
-  function dpi:node/unselect
+  function dpi:node/remove
+  as @e[tag=dpi.node.selected] function dpi:node/unselect
 
 dialog dpi:node/operate {
   "type": "minecraft:multi_action",
