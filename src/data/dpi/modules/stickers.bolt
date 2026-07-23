@@ -100,5 +100,9 @@ generate_completion_advancement([
     "dpi.button.dp_essentials_link",
     "dpi.button.amandin_github_link",
     "dpi.button.ant_balloon",
-    "dpi.waiting_for_click"
+    "dpi.waiting_for_click",
+    "dpi.node.context_menu.rename",
+    "dpi.node.context_menu.remove",
+    "dpi.node.context_menu.create_file",
+    "dpi.node.context_menu.create_dir",
 ])
