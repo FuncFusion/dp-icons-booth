@@ -56,25 +56,25 @@ function dpi:node/context_menu/spawn:
 
   remove_button = gui.Button(remove_button_action, remove_button_action, [{atlas:"items", sprite:"dpi:icons/misc/antbot/deleted_msg"}])
   execute positioned ~-2.2 ~ ~2:
-    remove_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu"])
+    remove_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu", "dpi.node.context_menu.remove"])
 
   rename_button_action = "function dpi:trigger_callback/rename"
 
   rename_button = gui.Button(rename_button_action, rename_button_action, [{atlas:"items", sprite:"dpi:icons/misc/antbot/edited_msg"}])
   execute positioned ~-2.5 ~ ~2:
-    rename_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu"])
+    rename_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu", "dpi.node.context_menu.rename"])
 
   create_file_button_action = "function dpi:trigger_callback/create_file"
 
   create_file_button = gui.Button(create_file_button_action, create_file_button_action, [{atlas:"items", sprite:"dpi:icons/misc/create_file"}])
   execute positioned ~-3.1 ~ ~2:
-    create_file_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu"])
+    create_file_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu", "dpi.node.context_menu.create_file"])
 
   create_dir_button_action = "function dpi:trigger_callback/create_dir"
 
   create_dir_button = gui.Button(create_dir_button_action, create_dir_button_action, [{atlas:"items", sprite:"dpi:icons/misc/create_folder"}])
   execute positioned ~-2.8 ~ ~2:
-    create_dir_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu"])
+    create_dir_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu", "dpi.node.context_menu.create_dir"])
 
 function dpi:node/context_menu/kill:
   kill @e[tag=dpi.node.context_menu]
