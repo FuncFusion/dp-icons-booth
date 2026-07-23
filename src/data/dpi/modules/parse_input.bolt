@@ -2,27 +2,18 @@ from dpi:config import storage, var
 import bolt_expressions as expr
 
 function dpi:parse_input/init:
-  sio_has_slash = var["#dpi.sio_has_slash"]
-  sio_has_slash = 0
   raw_name = storage.parse_input.input.raw_name[str]
 
   function dpi:split_string/init
 
-  last_char = storage.split_string.output[-1]
+  storage.get_type.input = storage.split_string.output
+  function dpi:get_type/init
 
-  if last_char == "/":
-    sio_has_slash = 1
-    storage.parse_input.output.file_name = raw_name[:-1]
-    storage.parse_input.output.type = "dir"
-  else:
-    storage.get_type.input = storage.split_string.output
-    function dpi:get_type/init
+  storage.join_string.input = storage.get_type.output
+  function dpi:join_string/init
 
-    storage.join_string.input = storage.get_type.output
-    function dpi:join_string/init
-
-    storage.parse_input.output.file_name = raw_name
-    storage.parse_input.output.type = storage.join_string.output
+  storage.parse_input.output.file_name = raw_name
+  storage.parse_input.output.type = storage.join_string.output
 
 
 function dpi:split_string/init:
@@ -48,17 +39,12 @@ function dpi:get_type/init:
   gt_input = storage.get_type.input
   gt_output = storage.get_type.output
   
-  sio_has_slash = var["#dpi.sio_has_slash"]
-  if sio_has_slash == 1:
-    gt_output = ["d","i","r"]
-  
-  if sio_has_slash == 0:
-    gt_output = []
-    gt_count = var["#dpi.gt_count"]
-    gt_count = 0
-    gt_length = var["#dpi.gt_length"]
-    gt_length = len(gt_input)
-    function dpi:get_type/main
+  gt_output = []
+  gt_count = var["#dpi.gt_count"]
+  gt_count = 0
+  gt_length = var["#dpi.gt_length"]
+  gt_length = len(gt_input)
+  function dpi:get_type/main
 
 function dpi:get_type/main:
   gt_count += 1

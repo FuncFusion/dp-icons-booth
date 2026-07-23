@@ -16,6 +16,8 @@ append function dpi:tick/booth_player:
 
 function dpi:node/rename/book:
   execute if entity @s[tag=dpi.tree.banned] run return run title @s actionbar {text:"You are banned from creating/renaming files and folders",color:"red"}
+  execute if entity @s[tag=dpi.pending] run return run title @s actionbar {text:"You already have a pending rename!",color:"red"}
+  tag @s add dpi.pending
   item modify entity @s weapon.mainhand dpi:turn_equippable
   item replace entity @s saddle from entity @s weapon.mainhand
   item replace entity @s weapon.mainhand with writable_book[
@@ -34,6 +36,7 @@ function dpi:node/rename/submit:
 
   if sio_length < 48:
     item replace entity @s weapon.mainhand from entity @s saddle
+    tag @s remove dpi.pending
 
     storage.parse_input.input.raw_name = sio_output
     storage.split_string.input = sio_output

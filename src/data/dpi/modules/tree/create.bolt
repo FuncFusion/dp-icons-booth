@@ -2,6 +2,7 @@ from dpi:config import storage, var
 import bolt_expressions as expr
 
 update_tree = var["#dpi.tree.update_pending"]
+create_supplied_type = var["#dpi.create_supplied_type"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
 global_id = var["#dpi.node.global_id"]
 
@@ -17,6 +18,8 @@ append function dpi:tick/booth_player:
 
 function dpi:node/create/book:
   execute if entity @s[tag=dpi.tree.banned] run return run title @s actionbar {text:"You are banned from creating/renaming files and folders",color:"red"}
+  execute if entity @s[tag=dpi.pending] run return run title @s actionbar {text:"You already have a pending creation!",color:"red"}
+  tag @s add dpi.pending
   item modify entity @s weapon.mainhand dpi:turn_equippable
   item replace entity @s saddle from entity @s weapon.mainhand
   item replace entity @s weapon.mainhand with writable_book[
@@ -35,13 +38,19 @@ function dpi:node/create/submit:
 
   if sio_length < 48:
     item replace entity @s weapon.mainhand from entity @s saddle
+    tag @s remove dpi.pending
 
-    storage.parse_input.input.raw_name = sio_output
-    storage.split_string.input = sio_output
-    function dpi:parse_input/init
+    if create_supplied_type == 1:
+      create_supplied_type = 0
+      storage.node.create.input.file_name = sio_output
+      storage.node.create.input.type = "dir"
+    else:
+      storage.parse_input.input.raw_name = sio_output
+      storage.split_string.input = sio_output
+      function dpi:parse_input/init
+      storage.node.create.input.file_name = storage.parse_input.output.file_name
+      storage.node.create.input.type = storage.parse_input.output.type
 
-    storage.node.create.input.file_name = storage.parse_input.output.file_name
-    storage.node.create.input.type = storage.parse_input.output.type
     as @n[tag=dpi.node.selected]:
       parent_id = var["#dpi.parent_id"]
       parent_id = id["@s"]
