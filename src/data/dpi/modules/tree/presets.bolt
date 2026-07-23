@@ -1,12 +1,14 @@
 from dpi:filesystem import Node
 from dpi:trigger_actions import Action
-from dpi:config import storage, var, print_nbt
+from dpi:config import storage, var, print_nbt, global_tick
 import dpi:gui as gui
+import bolt_expressions as expr
 
 preset_index = var["#dpi.tree.preset_index"]
 preset_amount = var["#dpi.tree.preset_amount"]
 update_tree = var["#dpi.tree.update_pending"]
 xmas_theme = var["#dpi.xmas_theme"]
+preset_cd = expr.Scoreboard.objective("dpi.preset_cd", "dummy")
 
 function dpi:xmas/toggle:
   execute on attacker if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
@@ -61,12 +63,26 @@ function dpi:tree/render/presets:
 function dpi:tree/preset/cycle_back:
   if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
 
+  elapsed = var["#dpi.preset_elapsed"]
+  elapsed = global_tick
+  elapsed -= preset_cd["@s"]
+  if elapsed < 10:
+    return 0
+
+  preset_cd["@s"] = global_tick
   preset_index -= 1
   function dpi:tree/preset/apply_preset
 
 function dpi:tree/preset/cycle_next:
   if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
 
+  elapsed = var["#dpi.preset_elapsed"]
+  elapsed = global_tick
+  elapsed -= preset_cd["@s"]
+  if elapsed < 10:
+    return 0
+
+  preset_cd["@s"] = global_tick
   preset_index += 1
   function dpi:tree/preset/apply_preset
 
