@@ -27,21 +27,21 @@ function dpi:tree/render/presets:
   kill @e[tag=dpi.tree.preset_display]
 
   preset_display = gui.Button("", "", print_nbt("fs.preset_name"))
-  execute positioned 111.25 84.55 -123.95:
+  execute positioned 110.75 84.55 -123.95:
     preset_display.spawn("south", 2, 0.25, tags=["dpi.tree.preset_display"])
 
   cycle_next_lmb = "execute on attacker run function dpi:tree/preset/cycle_next"
   cycle_next_rmb = "execute on target run function dpi:tree/preset/cycle_next"
 
   cycle_next_button = gui.Button(cycle_next_lmb, cycle_next_rmb, "next ➡")
-  execute positioned 111.75 84.25 -123.95:
+  execute positioned 111.25 84.25 -123.95:
     cycle_next_button.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
   cycle_back_lmb = "execute on attacker run function dpi:tree/preset/cycle_back"
   cycle_back_rmb = "execute on target run function dpi:tree/preset/cycle_back"
 
   cycle_back_button = gui.Button(cycle_back_lmb, cycle_back_rmb, "⬅ back")
-  execute positioned 110.75 84.25 -123.95:
+  execute positioned 110.25 84.25 -123.95:
     cycle_back_button.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
   if xmas_theme:
@@ -49,7 +49,7 @@ function dpi:tree/render/presets:
   else:
     storage.xmas_button_text = {text:"❄ Xmas", color:"dark_gray"}
   xmas_toggle = gui.Button("function dpi:xmas/toggle", "function dpi:xmas/toggle", print_nbt("xmas_button_text"))
-  execute positioned 111.25 84.85 -123.95:
+  execute positioned 110.75 84.85 -123.95:
     xmas_toggle.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
 function dpi:tree/preset/cycle_back:

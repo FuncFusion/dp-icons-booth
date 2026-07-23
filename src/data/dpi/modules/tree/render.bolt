@@ -63,8 +63,6 @@ function dpi:node/render/get_name:
   if not icon:
     icon = get_icon("generic_file")
 
-  tellraw @a ["[render] name:", storage.node.render.input.name, " type:", storage.node.render.input.type, " closed:", storage.node.render.input.closed, " in_ns:", var["#dpi.tree.in_namespace"], " xmas:", var["#dpi.xmas_theme"], " icon:", storage.icon.sprite]
-
   function dpi:node/render/build_name
 
 function dpi:node/right_click:
