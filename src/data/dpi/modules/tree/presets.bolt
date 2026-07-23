@@ -9,6 +9,9 @@ update_tree = var["#dpi.tree.update_pending"]
 xmas_theme = var["#dpi.xmas_theme"]
 
 function dpi:xmas/toggle:
+  execute on attacker if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
+  execute on target if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
+
   if xmas_theme:
     xmas_theme = 0
   else:
@@ -56,10 +59,14 @@ function dpi:tree/render/presets:
     xmas_toggle.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
 function dpi:tree/preset/cycle_back:
+  if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
+
   preset_index -= 1
   function dpi:tree/preset/apply_preset
 
 function dpi:tree/preset/cycle_next:
+  if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
+
   preset_index += 1
   function dpi:tree/preset/apply_preset
 
