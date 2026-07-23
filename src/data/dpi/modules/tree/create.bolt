@@ -18,8 +18,8 @@ append function dpi:tick/player:
 
 function dpi:node/create/book:
   execute if entity @s[tag=dpi.tree.banned] run return run title @s actionbar {text:"You are banned from creating/renaming files and folders",color:"red"}
-  execute if entity @s[tag=dpi.pending] run return run title @s actionbar {text:"You already have a pending creation!",color:"red"}
   tag @s add dpi.pending
+  item replace entity @s weapon.mainhand from entity @s saddle
   item modify entity @s weapon.mainhand dpi:turn_equippable
   item replace entity @s saddle from entity @s weapon.mainhand
   item replace entity @s weapon.mainhand with writable_book[
