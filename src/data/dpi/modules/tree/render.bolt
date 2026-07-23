@@ -9,6 +9,7 @@ from dpi:filesystem import Node
 stack = storage.rebuild.args
 
 update_tree = var["#dpi.tree.update_pending"]
+is_dir = var["#dpi.node.is_dir"]
 in_namespace = var["#dpi.tree.in_namespace"]
 parent_is_namespace = var["#dpi.tree.parent_is_namespace"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
@@ -39,8 +40,21 @@ function dpi:node/render/get_name:
     $execute if data storage dpi:generated named_icons."$(resource_type)_file" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)_file"
     $data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)"
 
-  if render_input.closed:
-    if in_namespace and render_input.type == "dir":
+  storage.node.render.icon_ctx.closed = render_input.closed
+  storage.node.render.icon_ctx.in_namespace = in_namespace
+
+  is_dir = 0
+  if render_input.type == "dir":
+    is_dir = 1
+  storage.node.render.icon_ctx.is_dir = is_dir
+
+  function dpi:node/render/resolve_icon
+
+  function dpi:node/render/build_name
+
+function dpi:node/render/resolve_icon:
+  if icon_ctx.closed:
+    if icon_ctx.in_namespace and icon_ctx.is_dir:
       if xmas_theme:
         icon = get_icon("namespace_folder_closed_xmas")
       else:
@@ -50,20 +64,23 @@ function dpi:node/render/get_name:
         icon = get_icon("generic_folder_closed_xmas")
       else:
         icon = get_icon("generic_folder_closed")
-  elif in_namespace and render_input.type == "dir":
+  elif icon_ctx.in_namespace and icon_ctx.is_dir:
     if xmas_theme:
       icon = get_icon("namespace_folder_xmas")
       function dpi:xmas/try_named_icon with storage dpi:main node.render.input
     else:
       icon = get_icon("namespace_folder")
-  elif xmas_theme and not render_input.closed and render_input.type == "dir":
-    icon = get_icon("generic_folder_xmas")
-    function dpi:xmas/try_named_icon with storage dpi:main node.render.input
+  elif not icon_ctx.closed and icon_ctx.is_dir:
+    if xmas_theme:
+      has_named_icon = var["#dpi.has_named_icon"]
+      has_named_icon = 0
+      execute run function dpi:xmas/has_named_icon with storage dpi:main node.render.input
+      function dpi:xmas/try_named_icon with storage dpi:main node.render.input
+      if not has_named_icon:
+        icon = get_icon("generic_folder_xmas")
 
   if not icon:
     icon = get_icon("generic_file")
-
-  function dpi:node/render/build_name
 
 function dpi:node/right_click:
   function dpi:node/toggle/select
