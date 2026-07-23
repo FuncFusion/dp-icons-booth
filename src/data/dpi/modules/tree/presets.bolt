@@ -18,6 +18,9 @@ function dpi:xmas/toggle:
 function dpi:xmas/try_named_icon:
   $execute if data storage dpi:generated named_icons."$(name)_xmas" run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)_xmas"
 
+function dpi:xmas/has_named_icon:
+  $execute if data storage dpi:generated named_icons."$(name)" run scoreboard players set #dpi.has_named_icon dpi.var 1
+
 function dpi:xmas/init:
   data modify storage dpi:generated typed_icons."dir_xmas" set value {atlas:"items", sprite:"dpi:icons/generic_folder_xmas"}
   data modify storage dpi:generated named_icons."tags_xmas" set value {atlas:"items", sprite:"dpi:icons/tags_folder_xmas"}
