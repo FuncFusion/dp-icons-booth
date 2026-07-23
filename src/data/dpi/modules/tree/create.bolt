@@ -88,6 +88,7 @@ function dpi:node/create/main:
     create_input = storage.node.create.input
     global_id += 1
     new_child = storage.temp.new_child
+    new_child.children.remove()
     new_child.name = create_input.file_name
     new_child.type = create_input.type
     new_child.id = global_id
@@ -130,6 +131,7 @@ function dpi:node/create/children:
       create_input = storage.node.create.input
       global_id += 1
       new_child = storage.temp.new_child
+      new_child.children.remove()
       new_child.name = create_input.file_name
       new_child.type = create_input.type
       new_child.id = global_id
