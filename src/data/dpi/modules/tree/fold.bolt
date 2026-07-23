@@ -10,6 +10,8 @@ output = storage.rebuild.output
 entry = storage.temp.entry
 
 function dpi:node/fold:
+  execute on attacker if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
+
   target_id = var["#dpi.target_id"]
   target_id = id["@s"]
 
