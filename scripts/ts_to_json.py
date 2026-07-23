@@ -79,6 +79,9 @@ def main():
     typed.setdefault("mcfunction", "mcfunction_file")
     typed.setdefault("mcf", "mcfunction_file")
 
+    named["tick.mcfunction"] = "mcfunction_tick_file"
+    named["load.mcfunction"] = "mcfunction_load_file"
+
     result = {"typed": typed, "named": named}
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)

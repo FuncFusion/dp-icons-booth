@@ -1338,6 +1338,8 @@
     "zig-cache": "zig_folder",
     "zig-cache_file": "zig_file",
     "zig-out": "zig_folder",
-    "zig-out_file": "zig_file"
+    "zig-out_file": "zig_file",
+    "tick.mcfunction": "mcfunction_tick_file",
+    "load.mcfunction": "mcfunction_load_file"
   }
 }

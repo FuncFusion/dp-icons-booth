@@ -2112,6 +2112,8 @@ data modify storage dpi:generated named_icons."linux_file" set value {atlas:"ite
 data modify storage dpi:generated named_icon_names."linux_file" set value "linux_file"
 data modify storage dpi:generated named_icons."load.json" set value {atlas:"items", sprite:"dpi:icons/load.json_file"}
 data modify storage dpi:generated named_icon_names."load.json" set value "load.json_file"
+data modify storage dpi:generated named_icons."load.mcfunction" set value {atlas:"items", sprite:"dpi:icons/mcfunction_load_file"}
+data modify storage dpi:generated named_icon_names."load.mcfunction" set value "mcfunction_load_file"
 data modify storage dpi:generated named_icons."logs" set value {atlas:"items", sprite:"dpi:icons/log_folder"}
 data modify storage dpi:generated named_icon_names."logs" set value "log_folder"
 data modify storage dpi:generated named_icons."logs_file" set value {atlas:"items", sprite:"dpi:icons/log_file"}
@@ -2530,6 +2532,8 @@ data modify storage dpi:generated named_icons."textures_file" set value {atlas:"
 data modify storage dpi:generated named_icon_names."textures_file" set value "image_file"
 data modify storage dpi:generated named_icons."tick.json" set value {atlas:"items", sprite:"dpi:icons/tick.json_file"}
 data modify storage dpi:generated named_icon_names."tick.json" set value "tick.json_file"
+data modify storage dpi:generated named_icons."tick.mcfunction" set value {atlas:"items", sprite:"dpi:icons/mcfunction_tick_file"}
+data modify storage dpi:generated named_icon_names."tick.mcfunction" set value "mcfunction_tick_file"
 data modify storage dpi:generated named_icons."tickets" set value {atlas:"items", sprite:"dpi:icons/todo_folder"}
 data modify storage dpi:generated named_icon_names."tickets" set value "todo_folder"
 data modify storage dpi:generated named_icons."tickets_file" set value {atlas:"items", sprite:"dpi:icons/todo_file"}
