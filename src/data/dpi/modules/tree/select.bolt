@@ -1,9 +1,10 @@
 import bolt_expressions as expr
 from dpi:trigger_actions import Action
-from dpi:config import print_nbt, storage, var
+from dpi:config import print_nbt, storage, var, global_tick
 import dpi:gui as gui
 
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+select_tick = expr.Scoreboard.objective("dpi.select_tick", "dummy")
 
 function dpi:node/toggle/select:
   entity = expr.Data.entity("@s")
@@ -17,11 +18,13 @@ function dpi:node/toggle/select:
 
   function dpi:node/select
   execute on target run tag @s add dpi.pending
+  execute on target run scoreboard players operation @s dpi.select_tick = #dpi.global_tick dpi.var
 
 function dpi:node/unselect:
   function dpi:node/context_menu/kill
   tag @s remove dpi.node.selected
   execute on target run tag @s remove dpi.pending
+  execute on target run scoreboard players set @s dpi.select_tick 0
   execute on target run item replace entity @s weapon.mainhand from entity @s saddle
 
   entity = expr.Data.entity("@s")
@@ -150,3 +153,29 @@ dialog dpi:node/operate {
     }
   ]
 }
+
+append function dpi:tick/player:
+  if entity @s[tag=dpi.pending]:
+    select_elapsed = var["#dpi.select_elapsed"]
+    select_elapsed = global_tick
+    select_elapsed -= select_tick["@s"]
+    if select_elapsed > 1200:
+      tag @s remove dpi.pending
+      select_tick["@s"] = 0
+      item replace entity @s weapon.mainhand from entity @s saddle
+      execute as @n[tag=dpi.node.selected] run function dpi:node/tick/expire_selection
+
+function dpi:node/tick/expire_selection:
+  function dpi:node/context_menu/kill
+  tag @s remove dpi.node.selected
+
+  entity = expr.Data.entity("@s")
+  node = storage.node.select
+  node = entity.data.node
+
+  storage.node.render.input = node
+  execute on passengers:
+    storage.temp.display_text = entity.text
+  storage.temp.display_text.extra[1] = storage.node.render.input.name
+  execute on passengers:
+    entity.text = storage.temp.display_text

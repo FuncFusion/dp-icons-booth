@@ -86,7 +86,11 @@ function dpi:event/enter_bounding_box:
 function dpi:event/exit_bounding_box:
   timer = 12
   tag @s remove dpi.chest_house.bounding_box
+  tag @s remove dpi.pending
 
   execute run function dpi:chest_house/remove_lid_collision:
     fill 107 104 -110 120 117 -106 air
     fill 114 118 -109 113 118 -112 air
+
+function dpi:exit_portal/on_player_exit:
+  tag @s remove dpi.pending
