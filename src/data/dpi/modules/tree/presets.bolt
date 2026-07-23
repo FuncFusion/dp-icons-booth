@@ -49,7 +49,7 @@ function dpi:tree/render/presets:
   else:
     storage.xmas_button_text = {text:"❄ Xmas", color:"dark_gray"}
   xmas_toggle = gui.Button("function dpi:xmas/toggle", "function dpi:xmas/toggle", print_nbt("xmas_button_text"))
-  execute positioned 110.75 84.85 -123.95:
+  execute positioned 110.75 85.1 -123.95:
     xmas_toggle.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
 function dpi:tree/preset/cycle_back:
