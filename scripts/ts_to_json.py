@@ -49,7 +49,8 @@ def parse_ts(filepath: str) -> list[dict]:
 
 def main():
     typed = {}
-    named = {}
+    named_dirs = {}
+    named_files = {}
 
     for fname in FILES:
         fpath = os.path.join(ICONS_DIR, f"{fname}.ts")
@@ -68,21 +69,21 @@ def main():
                     typed[ext] = icon_name
 
             for fn in entry.get("filenames", []):
-                named[fn.split("/")[-1]] = icon_name
+                named_files[fn.split("/")[-1]] = icon_name
 
             for fol in entry.get("foldernames", []):
-                named[fol] = icon_name
+                named_dirs[fol] = icon_name
                 if icon_name.endswith("_folder"):
-                    named[f"{fol}_file"] = icon_name.removesuffix("_folder") + "_file"
+                    named_files[f"{fol}_file"] = icon_name.removesuffix("_folder") + "_file"
 
     typed.setdefault("dir", "generic_folder")
     typed.setdefault("mcfunction", "mcfunction_file")
     typed.setdefault("mcf", "mcfunction_file")
 
-    named["tick.mcfunction"] = "mcfunction_tick_file"
-    named["load.mcfunction"] = "mcfunction_load_file"
+    named_files["tick.mcfunction"] = "mcfunction_tick_file"
+    named_files["load.mcfunction"] = "mcfunction_load_file"
 
-    result = {"typed": typed, "named": named}
+    result = {"typed": typed, "named_dirs": named_dirs, "named_files": named_files}
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w") as f:
@@ -92,22 +93,27 @@ def main():
     os.makedirs(os.path.dirname(mcf_path), exist_ok=True)
     with open(mcf_path, "w") as f:
         f.write("data modify storage dpi:generated typed_icons set value {}\n")
-        f.write("data modify storage dpi:generated named_icons set value {}\n")
+        f.write("data modify storage dpi:generated named_dirs set value {}\n")
+        f.write("data modify storage dpi:generated named_files set value {}\n")
         f.write("data modify storage dpi:generated typed_icon_names set value {}\n")
         f.write("data modify storage dpi:generated named_icon_names set value {}\n")
         for ext, icon in sorted(typed.items()):
             f.write(f'data modify storage dpi:generated typed_icons."{ext}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
             f.write(f'data modify storage dpi:generated typed_icon_names."{ext}" set value "{icon}"\n')
-        for name, icon in sorted(named.items()):
-            f.write(f'data modify storage dpi:generated named_icons."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
+        for name, icon in sorted(named_dirs.items()):
+            f.write(f'data modify storage dpi:generated named_dirs."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
+            f.write(f'data modify storage dpi:generated named_icon_names."{name}" set value "{icon}"\n')
+        for name, icon in sorted(named_files.items()):
+            f.write(f'data modify storage dpi:generated named_files."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
             f.write(f'data modify storage dpi:generated named_icon_names."{name}" set value "{icon}"\n')
 
     print(f"Generated {OUTPUT_PATH}")
     print(f"Generated {mcf_path}")
     print(f"  typed_icons: {len(typed)} entries")
-    print(f"  named_icons: {len(named)} entries")
+    print(f"  named_dirs: {len(named_dirs)} entries")
+    print(f"  named_files: {len(named_files)} entries")
     print(f"  typed_icon_names: {len(typed)} entries")
-    print(f"  named_icon_names: {len(named)} entries")
+    print(f"  named_icon_names: {len(named_dirs) + len(named_files)} entries")
 
 
 if __name__ == "__main__":
