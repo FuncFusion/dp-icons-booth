@@ -38,7 +38,8 @@ function dpi:node/render/get_name:
     $data modify storage dpi:main icon set from storage dpi:generated typed_icons."$(type)"
     $execute if data storage dpi:generated named_icons."$(resource_type)" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)"
     $execute if data storage dpi:generated named_icons."$(resource_type)_file" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)_file"
-    $data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)"
+    $execute unless data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_files."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_files."$(name)"
+    $execute if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_dirs."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)"
 
   is_dir = 0
   if render_input.type == "dir":
