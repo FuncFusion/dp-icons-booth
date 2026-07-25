@@ -90,8 +90,17 @@ function dpi:tree/preset/apply_preset:
   presets = {
     "datapack":1,
     "resourcepack":2,
-    "beet":3,
-    "sandstone":4
+    "bedrock":3,
+    "beet":4,
+    "sandstone":5,
+    "fabric":6,
+    "plugin":7,
+    "python":8,
+    "web":9,
+    "server":10,
+    "repo":11,
+    "dotfiles":12,
+    "misc":13
   }
   
   if preset_index < 1:
@@ -128,10 +137,11 @@ function dpi:fs/preset/datapack:
   function_tag = Node("function", "dir", tags)
   tick_function_tag = Node("tick.json", "json", function_tag)
   load_function_tag = Node("load.json", "json", function_tag)
-  dpi_namespace = Node("dpi", "dir", data)
-  function = Node("function", "dir", dpi_namespace)
+  namespace = Node("namespace", "dir", data)
+  function = Node("function", "dir", namespace)
   tick = Node("tick.mcfunction", "mcf", function)
   load = Node("load.mcfunction", "mcf", function)
+  func = Node("func.mcfunction", "mcf", function)
 
 function dpi:fs/preset/sandstone:
   sandstone_preset = storage.fs.preset.sandstone
@@ -158,11 +168,6 @@ function dpi:fs/preset/resourcepack:
 
   pack = Node("pack.mcmeta", "txt", root)
   assets = Node("assets", "dir", root)
-  mc_namespace = Node("minecraft", "dir", assets)
-  atlases = Node("atlases", "dir", mc_namespace)
-  items_json = Node("items.json", "json", atlases)
-  lang = Node("lang", "dir", mc_namespace)
-  en_us_json = Node("en_us.json", "json", lang)
   namespace = Node("namespace", "dir", assets)
   items = Node("items", "dir", namespace)
   fire_wand = Node("fire_wand.json","json",items)
@@ -172,6 +177,164 @@ function dpi:fs/preset/resourcepack:
   textures = Node("textures","dir",namespace)
   item2 = Node("item","dir",textures)
   fire_wand_png = Node("fire_wand.png","png",item2)
+
+function dpi:fs/preset/bedrock:
+  bedrock_preset = storage.fs.preset.bedrock
+
+  root = Node("root", "dir", bedrock_preset)
+
+  bp = Node("BP", "dir", root)
+  bp_manifest = Node("manifest.json", "json", bp)
+  entities = Node("entities", "dir", bp)
+  creeper_json = Node("creeper.json", "json", entities)
+  trading = Node("trading", "dir", bp)
+  barter_json = Node("barter.json", "json", trading)
+  rp = Node("RP", "dir", root)
+  rp_manifest = Node("manifest.json", "json", rp)
+  attachables = Node("attachables", "dir", rp)
+  wand_json = Node("wand.json", "json", attachables)
+  blocks_json = Node("blocks.json", "json", rp)
+  sounds_json = Node("sounds.json", "json", rp)
+
+function dpi:fs/preset/fabric:
+  fabric_preset = storage.fs.preset.fabric
+
+  root = Node("root", "dir", fabric_preset)
+
+  src = Node("src", "dir", root)
+  main = Node("main", "dir", src)
+  java = Node("java", "dir", main)
+  example_mod = Node("ExampleMod.java", "java", java)
+  resources = Node("resources", "dir", main)
+  fabric_mod_json = Node("fabric-mod.json", "json", resources)
+  mixins_json = Node("dpi.mixins.json", "mixins.json", resources)
+  build_gradle = Node("build.gradle", "gradle", root)
+  gitignore = Node(".gitignore", "gitignore", root)
+  license = Node("LICENSE", "license", root)
+
+function dpi:fs/preset/plugin:
+  plugin_preset = storage.fs.preset.plugin
+
+  root = Node("root", "dir", plugin_preset)
+
+  idea = Node(".idea", "dir", root)
+  iml = Node("dpi.iml", "iml", idea)
+  src = Node("src", "dir", root)
+  main = Node("main", "dir", src)
+  java = Node("java", "dir", main)
+  plugin_main = Node("PluginMain.java", "java", java)
+  resources = Node("resources", "dir", main)
+  paper_plugin_yml = Node("paper-plugin.yml", "paper", resources)
+  config_yml = Node("config.yml", "yaml", resources)
+  target = Node("target", "dir", root)
+  plugin_jar = Node("dpi-1.0.jar", "jar", target)
+  pom_xml = Node("pom.xml", "pom", root)
+
+function dpi:fs/preset/web:
+  web_preset = storage.fs.preset.web
+
+  root = Node("root", "dir", web_preset)
+
+  vscode = Node(".vscode", "dir", root)
+  settings_json = Node("settings.json", "json", vscode)
+  node_modules = Node("node_modules", "dir", root)
+  index_html = Node("index.html", "html", root)
+  script_js = Node("script.js", "js", root)
+  app_svelte = Node("app.svelte", "svelte", root)
+  styles = Node("styles", "dir", root)
+  main_css = Node("main.css", "css", styles)
+  fonts = Node("fonts", "dir", root)
+  inter_woff2 = Node("inter.woff2", "woff2", fonts)
+  sitemap_xml = Node("sitemap.xml", "xml", root)
+
+function dpi:fs/preset/python:
+  python_preset = storage.fs.preset.python
+
+  root = Node("root", "dir", python_preset)
+
+  pycache = Node("__pycache__", "dir", root)
+  compiled = Node("main.cpython-313.pyc", "pyc", pycache)
+  db = Node("db", "dir", root)
+  players_sqlite = Node("players.sqlite", "sqlite", db)
+  tests = Node("tests", "dir", root)
+  test_api_py = Node("tests.py", "py", tests)
+  main_py = Node("main.py", "py", root)
+  stats_csv = Node("stats.csv", "csv", root)
+  requirements_txt = Node("requirements.txt", "requirements", root)
+  dockerfile = Node("Dockerfile", "docker", root)
+  makefile = Node("Makefile", "mk", root)
+
+function dpi:fs/preset/server:
+  server_preset = storage.fs.preset.server
+
+  root = Node("root", "dir", server_preset)
+
+  world = Node("world", "dir", root)
+  level_dat = Node("level.dat", "nbt", world)
+  datapacks = Node("datapacks", "dir", world)
+  vanilla_tweaks = Node("datapack.zip", "zip", datapacks)
+  plugins = Node("plugins", "dir", root)
+  essentials_jar = Node("plugin.jar", "jar", plugins)
+  logs = Node("logs", "dir", root)
+  latest_log = Node("latest.log", "log", logs)
+  server_properties = Node("server.properties", "properties", root)
+  eula_txt = Node("eula.txt", "txt", root)
+  start_sh = Node("start.bat", "bat", root)
+  server_jar = Node("server.jar", "jar", root)
+
+function dpi:fs/preset/repo:
+  repo_preset = storage.fs.preset.repo
+
+  root = Node("root", "dir", repo_preset)
+
+  github = Node(".github", "dir", root)
+  ci_yml = Node("ci.yml", "yml", github)
+  readme_md = Node("README.md", "md", root)
+  license = Node("LICENSE", "license", root)
+  contributing_md = Node("CONTRIBUTING.md", "md", root)
+  code_of_conduct_md = Node("CODE_OF_CONDUCT.md", "md", root)
+  changelog_md = Node("CHANGELOG.md", "md", root)
+  gitattributes = Node(".gitattributes", "git", root)
+  roadmap = Node("roadmap", "dir", root)
+  todo_md = Node("todo.md", "md", roadmap)
+  images = Node("images", "dir", root)
+  logo_svg = Node("logo.svg", "svg", images)
+
+function dpi:fs/preset/dotfiles:
+  dotfiles_preset = storage.fs.preset.dotfiles
+
+  root = Node("root", "dir", dotfiles_preset)
+
+  nvim = Node("nvim", "dir", root)
+  init_lua = Node("init.lua", "lua", nvim)
+  bash = Node("bash", "dir", root)
+  aliases_sh = Node("aliases.sh", "sh", bash)
+  linux = Node("linux", "dir", root)
+  firefox_deb = Node("firefox.deb", "deb", linux)
+  config = Node("config", "dir", root)
+  settings_ini = Node("settings.ini", "ini", config)
+  fonts = Node("fonts", "dir", root)
+  mono_ttf = Node("mono.ttf", "ttf", fonts)
+  vimrc = Node(".vimrc", "vim", root)
+  backup_tar = Node("backup.tar", "tar", root)
+
+function dpi:fs/preset/misc:
+  misc_preset = storage.fs.preset.misc
+
+  root = Node("root", "dir", misc_preset)
+
+  zig_out = Node("zig-out", "dir", root)
+  dpi_wasm = Node("dpi.wasm", "wasm", zig_out)
+  julia = Node(".julia", "dir", root)
+  plot_jl = Node("plot.jl", "jl", julia)
+  elm_stuff = Node("elm-stuff", "dir", root)
+  main_elm = Node("main.elm", "elm", elm_stuff)
+  main_zig = Node("main.zig", "zig", root)
+  kernel_hc = Node("kernel.hc", "hc", root)
+  main_bf = Node("main.bf", "bf", root)
+  level_spwn = Node("level.spwn", "spwn", root)
+  game_gml = Node("game.gml", "gml", root)
+  init_moon = Node("init.moon", "moon", root)
 
 function dpi:fs/preset/beet:
   beet_preset = storage.fs.preset.beet
@@ -183,5 +346,8 @@ function dpi:fs/preset/beet:
   data = Node("data", "dir", src)
   dpi = Node("dpi", "dir", data)
   modules = Node("modules", "dir", dpi)
-  main = Node("main.bolt", "bolt", modules)
+  tree = Node("modules", "dir", modules)
+  presets = Node("presets.bolt", "bolt", tree)
+  chest_house = Node("chest_house.bolt", "bolt", modules)
+  uv_lock = Node("uv.lock", "lock", root)
 
