@@ -1,4 +1,4 @@
-from dpi:config import var, storage
+from dpi:config import var, storage, global_tick
 from bolt_expressions import Scoreboard
 import dpi:filesystem as fs
 import dpi:springboard as springboard
@@ -47,7 +47,7 @@ append function dpi:entities/summon:
 
   storage.fs.root = storage.fs.preset.datapack
   storage.fs.preset_name = "datapack"
-  function dpi:tree/preset/apply_preset:
+  function dpi:tree/preset/apply_preset
 
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
@@ -80,6 +80,7 @@ prepend function dpi:load:
   function dpi:entities/refresh
 
 append function dpi:tick:
+  global_tick += 1
   as @a at @s run function dpi:tick/player
   as @e[
     type=#taglib:markerlike,
