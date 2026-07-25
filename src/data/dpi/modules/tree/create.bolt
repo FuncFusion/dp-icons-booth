@@ -6,6 +6,9 @@ advancement dpi:tree/first_creation {
         "impossible": {
             "trigger": "minecraft:impossible"
         }
+    },
+    "rewards": {
+        "function": "dpi:file_item/give"
     }
 }
 
@@ -68,9 +71,7 @@ function dpi:node/create/submit:
       function dpi:node/create
       function dpi:node/unselect
 
-    unless entity @s[advancements={dpi:tree/first_creation=true}]:
-      advancement grant @s only dpi:tree/first_creation
-      function dpi:file_item/give
+    advancement grant @s only dpi:tree/first_creation
   else:
     tellraw @a [{text:"String can't be longer than 48 characters!", color:"red"}]
 
