@@ -22,13 +22,11 @@ append function dpi:tick/player:
     function dpi:springboard/prime
 
 function dpi:springboard/on_player_enter:
-  say enter
   tag @s add dpi.springboard.bounding_box
   stepped = 1
   function dpi:springboard/prime
 
 function dpi:springboard/on_player_exit:
-  say exit
   tag @s remove dpi.springboard.bounding_box
   unless entity @n[tag=dpi.springboard.bounding_box]:
     stepped = 0
