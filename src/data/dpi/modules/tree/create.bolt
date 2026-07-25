@@ -52,6 +52,7 @@ function dpi:node/create/submit:
       create_supplied_type = 0
       storage.node.create.input.file_name = sio_output
       storage.node.create.input.type = "dir"
+      storage.node.create.input.children = []
     else:
       storage.parse_input.input.raw_name = sio_output
       storage.split_string.input = sio_output
