@@ -1,6 +1,14 @@
 from dpi:config import storage, var
 import bolt_expressions as expr
 
+advancement dpi:tree/first_creation {
+    "criteria": {
+        "impossible": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}
+
 update_tree = var["#dpi.tree.update_pending"]
 create_supplied_type = var["#dpi.create_supplied_type"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
@@ -59,6 +67,10 @@ function dpi:node/create/submit:
       parent_id = id["@s"]
       function dpi:node/create
       function dpi:node/unselect
+
+    unless entity @s[advancements={dpi:tree/first_creation=true}]:
+      advancement grant @s only dpi:tree/first_creation
+      function dpi:file_item/give
   else:
     tellraw @a [{text:"String can't be longer than 48 characters!", color:"red"}]
 
