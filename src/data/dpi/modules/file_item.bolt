@@ -2,11 +2,6 @@ import bolt_expressions as expr
 from dpi:config import var, storage, print_nbt, jump, get_icon
 import os
 
-append function dpi:tick/player_sneaking:
-  if predicate dpi:sneaking:
-    if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{file_item:true}}]:
-      function dpi:string_input/submit
-
 function dpi:file_item/give:
   # change to other type of notification
   execute if items entity @s container.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 0

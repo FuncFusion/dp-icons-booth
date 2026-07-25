@@ -11,10 +11,13 @@ stack = storage.rebuild.args
 output = storage.rebuild.output
 entry = storage.temp.entry
 
-append function dpi:tick/booth_player:
-  if predicate dpi:sneaking:
-    if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{create_input:true}}]:
-      function dpi:node/create/submit
+append function_tag summit.items:droppable/callback:
+  values:
+    - "dpi:node/create/book_dropped"
+
+function dpi:node/create/book_dropped:
+  if items entity @s contents writable_book[custom_data~{dpi:{create_input:true}}]
+    function dpi:node/create/submit
 
 function dpi:node/create/book:
   execute if entity @s[tag=dpi.tree.banned] run return run title @s actionbar {text:"You are banned from creating/renaming files and folders",color:"red"}
@@ -35,7 +38,7 @@ function dpi:node/create/submit:
   sio_length = var["#dpi.sio_length"]
 
   executor = expr.Data.entity("@s")
-  sio_output = executor.SelectedItem.components."minecraft:writable_book_content".pages[0].raw
+  sio_output = executor.Item.components."minecraft:writable_book_content".pages[0].raw
   sio_length = len(sio_output)
 
   if sio_length < 48:
