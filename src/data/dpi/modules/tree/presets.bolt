@@ -32,7 +32,16 @@ for name in PRESETS.keys():
     advancement_requirements.append([f"dpi:preset/visited/{name}"])
 
 function dpi:preset/visited_all:
-  if entity @s[advancements={dpi:preset/visited/datapack=true,dpi:preset/visited/resourcepack=true,dpi:preset/visited/bedrock=true,dpi:preset/visited/beet=true,dpi:preset/visited/sandstone=true,dpi:preset/visited/fabric=true,dpi:preset/visited/plugin=true,dpi:preset/visited/python=true,dpi:preset/visited/web=true,dpi:preset/visited/server=true,dpi:preset/visited/repo=true,dpi:preset/visited/dotfiles=true,dpi:preset/visited/misc=true}]:
+  visited_all = var["#dpi.presets.visited_all"]
+  visited_all = 1
+  
+  # all_advancement_check = []
+
+  for advancement in advancement_requirements:
+    unless entity @s[advancements={f"{advancement}"=true}]:
+      visited_all = 0
+
+  if visited_all:
     advancement grant @s only summit.sticker_book:dpi/tree
 
 preset_index = var["#dpi.tree.preset_index"]
