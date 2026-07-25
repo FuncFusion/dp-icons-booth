@@ -40,6 +40,7 @@ function dpi:node/render/get_name:
     $execute if data storage dpi:generated named_icons."$(resource_type)_file" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)_file"
     $execute unless data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_files."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_files."$(name)"
     $execute if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_dirs."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)"
+    $execute if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:main node.render.input{closed:1b} if data storage dpi:generated named_dirs."$(name)_closed" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)_closed"
 
   is_dir = 0
   if render_input.type == "dir":
@@ -50,31 +51,32 @@ function dpi:node/render/get_name:
   function dpi:node/render/build_name
 
 function dpi:node/render/resolve_icon:
-  if render_input.closed:
-    if in_namespace and is_dir:
-      if xmas_theme:
-        icon = get_icon("namespace_folder_closed_xmas")
+  if not icon:
+    if render_input.closed:
+      if in_namespace and is_dir:
+        if xmas_theme:
+          icon = get_icon("namespace_folder_closed_xmas")
+        else:
+          icon = get_icon("namespace_folder_closed")
       else:
-        icon = get_icon("namespace_folder_closed")
-    else:
+        if xmas_theme:
+          icon = get_icon("generic_folder_closed_xmas")
+        else:
+          icon = get_icon("generic_folder_closed")
+    elif in_namespace and is_dir:
       if xmas_theme:
-        icon = get_icon("generic_folder_closed_xmas")
+        icon = get_icon("namespace_folder_xmas")
+        function dpi:xmas/try_named_icon with storage dpi:main node.render.input
       else:
-        icon = get_icon("generic_folder_closed")
-  elif in_namespace and is_dir:
-    if xmas_theme:
-      icon = get_icon("namespace_folder_xmas")
-      function dpi:xmas/try_named_icon with storage dpi:main node.render.input
-    else:
-      icon = get_icon("namespace_folder")
-  elif not render_input.closed and is_dir:
-    if xmas_theme:
-      has_named_icon = var["#dpi.has_named_icon"]
-      has_named_icon = 0
-      execute run function dpi:xmas/has_named_icon with storage dpi:main node.render.input
-      function dpi:xmas/try_named_icon with storage dpi:main node.render.input
-      if not has_named_icon:
-        icon = get_icon("generic_folder_xmas")
+        icon = get_icon("namespace_folder")
+    elif not render_input.closed and is_dir:
+      if xmas_theme:
+        has_named_icon = var["#dpi.has_named_icon"]
+        has_named_icon = 0
+        execute run function dpi:xmas/has_named_icon with storage dpi:main node.render.input
+        function dpi:xmas/try_named_icon with storage dpi:main node.render.input
+        if not has_named_icon:
+          icon = get_icon("generic_folder_xmas")
 
   if not icon:
     icon = get_icon("generic_file")

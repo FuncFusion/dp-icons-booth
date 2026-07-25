@@ -72,7 +72,10 @@ def main():
                 named_files[fn.split("/")[-1]] = icon_name
 
             for fol in entry.get("foldernames", []):
-                named_dirs[fol] = icon_name
+                if icon_name.endswith("_closed"):
+                    named_dirs[fol + "_closed"] = icon_name
+                else:
+                    named_dirs[fol] = icon_name
                 if icon_name.endswith("_folder"):
                     named_files[f"{fol}_file"] = icon_name.removesuffix("_folder") + "_file"
 
