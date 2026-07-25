@@ -9,7 +9,7 @@ function dpi:file_item/give:
   give @s writable_book[
     consumable={consume_seconds:999999999},
     custom_data={
-      summit:{ persist: {}, callback: true },
+      summit:{ persist: {}, droppable: {callback: true }, },
       dpi:{ file_item:1b }
     },
     item_name="File",
