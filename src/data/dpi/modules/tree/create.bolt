@@ -61,7 +61,7 @@ function dpi:node/create/submit:
       function dpi:node/unselect
     function dpi:file_item/give
   else:
-    tellraw @a [{text:"String can't be longer than 48 characters!", color:"red"}]
+    title @a actionbar [{text:"String can't be longer than 48 characters!", color:"red"}]
 
 function dpi:node/create:
   parent_id = var["#dpi.parent_id"]

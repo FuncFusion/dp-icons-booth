@@ -73,9 +73,7 @@ append function dpi:entities/kill:
   kill @e[tag=summit.booth_entity.dpi]
 
 prepend function dpi:load:
-  tellraw @a:
-    text: "Reloaded!"
-    color: "green"
+  function dpi:entities/refresh
 
 append function dpi:tick:
   as @a at @s run function dpi:tick/player

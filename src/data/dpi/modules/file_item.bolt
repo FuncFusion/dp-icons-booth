@@ -7,10 +7,6 @@ append function dpi:tick/player_sneaking:
     if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{file_item:true}}]:
       function dpi:string_input/submit
 
-#append function dpi:temp:
-  #clear amqndin
-  #as @a function dpi:file_item/give
-
 function dpi:file_item/give:
   # change to other type of notification
   execute if items entity @s container.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 0
@@ -59,7 +55,7 @@ function dpi:string_input/submit:
   if sio_length < character_limit:
     function dpi:file_item/submit_name
   else:
-    tellraw @a [
+    title @a actionbar [
       {
         text:f"String can't be longer than {character_limit} characters!",
         color:"red"
@@ -94,13 +90,9 @@ function dpi:file_item/submit_name:
   function dpi:file_item/modify_icon with storage dpi:main modify_icon.input
   
 function dpi:file_item/modify_icon:
-
-  #$say icon_name = $(icon_name)
-  #$say file_name = $(file_name)
   $execute if items entity @s weapon.mainhand writable_book[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.mainhand [ { function:"minecraft:set_custom_model_data", strings:{ values:[$(icon_name)], mode:"replace_all" } }, { function:"minecraft:set_name", entity:"this", name:{text:$(file_name),italic:0b}, target:"custom_name" } ]
 
   $execute if items entity @s weapon.offhand writable_book[custom_data~{dpi:{file_item:1b}}] run item modify entity @s weapon.offhand [ { function:"minecraft:set_custom_model_data", strings:{values:[$(icon_name)],mode:"replace_all"} }, { function:"minecraft:set_name", entity:"this", name:{text:$(file_name),italic:0b}, target:"custom_name" } ]
-
 
 
 item_modifier dpi:turn_equippable {

@@ -93,6 +93,6 @@ function dpi:event/exit_bounding_box:
     fill 107 104 -110 120 117 -106 air
     fill 114 118 -109 113 118 -112 air
 
-function dpi:exit_portal/on_player_exit:
+append function dpi:exit_portal/on_player_exit:
   tag @s remove dpi.pending
   tag @s remove dpi.has_book
