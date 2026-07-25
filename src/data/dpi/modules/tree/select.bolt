@@ -25,6 +25,7 @@ function dpi:node/unselect:
   tag @s remove dpi.node.selected
   execute on target run tag @s remove dpi.pending
   execute on target run scoreboard players set @s dpi.select_tick 0
+  execute on target run tag @s remove dpi.has_book
   execute on target run item replace entity @s weapon.mainhand from entity @s saddle
 
   entity = expr.Data.entity("@s")
@@ -162,10 +163,11 @@ append function dpi:tick/player:
     if select_elapsed > 1200:
       tag @s remove dpi.pending
       select_tick["@s"] = 0
+      tag @s remove dpi.has_book
       item replace entity @s weapon.mainhand from entity @s saddle
-      execute as @n[tag=dpi.node.selected] run function dpi:node/tick/expire_selection
+      execute as @n[tag=dpi.node.selected] run function dpi:node/expire_selection
 
-function dpi:node/tick/expire_selection:
+function dpi:node/expire_selection:
   function dpi:node/context_menu/kill
   tag @s remove dpi.node.selected
 
