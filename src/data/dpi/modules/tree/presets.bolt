@@ -5,10 +5,20 @@ import dpi:gui as gui
 import bolt_expressions as expr
 
 PRESETS = {
-    "datapack": 1,
-    "resourcepack": 2,
-    "beet": 3,
-}
+    "datapack":1,
+    "resourcepack":2,
+    "bedrock":3,
+    "beet":4,
+    "sandstone":5,
+    "fabric":6,
+    "plugin":7,
+    "python":8,
+    "web":9,
+    "server":10,
+    "repo":11,
+    "dotfiles":12,
+    "misc":13
+  }
 
 for name in PRESETS.keys():
     advancement f"dpi:preset/visited/{name}" {
@@ -117,22 +127,6 @@ function dpi:tree/preset/cycle_next:
   function dpi:tree/preset/apply_preset
 
 function dpi:tree/preset/apply_preset:
-  presets = {
-    "datapack":1,
-    "resourcepack":2,
-    "bedrock":3,
-    "beet":4,
-    "sandstone":5,
-    "fabric":6,
-    "plugin":7,
-    "python":8,
-    "web":9,
-    "server":10,
-    "repo":11,
-    "dotfiles":12,
-    "misc":13
-  }
-  
   if preset_index < 1:
     preset_index = preset_amount
 
