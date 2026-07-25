@@ -90,7 +90,8 @@ function dpi:tree/preset/apply_preset:
   presets = {
     "datapack":1,
     "resourcepack":2,
-    "beet":3
+    "beet":3,
+    "sandstone":4
   }
   
   if preset_index < 1:
@@ -132,6 +133,24 @@ function dpi:fs/preset/datapack:
   tick = Node("tick.mcfunction", "mcf", function)
   load = Node("load.mcfunction", "mcf", function)
 
+function dpi:fs/preset/sandstone:
+  sandstone_preset = storage.fs.preset.sandstone
+
+  root = Node("root","dir",sandstone_preset)
+
+  datapack = Node("datapack","dir",root)
+  data = Node("data","dir",datapack)
+  pack_mcmeta = Node("pack.mcmeta","mcmeta",datapack)
+  src = Node("src","dir",root)
+  main_ts = Node("main.ts","ts",src)
+  abilites_ts = Node("abilites.ts","ts",src)
+  prettierrc = Node(".prettierrc","prettierrc",root)
+  package_lock_json = Node("package-lock.json","json",root)
+  package_json = Node("package.json","json",root)
+  readme_md = Node("README.md","md",root)
+  sandstone_config = Node("sandstone.config.ts","ts",root)
+  ts_config = Node("tsconfig.json","json",root)
+
 function dpi:fs/preset/resourcepack:
   resourcepack_preset = storage.fs.preset.resourcepack
 
@@ -139,10 +158,20 @@ function dpi:fs/preset/resourcepack:
 
   pack = Node("pack.mcmeta", "txt", root)
   assets = Node("assets", "dir", root)
-  dpi_namespace = Node("dpi", "dir", assets)
-  texture = Node("texture", "dir", dpi_namespace)
-  item = Node("item", "dir", texture)
-  carrot_on_a_stick = Node("carrot_on_a_stick.png", "png", item)
+  mc_namespace = Node("minecraft", "dir", assets)
+  atlases = Node("atlases", "dir", mc_namespace)
+  items_json = Node("items.json", "json", atlases)
+  lang = Node("lang", "dir", mc_namespace)
+  en_us_json = Node("en_us.json", "json", lang)
+  namespace = Node("namespace", "dir", assets)
+  items = Node("items", "dir", namespace)
+  fire_wand = Node("fire_wand.json","json",items)
+  models = Node("models","dir",namespace)
+  item = Node("item","dir",models)
+  fire_wand_model = Node("fire_wand.json","json",item)
+  textures = Node("textures","dir",namespace)
+  item2 = Node("item","dir",textures)
+  fire_wand_png = Node("fire_wand.png","png",item2)
 
 function dpi:fs/preset/beet:
   beet_preset = storage.fs.preset.beet
@@ -155,3 +184,4 @@ function dpi:fs/preset/beet:
   dpi = Node("dpi", "dir", data)
   modules = Node("modules", "dir", dpi)
   main = Node("main.bolt", "bolt", modules)
+
