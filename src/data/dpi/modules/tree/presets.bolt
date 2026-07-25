@@ -31,16 +31,18 @@ for name in PRESETS.keys():
     }
     advancement_requirements.append([f"dpi:preset/visited/{name}"])
 
-advancement dpi:preset/visited_all {
-    "criteria": {},
-    "requirements": advancement_requirements,
-    "rewards": {
-        "function": "dpi:preset/visited_all"
-    }
-}
-
 function dpi:preset/visited_all:
-  advancement grant @s only summit.sticker_book:dpi/tree
+  visited_all = var["#dpi.presets.visited_all"]
+  visited_all = 1
+  
+  # all_advancement_check = []
+
+  for advancement in advancement_requirements:
+    unless entity @s[advancements={f"{advancement}"}]:
+      visited_all = 0
+
+  if visited_all:
+    advancement grant @s only summit.sticker_book:dpi/tree
 
 preset_index = var["#dpi.tree.preset_index"]
 preset_amount = var["#dpi.tree.preset_amount"]
@@ -99,6 +101,7 @@ function dpi:tree/render/presets:
     xmas_toggle.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
 function dpi:tree/preset/cycle_back:
+  function dpi:preset/visited_all
   if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
 
   elapsed = var["#dpi.preset_elapsed"]
@@ -112,6 +115,7 @@ function dpi:tree/preset/cycle_back:
   function dpi:tree/preset/apply_preset
 
 function dpi:tree/preset/cycle_next:
+  function dpi:preset/visited_all
   if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
 
   elapsed = var["#dpi.preset_elapsed"]
