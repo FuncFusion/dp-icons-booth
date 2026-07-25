@@ -20,6 +20,7 @@ PRESETS = {
     "misc":13
   }
 
+advancement_requirements = []
 for name in PRESETS.keys():
     advancement f"dpi:preset/visited/{name}" {
         "criteria": {
@@ -28,14 +29,11 @@ for name in PRESETS.keys():
             }
         }
     }
+    advancement_requirements.append([f"dpi:preset/visited/{name}"])
 
 advancement dpi:preset/visited_all {
     "criteria": {},
-    "requirements": [
-        ["dpi:preset/visited/datapack"],
-        ["dpi:preset/visited/resourcepack"],
-        ["dpi:preset/visited/beet"]
-    ],
+    "requirements": advancement_requirements,
     "rewards": {
         "function": "dpi:preset/visited_all"
     }
