@@ -4,6 +4,36 @@ from dpi:config import storage, var, print_nbt, global_tick
 import dpi:gui as gui
 import bolt_expressions as expr
 
+PRESETS = {
+    "datapack": 1,
+    "resourcepack": 2,
+    "beet": 3,
+}
+
+for name in PRESETS.keys():
+    advancement f"dpi:preset/visited/{name}" {
+        "criteria": {
+            "impossible": {
+                "trigger": "minecraft:impossible"
+            }
+        }
+    }
+
+advancement dpi:preset/visited_all {
+    "criteria": {},
+    "requirements": [
+        ["dpi:preset/visited/datapack"],
+        ["dpi:preset/visited/resourcepack"],
+        ["dpi:preset/visited/beet"]
+    ],
+    "rewards": {
+        "function": "dpi:preset/visited_all"
+    }
+}
+
+function dpi:preset/visited_all:
+  advancement grant @s only summit.sticker_book:dpi/tree
+
 preset_index = var["#dpi.tree.preset_index"]
 preset_amount = var["#dpi.tree.preset_amount"]
 update_tree = var["#dpi.tree.update_pending"]
@@ -109,18 +139,19 @@ function dpi:tree/preset/apply_preset:
   if preset_index > preset_amount:
     preset_index = 1
 
-  for preset, index in presets.items():
+  for preset, index in PRESETS.items():
     if preset_index == index:
       storage.fs.root = storage.fs.preset[preset]
       storage.fs.preset_name = preset
       update_tree = 1
       function dpi:tree/render/presets
+      advancement grant @s only f"dpi:preset/visited/{preset}"
 
 append function dpi:load:
-  preset_amount = list(presets.values())[-1]
+  preset_amount = list(PRESETS.values())[-1]
   preset_index = 1
 
-  for preset in presets.keys():
+  for preset in PRESETS.keys():
     function f"dpi:fs/preset/{preset}"
 
   function dpi:xmas/init
