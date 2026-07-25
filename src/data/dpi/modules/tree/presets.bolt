@@ -34,8 +34,6 @@ for name in PRESETS.keys():
 function dpi:preset/visited_all:
   visited_all = var["#dpi.presets.visited_all"]
   visited_all = 1
-  
-  # all_advancement_check = []
 
   for advancement in advancement_requirements:
     unless entity @s[advancements={f"{advancement}"}]:
