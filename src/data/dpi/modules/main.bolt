@@ -44,7 +44,11 @@ function dpi:entities/reset_player:
 
 append function dpi:entities/summon:
   function dpi:entities/static/summon
-  schedule function dpi:tree/render 2t
+
+  storage.fs.root = storage.fs.preset.datapack
+  storage.fs.preset_name = "datapack"
+  function dpi:tree/preset/apply_preset:
+
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/lev_icons/summon {args:{}}
