@@ -38,6 +38,7 @@ function dpi:file_item/dropped:
     function dpi:string_input/submit
 
 function dpi:string_input/submit:
+  on origin function dpi:file_item/give
   sio_output = storage.string_input.output
   character_limit = 48
   sio_length = var["#dpi.sio_length"]
