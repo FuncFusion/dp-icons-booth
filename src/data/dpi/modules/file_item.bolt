@@ -13,8 +13,8 @@ append function dpi:temp:
 
 function dpi:file_item/give:
   # change to other type of notification
-  execute if items entity @s container.* writable_book[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
-  execute if items entity @s enderchest.* writable_book[custom_data~{dpi:{file_item:1b}}] run return run say item already present in inventory
+  execute if items entity @s container.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 0
+  execute if items entity @s enderchest.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 0
   give @s writable_book[
     consumable={consume_seconds:999999999},
     custom_data={
