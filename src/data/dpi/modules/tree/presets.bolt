@@ -35,11 +35,14 @@ function dpi:preset/visited_all:
   visited_all = var["#dpi.presets.visited_all"]
   visited_all = 1
   
-  # all_advancement_check = []
+  all_advancement_check = []
 
   for advancement in advancement_requirements:
-    unless entity @s[advancements={f"{advancement}"}]:
-      visited_all = 0
+    all_advancement_check.append(advancement + "=true")
+
+  all_advancement_check = all_advancement_check.join(",")
+
+  if entity @s[advancements={f"all_advancement_check"}]
 
   if visited_all:
     advancement grant @s only summit.sticker_book:dpi/tree
