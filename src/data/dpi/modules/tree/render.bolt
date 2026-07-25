@@ -49,8 +49,6 @@ function dpi:node/render/get_name:
 
   function dpi:node/render/resolve_icon
 
-  tellraw @a ["node=", render_input.name, " type=", render_input.type, " ns=", in_namespace, " restype=", resource_type, " icon=", print_nbt("icon")]
-
   function dpi:node/render/build_name
 
 function dpi:node/render/resolve_icon:
@@ -167,7 +165,6 @@ function dpi:tree/render/children:
     parent_is_namespace = stack.in_namespace[-1]
     if parent_is_namespace:
       resource_type = entry.name
-    tellraw @a ["parent=", parent.name, " child=", entry.name, " ns=", in_namespace, " pns=", parent_is_namespace, " restype=", resource_type]
     stack.node.append(child)
     at @s function dpi:tree/render/main
 
