@@ -27,6 +27,7 @@ function dpi:node/rename/book:
   item replace entity @s saddle from entity @s weapon.mainhand
   item replace entity @s weapon.mainhand with writable_book[
     custom_data={
+      summit:{ persist: {}, droppable: {callback: true }, },
       dpi:{input:true, rename_input:true}
     }
   ] 1
