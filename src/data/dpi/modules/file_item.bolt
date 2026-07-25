@@ -14,7 +14,7 @@ function dpi:file_item/give:
   give @s writable_book[
     consumable={consume_seconds:999999999},
     custom_data={
-      summit:{ persist: {}, kill: true, callback: true },
+      summit:{ persist: {}, callback: true },
       dpi:{ file_item:1b }
     },
     item_name="File",
@@ -39,9 +39,8 @@ append function_tag summit.items:droppable/callback:
     - "dpi:file_item/dropped"
 
 function dpi:file_item/dropped:
-  say yo
   if items entity @s contents writable_book[custom_data~{dpi:{file_item:true}}]
-    say gex
+    function dpi:string_input/submit
 
 function dpi:string_input/submit:
   sio_output = storage.string_input.output
@@ -49,18 +48,20 @@ function dpi:string_input/submit:
   sio_length = var["#dpi.sio_length"]
 
   executor = expr.Data.entity("@s")
-  sio_output = executor.SelectedItem.components."minecraft:writable_book_content".pages[0].raw
+  sio_output = Item.components."minecraft:writable_book_content".pages[0].raw
   sio_length = len(sio_output)
 
   if sio_length < character_limit:
     function dpi:file_item/submit_name
   else:
-    title @a actionbar [
+    on origin run title @s actionbar [
       {
         text:f"String can't be longer than {character_limit} characters!",
         color:"red"
       }
     ]
+
+  kill @s
 
 function dpi:file_item/submit_name:
   storage.parse_input.input.raw_name = storage.string_input.output
