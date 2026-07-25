@@ -48,7 +48,7 @@ function dpi:string_input/submit:
   sio_length = len(sio_output)
 
   if sio_length < character_limit:
-    function dpi:file_item/submit_name
+    on origin function dpi:file_item/submit_name
   else:
     on origin run title @s actionbar [
       {
