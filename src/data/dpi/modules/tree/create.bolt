@@ -18,13 +18,15 @@ append function dpi:tick/booth_player:
 
 function dpi:node/create/book:
   execute if entity @s[tag=dpi.tree.banned] run return run title @s actionbar {text:"You are banned from creating/renaming files and folders",color:"red"}
+  execute if entity @s[tag=dpi.pending] if entity @s[tag=dpi.has_book] unless items entity @s weapon.mainhand writable_book[custom_data~{dpi:{input:true}}] run return run title @s actionbar {text:"Put the book back in your main hand first",color:"red"}
   tag @s add dpi.pending
+  tag @s add dpi.has_book
   item replace entity @s weapon.mainhand from entity @s saddle
   item modify entity @s weapon.mainhand dpi:turn_equippable
   item replace entity @s saddle from entity @s weapon.mainhand
   item replace entity @s weapon.mainhand with writable_book[
     custom_data={
-      dpi:{create_input:true}
+      dpi:{input:true, create_input:true}
     }
   ] 1
 
@@ -39,6 +41,7 @@ function dpi:node/create/submit:
   if sio_length < 48:
     item replace entity @s weapon.mainhand from entity @s saddle
     tag @s remove dpi.pending
+    tag @s remove dpi.has_book
 
     if create_supplied_type == 1:
       create_supplied_type = 0
