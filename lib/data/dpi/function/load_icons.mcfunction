@@ -1479,8 +1479,10 @@ data modify storage dpi:generated named_dirs."archives" set value {atlas:"items"
 data modify storage dpi:generated named_icon_names."archives" set value "archive_folder"
 data modify storage dpi:generated named_dirs."archlinux" set value {atlas:"items", sprite:"dpi:icons/linux_folder"}
 data modify storage dpi:generated named_icon_names."archlinux" set value "linux_folder"
-data modify storage dpi:generated named_dirs."assets" set value {atlas:"items", sprite:"dpi:icons/assets_folder_closed"}
-data modify storage dpi:generated named_icon_names."assets" set value "assets_folder_closed"
+data modify storage dpi:generated named_dirs."assets" set value {atlas:"items", sprite:"dpi:icons/assets_folder"}
+data modify storage dpi:generated named_icon_names."assets" set value "assets_folder"
+data modify storage dpi:generated named_dirs."assets_closed" set value {atlas:"items", sprite:"dpi:icons/assets_folder_closed"}
+data modify storage dpi:generated named_icon_names."assets_closed" set value "assets_folder_closed"
 data modify storage dpi:generated named_dirs."atlases" set value {atlas:"items", sprite:"dpi:icons/atlases_folder"}
 data modify storage dpi:generated named_icon_names."atlases" set value "atlases_folder"
 data modify storage dpi:generated named_dirs."atmospherics" set value {atlas:"items", sprite:"dpi:icons/fogs_folder"}
@@ -1557,8 +1559,10 @@ data modify storage dpi:generated named_dirs."css" set value {atlas:"items", spr
 data modify storage dpi:generated named_icon_names."css" set value "css_folder"
 data modify storage dpi:generated named_dirs."damage_type" set value {atlas:"items", sprite:"dpi:icons/damage_type_folder"}
 data modify storage dpi:generated named_icon_names."damage_type" set value "damage_type_folder"
-data modify storage dpi:generated named_dirs."data" set value {atlas:"items", sprite:"dpi:icons/data_folder_closed"}
-data modify storage dpi:generated named_icon_names."data" set value "data_folder_closed"
+data modify storage dpi:generated named_dirs."data" set value {atlas:"items", sprite:"dpi:icons/data_folder"}
+data modify storage dpi:generated named_icon_names."data" set value "data_folder"
+data modify storage dpi:generated named_dirs."data_closed" set value {atlas:"items", sprite:"dpi:icons/data_folder_closed"}
+data modify storage dpi:generated named_icon_names."data_closed" set value "data_folder_closed"
 data modify storage dpi:generated named_dirs."database" set value {atlas:"items", sprite:"dpi:icons/database_folder"}
 data modify storage dpi:generated named_icon_names."database" set value "database_folder"
 data modify storage dpi:generated named_dirs."datapacks" set value {atlas:"items", sprite:"dpi:icons/datapacks_folder"}
@@ -1811,8 +1815,10 @@ data modify storage dpi:generated named_dirs."sprites" set value {atlas:"items",
 data modify storage dpi:generated named_icon_names."sprites" set value "image_folder"
 data modify storage dpi:generated named_dirs."sql" set value {atlas:"items", sprite:"dpi:icons/database_folder"}
 data modify storage dpi:generated named_icon_names."sql" set value "database_folder"
-data modify storage dpi:generated named_dirs."src" set value {atlas:"items", sprite:"dpi:icons/src_folder_closed"}
-data modify storage dpi:generated named_icon_names."src" set value "src_folder_closed"
+data modify storage dpi:generated named_dirs."src" set value {atlas:"items", sprite:"dpi:icons/src_folder"}
+data modify storage dpi:generated named_icon_names."src" set value "src_folder"
+data modify storage dpi:generated named_dirs."src_closed" set value {atlas:"items", sprite:"dpi:icons/src_folder_closed"}
+data modify storage dpi:generated named_icon_names."src_closed" set value "src_folder_closed"
 data modify storage dpi:generated named_dirs."structure" set value {atlas:"items", sprite:"dpi:icons/structure_folder"}
 data modify storage dpi:generated named_icon_names."structure" set value "structure_folder"
 data modify storage dpi:generated named_dirs."structures" set value {atlas:"items", sprite:"dpi:icons/structure_folder"}
