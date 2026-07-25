@@ -39,9 +39,10 @@ function dpi:node/create/submit:
   sio_length = len(sio_output)
 
   if sio_length < 48:
-    item replace entity @s weapon.mainhand from entity @s saddle
-    tag @s remove dpi.pending
-    tag @s remove dpi.has_book
+    on origin:
+      item replace entity @s weapon.mainhand from entity @s saddle
+      tag @s remove dpi.pending
+      tag @s remove dpi.has_book
 
     if create_supplied_type == 1:
       create_supplied_type = 0
@@ -61,7 +62,8 @@ function dpi:node/create/submit:
       function dpi:node/unselect
     function dpi:file_item/give
   else:
-    title @a actionbar [{text:"String can't be longer than 48 characters!", color:"red"}]
+    on origin run title @s actionbar [{text:"String can't be longer than 48 characters!", color:"red"}]
+  kill @s
 
 function dpi:node/create:
   parent_id = var["#dpi.parent_id"]

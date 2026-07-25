@@ -48,7 +48,7 @@ function dpi:string_input/submit:
   sio_length = var["#dpi.sio_length"]
 
   executor = expr.Data.entity("@s")
-  sio_output = Item.components."minecraft:writable_book_content".pages[0].raw
+  sio_output = executor.Item.components."minecraft:writable_book_content".pages[0].raw
   sio_length = len(sio_output)
 
   if sio_length < character_limit:
