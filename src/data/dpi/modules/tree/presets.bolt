@@ -38,7 +38,7 @@ function dpi:preset/visited_all:
   # all_advancement_check = []
 
   for advancement in advancement_requirements:
-    unless entity @s[advancements={f"{advancement}"}]:
+    unless entity @s[advancements={f"{advancement}"=true}]:
       visited_all = 0
 
   if visited_all:
