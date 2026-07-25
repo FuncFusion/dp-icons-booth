@@ -50,7 +50,7 @@ function dpi:preset/visited_all:
 
   all_advancement_check = all_advancement_check.join(",")
 
-  if entity @s[advancements={f"all_advancement_check"}]
+  if entity @s[advancements=f"{{{all_advancement_check}}}"}]
 
   if visited_all:
     advancement grant @s only summit.sticker_book:dpi/tree
