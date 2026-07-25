@@ -229,7 +229,7 @@ function dpi:fs/preset/fabric:
   src = Node("src", "dir", root)
   main = Node("main", "dir", src)
   java = Node("java", "dir", main)
-  example_mod = Node("ExampleMod.java", "java", java)
+  example_mod = Node("ModMain.java", "java", java)
   resources = Node("resources", "dir", main)
   fabric_mod_json = Node("fabric-mod.json", "json", resources)
   mixins_json = Node("dpi.mixins.json", "mixins.json", resources)
@@ -314,16 +314,16 @@ function dpi:fs/preset/repo:
 
   github = Node(".github", "dir", root)
   ci_yml = Node("ci.yml", "yml", github)
+  roadmap = Node("roadmap", "dir", root)
+  todo_md = Node("todo.md", "md", roadmap)
+  images = Node("images", "dir", root)
+  logo_svg = Node("logo.svg", "svg", images)
   readme_md = Node("README.md", "md", root)
   license = Node("LICENSE", "license", root)
   contributing_md = Node("CONTRIBUTING.md", "md", root)
   code_of_conduct_md = Node("CODE_OF_CONDUCT.md", "md", root)
   changelog_md = Node("CHANGELOG.md", "md", root)
   gitattributes = Node(".gitattributes", "git", root)
-  roadmap = Node("roadmap", "dir", root)
-  todo_md = Node("todo.md", "md", roadmap)
-  images = Node("images", "dir", root)
-  logo_svg = Node("logo.svg", "svg", images)
 
 function dpi:fs/preset/dotfiles:
   dotfiles_preset = storage.fs.preset.dotfiles
@@ -334,13 +334,13 @@ function dpi:fs/preset/dotfiles:
   init_lua = Node("init.lua", "lua", nvim)
   bash = Node("bash", "dir", root)
   aliases_sh = Node("aliases.sh", "sh", bash)
-  linux = Node("linux", "dir", root)
-  firefox_deb = Node("firefox.deb", "deb", linux)
+  systemd = Node("systemd", "dir", root)
+  backup_service = Node("backup.service", "conf", systemd)
   config = Node("config", "dir", root)
   settings_ini = Node("settings.ini", "ini", config)
-  fonts = Node("fonts", "dir", root)
-  mono_ttf = Node("mono.ttf", "ttf", fonts)
-  vimrc = Node(".vimrc", "vim", root)
+  vim = Node(".vim", "dir", root)
+  colors_vim = Node("colors.vim", "vim", vim)
+  editorconfig = Node(".editorconfig", "editorconfig", root)
   backup_tar = Node("backup.tar", "tar", root)
 
 function dpi:fs/preset/misc:
