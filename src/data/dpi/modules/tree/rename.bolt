@@ -11,7 +11,7 @@ entry = storage.temp.entry
 
 append function_tag summit.items:droppable/callback:
   values:
-    - "dpi:node/create/book_dropped"
+    - "dpi:node/rename/book_dropped"
 
 function dpi:node/rename/book_dropped:
   if items entity @s contents writable_book[custom_data~{dpi:{rename_input:true}}]
