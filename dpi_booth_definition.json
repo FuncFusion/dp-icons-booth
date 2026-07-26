@@ -45,14 +45,15 @@
         },
         "booth_area": {
             "position": {
-				"x": {"min": 95.0, "max": 133.0},
+				"x": {"min": 98.0, "max": 133.0},
                 "y": {"min": 92.0, "max": 127.0},
                 "z": {"min": -142.0, "max": -96.0}
 			}
         }
 	},
     "ticking_functions": {
-        "dpi:springboard/loop_22t_arrow": "22t"
+        "dpi:springboard/loop_22t_arrow": "22t",
+        "dpi:tick": "1t"
     },
 	"sticker_book": {
         "background_color": "#313338",
