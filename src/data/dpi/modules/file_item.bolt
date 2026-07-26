@@ -6,28 +6,7 @@ function dpi:file_item/give:
   # change to other type of notification
   execute if items entity @s container.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 0
   execute if items entity @s enderchest.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 0
-  give @s writable_book[
-    consumable={consume_seconds:999999999},
-    custom_data={
-      summit:{ persist: {}, droppable: {callback: true }, },
-      dpi:{ file_item:1b }
-    },
-    item_name="File",
-    item_model="dpi:file_item",
-    lore=[
-      [
-        {atlas:"items", sprite:"dpi:item/logos/deta_rack", color:"white", italic:false},
-        " ",
-        { text:"DATAPACK", font:"dpi:tooltip"},
-        " ",
-        {text:"ICONS",font:"dpi:tooltip"}
-      ],
-      [""],
-      ["Right click to open"],
-      ["Write the desired filename"],
-      [{keybind:"key.drop"}," to apply!"]
-    ]
-  ]
+  loot give @s loot {pools:[{rolls:1,entries:[{type:"minecraft:item",name:"minecraft:writable_book",functions:[{function:"minecraft:set_components",components:{"minecraft:consumable":{consume_seconds:999999999},"minecraft:custom_data":"{summit:{persist:{},droppable:{callback:1b}},dpi:{file_item:1b}}","minecraft:item_name":"File","minecraft:item_model":"dpi:file_item"}},{function:"minecraft:set_lore",lore:[[{atlas:"items",sprite:"dpi:item/logos/deta_rack",color:"white",italic:0b}," ",{text:"DATAPACK",font:"dpi:tooltip"}," ",{text:"ICONS",font:"dpi:tooltip"}],[""],[{text:"Right click to open",color:"dark_gray"}],[{text:"Write the desired filename",color:"dark_gray"}],[{keybind:"key.drop",color:"dark_gray"},{text:" to apply!",color:"dark_gray"}]],mode:"replace_all"}]}]}]}
 
 append function_tag summit.items:droppable/callback:
   values:
