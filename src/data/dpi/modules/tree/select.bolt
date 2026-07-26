@@ -155,7 +155,7 @@ dialog dpi:node/operate {
   ]
 }
 
-append function dpi:tick/player:
+append function dpi:tick/booth_player:
   if entity @s[tag=dpi.pending]:
     select_elapsed = var["#dpi.select_elapsed"]
     select_elapsed = global_tick
