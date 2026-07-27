@@ -7,10 +7,9 @@ p = prefix
 
 append function dpi:load:
   timer = expr.Scoreboard.objective("dpi.springboard.timer", "dummy")
-  stepped_obj = expr.Scoreboard.objective("dpi.springboard.stepped", "dummy")
   var[p + "springboard.animation_guard"] = 0
   animation_guard = var[p + "animation_guard"]
-  stepped = stepped_obj["@s"]
+  stepped = var[p + "stepped"]
   ready = var[p + "ready"]
   arrow_pos = var[p + "arrow_pos"]
   arrow_pos = 0
