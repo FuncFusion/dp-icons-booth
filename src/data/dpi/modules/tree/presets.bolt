@@ -29,7 +29,7 @@ for name in PRESETS.keys():
             }
         }
     }
-    advancement_requirements.append([f"dpi:preset/visited/{name}"])
+    advancement_requirements.append(f"dpi:preset/visited/{name}")
 
 function dpi:preset/visited_all:
   visited_all = var["#dpi.presets.visited_all"]
@@ -38,7 +38,7 @@ function dpi:preset/visited_all:
   # all_advancement_check = []
 
   for advancement in advancement_requirements:
-    unless entity @s[advancements={f"{advancement}"=true}]:
+    unless entity @s[advancements={advancement=true}]:
       visited_all = 0
 
   if visited_all:
@@ -140,7 +140,7 @@ function dpi:tree/preset/apply_preset:
       storage.fs.root = storage.fs.preset[preset]
       storage.fs.preset_name = preset
       update_tree = 1
-      function dpi:tree/render/presets
+      return run function dpi:tree/render/presets
       advancement grant @s only f"dpi:preset/visited/{preset}"
 
 append function dpi:load:

@@ -53,7 +53,7 @@ function dpi:node/rename/submit:
     storage.node.rename.input.file_name = storage.parse_input.output.file_name
     storage.node.rename.input.type = storage.parse_input.output.type
 
-    as @n[tag=dpi.node.selected]:
+    as @n[type=interaction,tag=dpi.node.selected]:
       target_id = var["#dpi.target_id"]
       target_id = id["@s"]
       function dpi:node/rename

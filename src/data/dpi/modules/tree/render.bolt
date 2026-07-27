@@ -14,6 +14,7 @@ in_namespace = var["#dpi.tree.in_namespace"]
 is_resource_root = var["#dpi.tree.is_resource_root"]
 parent_is_namespace = var["#dpi.tree.parent_is_namespace"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+render_depth = var["#dpi.render.depth"]
 depth = var["#dpi.depth"]
 xmas_theme = var["#dpi.xmas_theme"]
 render_input = storage.node.render.input
@@ -95,7 +96,7 @@ function dpi:node/render/spawn:
   button = gui.Button(left_click, right_click, name)
   button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"], [0.5, -0.25, 0.0])
 
-  execute as @n[tag=dpi.node.new, type=interaction]:
+  execute as @n[type=interaction,tag=dpi.node.new]:
     entity = expr.Data.entity("@s")
     on passengers run tag @s add dpi.tree.node
     entity.data.node = render_input
@@ -174,17 +175,25 @@ function dpi:tree/render/children:
   if stack.loops[-1][0]:
     at @s function dpi:tree/render/children
 
-def move_marker(x):
-  for i in range(10):
-    if depth == i:
-      for j in range(i):
-        at @s tp @s ~x ~ ~
-
 function dpi:tree/render/apply_depth:
-  move_marker(0.3)
+  render_depth = depth
+  function dpi:tree/render/apply_depth/loop
+
+function dpi:tree/render/apply_depth/loop:
+  if render_depth:
+    at @s tp @s ~0.3 ~ ~
+    render_depth -= 1
+    function dpi:tree/render/apply_depth/loop
 
 function dpi:tree/render/reset_depth:
-  move_marker(-0.3)
+  render_depth = depth
+  function dpi:tree/render/reset_depth/loop
+
+function dpi:tree/render/reset_depth/loop:
+  if render_depth:
+    at @s tp @s ~-0.3 ~ ~
+    render_depth -= 1
+    function dpi:tree/render/reset_depth/loop
 
 append function dpi:tree/render:
   tree = Tree()
