@@ -19,7 +19,7 @@ append function dpi:tick/booth_entity:
 
 append function dpi:tick/booth_player:
   if stepped:
-    function dpi:springboard/prime
+    if entity @s[tag=dpi.springboard.bounding_box] function dpi:springboard/prime
 
 function dpi:springboard/on_player_enter:
   tag @s add dpi.springboard.bounding_box
@@ -28,7 +28,7 @@ function dpi:springboard/on_player_enter:
 
 function dpi:springboard/on_player_exit:
   tag @s remove dpi.springboard.bounding_box
-  unless entity @n[tag=dpi.springboard.bounding_box]:
+  unless entity @p[tag=dpi.springboard.bounding_box]:
     stepped = 0
   tag @s remove dpi.springboard.pending
 

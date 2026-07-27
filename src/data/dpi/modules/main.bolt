@@ -74,7 +74,7 @@ append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.lev_icons.root] run function dpi:aj/lev_icons/remove/this
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root] run function dpi:aj/creators/remove/this
   function dpi:entities/static/kill
-  kill @e[tag=summit.booth_entity.dpi]
+  kill @e[type=#taglib:markerlike,tag=summit.booth_entity.dpi]
 
 prepend function dpi:load:
   function dpi:entities/refresh
