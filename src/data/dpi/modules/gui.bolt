@@ -134,7 +134,7 @@ class Button:
             self._spawn_text(offset_pos, rotation, translation_offset, tags)
         self._spawn_interaction(offset_pos, actions, width, height, tags)
 
-        execute as @n[type=interaction,tag=dpi.button.new.text] at @s run function dpi:button/mount_pair
+        function dpi:button/mount_pair
 
     def spawn(self, face, width=1, height=1, tags=[], translation_override=[0.0, 0.0, 0.0]):
         offset = width/2
@@ -156,7 +156,7 @@ class Button:
             self._spawn_text(offset_pos, rotation, translation_offset, tags)
         self._spawn_interaction(offset_pos, actions, width, height, tags)
 
-        execute as @n[type=interaction,tag=dpi.button.new.text] at @s run function dpi:button/mount_pair
+        function dpi:button/mount_pair
 
 function dpi:button/mount_pair:
-  ride @s mount @n[type=interaction,tag=dpi.button.new.interaction]
+  execute as @n[type=interaction,tag=dpi.button.new.text] at @s run ride @s mount @n[type=interaction,tag=dpi.button.new.interaction]
