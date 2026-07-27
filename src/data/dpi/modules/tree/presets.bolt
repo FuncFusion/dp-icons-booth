@@ -72,7 +72,7 @@ function dpi:xmas/init:
   data modify storage dpi:generated named_icons."function_xmas" set value {atlas:"items", sprite:"dpi:icons/function_folder_xmas"}
 
 function dpi:tree/render/presets:
-  kill @e[tag=dpi.tree.preset_display]
+  kill @e[type=#taglib:markerlike,tag=dpi.tree.preset_display]
 
   preset_display = gui.Button("", "", print_nbt("fs.preset_name"))
   execute positioned 110.75 84.55 -123.95:

@@ -10,7 +10,7 @@ output = storage.rebuild.output
 entry = storage.temp.entry
 
 function dpi:node/remove:
-  as @n[tag=dpi.node.selected]:
+  as @n[type=interaction,tag=dpi.node.selected]:
     target_id = var["#dpi.target_id"]
     target_id = id["@s"]
     function dpi:node/remove/init

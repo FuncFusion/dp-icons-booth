@@ -9,12 +9,12 @@ select_tick = expr.Scoreboard.objective("dpi.select_tick", "dummy")
 function dpi:node/toggle/select:
   entity = expr.Data.entity("@s")
 
-  execute on target if entity @e[type=player,tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
+  execute on target if entity @a[tag=dpi.pending] unless entity @s[tag=dpi.pending] run return run title @s actionbar {text:"Someone else is using the tree!",color:"red"}
 
   if entity @s[tag=dpi.node.selected]:
     return run function dpi:node/unselect
 
-  as @e[tag=dpi.node.selected] function dpi:node/unselect
+  as @e[type=interaction,tag=dpi.node.selected] function dpi:node/unselect
 
   function dpi:node/select
   execute on target run tag @s add dpi.pending
@@ -81,7 +81,7 @@ function dpi:node/context_menu/spawn:
     create_dir_button.spawn("south", 0.25, 0.25, tags=["dpi.node.context_menu", "dpi.node.context_menu.create_dir"])
 
 function dpi:node/context_menu/kill:
-  kill @e[tag=dpi.node.context_menu]
+  kill @e[type=#taglib:markerlike,tag=dpi.node.context_menu]
 
 append function dpi:trigger_callback/create_dir:
   execute on attacker unless entity @s[tag=dpi.pending] run return run title @s actionbar ""
@@ -109,7 +109,7 @@ append function dpi:trigger_callback/remove:
   execute on attacker unless entity @s[tag=dpi.pending] run return run title @s actionbar ""
   execute on target unless entity @s[tag=dpi.pending] run return run title @s actionbar ""
   function dpi:node/remove
-  as @e[tag=dpi.node.selected] function dpi:node/unselect
+  as @e[type=interction, tag=dpi.node.selected] function dpi:node/unselect
 
 dialog dpi:node/operate {
   "type": "minecraft:multi_action",
@@ -165,7 +165,7 @@ append function dpi:tick/booth_player:
       select_tick["@s"] = 0
       tag @s remove dpi.has_book
       item replace entity @s weapon.mainhand from entity @s saddle
-      execute as @n[tag=dpi.node.selected] run function dpi:node/expire_selection
+      execute as @n[type=interaction,tag=dpi.node.selected] run function dpi:node/expire_selection
 
 function dpi:node/expire_selection:
   function dpi:node/context_menu/kill

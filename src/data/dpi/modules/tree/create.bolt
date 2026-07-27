@@ -60,7 +60,7 @@ function dpi:node/create/submit:
       storage.node.create.input.file_name = storage.parse_input.output.file_name
       storage.node.create.input.type = storage.parse_input.output.type
 
-    as @n[tag=dpi.node.selected]:
+    as @n[type=interaction,tag=dpi.node.selected]:
       parent_id = var["#dpi.parent_id"]
       parent_id = id["@s"]
       function dpi:node/create
