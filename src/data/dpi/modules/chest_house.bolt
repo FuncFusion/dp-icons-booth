@@ -5,9 +5,6 @@ prefix = "#dpi.chest_house."
 p = prefix
 
 append function dpi:load:
-  last_used = expr.Scoreboard.objective("dpi.chest_house.open.last_used", "dummy")
-  timer = var[p + "timer"]
-  debounce_interval = var[p + "debounce_interval"]
   chest_open = var[p + "state"]
   someone_inside = var[p + "someone_inside"]
   self_inside = var[p + "self_inside"]
@@ -44,24 +41,14 @@ append function dpi:tick/booth_player:
     function dpi:chest_house/outside_bounding_box
 
 function dpi:chest_house/in_bounding_box:
-  if timer:
-    timer -= 1
-
-  unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:chest_house/enter_bounding_box
-
-  if timer == 0 and not chest_open:
-    function dpi:chest_house/open
+  unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/enter_bounding_box
 
 function dpi:chest_house/outside_bounding_box:
-  if timer:
-    timer -= 1
-
-  if entity @s[tag=dpi.chest_house.bounding_box] run function dpi:chest_house/exit_bounding_box
-
-  if timer == 0 and chest_open:
-    function dpi:chest_house/close
+  if entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/exit_bounding_box
 
 function dpi:chest_house/open:
+  if chest_open:
+    return 0
   chest_open = 1
   execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root,limit=1] at @s:
     function dpi:aj/chest_house/animations/chest_open/play
@@ -70,6 +57,8 @@ function dpi:chest_house/open:
     playsound minecraft:block.chest.open block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.80
 
 function dpi:chest_house/close:
+  if not chest_open:
+    return 0
   chest_open = 0
   execute as @e[type=minecraft:item_display,tag=dpi.aj.chest_house.root,limit=1] at @s:
     function dpi:aj/chest_house/animations/chest_close/play
@@ -77,19 +66,21 @@ function dpi:chest_house/close:
     playsound minecraft:ui.toast.out block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.69
     playsound minecraft:block.chest.close block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.80
 
-function dpi:chest_house/enter_bounding_box:
-  timer = 15
+function dpi:event/enter_bounding_box:
   tag @s add dpi.chest_house.bounding_box
+  schedule clear dpi:chest_house/close
+  schedule function dpi:chest_house/open 15 replace
 
   execute run function dpi:chest_house/create_lid_collision:
     fill 107 104 -110 120 117 -106 barrier
     fill 114 118 -109 113 118 -112 barrier
 
-function dpi:chest_house/exit_bounding_box:
-  timer = 12
+function dpi:event/exit_bounding_box:
   tag @s remove dpi.chest_house.bounding_box
   tag @s remove dpi.pending
   tag @s remove dpi.has_book
+  schedule clear dpi:chest_house/open
+  schedule function dpi:chest_house/close 12 replace
 
   execute run function dpi:chest_house/remove_lid_collision:
     fill 107 104 -110 120 117 -106 air
