@@ -109,7 +109,7 @@ append function dpi:trigger_callback/remove:
   execute on attacker unless entity @s[tag=dpi.pending] run return run title @s actionbar ""
   execute on target unless entity @s[tag=dpi.pending] run return run title @s actionbar ""
   function dpi:node/remove
-  as @e[type=interction, tag=dpi.node.selected] function dpi:node/unselect
+  as @e[type=interaction, tag=dpi.node.selected] function dpi:node/unselect
 
 dialog dpi:node/operate {
   "type": "minecraft:multi_action",

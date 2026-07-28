@@ -56,7 +56,7 @@
         "dpi:tick": "1t"
     },
 	"sticker_book": {
-        "background_color": "#313338",
+        "background_color": "#494b52",
         "region": "patched_plateaus",
         "stickers": [
             {
