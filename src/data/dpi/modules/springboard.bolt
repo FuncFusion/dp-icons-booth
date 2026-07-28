@@ -50,7 +50,7 @@ function dpi:springboard/prime:
 
     jump["@s"] = 0
 
-    as @a[tag=dpi.springboard.pending] at @s:
+    as @a[tag=summit.booth_entity.dpi,tag=dpi.springboard.pending] at @s:
      function player_motion:api/launch_global_xyz
      function dpi:stickers/start_speedrun
 
