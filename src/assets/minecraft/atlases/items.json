@@ -1,6 +1,6 @@
 {
   "sources": [
-    {
+	  {
       "type": "minecraft:directory",
       "prefix": "icons/",
       "source": "icons"
@@ -9,6 +9,13 @@
       "type": "minecraft:directory",
       "prefix": "file_item_icons/",
       "source": "file_item_icons"
+    },
+    {
+      "type": "filter",
+      "pattern": {
+        "namespace": "^(?!dpi$).*$",
+        "path": "^(icons|file_item_icons).*$"
+      }
     }
   ]
 }
