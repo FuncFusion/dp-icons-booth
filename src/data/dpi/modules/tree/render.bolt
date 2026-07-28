@@ -43,6 +43,7 @@ function dpi:node/render/get_name:
     $execute unless data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_files."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_files."$(name)"
     $execute unless data storage dpi:main node.render.input{closed:1b} if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_dirs."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)"
     $execute if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:main node.render.input{closed:1b} if data storage dpi:generated named_dirs."$(name)_closed" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)_closed"
+    $execute if score #dpi.xmas_theme dpi.var matches 1 if data storage dpi:generated named_icons."$(name)_xmas" if data storage dpi:main node.render.input{type:"dir"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)_xmas"
 
   is_dir = 0
   if render_input.type == "dir":
