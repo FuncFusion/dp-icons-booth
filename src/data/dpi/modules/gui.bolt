@@ -160,3 +160,5 @@ class Button:
 
 function dpi:button/mount_pair:
   execute as @n[type=text_display,tag=dpi.button.new.text] at @s run ride @s mount @n[type=interaction,tag=dpi.button.new.interaction]
+  as @e[type=text_display,tag=dpi.button.new.text] run tag @s remove dpi.button.new.text
+  as @e[type=interaction,tag=dpi.button.new.interaction] run tag @s remove dpi.button.new.interaction
