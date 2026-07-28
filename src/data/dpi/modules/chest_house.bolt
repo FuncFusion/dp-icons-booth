@@ -69,7 +69,7 @@ function dpi:chest_house/close:
 function dpi:event/enter_bounding_box:
   tag @s add dpi.chest_house.bounding_box
   schedule clear dpi:chest_house/close
-  schedule function dpi:chest_house/open 15 replace
+  schedule function dpi:chest_house/open 12 replace
 
   execute run function dpi:chest_house/create_lid_collision:
     fill 107 104 -110 120 117 -106 barrier
