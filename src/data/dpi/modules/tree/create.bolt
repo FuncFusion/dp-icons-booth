@@ -65,7 +65,7 @@ function dpi:node/create/submit:
       parent_id = id["@s"]
       function dpi:node/create
       function dpi:node/unselect
-    function dpi:file_item/give
+    on origin function dpi:file_item/give
   else:
     on origin run title @s actionbar [{text:"String can't be longer than 48 characters!", color:"red"}]
   kill @s
