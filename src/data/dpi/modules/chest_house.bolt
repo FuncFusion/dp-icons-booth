@@ -41,10 +41,10 @@ append function dpi:tick/booth_player:
     function dpi:chest_house/outside_bounding_box
 
 function dpi:chest_house/in_bounding_box:
-  unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/enter_bounding_box
+  unless entity @s[tag=dpi.chest_house.bounding_box] run function dpi:chest_house/enter_bounding_box
 
 function dpi:chest_house/outside_bounding_box:
-  if entity @s[tag=dpi.chest_house.bounding_box] run function dpi:event/exit_bounding_box
+  if entity @s[tag=dpi.chest_house.bounding_box] run function dpi:chest_house/exit_bounding_box
 
 function dpi:chest_house/open:
   if chest_open:
@@ -66,7 +66,7 @@ function dpi:chest_house/close:
     playsound minecraft:ui.toast.out block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.69
     playsound minecraft:block.chest.close block @a[tag=summit.in_booth.dpi] ~ ~10 ~ 3.0 0.80
 
-function dpi:event/enter_bounding_box:
+function dpi:chest_house/enter_bounding_box:
   tag @s add dpi.chest_house.bounding_box
   schedule clear dpi:chest_house/close
   schedule function dpi:chest_house/open 12 replace
@@ -75,7 +75,7 @@ function dpi:event/enter_bounding_box:
     fill 107 104 -110 120 117 -106 barrier
     fill 114 118 -109 113 118 -112 barrier
 
-function dpi:event/exit_bounding_box:
+function dpi:chest_house/exit_bounding_box:
   tag @s remove dpi.chest_house.bounding_box
   tag @s remove dpi.pending
   tag @s remove dpi.has_book
