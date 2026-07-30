@@ -8,6 +8,8 @@ function dpi:file_item/give:
   execute if items entity @s enderchest.* writable_book[custom_data~{dpi:{file_item:1b}}] run return 0
   loot give @s loot {pools:[{rolls:1,entries:[{type:"minecraft:item",name:"minecraft:writable_book",functions:[{function:"minecraft:set_components",components:{"minecraft:consumable":{consume_seconds:999999999},"minecraft:custom_data":"{summit:{persist:{},droppable:{callback:1b}},dpi:{file_item:1b}}","minecraft:item_name":"File","minecraft:item_model":"dpi:file_item"}},{function:"minecraft:set_lore",lore:[[{atlas:"items",sprite:"dpi:item/logos/deta_rack",color:"white",italic:0b}," ",{text:"DATAPACK",font:"dpi:tooltip"}," ",{text:"ICONS",font:"dpi:tooltip"}],[""],[{text:"Right click to open",color:"dark_gray"}],[{text:"Write the desired filename",color:"dark_gray"}],[{keybind:"key.drop",color:"dark_gray"},{text:" to apply!",color:"dark_gray"}]],mode:"replace_all"}]}]}]}
 
+advancement dpi:first_file_item_recieve {"criteria":{"impossible":{"trigger":"minecraft:impossible"}}}
+
 append function_tag summit.items:droppable/callback:
   values:
     - "dpi:file_item/dropped"
