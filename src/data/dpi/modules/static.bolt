@@ -177,7 +177,7 @@ def add_url_dialogue(icon, title, url):
   }
 
 dialog dpi:trailer_link:
-  add_url_dialogue("dpi:icons/video_file", "Watch 5.0 trailer!", "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+  add_url_dialogue("dpi:icons/video_file", "Watch 5.0 trailer! (Latest video on the channel)", "https://www.youtube.com/@super.ant_/videos")
 
 dialog dpi:main_repo_link:
   add_url_dialogue("dpi:icons/misc/antbot/github", "Check out the extension's repository!", "https://github.com/FuncFusion/mc-dp-icons")
@@ -250,13 +250,13 @@ dialog dpi:did_watch_trailer {
         "title": "",
         "body": {
           "type": "minecraft:plain_message",
-          "contents": ["Come back after watching the trailer to get a ",{"text": "sticker","color": "light_purple"},"!"]
+          "contents": ["Come back after watching the trailer to get a ",{"text": "sticker","color": "light_purple"},"! ",{"text":"(Latest video on the channel)","color":"dark_gray"}]
         },
         "yes": {
           "label": "Open trailer link",
           "action": {
             "type": "minecraft:open_url",
-            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            "url": "https://www.youtube.com/@super.ant_/videos"
           }
         },
         "no": {
