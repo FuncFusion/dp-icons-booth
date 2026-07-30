@@ -45,7 +45,7 @@ function dpi:entities/reset_player:
 append function dpi:entities/summon:
   function dpi:entities/static/summon
 
-  schedule function ... 2t replace:
+  schedule function dpi:entities/summon_file_tree 2t replace:
     storage.fs.root = storage.fs.preset.datapack
     storage.fs.preset_name = "datapack"
     function dpi:tree/preset/apply_preset
