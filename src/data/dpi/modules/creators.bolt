@@ -52,10 +52,7 @@ function dpi:creators/give_balloon:
     function dpi:aj/creators/animations/ant_handout_to_busy/play
     tag @s add dpi.transition_to_busy
   execute positioned 114.5 84 -106.8750 as @a[distance=..10,tag=dpi.balloon_reciever,limit=1]:
-    # delete ↓
-    #give @s bundle[item_model="dpi:dpi_balloon"]
-    # uncomment ↓
-    function summit.balloon:give/dpi/dpi_balloon
+    give @s bundle[item_model="dpi:dpi_balloon"]
   tag @a remove dpi.balloon_reciever
   tag @a remove dpi.should_be_followed
   tag @e[type=interaction,tag=dpi.giving_out_balloon] remove dpi.waiting_for_click

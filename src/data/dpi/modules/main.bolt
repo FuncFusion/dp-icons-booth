@@ -15,9 +15,9 @@ import dpi:parse_input as parse_input
 
 print("processed")
 
-# append function_tag minecraft:tick:
-#   values: 
-#     - "dpi:tick"
+append function_tag minecraft:tick:
+  values: 
+    - "dpi:tick"
 
 append function_tag minecraft:load:
   values: 
@@ -92,17 +92,17 @@ append function dpi:tick/booth_entity:
   # emerald on the upper floor
   execute as a2faf424-4fb9-4444-b486-29a39f24e675 rotated as @s run rotate @s ~0.3 0
 
-#append function dpi:tick/player:
-  # if entity @s[tag=summit.in_booth.dpi]:
-  #   function dpi:tick/booth_player
-  # if predicate dpi:sneaking:
-  #   function dpi:tick/player_sneaking
+append function dpi:tick/player:
+  if entity @s[tag=summit.in_booth.dpi]:
+    function dpi:tick/booth_player
+  if predicate dpi:sneaking:
+    function dpi:tick/player_sneaking
 
 append function dpi:tick/booth_player:
   pass
 
-# append function dpi:tick/player_sneaking:
-#   pass
+append function dpi:tick/player_sneaking:
+  pass
 
 function dpi:exit_portal/on_player_enter:
   tp @s 114.42 95.00 -124.30 -179.48 8.78

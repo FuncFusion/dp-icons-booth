@@ -119,12 +119,12 @@ def generate_item_models():
 
 generate_item_models()
 
-# predicate dpi:sneaking {
-#   "condition": "minecraft:entity_properties",
-#   "entity": "this",
-#   "predicate": {
-#     "minecraft:flags": {
-#       "is_sneaking": true
-#     }
-#   }
-# }
+predicate dpi:sneaking {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "minecraft:flags": {
+      "is_sneaking": true
+    }
+  }
+}
