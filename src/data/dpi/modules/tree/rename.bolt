@@ -83,8 +83,6 @@ function dpi:node/rename/main:
   target_id = var["#dpi.target_id"]
   rename_input = storage.node.rename.input
 
-  is_file = not node.children[0]
-
   if node.children:
     stack.loops.append(node.children)
     function dpi:node/rename/children
@@ -92,7 +90,7 @@ function dpi:node/rename/main:
 
   if node.id == target_id:
     entry.name = rename_input.file_name
-    if is_file:
+    if not node.children:
       entry.type = rename_input.type
     else:
       entry.type = node.type

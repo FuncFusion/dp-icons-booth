@@ -38,12 +38,14 @@ function dpi:node/render/get_name:
 
   execute run function dpi:node/render/get_icon with storage dpi:main node.render.input:
     $execute unless data storage dpi:main node.render.input{type:"dir"} run data modify storage dpi:main icon set from storage dpi:generated typed_icons."$(type)"
-    $execute if data storage dpi:generated named_icons."$(resource_type)" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)"
-    $execute if data storage dpi:generated named_icons."$(resource_type)_file" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)_file"
+
+    $execute if data storage dpi:main node.render.input{type:"json"} if data storage dpi:generated named_files."$(resource_type)_file" run data modify storage dpi:main icon set from storage dpi:generated named_files."$(resource_type)_file"
     $execute unless data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_files."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_files."$(name)"
-    $execute unless data storage dpi:main node.render.input{closed:1b} if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_dirs."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)"
+
+    $execute if data storage dpi:main node.render.input{type:"dir"} unless data storage dpi:main node.render.input{closed:1b} if data storage dpi:generated named_dirs."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)"
     $execute if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:main node.render.input{closed:1b} if data storage dpi:generated named_dirs."$(name)_closed" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)_closed"
-    $execute if score #dpi.xmas_theme dpi.var matches 1 if data storage dpi:generated named_icons."$(name)_xmas" if data storage dpi:main node.render.input{type:"dir"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)_xmas"
+
+    $execute if data storage dpi:main node.render.input{type:"dir"} if score "#dpi.xmas_theme" dpi.var matches 1 unless data storage dpi:main node.render.input{closed:1b} run data modify storage dpi:main icon set from storage dpi:generated xmas_icons."$(name)_xmas"
 
   is_dir = 0
   if render_input.type == "dir":
@@ -53,10 +55,18 @@ function dpi:node/render/get_name:
 
   function dpi:node/render/build_name
 
+function dpi:xmas/apply_named_icon:
+  $execute if data storage dpi:generated xmas_icons."$(name)_xmas" run data modify storage dpi:main icon set from storage dpi:generated xmas_icons."$(name)_xmas"
+  $execute if data storage dpi:generated named_dirs."$(name)_closed" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)_closed"
+
+function dpi:xmas/has_xmas_icon:
+  $execute if data storage dpi:generated xmas_icons."$(name)" run scoreboard players set #dpi.has_xmas_icon dpi.var 1
+
 function dpi:node/render/resolve_icon:
   if not icon:
+
     if render_input.closed:
-      if in_namespace and is_dir and not is_resource_root:
+      if in_namespace:
         if xmas_theme:
           icon = get_icon("namespace_folder_closed_xmas")
         else:
@@ -66,19 +76,21 @@ function dpi:node/render/resolve_icon:
           icon = get_icon("generic_folder_closed_xmas")
         else:
           icon = get_icon("generic_folder_closed")
+
     elif in_namespace and is_dir and not is_resource_root:
       if xmas_theme:
         icon = get_icon("namespace_folder_xmas")
-        function dpi:xmas/try_named_icon with storage dpi:main node.render.input
+        function dpi:xmas/apply_named_icon with storage dpi:main node.render.input
       else:
         icon = get_icon("namespace_folder")
+
     elif not render_input.closed and is_dir:
       if xmas_theme:
-        has_named_icon = var["#dpi.has_named_icon"]
-        has_named_icon = 0
-        execute run function dpi:xmas/has_named_icon with storage dpi:main node.render.input
-        function dpi:xmas/try_named_icon with storage dpi:main node.render.input
-        if not has_named_icon:
+        has_xmas_icon = var["#dpi.has_xmas_icon"]
+        has_xmas_icon = 0
+        function dpi:xmas/has_xmas_icon with storage dpi:main node.render.input
+        function dpi:xmas/apply_named_icon with storage dpi:main node.render.input
+        if not has_xmas_icon:
           icon = get_icon("generic_folder_xmas")
       else:
         icon = get_icon("generic_folder")
