@@ -8,13 +8,14 @@ append function dpi:load:
   ms_prefix = var["#dpi.speedrun.ms_prefix"]
   ms_prefix2 = var["#dpi.speedrun.ms_prefix2"]
 
-append function dpi:tick/player:
+append function dpi:tick/booth_player:
   if speedrun_timer["@s"]:
     speedrun_timer["@s"] -= 1
-  
-  if speedrun_timer["@s"] <= 0:
-    scoreboard players reset @s speedrun_timer
 
+append function dpi:exit_portal/on_player_exit:
+  if speedrun_timer["@s"] <= 0:
+    speedrun_timer["@s"].reset()
+  
 function dpi:stickers/start_speedrun:
   speedrun_timer["@s"] = 199
 
@@ -41,9 +42,6 @@ function dpi:stickers/speedrun_time_calc:
 
 function dpi:stickers/completion:
   advancement grant @s only summit.sticker_book:dpi/completion
-  # delete ↓
-  advancement revoke @s only dpi:stickers/completion
-  say completion!
 
 def generate_completion_advancement(tags):
     criteria = {}

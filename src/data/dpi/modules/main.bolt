@@ -1,4 +1,4 @@
-from dpi:config import var, global_tick, storage
+from dpi:config import var, storage, global_tick
 from bolt_expressions import Scoreboard
 import dpi:filesystem as fs
 import dpi:springboard as springboard
@@ -15,9 +15,9 @@ import dpi:parse_input as parse_input
 
 print("processed")
 
-append function_tag minecraft:tick:
-  values: 
-    - "dpi:tick"
+# append function_tag minecraft:tick:
+#   values: 
+#     - "dpi:tick"
 
 append function_tag minecraft:load:
   values: 
@@ -31,18 +31,25 @@ append function_tag summit.booth:dpi/entities/summon:
   values:
     - "dpi:entities/summon"
 
+append function_tag summit:api/reset_player:
+  values:
+    - "dpi:entities/reset_player"
+
 function dpi:entities/refresh:
   function dpi:entities/kill
   function dpi:entities/summon
-  function dpi:entities/static/kill
-  function dpi:entities/static/summon
 
-function dpi:entities/static/kill:
-  kill @e[tag=dpi.button]
+function dpi:entities/reset_player:
+  clear @s minecraft:writable_book[minecraft:custom_data~{dpi:{}}]
 
 append function dpi:entities/summon:
   function dpi:entities/static/summon
-  schedule function dpi:tree/render 2t
+
+  schedule function dpi:entities/summon_file_tree 2t replace:
+    storage.fs.root = storage.fs.preset.datapack
+    storage.fs.preset_name = "datapack"
+    function dpi:tree/preset/apply_preset
+
   execute positioned 114 93 -133.5 rotated 0 0 run function dpi:aj/springboard/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/chest_house/summon {args:{}}
   execute positioned 114.0 95.0 -117.0 rotated 180 0 run function dpi:aj/lev_icons/summon {args:{}}
@@ -51,16 +58,14 @@ append function dpi:entities/summon:
     function dpi:aj/lev_icons/animations/json_file_levitate/play
     function dpi:aj/lev_icons/animations/structure_file_levitate/play
     function dpi:aj/lev_icons/animations/mcf_tick_levitate/play
-  execute positioned 114 83 -104 run function dpi:aj/creators/summon {args:{}}
+  execute positioned 114 83 -104 rotated 0 0 run function dpi:aj/creators/summon {args:{}}
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root]:
     function dpi:aj/creators/animations/amandin_busy/play
     function dpi:aj/creators/animations/ant_busy/play
     function dpi:aj/creators/animations/bth_busy/play
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.bone.ant_character.tree] at @s run tp @s ~ ~0.25 ~-3.125
 
-  summon text_display 114.5 93.8 -132.0 {Tags:["dpi.springboard_arrow", "summit.booth_entity.dpi"], shadow: 0b, text: "⬆", transformation: {left_rotation: [0.0f, 0.9659259f, 0.25881904f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.9999999f, 2.0f, 2.0f]}, background: 0}
-  # replace with booth definition loop
-  execute as @e[tag=dpi.springboard_arrow,limit=1] run function dpi:springboard/loop_22t_arrow
+  summon text_display 114.5 93.8 -132.0 {Tags:["dpi.springboard_arrow", "summit.booth_entity.dpi"], UUID:[I;2139869377,2109031480,-1603881215,-1136584132], view_range: 0.02, shadow: 0b, text: "⬆", transformation: {left_rotation: [0.0f, 0.9659259f, 0.25881904f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.9999999f, 2.0f, 2.0f]}, background: 0}
 
   summon item_display 108.8750 101.9375 -120.5 {Tags:["summit.booth_entity.dpi"], UUID:[I;-1560611804,1337541700,-1266275933,-1624971659], item: {components: {"minecraft:item_model": "dpi:loot_table_file"}, count: 1, id: "minecraft:emerald"}, teleport_duration: 1, transformation: {left_rotation: [0.0f, -0.7071068f, 0.0f, 0.7071068f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.6f, 0.6f, 0.6f]}}
 
@@ -70,19 +75,14 @@ append function dpi:entities/kill:
   execute as @e[type=minecraft:item_display,tag=dpi.aj.lev_icons.root] run function dpi:aj/lev_icons/remove/this
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root] run function dpi:aj/creators/remove/this
   function dpi:entities/static/kill
-  kill @e[tag=summit.booth_entity.dpi]
+  kill @e[type=#taglib:markerlike,tag=summit.booth_entity.dpi]
 
 prepend function dpi:load:
-  tellraw @a:
-    text: "Reloaded!"
-    color: "green"
-
   function dpi:entities/refresh
 
 append function dpi:tick:
   global_tick += 1
-
-  as @a at @s run function dpi:tick/player
+  as @a[tag=summit.in_booth.dpi] at @s run function dpi:tick/booth_player
   as @e[
     type=#taglib:markerlike,
     tag=summit.booth_entity.dpi
@@ -92,9 +92,19 @@ append function dpi:tick/booth_entity:
   # emerald on the upper floor
   execute as a2faf424-4fb9-4444-b486-29a39f24e675 rotated as @s run rotate @s ~0.3 0
 
-append function dpi:tick/player:
-  # portal to leave the booth
-  execute if entity @s[x=120.5,y=83,z=-119,dy=1] in minecraft:overworld:
-    tp @s 114.42 95.00 -124.30 -179.48 8.78
-    at @s playsound minecraft:item.chorus_fruit.teleport player @s ~ ~ ~
-    function dpi:stickers/end_speedrun
+#append function dpi:tick/player:
+  # if entity @s[tag=summit.in_booth.dpi]:
+  #   function dpi:tick/booth_player
+  # if predicate dpi:sneaking:
+  #   function dpi:tick/player_sneaking
+
+append function dpi:tick/booth_player:
+  pass
+
+# append function dpi:tick/player_sneaking:
+#   pass
+
+function dpi:exit_portal/on_player_enter:
+  tp @s 114.42 95.00 -124.30 -179.48 8.78
+  at @s playsound minecraft:item.chorus_fruit.teleport player @s ~ ~ ~
+  function dpi:stickers/end_speedrun

@@ -57,6 +57,10 @@ function dpi:entities/static/summon:
   summon item_display 108.8750 102.0 -120.5 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.70710677f, 0.0f, 0.70710677f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 2.0f, 2.0f]},brightness: {sky: 15, block: 15}}
   gui.Button("execute on attacker run advancement grant @s only summit.sticker_book:dpi/emerald", "execute on target run advancement grant @s only summit.sticker_book:dpi/emerald").spawn_abs([109.1750, 101.5, -120.5], "east", 0.6, 0.6, ["dpi.button.emerald_sticker","summit.static"])
 
+  summon item_display 118.5 101.5 -122.3125 {Tags:["summit.static","summit.booth_entity.dpi"],item: {components: {"minecraft:item_model": "dpi:mcfunction_file"}, count: 1, id: "minecraft:repeating_command_block"}, transformation: {left_rotation: [0.0f, 0.5f, 0.0f, 0.8660255f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.99999964f, 0.9999999f, 0.9999997f]}}
+  summon item_display 119.4375 101.5 -121.875 {Tags:["summit.static","summit.booth_entity.dpi"],item: {components: {"minecraft:item_model": "dpi:mcfunction_tick_file"}, count: 1, id: "minecraft:repeating_command_block"}, transformation: {left_rotation: [0.0f, 0.23344548f, 0.0f, 0.97236997f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 0.9999999f, 1.0000001f]}}
+  summon item_display 118.9375 102.25 -122.1875 {Tags:["summit.static","summit.booth_entity.dpi"],item: {components: {"minecraft:item_model": "dpi:mcfunction_load_file"}, count: 1, id: "minecraft:repeating_command_block"}, transformation: {left_rotation: [0.0f, 0.23344548f, 0.0f, 0.97236997f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.0f, 0.9999999f, 1.0000001f]}}
+
   # welcome
   summon item_display 108.8125 99.0 -111.8125 {Tags:["summit.static","summit.booth_entity.dpi"], item: {components: {"minecraft:item_model": "dpi:dpi_chest"}, count: 1, id: "minecraft:chest"}, transformation: {left_rotation: [0.0f, 0.92387956f, 0.0f, 0.38268352f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [2.0f, 1.9999998f, 2.0f]},brightness: {sky: 15, block: 15}}
 
@@ -173,7 +177,7 @@ def add_url_dialogue(icon, title, url):
   }
 
 dialog dpi:trailer_link:
-  add_url_dialogue("dpi:icons/video_file", "Watch 5.0 trailer!", "https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+  add_url_dialogue("dpi:icons/video_file", "Watch 5.0 trailer! (Latest video on the channel)", "https://www.youtube.com/@super.ant_/videos")
 
 dialog dpi:main_repo_link:
   add_url_dialogue("dpi:icons/misc/antbot/github", "Check out the extension's repository!", "https://github.com/FuncFusion/mc-dp-icons")
@@ -246,13 +250,13 @@ dialog dpi:did_watch_trailer {
         "title": "",
         "body": {
           "type": "minecraft:plain_message",
-          "contents": ["Come back after watching the trailer to get a ",{"text": "sticker","color": "light_purple"},"!"]
+          "contents": ["Come back after watching the trailer to get a ",{"text": "sticker","color": "light_purple"},"! ",{"text":"(Latest video on the channel)","color":"dark_gray"}]
         },
         "yes": {
           "label": "Open trailer link",
           "action": {
             "type": "minecraft:open_url",
-            "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            "url": "https://www.youtube.com/@super.ant_/videos"
           }
         },
         "no": {

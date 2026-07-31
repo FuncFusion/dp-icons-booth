@@ -29,7 +29,7 @@ for name in PRESETS.keys():
             }
         }
     }
-    advancement_requirements.append([f"dpi:preset/visited/{name}"])
+    advancement_requirements.append(f"dpi:preset/visited/{name}")
 
 function dpi:preset/visited_all:
   visited_all = var["#dpi.presets.visited_all"]
@@ -38,7 +38,7 @@ function dpi:preset/visited_all:
   # all_advancement_check = []
 
   for advancement in advancement_requirements:
-    unless entity @s[advancements={f"{advancement}"=true}]:
+    unless entity @s[advancements={advancement=true}]:
       visited_all = 0
 
   if visited_all:
@@ -60,36 +60,25 @@ function dpi:xmas/toggle:
     xmas_theme = 1
   update_tree = 1
 
-function dpi:xmas/try_named_icon:
-  $execute if data storage dpi:generated named_icons."$(name)_xmas" run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(name)_xmas"
-
-function dpi:xmas/has_named_icon:
-  $execute if data storage dpi:generated named_icons."$(name)" run scoreboard players set #dpi.has_named_icon dpi.var 1
-
-function dpi:xmas/init:
-  data modify storage dpi:generated typed_icons."dir_xmas" set value {atlas:"items", sprite:"dpi:icons/generic_folder_xmas"}
-  data modify storage dpi:generated named_icons."tags_xmas" set value {atlas:"items", sprite:"dpi:icons/tags_folder_xmas"}
-  data modify storage dpi:generated named_icons."function_xmas" set value {atlas:"items", sprite:"dpi:icons/function_folder_xmas"}
-
 function dpi:tree/render/presets:
-  kill @e[tag=dpi.tree.preset_display]
+  kill @e[type=#taglib:markerlike,tag=dpi.tree.preset_display]
 
   preset_display = gui.Button("", "", print_nbt("fs.preset_name"))
-  execute positioned 110.75 84.55 -123.95:
+  execute positioned 110.25 84.55 -123.95:
     preset_display.spawn("south", 2, 0.25, tags=["dpi.tree.preset_display"])
 
   cycle_next_lmb = "execute on attacker run function dpi:tree/preset/cycle_next"
   cycle_next_rmb = "execute on target run function dpi:tree/preset/cycle_next"
 
   cycle_next_button = gui.Button(cycle_next_lmb, cycle_next_rmb, "next ➡")
-  execute positioned 111.25 84.25 -123.95:
+  execute positioned 110.75 84.25 -123.95:
     cycle_next_button.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
   cycle_back_lmb = "execute on attacker run function dpi:tree/preset/cycle_back"
   cycle_back_rmb = "execute on target run function dpi:tree/preset/cycle_back"
 
   cycle_back_button = gui.Button(cycle_back_lmb, cycle_back_rmb, "⬅ back")
-  execute positioned 110.25 84.25 -123.95:
+  execute positioned 109.75 84.25 -123.95:
     cycle_back_button.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
   if xmas_theme:
@@ -97,7 +86,7 @@ function dpi:tree/render/presets:
   else:
     storage.xmas_button_text = {text:"❄ Xmas", color:"dark_gray"}
   xmas_toggle = gui.Button("function dpi:xmas/toggle", "function dpi:xmas/toggle", print_nbt("xmas_button_text"))
-  execute positioned 110.75 85.1 -123.95:
+  execute positioned 110.25 85.1 -123.95:
     xmas_toggle.spawn("south", 1, 0.25, tags=["dpi.tree.preset_display"])
 
 function dpi:tree/preset/cycle_back:
@@ -140,7 +129,7 @@ function dpi:tree/preset/apply_preset:
       storage.fs.root = storage.fs.preset[preset]
       storage.fs.preset_name = preset
       update_tree = 1
-      function dpi:tree/render/presets
+      return run function dpi:tree/render/presets
       advancement grant @s only f"dpi:preset/visited/{preset}"
 
 append function dpi:load:

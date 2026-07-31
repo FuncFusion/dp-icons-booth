@@ -1,5 +1,11 @@
 output: "build"
 
+data_pack:
+  zipped: true
+
+resource_pack:
+  zipped: true
+
 pipeline:
   - data_pack:
       load: ["src"]
@@ -14,13 +20,6 @@ pipeline:
           "dpi:main"
     pipeline:
       - mecha
-
-  - data_pack:
-      load:
-        - "https://vendors.internal.smithed.net/app/static/summit-dp-core.zip"
-    resource_pack:
-      load:
-        - "https://vendors.internal.smithed.net/app/static/summit-rp-core.zip"
 
   - data_pack:
       load: ["lib"]

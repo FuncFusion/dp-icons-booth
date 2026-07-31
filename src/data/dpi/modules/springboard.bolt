@@ -17,16 +17,26 @@ append function dpi:load:
 append function dpi:tick/booth_entity:
   if entity @s[tag=dpi.aj.springboard.root] run function dpi:springboard/tick
 
-append function dpi:tick/player:
-  if entity @s[x=113, y=93, z=-135, dx=2, dy=1, dz=2] run function dpi:springboard/prime
-  execute unless entity @s[x=113, y=93, z=-135, dx=2, dy=1, dz=2]:
-    tag @s remove dpi.springboard.pending
+append function dpi:tick/booth_player:
+  if stepped:
+    if entity @s[tag=dpi.springboard.bounding_box] function dpi:springboard/prime
 
-  if jump["@s"]:
-    jump["@s"] = 0
+function dpi:springboard/on_player_enter:
+  tag @s add dpi.springboard.bounding_box
+  stepped = 1
+  function dpi:springboard/prime
+
+function dpi:springboard/on_player_exit:
+  tag @s remove dpi.springboard.bounding_box
+  unless entity @p[tag=dpi.springboard.bounding_box]:
+    stepped = 0
+  tag @s remove dpi.springboard.pending
 
 function dpi:springboard/prime:
   if entity @s[tag=!dpi.springboard.pending]:
+    if jump["@s"]:
+      jump["@s"] = 0
+
     tag @s add dpi.springboard.pending
     timer["@s"] = 14
 
@@ -40,17 +50,16 @@ function dpi:springboard/prime:
 
     jump["@s"] = 0
 
-    as @a[tag=dpi.springboard.pending] at @s:
-     function player_motion:api/launch_global_xyz
-     function dpi:stickers/start_speedrun
+    as @a[tag=summit.in_booth.dpi,tag=dpi.springboard.pending] at @s:
+      function player_motion:api/launch_global_xyz
+      function dpi:stickers/start_speedrun
 
     tag @s remove dpi.springboard.pending
 
-function dpi:springboard/tick:
-  execute
-    store result score f"{p}stepped" dpi.var
-    if entity @p[x=113, y=93, z=-135, dx=2, dy=1, dz=2]
+  if jump["@s"]:
+    jump["@s"] = 0
 
+function dpi:springboard/tick:
   if stepped and not animation_guard:
     animation_guard = 1
     function dpi:aj/springboard/animations/animation_springboard_prime/play
@@ -63,7 +72,6 @@ function dpi:springboard/loop_22t_arrow:
   arrow_pos -= 1
   arrow_pos *= -1
   if arrow_pos == 0:
-    tp @e[tag=dpi.springboard_arrow,limit=1] 114.5 93.8 -132.0
+    tp 7f8bd0c1-7db5-4438-a066-b701bc411a3c 114.5 93.8 -132.0
   else:
-    tp @e[tag=dpi.springboard_arrow,limit=1] 114.5 94.3 -131.7
-  schedule function dpi:springboard/loop_22t_arrow 22
+    tp 7f8bd0c1-7db5-4438-a066-b701bc411a3c 114.5 94.3 -131.7

@@ -17,9 +17,9 @@ class Tree:
     function dpi:tree/render/presets
 
   def kill(self):
-    execute as @e[tag=dpi.tree.node] on passengers run kill @s
-    kill @e[tag=dpi.tree.node]
-    kill @e[tag=dpi.node.context_menu]
+    execute as @e[type=#taglib:markerlike,tag=dpi.tree.node] on passengers run kill @s
+    kill @e[type=#taglib:markerlike,tag=dpi.tree.node]
+    kill @e[type=#taglib:markerlike,tag=dpi.node.context_menu]
 
   def update(self):
     update_tree = var["#dpi.tree.update_pending"]

@@ -14,6 +14,7 @@ in_namespace = var["#dpi.tree.in_namespace"]
 is_resource_root = var["#dpi.tree.is_resource_root"]
 parent_is_namespace = var["#dpi.tree.parent_is_namespace"]
 id = expr.Scoreboard.objective("dpi.node_id", "dummy")
+render_depth = var["#dpi.render.depth"]
 depth = var["#dpi.depth"]
 xmas_theme = var["#dpi.xmas_theme"]
 render_input = storage.node.render.input
@@ -37,11 +38,14 @@ function dpi:node/render/get_name:
 
   execute run function dpi:node/render/get_icon with storage dpi:main node.render.input:
     $execute unless data storage dpi:main node.render.input{type:"dir"} run data modify storage dpi:main icon set from storage dpi:generated typed_icons."$(type)"
-    $execute if data storage dpi:generated named_icons."$(resource_type)" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)"
-    $execute if data storage dpi:generated named_icons."$(resource_type)_file" if data storage dpi:main node.render.input{type:"json"} run data modify storage dpi:main icon set from storage dpi:generated named_icons."$(resource_type)_file"
+
+    $execute if data storage dpi:main node.render.input{type:"json"} if data storage dpi:generated named_files."$(resource_type)_file" run data modify storage dpi:main icon set from storage dpi:generated named_files."$(resource_type)_file"
     $execute unless data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_files."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_files."$(name)"
-    $execute unless data storage dpi:main node.render.input{closed:1b} if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:generated named_dirs."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)"
+
+    $execute if data storage dpi:main node.render.input{type:"dir"} unless data storage dpi:main node.render.input{closed:1b} if data storage dpi:generated named_dirs."$(name)" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)"
     $execute if data storage dpi:main node.render.input{type:"dir"} if data storage dpi:main node.render.input{closed:1b} if data storage dpi:generated named_dirs."$(name)_closed" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)_closed"
+
+    $execute if data storage dpi:main node.render.input{type:"dir"} if score #dpi.xmas_theme dpi.var matches 1 unless data storage dpi:main node.render.input{closed:1b} run data modify storage dpi:main icon set from storage dpi:generated xmas_icons."$(name)_xmas"
 
   is_dir = 0
   if render_input.type == "dir":
@@ -51,10 +55,18 @@ function dpi:node/render/get_name:
 
   function dpi:node/render/build_name
 
+function dpi:xmas/apply_named_icon:
+  $execute if data storage dpi:generated xmas_icons."$(name)_xmas" run data modify storage dpi:main icon set from storage dpi:generated xmas_icons."$(name)_xmas"
+  $execute if data storage dpi:generated named_dirs."$(name)_closed" run data modify storage dpi:main icon set from storage dpi:generated named_dirs."$(name)_closed"
+
+function dpi:xmas/has_xmas_icon:
+  $execute if data storage dpi:generated xmas_icons."$(name)" run scoreboard players set #dpi.has_xmas_icon dpi.var 1
+
 function dpi:node/render/resolve_icon:
   if not icon:
+
     if render_input.closed:
-      if in_namespace and is_dir and not is_resource_root:
+      if in_namespace:
         if xmas_theme:
           icon = get_icon("namespace_folder_closed_xmas")
         else:
@@ -64,19 +76,22 @@ function dpi:node/render/resolve_icon:
           icon = get_icon("generic_folder_closed_xmas")
         else:
           icon = get_icon("generic_folder_closed")
+
     elif in_namespace and is_dir and not is_resource_root:
       if xmas_theme:
         icon = get_icon("namespace_folder_xmas")
-        function dpi:xmas/try_named_icon with storage dpi:main node.render.input
+        function dpi:xmas/apply_named_icon with storage dpi:main node.render.input
       else:
         icon = get_icon("namespace_folder")
+
     elif not render_input.closed and is_dir:
       if xmas_theme:
-        has_named_icon = var["#dpi.has_named_icon"]
-        has_named_icon = 0
-        execute run function dpi:xmas/has_named_icon with storage dpi:main node.render.input
-        function dpi:xmas/try_named_icon with storage dpi:main node.render.input
-        if not has_named_icon:
+        has_xmas_icon = var["#dpi.has_xmas_icon"]
+        has_xmas_icon = 0
+        tellraw @a ["has_xmas_icon ", has_xmas_icon]
+        function dpi:xmas/has_xmas_icon with storage dpi:main node.render.input
+        function dpi:xmas/apply_named_icon with storage dpi:main node.render.input
+        if not has_xmas_icon:
           icon = get_icon("generic_folder_xmas")
       else:
         icon = get_icon("generic_folder")
@@ -95,7 +110,7 @@ function dpi:node/render/spawn:
   button = gui.Button(left_click, right_click, name)
   button.spawn("south", 4, 0.25, ["dpi.node.new", "dpi.tree.node"], [0.5, -0.25, 0.0])
 
-  execute as @n[tag=dpi.node.new, type=interaction]:
+  execute as @n[type=interaction,tag=dpi.node.new]:
     entity = expr.Data.entity("@s")
     on passengers run tag @s add dpi.tree.node
     entity.data.node = render_input
@@ -118,8 +133,8 @@ function dpi:tree/render/init:
   stack.path = []
 
   summon marker ~ ~ ~ {Tags:["dpi.tree.marker", "summit.booth_entity.dpi"]}
-  as @n[tag=dpi.tree.marker] at @s run function dpi:tree/render/main
-  kill @e[tag=dpi.tree.marker]
+  as @n[type=marker,tag=dpi.tree.marker] at @s run function dpi:tree/render/main
+  kill @e[type=marker,tag=dpi.tree.marker]
 
 function dpi:tree/render/main:
   node = stack.node[-1]
@@ -174,19 +189,27 @@ function dpi:tree/render/children:
   if stack.loops[-1][0]:
     at @s function dpi:tree/render/children
 
-def move_marker(x):
-  for i in range(10):
-    if depth == i:
-      for j in range(i):
-        at @s tp @s ~x ~ ~
-
 function dpi:tree/render/apply_depth:
-  move_marker(0.3)
+  render_depth = depth
+  function dpi:tree/render/apply_depth/loop
+
+function dpi:tree/render/apply_depth/loop:
+  if render_depth:
+    at @s tp @s ~0.3 ~ ~
+    render_depth -= 1
+    function dpi:tree/render/apply_depth/loop
 
 function dpi:tree/render/reset_depth:
-  move_marker(-0.3)
+  render_depth = depth
+  function dpi:tree/render/reset_depth/loop
 
-append function dpi:temp:
+function dpi:tree/render/reset_depth/loop:
+  if render_depth:
+    at @s tp @s ~-0.3 ~ ~
+    render_depth -= 1
+    function dpi:tree/render/reset_depth/loop
+
+append function dpi:tree/render:
   tree = Tree()
 
   storage.fs.root = storage.fs.preset.datapack
@@ -199,6 +222,3 @@ append function dpi:tick:
   if update_tree:
     execute positioned 114.5 86.8 -123.95:
       tree.update()
-
-append function dpi:load:
-  schedule function dpi:temp 2t replace

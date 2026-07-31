@@ -12,7 +12,7 @@ function animated_java:global/data_manager/read with storage animated_java:temp 
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.root_uuid set from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.blueprint_id set value "dpi:aj/creators"
-data modify storage animated_java:temp entry.data.rig_hash set value "f851eae5f0e2d707466aeb3e7101619d808b29f24233fbfd1f8f68f9f969e0ea"
+data modify storage animated_java:temp entry.data.rig_hash set value "fb932c3d074fcea9a3700b2dff7372d899e2233f0fd667c32b41bff490889d9c"
 tp @s ~ ~ ~ ~ ~
 execute on passengers if entity @s[tag=dpi.aj.creators.node.bth_head] run function dpi:aj/creators/zzz/summon/as_node/bth_head
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
@@ -80,9 +80,9 @@ data modify storage animated_java:temp entry.data.uuids_by_name.ant_display_vsc 
 execute on passengers if entity @s[tag=dpi.aj.creators.node.ant_display_obs] run function dpi:aj/creators/zzz/summon/as_node/ant_display_obs
 data modify storage animated_java:temp entry.data.uuids append from storage animated_java:gu out
 data modify storage animated_java:temp entry.data.uuids_by_name.ant_display_obs set from storage animated_java:gu out
-function dpi:aj/creators/zzz/set_default_pose
 # Data Manager: Write
 function animated_java:global/data_manager/write with storage animated_java:temp args
+function dpi:aj/creators/zzz/set_default_pose
 execute if data storage animated_java:temp args.variant run function dpi:aj/creators/zzz/summon/zzz/variant_arg/no_variants_warning
 execute if score #success aj.i matches 0 run return fail
 execute if data storage animated_java:temp args.animation run function dpi:aj/creators/zzz/summon/animation_arg/process with storage animated_java:temp args
