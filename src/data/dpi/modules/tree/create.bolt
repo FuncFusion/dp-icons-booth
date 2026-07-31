@@ -67,8 +67,8 @@ function dpi:node/create/submit:
       function dpi:node/unselect
     on origin:
       function dpi:file_item/give
-      advancement grant @s only dpi:first_file_item_recieve
       execute unless entity @s[advancements={dpi:first_file_item_recieve=true}] run title @s actionbar [{text: "You got a personal custom "},{atlas:"items", sprite:"dpi:icons/generic_file", shadow_color:0},{text:" file item",color:"gold"},"!"]
+      advancement grant @s only dpi:first_file_item_recieve
   else:
     on origin run title @s actionbar [{text:"String can't be longer than 48 characters!", color:"red"}]
   kill @s
