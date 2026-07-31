@@ -60,11 +60,6 @@ function dpi:xmas/toggle:
     xmas_theme = 1
   update_tree = 1
 
-function dpi:xmas/init:
-  data modify storage dpi:generated typed_icons."dir_xmas" set value {atlas:"items", sprite:"dpi:icons/generic_folder_xmas"}
-  data modify storage dpi:generated xmas_icons."tags_xmas" set value {atlas:"items", sprite:"dpi:icons/tags_folder_xmas"}
-  data modify storage dpi:generated xmas_icons."function_xmas" set value {atlas:"items", sprite:"dpi:icons/function_folder_xmas"}
-
 function dpi:tree/render/presets:
   kill @e[type=#taglib:markerlike,tag=dpi.tree.preset_display]
 
@@ -143,8 +138,6 @@ append function dpi:load:
 
   for preset in PRESETS.keys():
     function f"dpi:fs/preset/{preset}"
-
-  function dpi:xmas/init
 
 function dpi:fs/preset/datapack:
   datapack_preset = storage.fs.preset.datapack

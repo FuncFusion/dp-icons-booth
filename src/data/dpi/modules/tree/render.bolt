@@ -88,6 +88,7 @@ function dpi:node/render/resolve_icon:
       if xmas_theme:
         has_xmas_icon = var["#dpi.has_xmas_icon"]
         has_xmas_icon = 0
+        tellraw @a ["has_xmas_icon ", has_xmas_icon]
         function dpi:xmas/has_xmas_icon with storage dpi:main node.render.input
         function dpi:xmas/apply_named_icon with storage dpi:main node.render.input
         if not has_xmas_icon:

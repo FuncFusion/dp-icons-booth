@@ -5,6 +5,7 @@ import re
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ICONS_DIR = os.path.join(SCRIPT_DIR, "..", "..", "mc-dp-icons", "src", "data", "icons")
+XMAS_ICONS_DIR = os.path.join(SCRIPT_DIR, "..", "src", "assets", "dpi", "textures", "icons")
 OUTPUT_PATH = os.path.join(SCRIPT_DIR, "..", "icon_data.json")
 
 FILES = [
@@ -86,7 +87,31 @@ def main():
     named_files["tick.mcfunction"] = "mcfunction_tick_file"
     named_files["load.mcfunction"] = "mcfunction_load_file"
 
-    result = {"typed": typed, "named_dirs": named_dirs, "named_files": named_files}
+    xmas_textures = set()
+    if os.path.isdir(XMAS_ICONS_DIR):
+        for fname in os.listdir(XMAS_ICONS_DIR):
+            if fname.endswith("_xmas.png"):
+                xmas_textures.add(fname.removesuffix(".png"))
+
+    xmas_icons = {}
+    for folder, icon in named_dirs.items():
+        if folder.endswith("_closed"):
+            continue
+        xmas_name = f"{icon}_xmas"
+        if xmas_name in xmas_textures:
+            xmas_icons[f"{folder}_xmas"] = xmas_name
+    xmas_icons.setdefault("tags_xmas", "tags_folder_xmas")
+    xmas_icons.setdefault("function_xmas", "function_folder_xmas")
+
+    typed_xmas = {"dir_xmas": "generic_folder_xmas"}
+
+    result = {
+        "typed": typed,
+        "typed_xmas": typed_xmas,
+        "named_dirs": named_dirs,
+        "named_files": named_files,
+        "xmas_icons": xmas_icons,
+    }
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w") as f:
@@ -100,21 +125,27 @@ def main():
         f.write("data modify storage dpi:generated named_files set value {}\n")
         f.write("data modify storage dpi:generated typed_icon_names set value {}\n")
         f.write("data modify storage dpi:generated named_icon_names set value {}\n")
+        f.write("data modify storage dpi:generated xmas_icons set value {}\n")
         for ext, icon in sorted(typed.items()):
             f.write(f'data modify storage dpi:generated typed_icons."{ext}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
             f.write(f'data modify storage dpi:generated typed_icon_names."{ext}" set value "{icon}"\n')
+        for key, icon in sorted(typed_xmas.items()):
+            f.write(f'data modify storage dpi:generated typed_icons."{key}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
         for name, icon in sorted(named_dirs.items()):
             f.write(f'data modify storage dpi:generated named_dirs."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
             f.write(f'data modify storage dpi:generated named_icon_names."{name}" set value "{icon}"\n')
         for name, icon in sorted(named_files.items()):
             f.write(f'data modify storage dpi:generated named_files."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
             f.write(f'data modify storage dpi:generated named_icon_names."{name}" set value "{icon}"\n')
+        for name, icon in sorted(xmas_icons.items()):
+            f.write(f'data modify storage dpi:generated xmas_icons."{name}" set value {{atlas:"items", sprite:"dpi:icons/{icon}"}}\n')
 
     print(f"Generated {OUTPUT_PATH}")
     print(f"Generated {mcf_path}")
     print(f"  typed_icons: {len(typed)} entries")
     print(f"  named_dirs: {len(named_dirs)} entries")
     print(f"  named_files: {len(named_files)} entries")
+    print(f"  xmas_icons: {len(xmas_icons)} entries")
     print(f"  typed_icon_names: {len(typed)} entries")
     print(f"  named_icon_names: {len(named_dirs) + len(named_files)} entries")
 
