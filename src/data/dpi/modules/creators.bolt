@@ -29,7 +29,6 @@ function dpi:creators/click_ant:
   execute if entity @s[tag=dpi.waiting_for_click] run return run function dpi:creators/give_balloon
   execute if entity @s[tag=dpi.giving_out_balloon] run return 1
   tag @s add dpi.giving_out_balloon
-  execute on attacker run tag @s add dpi.balloon_reciever
   execute on target run tag @s add dpi.balloon_reciever
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.root,limit=1]:
     function dpi:aj/creators/animations/ant_busy/pause
