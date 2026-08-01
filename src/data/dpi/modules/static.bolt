@@ -140,7 +140,7 @@ function dpi:entities/static/summon:
   gui.Button("execute on attacker run dialog show @s dpi:amandin_github_link", "execute on target run dialog show @s dpi:amandin_github_link").spawn_abs([118.7, 83.8, -97.2875], "north", 1.6, 0.3, ["dpi.button.amandin_github_link","summit.static"])
 
   # ant balloon interaction
-  gui.Button("function dpi:creators/click_ant", "function dpi:creators/click_ant").spawn_abs([114,83,-107.6250], "north", 1.5, 1.5, ["dpi.button.ant_balloon"])
+  gui.Button("", "function dpi:creators/click_ant").spawn_abs([114,83,-107.6250], "north", 1.5, 1.5, ["dpi.button.ant_balloon"])
 
 
 def add_url_dialogue(icon, title, url):
