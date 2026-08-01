@@ -126,11 +126,11 @@ function dpi:tree/preset/apply_preset:
 
   for preset, index in PRESETS.items():
     if preset_index == index:
+      advancement grant @s only f"dpi:preset/visited/{preset}"
       storage.fs.root = storage.fs.preset[preset]
       storage.fs.preset_name = preset
       update_tree = 1
-      return run function dpi:tree/render/presets
-      advancement grant @s only f"dpi:preset/visited/{preset}"
+      function dpi:tree/render/presets
 
 append function dpi:load:
   preset_amount = list(PRESETS.values())[-1]
