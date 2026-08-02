@@ -102,6 +102,8 @@ function dpi:tree/preset/cycle_back:
   preset_cd["@s"] = global_tick
   preset_index -= 1
   function dpi:tree/preset/apply_preset
+  function dpi:node/expire_scheduled
+  schedule clear dpi:node/expire_scheduled
 
 function dpi:tree/preset/cycle_next:
   function dpi:preset/visited_all
@@ -116,6 +118,8 @@ function dpi:tree/preset/cycle_next:
   preset_cd["@s"] = global_tick
   preset_index += 1
   function dpi:tree/preset/apply_preset
+  function dpi:node/expire_scheduled
+  schedule clear dpi:node/expire_scheduled
 
 function dpi:tree/preset/apply_preset:
   if preset_index < 1:
