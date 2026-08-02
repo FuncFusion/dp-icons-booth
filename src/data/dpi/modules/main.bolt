@@ -41,6 +41,18 @@ function dpi:entities/refresh:
 
 function dpi:entities/reset_player:
   clear @s minecraft:writable_book[minecraft:custom_data~{dpi:{}}]
+  tags_to_remove = [
+    "dpi.pending",
+    "dpi.has_book",
+    "dpi.balloon_reciever",
+    "dpi.should_be_followed",
+    "dpi.chest_house.bounding_box",
+    "dpi.springboard.bounding_box",
+    "dpi.springboard.pending"
+  ]
+  for tag in tags_to_remove:
+    tag @s remove tag
+  scoreboard players set @s dpi.select_tick 0
 
 append function dpi:entities/summon:
   function dpi:entities/static/summon
