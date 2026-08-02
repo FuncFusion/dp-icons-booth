@@ -77,7 +77,7 @@ append function dpi:entities/summon:
     function dpi:aj/creators/animations/bth_busy/play
   execute as @e[type=minecraft:item_display,tag=dpi.aj.creators.bone.ant_character.tree] at @s run tp @s ~ ~0.25 ~-3.125
 
-  summon text_display 114.5 93.8 -132.0 {Tags:["dpi.springboard_arrow", "summit.booth_entity.dpi"], UUID:[I;2139869377,2109031480,-1603881215,-1136584132], view_range: 0.02, shadow: 0b, text: "⬆", transformation: {left_rotation: [0.0f, 0.9659259f, 0.25881904f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.9999999f, 2.0f, 2.0f]}, background: 0}
+  summon text_display 114.5 93.8 -132.0 {Tags:["dpi.springboard_arrow", "summit.booth_entity.dpi"], UUID:[I;2139869377,2109031480,-1603881215,-1136584132], view_range: 0.06, shadow: 0b, text: "⬆", transformation: {left_rotation: [0.0f, 0.9659259f, 0.25881904f, 0.0f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [1.9999999f, 2.0f, 2.0f]}, background: 0}
 
   summon item_display 108.8750 101.9375 -120.5 {Tags:["summit.booth_entity.dpi"], UUID:[I;-1560611804,1337541700,-1266275933,-1624971659], item: {components: {"minecraft:item_model": "dpi:loot_table_file"}, count: 1, id: "minecraft:emerald"}, teleport_duration: 1, transformation: {left_rotation: [0.0f, -0.7071068f, 0.0f, 0.7071068f], translation: [0.0f, 0.0f, 0.0f], right_rotation: [0.0f, 0.0f, 0.0f, 1.0f], scale: [0.6f, 0.6f, 0.6f]}}
 
